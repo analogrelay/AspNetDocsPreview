@@ -63,7 +63,7 @@ A requirement doesn't need to have data or properties.
 Authorization Handlers
 ----------------------
 
-An authorization handler is responsible for the evaluation of any properties of a requirement. The  authorization handler must evaluate them against a provided :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext` to decide if authorization is allowed. A requirement can have :ref:`multiple handlers <security-authorization-policies-based-multiple-handlers>`. Handlers must inherit :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandler`1<TRequirement>` where ``TRequirement`` is the requirement it handles. 
+An authorization handler is responsible for the evaluation of any properties of a requirement. The  authorization handler must evaluate them against a provided :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext` to decide if authorization is allowed. A requirement can have :ref:`multiple handlers <security-authorization-policies-based-multiple-handlers>`. Handlers must inherit :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>` where ``TRequirement`` is the requirement it handles. 
 
 .. _security-authorization-handler-example:
 
@@ -118,7 +118,7 @@ Handlers must be registered in the services collection during configuration, for
      services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
  }
 
-Each handler is added to the services collection by using ``services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();`` passing in your handler class.
+Each handler is added to the services collection by using ``services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();``, replacing ``YourHandlerClass`` with the name of your authorization handler.
 
 What should a handler return?
 -----------------------------
@@ -178,7 +178,7 @@ The :dn:method:`~Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequir
 
 For example MVC passes an instance of :dn:class:`~Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` in the resource property which is used to access HttpContext, RouteData and everything else MVC provides.
 
-The use of the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property is framework specific. Using information in the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property will limit your authorization policies to particular frameworks. You should cast the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property using the ``as`` keyword, and then check the cast has succeed to ensure your code doesn't crash with ``InvalidCastExceptions`` when run on other frameworks;
+The use of the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property is framework specific. Using information in the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property will limit your authorization policies to particular frameworks. You should cast the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property using the ``as`` keyword, and then check the cast has succeed to ensure your code doesn't crash with :dn:class:`~System.InvalidCastException` when run on other frameworks;
 
 .. code-block:: c#
  
