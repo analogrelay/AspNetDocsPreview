@@ -8,7 +8,7 @@ Often authorization depends upon the resource being accessed. For example a docu
 Authorizing within your code
 ----------------------------
 
-Authorization is implemented as a service, :dn:iface:`~Microsoft.AspNetCore.Authorization.IAuthorizationService`, registered in the service collection and available for DI into Controllers.
+Authorization is implemented as a service, :dn:iface:`~Microsoft.AspNetCore.Authorization.IAuthorizationService`, registered in the service collection and available via :ref:`dependency injection <fundamentals-dependency-injection>` for Controllers to access.
 
 .. code-block:: c#
 
