@@ -201,11 +201,11 @@
 </div></blockquote>
 <div class="section" id="selecting-the-scheme-with-the-authorize-attribute">
 <h2>Selecting the scheme with the Authorize attribute<a class="headerlink" href="#selecting-the-scheme-with-the-authorize-attribute" title="Permalink to this headline">¶</a></h2>
-<p>As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used. The simplest way to select the middleware you wish to authorize wish is to use the <code class="xref dn dn-prop docutils literal"><span class="pre">AuthenticationSchemes</span></code> property. This property accepts a comma delimited list of Authentication Schemes to use. For example;</p>
-<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(ActiveAuthenticationSchemes = &quot;Cookie,Bearer&quot;)]</span>
-<span class="k">public</span> <span class="k">class</span> <span class="nc">MixedController</span> <span class="p">:</span> <span class="n">Controller</span>
-</pre></div>
-</div>
+<p>As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used. The simplest way to select the middleware you wish to authorize wish is to use the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.ActiveAuthenticationSchemes" title="(in ASP.NET API Reference v)"><code class="xref dn dn-prop docutils literal"><span class="pre">ActiveAuthenticationSchemes</span></code></a> property. This property accepts a comma delimited list of Authentication Schemes to use. For example;
+.. code-block:: c#</p>
+<blockquote>
+<div>[Authorize(ActiveAuthenticationSchemes = &#8220;Cookie,Bearer&#8221;)]
+public class MixedController : Controller</div></blockquote>
 <p>In the example above both the cookie and bearer middlewares will run and have a chance to create and append an identity for the current user. By specifying a single scheme only the specified middleware will run;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(ActiveAuthenticationSchemes = &quot;Bearer&quot;)]</span>
 </pre></div>
