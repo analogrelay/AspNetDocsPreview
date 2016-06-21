@@ -195,7 +195,7 @@
 </pre></div>
 </div>
 <p>In this case the EmployeeOnly policy checks for the presence of an EmployeeNumber claim on the current identity.</p>
-<p>You then apply the policy using the <code class="docutils literal"><span class="pre">Policy</span></code> parameter on the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute to specify the policy name;</p>
+<p>You then apply the policy using the <code class="docutils literal"><span class="pre">Policy</span></code> parameter on the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute to specify the policy name;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
 <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">VacationBalance</span><span class="p">()</span>
 <span class="p">{</span>

@@ -32,7 +32,7 @@ First you need to build and register the policy. This takes place as part of the
 
 In this case the EmployeeOnly policy checks for the presence of an EmployeeNumber claim on the current identity.
 
-You then apply the policy using the ``Policy`` parameter on the ``Authorize`` attribute to specify the policy name;
+You then apply the policy using the ``Policy`` parameter on the :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizeAttribute` attribute to specify the policy name;
 
 .. code-block:: c#
 
