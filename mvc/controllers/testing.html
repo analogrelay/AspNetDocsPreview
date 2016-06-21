@@ -1,0 +1,1030 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Testing Controller Logic &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Controllers" href="index.html"/>
+        <link rel="next" title="Areas" href="areas.html"/>
+        <link rel="prev" title="Dependency Injection and Controllers" href="dependency-injection.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MVC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../views/index.html">Views</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Controllers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actions.html">Controllers, Actions, and Action Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routing.html">🔧 Routing to Controller Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dependency-injection.html">Dependency Injection and Controllers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Testing Controller Logic</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application-model.html">🔧 Working with the Application Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">MVC</a> &raquo;</li>
+      
+          <li><a href="index.html">Controllers</a> &raquo;</li>
+      
+    <li>Testing Controller Logic</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/mvc/controllers/testing.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="testing-controller-logic">
+<h1>Testing Controller Logic<a class="headerlink" href="#testing-controller-logic" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>Controllers in ASP.NET MVC apps should be small and focused on user-interface concerns. Large controllers that deal with non-UI concerns are more difficult to test and maintain.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections</p>
+<ul class="simple">
+<li><a class="reference internal" href="#why-test-controllers" id="id2">Why Test Controllers</a></li>
+<li><a class="reference internal" href="#unit-testing" id="id3">Unit Testing</a></li>
+<li><a class="reference internal" href="#integration-testing" id="id4">Integration Testing</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/testing/sample">View or download sample from GitHub</a></p>
+<div class="section" id="why-test-controllers">
+<h2><a class="toc-backref" href="#id2">Why Test Controllers</a><a class="headerlink" href="#why-test-controllers" title="Permalink to this headline">¶</a></h2>
+<p>Controllers are a central part of any ASP.NET Core MVC application. As such, you should have confidence they behave as intended for your app. Automated tests can provide you with this confidence and can detect errors before they reach production. It&#8217;s important to avoid placing unnecessary responsibilities within your controllers and ensure your tests focus only on controller responsibilities.</p>
+<p>Controller logic should be minimal and not be focused on business logic or infrastructure concerns (for example, data access). Test controller logic, not the framework. Test how the controller <em>behaves</em> based on valid or invalid inputs. Test controller responses based on the result of the business operation it performs.</p>
+<p>Typical controller responsibilities:</p>
+<ul class="simple">
+<li>Verify <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code></li>
+<li>Return an error response if <code class="docutils literal"><span class="pre">ModelState</span></code> is invalid</li>
+<li>Retrieve a business entity from persistence</li>
+<li>Perform an action on the business entity</li>
+<li>Save the business entity to persistence</li>
+<li>Return an appropriate <code class="docutils literal"><span class="pre">IActionResult</span></code></li>
+</ul>
+</div>
+<div class="section" id="unit-testing">
+<h2><a class="toc-backref" href="#id3">Unit Testing</a><a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../testing/unit-testing.html"><span class="doc">Unit testing</span></a> involves testing a part of an app in isolation from its infrastructure and dependencies. When unit testing controller logic, only the contents of a single action is tested, not the behavior of its dependencies or of the framework itself. As you unit test your controller actions, make sure you focus only on its behavior. A controller unit test avoids things like <a class="reference internal" href="filters.html"><span class="doc">filters</span></a>, <a class="reference internal" href="../../fundamentals/routing.html"><span class="doc">routing</span></a>, or <a class="reference internal" href="../models/model-binding.html"><span class="doc">model binding</span></a>. By focusing on testing just one thing, unit tests are generally simple to write and quick to run. A well-written set of unit tests can be run frequently without much overhead. However, unit tests do not detect issues in the interaction between components, which is the purpose of <a class="reference internal" href="#integration-testing"><span class="std std-ref">integration testing</span></a>.</p>
+<p>If you&#8217;ve writing custom filters, routes, etc, you should unit test them, but not as part of your tests on a particular controller action. They should be tested in isolation.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last"><a class="reference external" href="https://www.visualstudio.com/en-us/get-started/code/create-and-run-unit-tests-vs">Create and run unit tests with Visual Studio</a>.</p>
+</div>
+<p>To demonstrate unit testing, review the following controller. It displays a list of brainstorming sessions and allows new brainstorming sessions to be created with a POST:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Model</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.ViewModels</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllersSample.Controllers</span>
+<span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span>    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IBrainstormSessionRepository</span> <span class="n">_sessionRepository</span><span class="p">;</span>
+
+<span class="hll">        <span class="k">public</span> <span class="nf">HomeController</span><span class="p">(</span><span class="n">IBrainstormSessionRepository</span> <span class="n">sessionRepository</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="n">_sessionRepository</span> <span class="p">=</span> <span class="n">sessionRepository</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">_sessionRepository</span><span class="p">.</span><span class="n">List</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">StormSessionViewModel</span><span class="p">()</span>
+                <span class="p">{</span>
+                    <span class="n">Id</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+                    <span class="n">DateCreated</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">DateCreated</span><span class="p">,</span>
+                    <span class="n">Name</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+                    <span class="n">IdeaCount</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">Count</span>
+                <span class="p">});</span>
+
+            <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">class</span> <span class="nc">NewSessionModel</span>
+        <span class="p">{</span>
+<span class="na">            [Required]</span>
+            <span class="k">public</span> <span class="kt">string</span> <span class="n">SessionName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [HttpPost]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">(</span><span class="n">NewSessionModel</span> <span class="n">model</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">Index</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">_sessionRepository</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">Now</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">SessionName</span>
+            <span class="p">});</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">RedirectToActionResult</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="s">&quot;Home&quot;</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The controller is following the <a class="reference external" href="http://deviq.com/explicit-dependencies-principle/">explicit dependencies principle</a>, expecting dependency injection to provide it with an instance of <code class="docutils literal"><span class="pre">IBrainstormSessionRepository</span></code>. This makes it fairly easy to test using a mock object framework, like <a class="reference external" href="https://www.nuget.org/packages/Moq/">Moq</a>. The <code class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span> <span class="pre">Index</span></code> method has no looping or branching and only calls one method. To test this <code class="docutils literal"><span class="pre">Index</span></code> method, we need to verify that a <code class="docutils literal"><span class="pre">ViewResult</span></code> is returned, with a <code class="docutils literal"><span class="pre">ViewModel</span></code> from the repository&#8217;s <code class="docutils literal"><span class="pre">List</span></code> method.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Moq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Controllers</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Model</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.ViewModels</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Xunit</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllerSample.Tests.UnitTests</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">HomeControllerTests</span>
+    <span class="p">{</span>
+<span class="hll"><span class="na">        [Fact]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexReturnsAViewResultWithAListOfBrainstormSessions</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">List</span><span class="p">()).</span><span class="n">Returns</span><span class="p">(</span><span class="n">GetTestSessions</span><span class="p">());</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+<span class="hll">            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">ViewResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">());</span>
+</span><span class="hll">            <span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsAssignableFrom</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">StormSessionViewModel</span><span class="p">&gt;&gt;</span>
+</span><span class="hll">                <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span><span class="p">);</span>
+</span><span class="hll">            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+</span>        <span class="p">}</span>
+
+<span class="na">        [Fact]</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexPostReturnsAViewResultWhenModelStateIsInvalid</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">List</span><span class="p">()).</span><span class="n">Returns</span><span class="p">(</span><span class="n">GetTestSessions</span><span class="p">());</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+            <span class="n">controller</span><span class="p">.</span><span class="n">ModelState</span><span class="p">.</span><span class="n">AddModelError</span><span class="p">(</span><span class="s">&quot;SessionName&quot;</span><span class="p">,</span> <span class="s">&quot;Required&quot;</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">newSession</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">.</span><span class="n">NewSessionModel</span><span class="p">();</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">ViewResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="n">newSession</span><span class="p">));</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">IsAssignableFrom</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">StormSessionViewModel</span><span class="p">&gt;&gt;</span>
+                <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span><span class="p">);</span>
+        <span class="p">}</span>
+
+<span class="na">        [Fact]</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexPostReturnsARedirectAndAddsSessionWhenModelStateIsValid</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">It</span><span class="p">.</span><span class="n">IsAny</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;())).</span><span class="n">Verifiable</span><span class="p">();</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">newSession</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">.</span><span class="n">NewSessionModel</span><span class="p">()</span>
+            <span class="p">{</span> <span class="n">SessionName</span> <span class="p">=</span> <span class="s">&quot;Test Name&quot;</span> <span class="p">};</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">RedirectToActionResult</span><span class="p">&gt;</span>
+                <span class="p">(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="n">newSession</span><span class="p">));</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Home&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ControllerName</span><span class="p">);</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ActionName</span><span class="p">);</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Verify</span><span class="p">();</span>
+        <span class="p">}</span>
+
+
+        <span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;</span> <span class="n">GetTestSessions</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">sessions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;();</span>
+            <span class="n">sessions</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Test One&quot;</span>
+            <span class="p">});</span>
+            <span class="n">sessions</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Test Two&quot;</span>
+            <span class="p">});</span>
+            <span class="k">return</span> <span class="n">sessions</span><span class="p">;</span>
+        <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">HTTP</span> <span class="pre">POST</span> <span class="pre">Index</span></code> method (shown below) should verify:</p>
+<ul class="simple">
+<li>The action method returns a <code class="docutils literal"><span class="pre">ViewResult</span></code> with the appropriate data when <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code> is <code class="docutils literal"><span class="pre">false</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">Add</span></code> method on the repository is called and a <code class="docutils literal"><span class="pre">RedirectToActionResult</span></code> is returned with the correct arguments when <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code> is true.</li>
+</ul>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">    [Fact]</span>
+</span><span class="hll">    <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexPostReturnsAViewResultWhenModelStateIsInvalid</span><span class="p">()</span>
+</span>    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+        <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">List</span><span class="p">()).</span><span class="n">Returns</span><span class="p">(</span><span class="n">GetTestSessions</span><span class="p">());</span>
+        <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+        <span class="n">controller</span><span class="p">.</span><span class="n">ModelState</span><span class="p">.</span><span class="n">AddModelError</span><span class="p">(</span><span class="s">&quot;SessionName&quot;</span><span class="p">,</span> <span class="s">&quot;Required&quot;</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">newSession</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">.</span><span class="n">NewSessionModel</span><span class="p">();</span>
+
+<span class="hll">        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">ViewResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="n">newSession</span><span class="p">));</span>
+</span><span class="hll">        <span class="n">Assert</span><span class="p">.</span><span class="n">IsAssignableFrom</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">StormSessionViewModel</span><span class="p">&gt;&gt;</span>
+</span><span class="hll">            <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+
+<span class="hll"><span class="na">    [Fact]</span>
+</span><span class="hll">    <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexPostReturnsARedirectAndAddsSessionWhenModelStateIsValid</span><span class="p">()</span>
+</span>    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+<span class="hll">        <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">It</span><span class="p">.</span><span class="n">IsAny</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;())).</span><span class="n">Verifiable</span><span class="p">();</span>
+</span>        <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">newSession</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HomeController</span><span class="p">.</span><span class="n">NewSessionModel</span><span class="p">()</span>
+        <span class="p">{</span> <span class="n">SessionName</span> <span class="p">=</span> <span class="s">&quot;Test Name&quot;</span> <span class="p">};</span>
+
+<span class="hll">        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">RedirectToActionResult</span><span class="p">&gt;</span>
+</span><span class="hll">            <span class="p">(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="n">newSession</span><span class="p">));</span>
+</span>        <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Home&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ControllerName</span><span class="p">);</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ActionName</span><span class="p">);</span>
+<span class="hll">        <span class="n">mockRepo</span><span class="p">.</span><span class="n">Verify</span><span class="p">();</span>
+</span>    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The first test confirms when <code class="docutils literal"><span class="pre">ModelState</span></code> is not valid, the same <code class="docutils literal"><span class="pre">ViewResult</span></code> is returned as for a <code class="docutils literal"><span class="pre">GET</span></code> request. Note that the test doesn&#8217;t attempt to pass in an invalid model. That wouldn&#8217;t work anyway since model binding isn&#8217;t running - we&#8217;re just calling the method directly. However, we&#8217;re not trying to test model binding - we&#8217;re only testing what our code in the action method does. The simplest approach is to add an error to <code class="docutils literal"><span class="pre">ModelState</span></code>.</p>
+<p>The second test verifies that when <code class="docutils literal"><span class="pre">ModelState</span></code> is valid, a new <code class="docutils literal"><span class="pre">BrainstormSession</span></code> is added (via the repository), and the method returns a <code class="docutils literal"><span class="pre">RedirectToActionResult</span></code> with the expected properties. Mocked calls that aren&#8217;t called are normally ignored, but calling <code class="docutils literal"><span class="pre">Verifiable</span></code> at the end of the setup call allows it to be verified in the test. This is done with the call to <code class="docutils literal"><span class="pre">mockRepo.Verify</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Moq library used in this sample makes it easy to mix verifiable, or &#8220;strict&#8221;, mocks with non-verifiable mocks (also called &#8220;loose&#8221; mocks or stubs). Learn more about <a class="reference external" href="https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior">customizing Mock behavior with Moq</a>.</p>
+</div>
+<p>Another controller in the app displays information related to a particular brainstorming session. It includes some logic to deal with invalid id values:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.ViewModels</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllersSample.Controllers</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">SessionController</span> <span class="p">:</span> <span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IBrainstormSessionRepository</span> <span class="n">_sessionRepository</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">SessionController</span><span class="p">(</span><span class="n">IBrainstormSessionRepository</span> <span class="n">sessionRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_sessionRepository</span> <span class="p">=</span> <span class="n">sessionRepository</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">id</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="k">return</span> <span class="nf">RedirectToAction</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">,</span><span class="s">&quot;Home&quot;</span><span class="p">);</span>
+</span>            <span class="p">}</span>
+            <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="n">_sessionRepository</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">session</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;Session not found.&quot;</span><span class="p">);</span>
+</span>            <span class="p">}</span>
+            <span class="kt">var</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StormSessionViewModel</span><span class="p">()</span>
+                <span class="p">{</span>
+                    <span class="n">DateCreated</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">DateCreated</span><span class="p">,</span>
+                    <span class="n">Name</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+                    <span class="n">Id</span><span class="p">=</span><span class="n">session</span><span class="p">.</span><span class="n">Id</span>
+                <span class="p">};</span>
+<span class="hll">            <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">viewModel</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The controller action has three cases to test, one for each <code class="docutils literal"><span class="pre">return</span></code> statement:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Moq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Controllers</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Model</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.ViewModels</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Xunit</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nn">TestingControllerSample.Tests.UnitTests</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">SessionControllerTests</span>
+    <span class="p">{</span>
+<span class="na">        [Fact]</span>
+<span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexReturnsARedirectToIndexHomeWhenIdIsNull</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SessionController</span><span class="p">(</span><span class="n">sessionRepository</span><span class="p">:</span><span class="k">null</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">RedirectToActionResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="k">null</span><span class="p">));</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Home&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ControllerName</span><span class="p">);</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ActionName</span><span class="p">);</span>
+        <span class="p">}</span>
+
+<span class="na">        [Fact]</span>
+<span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexReturnsContentWithSessionNotFoundWhenSessionNotFound</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">int</span> <span class="n">testSessionId</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">Returns</span><span class="p">((</span><span class="n">BrainstormSession</span><span class="p">)</span><span class="k">null</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SessionController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">ContentResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">));</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Session not found.&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+        <span class="p">}</span>
+
+<span class="na">        [Fact]</span>
+<span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">IndexReturnsViewResultWithStormSessionViewModel</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">int</span> <span class="n">testSessionId</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">))</span>
+                <span class="p">.</span><span class="n">Returns</span><span class="p">(</span><span class="n">GetTestSessions</span><span class="p">().</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">testSessionId</span><span class="p">));</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SessionController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">ViewResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">));</span>
+            <span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">StormSessionViewModel</span><span class="p">&gt;(</span><span class="n">result</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span><span class="p">);</span>
+
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Test One&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">DateCreated</span><span class="p">.</span><span class="n">Day</span><span class="p">);</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;</span> <span class="n">GetTestSessions</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">sessions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;();</span>
+            <span class="n">sessions</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Test One&quot;</span>
+            <span class="p">});</span>
+            <span class="n">sessions</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Test Two&quot;</span>
+            <span class="p">});</span>
+            <span class="k">return</span> <span class="n">sessions</span><span class="p">;</span>
+        <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The app exposes functionality as a web API (a list of ideas associated with a brainstorming session and a method for adding new ideas to a session):</p>
+<div class="highlight-c#" id="ideas-controller"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.ClientModels</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Model</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllersSample.Api</span>
+<span class="p">{</span>
+<span class="na">    [Route(&quot;api/ideas&quot;)]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">IdeasController</span> <span class="p">:</span> <span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IBrainstormSessionRepository</span> <span class="n">_sessionRepository</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">IdeasController</span><span class="p">(</span><span class="n">IBrainstormSessionRepository</span> <span class="n">sessionRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_sessionRepository</span> <span class="p">=</span> <span class="n">sessionRepository</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [Route(&quot;forsession/{sessionId}&quot;)]</span>
+</span><span class="hll"><span class="na">        [HttpGet]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">ForSession</span><span class="p">(</span><span class="kt">int</span> <span class="n">sessionId</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="n">_sessionRepository</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">sessionId</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">session</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="k">return</span> <span class="nf">HttpNotFound</span><span class="p">(</span><span class="n">sessionId</span><span class="p">);</span>
+</span>            <span class="p">}</span>
+<span class="hll">            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">i</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">IdeaDTO</span><span class="p">()</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="n">id</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">name</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">description</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">dateCreated</span> <span class="p">=</span> <span class="n">i</span><span class="p">.</span><span class="n">DateCreated</span>
+</span><span class="hll">            <span class="p">}).</span><span class="n">ToList</span><span class="p">();</span>
+</span><span class="hll">            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [Route(&quot;create&quot;)]</span>
+</span><span class="hll"><span class="na">        [HttpPost]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Create</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span><span class="n">NewIdeaModel</span> <span class="n">model</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="k">return</span> <span class="nf">HttpBadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+</span>            <span class="p">}</span>
+            <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="n">_sessionRepository</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">SessionId</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">session</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="k">return</span> <span class="nf">HttpNotFound</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">SessionId</span><span class="p">);</span>
+</span>            <span class="p">}</span>
+            <span class="kt">var</span> <span class="n">idea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Idea</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">Now</span><span class="p">,</span>
+                <span class="n">Description</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Description</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Name</span>
+            <span class="p">};</span>
+            <span class="n">session</span><span class="p">.</span><span class="n">AddIdea</span><span class="p">(</span><span class="n">idea</span><span class="p">);</span>
+            <span class="n">_sessionRepository</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">session</span><span class="p">);</span>
+<span class="hll">            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">session</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">ForSession</span></code> method returns a list of <code class="docutils literal"><span class="pre">IdeaDTO</span></code> types, with property names camel cased to match JavaScript conventions. Avoid returning your business domain entities directly via API calls, since frequently they include more data than the API client requires, and they unnecessarily couple your app&#8217;s internal domain model with the API you expose externally. Mapping between domain entities and the types you will return over the wire can be done manually (using a LINQ <code class="docutils literal"><span class="pre">Select</span></code> as shown here) or using a library like <a class="reference external" href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a></p>
+<p>The unit tests for the <code class="docutils literal"><span class="pre">Create</span></code> and <code class="docutils literal"><span class="pre">ForSession</span></code> API methods:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Moq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Api</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.ClientModels</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Model</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Xunit</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllerSample.Tests.UnitTests</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">ApiIdeasControllerTests</span>
+    <span class="p">{</span>
+<span class="hll"><span class="na">        [Fact]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">CreateReturnsBadRequestGivenInvalidModel</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IdeasController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+            <span class="n">controller</span><span class="p">.</span><span class="n">ModelState</span><span class="p">.</span><span class="n">AddModelError</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="s">&quot;some error&quot;</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">BadRequestObjectResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="k">null</span><span class="p">));</span>
+        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [Fact]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">CreateReturnsHttpNotFoundForInvalidSession</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">int</span> <span class="n">testSessionId</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">)).</span><span class="n">Returns</span><span class="p">((</span><span class="n">BrainstormSession</span><span class="p">)</span><span class="k">null</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IdeasController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">HttpNotFoundObjectResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="k">new</span> <span class="n">NewIdeaModel</span><span class="p">()));</span>
+        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [Fact]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">CreateReturnsNewlyCreatedIdeaForSession</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">int</span> <span class="n">testSessionId</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">testName</span> <span class="p">=</span> <span class="s">&quot;test name&quot;</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">testDescription</span> <span class="p">=</span> <span class="s">&quot;test description&quot;</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">testSession</span> <span class="p">=</span> <span class="n">GetTestSession</span><span class="p">();</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">)).</span><span class="n">Returns</span><span class="p">(</span><span class="n">testSession</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IdeasController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaModel</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">Description</span> <span class="p">=</span> <span class="n">testDescription</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="n">testName</span><span class="p">,</span>
+                <span class="n">SessionId</span> <span class="p">=</span> <span class="n">testSessionId</span>
+            <span class="p">};</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">testSession</span><span class="p">)).</span><span class="n">Verifiable</span><span class="p">();</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">HttpOkObjectResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">newIdea</span><span class="p">));</span>
+            <span class="kt">var</span> <span class="n">returnSession</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;(</span><span class="n">result</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Verify</span><span class="p">();</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">returnSession</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">testName</span><span class="p">,</span> <span class="n">returnSession</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">LastOrDefault</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">testDescription</span><span class="p">,</span> <span class="n">returnSession</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">LastOrDefault</span><span class="p">().</span><span class="n">Description</span><span class="p">);</span>
+        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [Fact]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">ForSessionReturnsHttpNotFoundForInvalidSession</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">int</span> <span class="n">testSessionId</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">)).</span><span class="n">Returns</span><span class="p">((</span><span class="n">BrainstormSession</span><span class="p">)</span><span class="k">null</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IdeasController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">HttpNotFoundObjectResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">ForSession</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">));</span>
+        <span class="p">}</span>
+
+<span class="hll"><span class="na">        [Fact]</span>
+</span><span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">ForSessionReturnsIdeasForSession</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">mockRepo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Mock</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;();</span>
+            <span class="kt">int</span> <span class="n">testSessionId</span> <span class="p">=</span> <span class="m">123</span><span class="p">;</span>
+            <span class="n">mockRepo</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">r</span> <span class="p">=&gt;</span> <span class="n">r</span><span class="p">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">)).</span><span class="n">Returns</span><span class="p">(</span><span class="n">GetTestSession</span><span class="p">());</span>
+            <span class="kt">var</span> <span class="n">controller</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IdeasController</span><span class="p">(</span><span class="n">mockRepo</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">HttpOkObjectResult</span><span class="p">&gt;(</span><span class="n">controller</span><span class="p">.</span><span class="n">ForSession</span><span class="p">(</span><span class="n">testSessionId</span><span class="p">));</span>
+            <span class="kt">var</span> <span class="n">returnValue</span> <span class="p">=</span> <span class="n">Assert</span><span class="p">.</span><span class="n">IsType</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">IdeaDTO</span><span class="p">&gt;&gt;(</span><span class="n">result</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">idea</span> <span class="p">=</span> <span class="n">returnValue</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">();</span>
+
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;One&quot;</span><span class="p">,</span> <span class="n">idea</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">BrainstormSession</span> <span class="nf">GetTestSession</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Test One&quot;</span>
+            <span class="p">};</span>
+
+            <span class="kt">var</span> <span class="n">idea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Idea</span><span class="p">()</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;One&quot;</span> <span class="p">};</span>
+            <span class="n">session</span><span class="p">.</span><span class="n">AddIdea</span><span class="p">(</span><span class="n">idea</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">session</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As stated previously, to test the behavior of the method when <code class="docutils literal"><span class="pre">ModelState</span></code> is invalid, add a model error to the controller as part of the test. Don&#8217;t try to test model validation or model binding in your unit tests - just test your action method&#8217;s behavior when confronted with a particular <code class="docutils literal"><span class="pre">ModelState</span></code> value.</p>
+<p>The second test depends on the repository returning null, so the mock repository is configured to return null. There&#8217;s no need to create a test database (in memory or otherwise) and construct a query that will return this result - it can be done in a single line as shown.</p>
+<p>The last test verifies that the repository&#8217;s <code class="docutils literal"><span class="pre">Update</span></code> method is called. As we did previously, the mock is called with <code class="docutils literal"><span class="pre">Verifiable</span></code> and then the mocked repository&#8217;s <code class="docutils literal"><span class="pre">Verify</span></code> method is called to confirm the verifiable method was executed. It&#8217;s not a unit test responsibility to ensure that the <code class="docutils literal"><span class="pre">Update</span></code> method saved the data; that can be done with an integration test.</p>
+</div>
+<div class="section" id="integration-testing">
+<span id="id1"></span><h2><a class="toc-backref" href="#id4">Integration Testing</a><a class="headerlink" href="#integration-testing" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../testing/integration-testing.html"><span class="doc">Integration testing</span></a> is done to ensure separate modules within your app work correctly together. Generally, anything you can test with a unit test, you can also test with an integration test, but the reverse isn&#8217;t true. However, integration tests tend to be much slower than unit tests. Thus, it&#8217;s best to test whatever you can with unit tests, and use integration tests for scenarios that involve multiple collaborators.</p>
+<p>Although they may still be useful, mock objects are rarely used in integration tests. In unit testing, mock objects are an effective way to control how collaborators outside of the unit being tested should behave for the purposes of the test. In an integration test, real collaborators are used to confirm the whole subsystem works together correctly.</p>
+<div class="section" id="application-state">
+<h3>Application State<a class="headerlink" href="#application-state" title="Permalink to this headline">¶</a></h3>
+<p>One important consideration when performing integration testing is how to set your app&#8217;s state. Tests need to run independent of one another, and so each test should start with the app in a known state. If your app doesn&#8217;t use a database or have any persistence, this may not be an issue. However, most real-world apps persist their state to some kind of data store, so any modifications made by one test could impact another test unless the data store is reset. Using the built-in <code class="docutils literal"><span class="pre">TestServer</span></code>, it&#8217;s very straightforward to host ASP.NET Core apps within our integration tests, but that doesn&#8217;t necessarily grant access to the data it will use. If you&#8217;re using an actual database, one approach is to have the app connect to a test database, which your tests can access and ensure is reset to a known state before each test executes.</p>
+<p>In this sample application, I&#8217;m using Entity Framework Core&#8217;s InMemoryDatabase support, so I can&#8217;t just connect to it from my test project. Instead, I expose an <code class="docutils literal"><span class="pre">InitializeDatabase</span></code> method from the app&#8217;s <code class="docutils literal"><span class="pre">Startup</span></code> class, which I call when the app starts up if it&#8217;s in the <code class="docutils literal"><span class="pre">Development</span></code> environment. My integration tests automatically benefit from this as long as they set the environment to <code class="docutils literal"><span class="pre">Development</span></code>. I don&#8217;t have to worry about resetting the database, since the InMemoryDatabase is reset each time the app restarts.</p>
+<p>The <code class="docutils literal"><span class="pre">Startup</span></code> class:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Data.Entity</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Logging</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Interfaces</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Core.Model</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample.Infrastructure</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllersSample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="n">services</span><span class="p">.</span><span class="n">AddEntityFramework</span><span class="p">()</span>
+</span><span class="hll">                <span class="p">.</span><span class="n">AddInMemoryDatabase</span><span class="p">()</span>
+</span><span class="hll">                <span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">AppDbContext</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> 
+</span><span class="hll">                <span class="n">options</span><span class="p">.</span><span class="n">UseInMemoryDatabase</span><span class="p">());</span>
+</span>
+            <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+            <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">,</span> 
+                <span class="n">EfStormSessionRepository</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> 
+            <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span>
+            <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">loggerFactory</span><span class="p">.</span><span class="n">AddConsole</span><span class="p">(</span><span class="n">LogLevel</span><span class="p">.</span><span class="n">Verbose</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsDevelopment</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">app</span><span class="p">.</span><span class="n">UseDeveloperExceptionPage</span><span class="p">();</span>
+
+                <span class="n">app</span><span class="p">.</span><span class="n">UseRuntimeInfoPage</span><span class="p">();</span> <span class="c1">// default path is /runtimeinfo</span>
+                
+<span class="hll">                <span class="n">InitializeDatabase</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">ApplicationServices</span>
+</span><span class="hll">                    <span class="p">.</span><span class="n">GetService</span><span class="p">&lt;</span><span class="n">IBrainstormSessionRepository</span><span class="p">&gt;());</span>
+</span>
+            <span class="p">}</span>
+            <span class="n">app</span><span class="p">.</span><span class="n">UseIISPlatformHandler</span><span class="p">();</span>
+            <span class="n">app</span><span class="p">.</span><span class="n">UseMvcWithDefaultRoute</span><span class="p">();</span>
+            <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">InitializeDatabase</span><span class="p">(</span><span class="n">IBrainstormSessionRepository</span> <span class="n">repo</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">repo</span><span class="p">.</span><span class="n">List</span><span class="p">().</span><span class="n">Any</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">repo</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">GetTestSession</span><span class="p">());</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="k">static</span> <span class="n">BrainstormSession</span> <span class="nf">GetTestSession</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BrainstormSession</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Test Session 1&quot;</span><span class="p">,</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+            <span class="p">};</span>
+            <span class="kt">var</span> <span class="n">idea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Idea</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">DateCreated</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">2016</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span>
+                <span class="n">Description</span> <span class="p">=</span> <span class="s">&quot;Totally awesome idea&quot;</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Awesome idea&quot;</span>
+            <span class="p">};</span>
+            <span class="n">session</span><span class="p">.</span><span class="n">AddIdea</span><span class="p">(</span><span class="n">idea</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">session</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Entry point for the application.</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">WebApplication</span><span class="p">.</span><span class="n">Run</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;(</span><span class="n">args</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You&#8217;ll see the <code class="docutils literal"><span class="pre">GetTestSession</span></code> method used frequently in the integration tests below.</p>
+</div>
+<div class="section" id="accessing-views">
+<h3>Accessing Views<a class="headerlink" href="#accessing-views" title="Permalink to this headline">¶</a></h3>
+<p>Each integration test class configures the <code class="docutils literal"><span class="pre">TestServer</span></code> that will run the ASP.NET Core app. By default, <code class="docutils literal"><span class="pre">TestServer</span></code> hosts the web app in the folder where it&#8217;s running - in this case, the test project folder. Thus, when you attempt to test controller actions that return <code class="docutils literal"><span class="pre">ViewResult</span></code>, you may see this error:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>The view &#39;Index&#39; was not found. The following locations were searched:
+(list of locations)
+</pre></div>
+</div>
+<p>To correct this issue, you need to configure the server to use the <code class="docutils literal"><span class="pre">ApplicationBasePath</span></code> and <code class="docutils literal"><span class="pre">ApplicationName</span></code> of the web project. This is done in the call to <code class="docutils literal"><span class="pre">UseServices</span></code> in the integration test class shown:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.TestHost</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.PlatformAbstractions</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingControllersSample</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Xunit</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingControllerSample.Tests.IntegrationTests</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">HomeControllerTests</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">TestServer</span> <span class="n">_server</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">HttpClient</span> <span class="n">_client</span><span class="p">;</span>
+
+<span class="hll">        <span class="k">public</span> <span class="nf">HomeControllerTests</span><span class="p">()</span>
+</span>        <span class="p">{</span>
+<span class="hll">            <span class="n">_server</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TestServer</span><span class="p">(</span><span class="n">TestServer</span><span class="p">.</span><span class="n">CreateBuilder</span><span class="p">()</span>
+</span><span class="hll">                <span class="p">.</span><span class="n">UseEnvironment</span><span class="p">(</span><span class="s">&quot;Development&quot;</span><span class="p">)</span>
+</span><span class="hll">                <span class="c1">// needed for views to be accessed properly</span>
+</span><span class="hll">                <span class="p">.</span><span class="n">UseServices</span><span class="p">(</span><span class="n">services</span> <span class="p">=&gt;</span>
+</span><span class="hll">                <span class="p">{</span>
+</span><span class="hll">                    <span class="kt">var</span> <span class="n">env</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TestApplicationEnvironment</span><span class="p">();</span>
+</span><span class="hll">                    <span class="n">env</span><span class="p">.</span><span class="n">ApplicationBasePath</span> <span class="p">=</span>
+</span><span class="hll">                        <span class="n">Path</span><span class="p">.</span><span class="n">GetFullPath</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span>
+</span><span class="hll">                            <span class="n">PlatformServices</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">Application</span><span class="p">.</span><span class="n">ApplicationBasePath</span><span class="p">,</span> 
+</span><span class="hll">                            <span class="s">&quot;..&quot;</span><span class="p">,</span> <span class="s">&quot;..&quot;</span><span class="p">,</span> <span class="s">&quot;src&quot;</span><span class="p">,</span> <span class="s">&quot;TestingControllersSample&quot;</span><span class="p">));</span>
+</span><span class="hll">                    <span class="n">env</span><span class="p">.</span><span class="n">ApplicationName</span> <span class="p">=</span> <span class="s">&quot;TestingControllersSample&quot;</span><span class="p">;</span>
+</span>                    <span class="n">services</span><span class="p">.</span><span class="n">AddInstance</span><span class="p">&lt;</span><span class="n">IApplicationEnvironment</span><span class="p">&gt;(</span><span class="n">env</span><span class="p">);</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;());</span>
+<span class="hll">            <span class="n">_client</span> <span class="p">=</span> <span class="n">_server</span><span class="p">.</span><span class="n">CreateClient</span><span class="p">();</span>
+</span><span class="hll">        <span class="p">}</span>
+</span>
+<span class="na">        [Fact]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ReturnsInitialListOfBrainstormSessions</span><span class="p">()</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+</span>            <span class="n">response</span><span class="p">.</span><span class="n">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+            <span class="kt">var</span> <span class="n">responseString</span> <span class="p">=</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+
+            <span class="kt">var</span> <span class="n">testSession</span> <span class="p">=</span> <span class="n">Startup</span><span class="p">.</span><span class="n">GetTestSession</span><span class="p">();</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">responseString</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">testSession</span><span class="p">.</span><span class="n">Name</span><span class="p">));</span>
+        <span class="p">}</span>
+
+<span class="na">        [Fact]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">PostAddsNewBrainstormSession</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpRequestMessage</span><span class="p">(</span><span class="n">HttpMethod</span><span class="p">.</span><span class="n">Post</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;();</span>
+            <span class="kt">string</span> <span class="n">testSessionName</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="n">data</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;SessionName&quot;</span><span class="p">,</span> <span class="n">testSessionName</span><span class="p">);</span>
+
+            <span class="n">message</span><span class="p">.</span><span class="n">Content</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FormUrlEncodedContent</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Redirect</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">);</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Location</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the test above, the <code class="docutils literal"><span class="pre">responseString</span></code> gets the actual rendered HTML from the View, which can be inspected to confirm it contains expected results.</p>
+</div>
+<div class="section" id="api-methods">
+<h3>API Methods<a class="headerlink" href="#api-methods" title="Permalink to this headline">¶</a></h3>
+<p>If your app exposes web APIs, it&#8217;s a good idea to have automated tests confirm they execute as expected. The built-in <code class="docutils literal"><span class="pre">TestServer</span></code> makes it easy to test web APIs. If your API methods are using model binding, you should always check <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code>, and integration tests are the right place to confirm that your model validation is working properly.</p>
+<p>The following set of tests target the <code class="docutils literal"><span class="pre">Create</span></code> method in the <a class="reference internal" href="#ideas-controller"><span class="std std-ref">IdeasController</span></a> class shown above:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[Fact]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CreatePostReturnsBadRequestForMissingNameValue</span><span class="p">()</span>
+</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaDto</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;Description&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">&quot;/api/ideas/create&quot;</span><span class="p">,</span> <span class="n">newIdea</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">BadRequest</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="hll"><span class="na">[Fact]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CreatePostReturnsBadRequestForMissingDescriptionValue</span><span class="p">()</span>
+</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaDto</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">&quot;/api/ideas/create&quot;</span><span class="p">,</span> <span class="n">newIdea</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">BadRequest</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="hll"><span class="na">[Fact]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CreatePostReturnsBadRequestForSessionIdValueTooSmall</span><span class="p">()</span>
+</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaDto</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> <span class="s">&quot;Description&quot;</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">&quot;/api/ideas/create&quot;</span><span class="p">,</span> <span class="n">newIdea</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">BadRequest</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="hll"><span class="na">[Fact]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CreatePostReturnsBadRequestForSessionIdValueTooLarge</span><span class="p">()</span>
+</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaDto</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> <span class="s">&quot;Description&quot;</span><span class="p">,</span> <span class="m">1000001</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">&quot;/api/ideas/create&quot;</span><span class="p">,</span> <span class="n">newIdea</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">BadRequest</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="hll"><span class="na">[Fact]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CreatePostReturnsNotFoundForInvalidSession</span><span class="p">()</span>
+</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaDto</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> <span class="s">&quot;Description&quot;</span><span class="p">,</span> <span class="m">123</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">&quot;/api/ideas/create&quot;</span><span class="p">,</span> <span class="n">newIdea</span><span class="p">);</span>
+
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="hll"><span class="na">[Fact]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">CreatePostReturnsCreatedIdeaWithCorrectInputs</span><span class="p">()</span>
+</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">testIdeaName</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">newIdea</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NewIdeaDto</span><span class="p">(</span><span class="n">testIdeaName</span><span class="p">,</span> <span class="s">&quot;Description&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+   
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">&quot;/api/ideas/create&quot;</span><span class="p">,</span> <span class="n">newIdea</span><span class="p">);</span>
+    <span class="n">response</span><span class="p">.</span><span class="n">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+<span class="hll">    <span class="kt">var</span> <span class="n">returnedSession</span> <span class="p">=</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsJsonAsync</span><span class="p">&lt;</span><span class="n">BrainstormSession</span><span class="p">&gt;();</span>
+</span>    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">returnedSession</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">returnedSession</span><span class="p">.</span><span class="n">Ideas</span><span class="p">.</span><span class="n">Any</span><span class="p">(</span><span class="n">i</span> <span class="p">=&gt;</span> <span class="n">i</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="n">testIdeaName</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Unlike integration tests of actions that returns HTML views, web API methods that return results can usually be deserialized as strongly typed objects, as the last test above shows. In this case, the test deserializes the result to a <code class="docutils literal"><span class="pre">BrainstormSession</span></code> instance, and confirms that the idea was correctly added to its collection of ideas.</p>
+<p>You&#8217;ll find additional examples of integration tests in this article&#8217;s <a class="reference external" href="https://github.com/aspnet/Docs/tree/1.0.0-rc1/aspnet/mvc/controllers/testing/sample">sample project</a>.</p>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="areas.html" class="btn btn-neutral float-right" title="Areas" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dependency-injection.html" class="btn btn-neutral" title="Dependency Injection and Controllers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

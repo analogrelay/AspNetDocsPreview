@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adding a controller &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Building your first ASP.NET Core MVC app with Visual Studio" href="index.html"/>
+        <link rel="next" title="Adding a view" href="adding-view.html"/>
+        <link rel="prev" title="Getting started with ASP.NET Core MVC and Visual Studio" href="start-mvc.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="start-mvc.html">Getting started with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-view.html">Adding a view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-model.html">Adding a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working-with-sql.html">Working with SQL Server LocalDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller-methods-views.html">Controller methods and views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Adding Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-field.html">Adding a New Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Adding Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="details.html">Examining the Details and Delete methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a> &raquo;</li>
+      
+    <li>Adding a controller</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tutorials/first-mvc-app/adding-controller.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="adding-a-controller">
+<h1>Adding a controller<a class="headerlink" href="#adding-a-controller" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>The Model-View-Controller (MVC) architectural pattern separates an app into three main components: the <strong>M</strong>odel, the <strong>V</strong>iew, and the <strong>C</strong>ontroller. The MVC pattern helps you create apps that are testable and easier to maintain and update than traditional monolithic apps. MVC-based apps contain:</p>
+<ul class="simple">
+<li><strong>M</strong>odels: Classes that represent the data of the app and that use validation logic to enforce business rules for that data. Typically, model objects retrieve and store model state in a database. In this tutorial, a <code class="docutils literal"><span class="pre">Movie</span></code> model retrieves movie data from a database, provides it to the view or updates it. Updated data is written to a SQL Server database.</li>
+<li><strong>V</strong>iews: Views are the components that display the app&#8217;s user interface (UI). Generally, this UI displays the model data.</li>
+<li><strong>C</strong>ontrollers: Classes that handle browser requests, retrieve model data, and then specify view templates that return a response to the browser. In an MVC app, the view only displays information; the controller handles and responds to user input and interaction. For example, the controller handles route data and query-string values, and passes these values to the model. The model might use these values to query the database.</li>
+</ul>
+<p>The MVC pattern helps you create apps that separate the different aspects of the app (input logic, business logic, and UI logic), while providing a loose coupling between these elements. The pattern specifies where each kind of logic should be located in the app. The UI logic belongs in the view. Input logic belongs in the controller. Business logic belongs in the model. This separation helps you manage complexity when you build an app, because it enables you to work on one aspect of the implementation at a time without impacting the code of another. For example, you can work on the view code without depending on the business logic code.</p>
+<p>We&#8217;ll be covering all these concepts in this tutorial series and show you how to use them to build a simple movie app. The following image shows the <em>Models</em>, <em>Views</em> and <em>Controllers</em> folders in the MVC project.</p>
+<img alt="../../_images/mvc1.png" src="../../_images/mvc1.png" />
+<ul class="simple">
+<li>In <strong>Solution Explorer</strong>, right-click <strong>Controllers &gt; Add &gt; Controller...</strong></li>
+</ul>
+<img alt="../../_images/add_controller.png" src="../../_images/add_controller.png" />
+<ul class="simple">
+<li>In the <strong>Add Scaffold</strong> dialog<ul>
+<li>Tap <strong>MVC Controller - Empty</strong></li>
+<li>Tap <strong>Add</strong></li>
+</ul>
+</li>
+</ul>
+<img alt="../../_images/new_hell_ctl.png" src="../../_images/new_hell_ctl.png" />
+<ul class="simple">
+<li>Name the controller <strong>HelloWorldController</strong></li>
+<li>Tap <strong>Add</strong></li>
+</ul>
+<img alt="../../_images/hwc.png" src="../../_images/hwc.png" />
+<p>Replace the contents of <em>Controllers/HelloWorldController.cs</em> with the following:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text.Encodings.Web</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MvcMovie.Controllers</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">HelloWorldController</span> <span class="p">:</span> <span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="c1">// </span>
+        <span class="c1">// GET: /HelloWorld/</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="nf">Index</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;This is my default action...&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// </span>
+        <span class="c1">// GET: /HelloWorld/Welcome/ </span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="nf">Welcome</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;This is the Welcome action method...&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Every <code class="docutils literal"><span class="pre">public</span></code> method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string.  Note the comments preceding each method:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">HelloWorldController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// </span>
+<span class="hll">    <span class="c1">// GET: /HelloWorld/</span>
+</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;This is my default action...&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// </span>
+<span class="hll">    <span class="c1">// GET: /HelloWorld/Welcome/ </span>
+</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Welcome</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;This is the Welcome action method...&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The first comment states this is an <a class="reference external" href="http://www.w3schools.com/tags/ref_httpmethods.asp">HTTP GET</a> method that is invoked by appending &#8220;/HelloWorld/&#8221; to the URL. The second comment specifies an <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP GET</a> method that is invoked by appending &#8220;/HelloWorld/Welcome/&#8221; to the URL. Later on in the tutorial we&#8217;ll use the scaffolding engine to generate <code class="docutils literal"><span class="pre">HTTP</span> <span class="pre">POST</span></code> methods.</p>
+<p>Run the app in non-debug mode (press Ctrl+F5) and append &#8220;HelloWorld&#8221; to the path in the address bar. (In the image below, <a class="reference external" href="http://localhost:1234/HelloWorld">http://localhost:1234/HelloWorld</a> is used, but you&#8217;ll have to replace <em>1234</em> with the port number of your app.) The <code class="docutils literal"><span class="pre">Index</span> <span class="pre">method</span></code> returns a string. You told the system to return some HTML, and it did!</p>
+<img alt="../../_images/hell1.png" src="../../_images/hell1.png" />
+<p>MVC invokes controller classes (and the action methods within them) depending on the incoming URL. The default URL routing logic used by MVC uses a format like this to determine what code to invoke:</p>
+<p><code class="docutils literal"><span class="pre">/[Controller]/[ActionName]/[Parameters]</span></code></p>
+<p>You set the format for routing in the <em>Startup.cs</em> file.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>When you run the app and don&#8217;t supply any URL segments, it defaults to the &#8220;Home&#8221; controller and the &#8220;Index&#8221; method specified in the template line highlighted above.</p>
+<p>The first URL segment determines the controller class to run. So <code class="docutils literal"><span class="pre">localhost:xxxx/HelloWorld</span></code> maps to the <code class="docutils literal"><span class="pre">HelloWorldController</span></code> class. The second part of the URL segment determines the action method on the class. So <code class="docutils literal"><span class="pre">localhost:xxxx/HelloWorld/Index</span></code> would cause the <code class="docutils literal"><span class="pre">Index</span></code> method of the <code class="docutils literal"><span class="pre">HelloWorldController</span></code> class to run. Notice that we only had to browse to <code class="docutils literal"><span class="pre">localhost:xxxx/HelloWorld</span></code> and the <code class="docutils literal"><span class="pre">Index</span></code> method was called by default. This is because <code class="docutils literal"><span class="pre">Index</span></code> is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( <code class="docutils literal"><span class="pre">Parameters</span></code>) is for route data. We&#8217;ll see route data later on in this tutorial.</p>
+<p>Browse to <code class="docutils literal"><span class="pre">http://localhost:xxxx/HelloWorld/Welcome</span></code>. The <code class="docutils literal"><span class="pre">Welcome</span></code> method runs and returns the string &#8220;This is the Welcome action method...&#8221;. The default MVC routing is <code class="docutils literal"><span class="pre">/[Controller]/[ActionName]/[Parameters]</span></code>. For this URL, the controller is <code class="docutils literal"><span class="pre">HelloWorld</span></code> and <code class="docutils literal"><span class="pre">Welcome</span></code> is the action method. We haven&#8217;t used the <code class="docutils literal"><span class="pre">[Parameters]</span></code> part of the URL yet.</p>
+<img alt="../../_images/welcome.png" src="../../_images/welcome.png" />
+<p>Let&#8217;s modify the example slightly so that you can pass some parameter information  from the URL to the controller (for example, <code class="docutils literal"><span class="pre">/HelloWorld/Welcome?name=Scott&amp;numtimes=4</span></code>).  Change the <code class="docutils literal"><span class="pre">Welcome</span></code> method  to include two parameters as shown below. Note that the code uses the C# optional-parameter feature to indicate that the <code class="docutils literal"><span class="pre">numTimes</span></code> parameter defaults to 1 if no value is passed for that parameter.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numTimes</span> <span class="p">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">HtmlEncoder</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">Encode</span><span class="p">(</span>
+        <span class="s">&quot;Hello &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;, NumTimes is: &quot;</span> <span class="p">+</span> <span class="n">numTimes</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The code above uses <code class="docutils literal"><span class="pre">HtmlEncoder.Default.Encode</span></code> to protect the app from malicious input (namely JavaScript).</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In Visual Studio 2015, when you are running without debugging (Ctl+F5), you don&#8217;t need to build the app after changing the code. Just save the file, refresh your browser and you can see the changes.</p>
+</div>
+<p>Run your app and browse to:</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">http://localhost:xxxx/HelloWorld/Welcome?name=Rick&amp;numtimes=4</span></code></div></blockquote>
+<p>(Replace xxxx with your port number.) You can try different values for <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">numtimes</span></code> in  the URL. The MVC model binding system automatically maps the named parameters from  the query string in the address bar to parameters in your method. See <a class="reference internal" href="../../mvc/models/model-binding.html"><span class="doc">Model Binding</span></a> for more information.</p>
+<img alt="../../_images/rick4.png" src="../../_images/rick4.png" />
+<p>In the sample above, the URL segment (<code class="docutils literal"><span class="pre">Parameters</span></code>) is not used, the <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">numTimes</span></code> parameters are passed as <a class="reference external" href="http://en.wikipedia.org/wiki/Query_string">query strings</a>. The <code class="docutils literal"><span class="pre">?</span></code> (question mark) in the above URL is a separator, and the query strings follow. The <code class="docutils literal"><span class="pre">&amp;</span></code> character separates query strings.</p>
+<p>Replace the <code class="docutils literal"><span class="pre">Welcome</span></code> method with the following code:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="kt">string</span> <span class="nf">Welcome</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">=</span> <span class="m">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">HtmlEncoder</span><span class="p">.</span><span class="n">Default</span><span class="p">.</span><span class="n">Encode</span><span class="p">(</span>
+        <span class="s">&quot;Hello &quot;</span> <span class="p">+</span> <span class="n">name</span> <span class="p">+</span> <span class="s">&quot;, ID: &quot;</span> <span class="p">+</span> <span class="n">ID</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Run the app and enter the following URL:  <code class="docutils literal"><span class="pre">http://localhost:xxx/HelloWorld/Welcome/3?name=Rick</span></code></p>
+<img alt="../../_images/rick_routedata.png" src="../../_images/rick_routedata.png" />
+<p>This time the third URL segment  matched the route parameter <code class="docutils literal"><span class="pre">id</span></code>. The <code class="docutils literal"><span class="pre">Welcome</span></code>  method contains a parameter  <code class="docutils literal"><span class="pre">id</span></code> that matched the URL template in the <code class="docutils literal"><span class="pre">MapRoute</span></code> method. The trailing <code class="docutils literal"><span class="pre">?</span></code>  (in <code class="docutils literal"><span class="pre">id?</span></code>) indicates the <code class="docutils literal"><span class="pre">id</span></code> parameter is optional.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>In these examples the controller has been doing the &#8220;VC&#8221; portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don&#8217;t want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we&#8217;ll typically use a separate Razor view template file to help generate the HTML response. We&#8217;ll do that in the next tutorial.</p>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="adding-view.html" class="btn btn-neutral float-right" title="Adding a view" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="start-mvc.html" class="btn btn-neutral" title="Getting started with ASP.NET Core MVC and Visual Studio" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Your First ASP.NET Core Application on a Mac Using Visual Studio Code &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Building Your First Web API with ASP.NET Core MVC and Visual Studio" href="first-web-api.html"/>
+        <link rel="prev" title="Tutorials" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-mvc-app/index.html">Building your first ASP.NET Core MVC app with Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+    <li>Your First ASP.NET Core Application on a Mac Using Visual Studio Code</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/your-first-mac-aspnet.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="your-first-asp-net-core-application-on-a-mac-using-visual-studio-code">
+<h1>Your First ASP.NET Core Application on a Mac Using Visual Studio Code<a class="headerlink" href="#your-first-asp-net-core-application-on-a-mac-using-visual-studio-code" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://github.com/danroth27">Daniel Roth</a>, <a class="reference external" href="http://ardalis.com">Steve Smith</a> and <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>This article will show you how to write your first ASP.NET Core application on a Mac.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#setting-up-your-development-environment" id="id1">Setting Up Your Development Environment</a></li>
+<li><a class="reference internal" href="#scaffolding-applications-using-yeoman" id="id2">Scaffolding Applications Using Yeoman</a></li>
+<li><a class="reference internal" href="#developing-asp-net-applications-on-a-mac-with-visual-studio-code" id="id3">Developing ASP.NET Applications on a Mac With Visual Studio Code</a></li>
+<li><a class="reference internal" href="#running-locally-using-kestrel" id="id4">Running Locally Using Kestrel</a></li>
+<li><a class="reference internal" href="#publishing-to-azure" id="id5">Publishing to Azure</a></li>
+<li><a class="reference internal" href="#additional-resources" id="id6">Additional Resources</a></li>
+</ul>
+</div>
+<div class="section" id="setting-up-your-development-environment">
+<h2><a class="toc-backref" href="#id1">Setting Up Your Development Environment</a><a class="headerlink" href="#setting-up-your-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>To setup your development machine download and install <a class="reference external" href="https://microsoft.com/net/core">.NET Core</a> and <a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> with the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp">C# extension</a>.</p>
+</div>
+<div class="section" id="scaffolding-applications-using-yeoman">
+<h2><a class="toc-backref" href="#id2">Scaffolding Applications Using Yeoman</a><a class="headerlink" href="#scaffolding-applications-using-yeoman" title="Permalink to this headline">¶</a></h2>
+<p>Follow the instruction in <a class="reference internal" href="../client-side/yeoman.html"><span class="doc">Building Projects with Yeoman</span></a> to create an ASP.NET Core project.</p>
+</div>
+<div class="section" id="developing-asp-net-applications-on-a-mac-with-visual-studio-code">
+<h2><a class="toc-backref" href="#id3">Developing ASP.NET Applications on a Mac With Visual Studio Code</a><a class="headerlink" href="#developing-asp-net-applications-on-a-mac-with-visual-studio-code" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Start <strong>Visual Studio Code</strong></li>
+</ul>
+<img alt="../_images/vscode-welcome.png" src="../_images/vscode-welcome.png" />
+<ul class="simple">
+<li>Tap <strong>File &gt; Open</strong> and navigate to your Empty ASP.NET Core app</li>
+</ul>
+<img alt="../_images/file-open.png" src="../_images/file-open.png" />
+<p>From a Terminal / bash prompt, run <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">restore</span></code> to restore the project&#8217;s dependencies. Alternately, you can enter <code class="docutils literal"><span class="pre">command</span> <span class="pre">shift</span> <span class="pre">p</span></code> in Visual Studio Code and then type <code class="docutils literal"><span class="pre">dot</span></code> as shown:</p>
+<img alt="../_images/dotnet-restore1.png" src="../_images/dotnet-restore1.png" />
+<p>You can run commands directly from within Visual Studio Code, including <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">restore</span></code> and any tools referenced in the <em>project.json</em> file, as well as custom tasks defined in <em>.vscode/tasks.json</em>.</p>
+<p>This empty project template simply displays &#8220;Hello World!&#8221;. Open <em>Startup.cs</em> in Visual Studio Code to see how this is configured:</p>
+<img alt="../_images/vscode-startupcs.png" src="../_images/vscode-startupcs.png" />
+<p>If this is your first time using Visual Studio Code (or just <em>Code</em> for short), note that it provides a very streamlined, fast, clean interface for quickly working with files, while still providing tooling to make writing code extremely productive.</p>
+<p>In the left navigation bar, there are four icons, representing four viewlets:</p>
+<ul class="simple">
+<li>Explore</li>
+<li>Search</li>
+<li>Git</li>
+<li>Debug</li>
+</ul>
+<p>The Explore viewlet allows you to quickly navigate within the folder system, as well as easily see the files you are currently working with. It displays a badge to indicate whether any files have unsaved changes, and new folders and files can easily be created (without having to open a separate dialog window). You can easily Save All from a menu option that appears on mouse over, as well.</p>
+<p>The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.</p>
+<p><em>Code</em> will integrate with Git if it is installed on your system. You can easily initialize a new repository, make commits, and push changes from the Git viewlet.</p>
+<img alt="../_images/vscode-git.png" src="../_images/vscode-git.png" />
+<p>The Debug viewlet supports interactive debugging of applications.</p>
+<p>Finally, Code&#8217;s editor has a ton of great features. You&#8217;ll notice unused using statements are underlined and can be removed automatically by using <code class="docutils literal"><span class="pre">command</span> <span class="pre">.</span></code> when the lightbulb icon appears. Classes and methods also display how many references there are in the project to them. If you&#8217;re coming from Visual Studio, Code includes many of the same keyboard shortcuts, such as <code class="docutils literal"><span class="pre">command</span> <span class="pre">k</span> <span class="pre">c</span></code> to comment a block of code, and <code class="docutils literal"><span class="pre">command</span> <span class="pre">k</span> <span class="pre">u</span></code> to uncomment.</p>
+</div>
+<div class="section" id="running-locally-using-kestrel">
+<h2><a class="toc-backref" href="#id4">Running Locally Using Kestrel</a><a class="headerlink" href="#running-locally-using-kestrel" title="Permalink to this headline">¶</a></h2>
+<p>The sample is configured to use <a class="reference internal" href="../fundamentals/servers.html#kestrel"><span class="std std-ref">Kestrel</span></a> for the web server. You can see it configured in the <em>project.json</em> file, where it is specified as a dependency.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-*&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;compilationOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;emitEntryPoint&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Microsoft.NETCore.App&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;platform&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-3002702&quot;</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;Microsoft.AspNetCore.Server.Kestrel&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;Microsoft.Extensions.Logging.Console&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span>
+</span>  <span class="p">},</span>
+  <span class="nt">&quot;frameworks&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;netcoreapp1.0&quot;</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Run <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">run</span></code> command to launch the app</li>
+<li>Navigate to <code class="docutils literal"><span class="pre">localhost:5000</span></code>:</li>
+</ul>
+<img alt="../_images/hello-world1.png" src="../_images/hello-world1.png" />
+<ul class="simple">
+<li>To stop the web server enter <code class="docutils literal"><span class="pre">Ctrl+C</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="publishing-to-azure">
+<h2><a class="toc-backref" href="#id5">Publishing to Azure</a><a class="headerlink" href="#publishing-to-azure" title="Permalink to this headline">¶</a></h2>
+<p>Once you&#8217;ve developed your application, you can easily use the Git integration built into Visual Studio Code to push updates to production, hosted on <a class="reference external" href="http://azure.microsoft.com">Microsoft Azure</a>.</p>
+<div class="section" id="initialize-git">
+<h3>Initialize Git<a class="headerlink" href="#initialize-git" title="Permalink to this headline">¶</a></h3>
+<p>Initialize Git in the folder you&#8217;re working in. Tap on the Git viewlet and click the <code class="docutils literal"><span class="pre">Initialize</span> <span class="pre">Git</span> <span class="pre">repository</span></code> button.</p>
+<img alt="../_images/vscode-git-commit.png" src="../_images/vscode-git-commit.png" />
+<p>Add a commit message and tap enter or tap the checkmark icon to commit the staged files.</p>
+<img alt="../_images/init-commit.png" src="../_images/init-commit.png" />
+<p>Git is tracking changes, so if you make an update to a file, the Git viewlet will display the files that have changed since your last commit.</p>
+</div>
+<div class="section" id="initialize-azure-website">
+<h3>Initialize Azure Website<a class="headerlink" href="#initialize-azure-website" title="Permalink to this headline">¶</a></h3>
+<p>You can deploy to Azure Web Apps directly using Git.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://tryappservice.azure.com/">Create a new Web App</a> in Azure. If you don&#8217;t have an Azure account, you can <a class="reference external" href="http://azure.microsoft.com/en-us/pricing/free-trial/">create a free trial</a>.</li>
+<li>Configure the Web App in Azure to support <a class="reference external" href="http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/">continuous deployment using Git</a>.</li>
+</ul>
+<p>Record the Git URL for the Web App from the Azure portal:</p>
+<img alt="../_images/azure-portal.png" src="../_images/azure-portal.png" />
+<ul>
+<li><p class="first">In a Terminal window, add a remote named <code class="docutils literal"><span class="pre">azure</span></code> with the Git URL you noted previously.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">azure</span> <span class="pre">https://ardalis-git&#64;firstaspnetcoremac.scm.azurewebsites.net:443/firstaspnetcoremac.git</span></code></li>
+</ul>
+</li>
+<li><p class="first">Push to master.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">azure</span> <span class="pre">master</span></code> to deploy.</li>
+</ul>
+<img alt="../_images/git-push-azure-master.png" src="../_images/git-push-azure-master.png" />
+</li>
+<li><p class="first">Browse to the newly deployed web app. You should see <code class="docutils literal"><span class="pre">Hello</span> <span class="pre">world!</span></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2><a class="toc-backref" href="#id6">Additional Resources</a><a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a></li>
+<li><a class="reference internal" href="../client-side/yeoman.html"><span class="doc">Building Projects with Yeoman</span></a></li>
+<li><a class="reference internal" href="../fundamentals/index.html"><span class="doc">Fundamentals</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="first-web-api.html" class="btn btn-neutral float-right" title="Building Your First Web API with ASP.NET Core MVC and Visual Studio" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Tutorials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

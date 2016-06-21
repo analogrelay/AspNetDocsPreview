@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migrating Configuration &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Migration" href="index.html"/>
+        <link rel="next" title="Migrating Authentication and Identity" href="identity.html"/>
+        <link rel="prev" title="Migrating From ASP.NET MVC to ASP.NET Core MVC" href="mvc.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Migration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mvc.html">Migrating From ASP.NET MVC to ASP.NET Core MVC</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating Configuration</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="identity.html">Migrating Authentication and Identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webapi.html">Migrating from ASP.NET Web API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http-modules.html">Migrating HTTP Modules to Middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc1-to-rc2.html">Migrating from ASP.NET 5 RC1 to ASP.NET Core</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Migration</a> &raquo;</li>
+      
+    <li>Migrating Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/migration/configuration.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="migrating-configuration">
+<h1>Migrating Configuration<a class="headerlink" href="#migrating-configuration" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a> and <a class="reference external" href="http://scottaddie.com">Scott Addie</a></p>
+<p>In the previous article, we began <a class="reference internal" href="mvc.html"><span class="doc">migrating an ASP.NET MVC project to ASP.NET Core MVC</span></a>. In this article, we migrate configuration.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#setup-configuration" id="id1">Setup Configuration</a></li>
+<li><a class="reference internal" href="#migrate-configuration-settings-from-web-config" id="id2">Migrate Configuration Settings from web.config</a></li>
+<li><a class="reference internal" href="#summary" id="id3">Summary</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/migration/configuration/samples">View or download sample code</a></p>
+<div class="section" id="setup-configuration">
+<h2><a class="toc-backref" href="#id1">Setup Configuration</a><a class="headerlink" href="#setup-configuration" title="Permalink to this headline">¶</a></h2>
+<p>ASP.NET Core no longer uses the <em>Global.asax</em> and <em>web.config</em> files that previous versions of ASP.NET utilized. In earlier versions of ASP.NET, application startup logic was placed in an <code class="docutils literal"><span class="pre">Application_StartUp</span></code> method within <em>Global.asax</em>. Later, in ASP.NET MVC, a <em>Startup.cs</em> file was included in the root of the project; and, it was called when the application started. ASP.NET Core has adopted this approach completely placing all startup logic in the <em>Startup.cs</em> file.</p>
+<p>The <em>web.config</em> file has also been replaced in ASP.NET Core. Configuration itself can now be configured, as part of the application startup procedure described in <em>Startup.cs</em>. Configuration can still utilize XML files, but typically ASP.NET Core projects will place configuration values in a JSON-formatted file, such as <em>appsettings.json</em>. ASP.NET Core&#8217;s configuration system can also easily access environment variables, which can provide a more secure and robust location for environment-specific values. This is especially true for secrets like connection strings and API keys that should not be checked into source control. See <a class="reference internal" href="../fundamentals/configuration.html"><span class="doc">Configuration</span></a> to learn more about configuration in ASP.NET Core.</p>
+<p>For this article, we are starting with the partially-migrated ASP.NET Core project from <a class="reference internal" href="mvc.html"><span class="doc">the previous article</span></a>. To setup configuration add the following constructor and property to the <em>Startup.cs</em> class located in the root of the project:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Set up configuration sources.</span>
+    <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConfigurationBuilder</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">AddJsonFile</span><span class="p">(</span><span class="s">&quot;appsettings.json&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">AddEnvironmentVariables</span><span class="p">();</span>
+    <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="n">IConfigurationRoot</span> <span class="n">Configuration</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that at this point the <em>Startup.cs</em> file will not compile, as we still need to add the following <code class="docutils literal"><span class="pre">using</span></code> statement:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.Extensions.Configuration</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Add an <em>appsettings.json</em> file to the root of the project using the appropriate item template:</p>
+<a class="reference internal image-reference" href="../_images/add-appsettings-json.png"><img alt="../_images/add-appsettings-json.png" src="../_images/add-appsettings-json.png" style="width: 955px;" /></a>
+</div>
+<div class="section" id="migrate-configuration-settings-from-web-config">
+<h2><a class="toc-backref" href="#id2">Migrate Configuration Settings from web.config</a><a class="headerlink" href="#migrate-configuration-settings-from-web-config" title="Permalink to this headline">¶</a></h2>
+<p>Our ASP.NET MVC project included the required database connection string in <em>web.config</em>, in the <code class="docutils literal"><span class="pre">&lt;connectionStrings&gt;</span></code> element. In our ASP.NET Core project, we are going to store this information in the <em>appsettings.json</em> file. Open <em>appsettings.json</em>, and note that it already includes the following:</p>
+<div class="highlight-json"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+	<span class="nt">&quot;Data&quot;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;DefaultConnection&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">			<span class="nt">&quot;ConnectionString&quot;</span><span class="p">:</span> <span class="s2">&quot;Server=(localdb)\\MSSQLLocalDB;Database=_CHANGE_ME;Trusted_Connection=True;&quot;</span>
+</span>		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the highlighted line depicted above, change the name of the database from <strong>_CHANGE_ME</strong> to the name of your database.</p>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id3">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>ASP.NET Core places all startup logic for the application in a single file, in which the necessary services and dependencies can be defined and configured. It replaces the <em>web.config</em> file with a flexible configuration feature that can leverage a variety of file formats, such as JSON, as well as environment variables.</p>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="identity.html" class="btn btn-neutral float-right" title="Migrating Authentication and Identity" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mvc.html" class="btn btn-neutral" title="Migrating From ASP.NET MVC to ASP.NET Core MVC" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

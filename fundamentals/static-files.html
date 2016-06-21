@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Working with Static Files &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Fundamentals" href="index.html"/>
+        <link rel="next" title="Routing" href="routing.html"/>
+        <link rel="prev" title="Middleware" href="middleware.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="startup.html">Application Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Working with Static Files</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localization.html">Globalization and localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-providers.html">🔧 File Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency-injection.html">Dependency Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Working with Multiple Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-state.html">Managing Application State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-features.html">Request Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="owin.html">OWIN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Fundamentals</a> &raquo;</li>
+      
+    <li>Working with Static Files</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/fundamentals/static-files.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="working-with-static-files">
+<span id="fundamentals-static-files"></span><h1>Working with Static Files<a class="headerlink" href="#working-with-static-files" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.NET Core app can serve directly to clients.</p>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/static-files/sample">View or download sample code</a></p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections</p>
+<ul class="simple">
+<li><a class="reference internal" href="#serving-static-files" id="id1">Serving static files</a></li>
+<li><a class="reference internal" href="#static-file-authorization" id="id2">Static file authorization</a></li>
+<li><a class="reference internal" href="#enabling-directory-browsing" id="id3">Enabling directory browsing</a></li>
+<li><a class="reference internal" href="#serving-a-default-document" id="id4">Serving a default document</a></li>
+<li><a class="reference internal" href="#usefileserver" id="id5">UseFileServer</a></li>
+<li><a class="reference internal" href="#non-standard-content-types" id="id6">Non-standard content types</a></li>
+<li><a class="reference internal" href="#additional-resources" id="id7">Additional Resources</a></li>
+</ul>
+</div>
+<div class="section" id="serving-static-files">
+<h2><a class="toc-backref" href="#id1">Serving static files</a><a class="headerlink" href="#serving-static-files" title="Permalink to this headline">¶</a></h2>
+<p>Static files are typically located in the <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> (<em>&lt;content-root&gt;/wwwroot</em>) folder. See Content root and Web root in  <a class="reference internal" href="../conceptual-overview/aspnet.html"><span class="doc">Introduction to ASP.NET Core</span></a> for more information. You generally set the content root to be the current directory so that your project&#8217;s <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> will be found while in development.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebHostBuilder</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">UseKestrel</span><span class="p">()</span>
+<span class="hll">        <span class="p">.</span><span class="n">UseContentRoot</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">())</span>
+</span>        <span class="p">.</span><span class="n">UseIISIntegration</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
+        <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+
+    <span class="n">host</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Static files can be stored in any folder under the <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> and accessed with a relative path to that root. For example, when you create a default Web application project using Visual Studio, there are several folders created within the <em>wwwroot</em>  folder - <em>css</em>, <em>images</em>, and <em>js</em>. The URI to access an image in the <em>images</em> subfolder:</p>
+<ul class="simple">
+<li>http://&lt;app&gt;/images/&lt;imageFileName&gt;</li>
+<li>http://localhost:9189/images/banner3.svg</li>
+</ul>
+<p>In order for static files to be served, you must configure the <a class="reference internal" href="middleware.html"><span class="doc">Middleware</span></a> to add static files to the pipeline. The static file middleware can be configured by adding a dependency on the <em>Microsoft.AspNetCore.StaticFiles</em> package to your project and then calling the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html#Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseStaticFiles</span></code></a> extension method from <code class="docutils literal"><span class="pre">Startup.Configure</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Code removed for brevity.</span>
+
+<span class="hll">    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+</span></pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">app.UseStaticFiles();</span></code> makes the files in <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> (<em>wwwroot</em> by default) servable. Later I&#8217;ll show how to make other directory contents servable with <code class="docutils literal"><span class="pre">UseStaticFiles</span></code>.</p>
+<p>You must include &#8220;Microsoft.AspNetCore.StaticFiles&#8221; in the <em>project.json</em> file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> defaults to the <em>wwwroot</em> directory, but you can set the <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> directory with <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderExtensions/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseWebRoot" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseWebRoot</span></code></a>. See <a class="reference internal" href="../conceptual-overview/aspnet.html"><span class="doc">Introduction to ASP.NET Core</span></a> for more information.</p>
+</div>
+<p>Suppose you have a project hierarchy where the static files you wish to serve are outside the <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code>. For example:</p>
+<blockquote>
+<div><ul class="simple">
+<li>wwwroot<ul>
+<li>css</li>
+<li>images</li>
+<li>...</li>
+</ul>
+</li>
+<li>MyStaticFiles<ul>
+<li>test.png</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>For a request to access <em>test.png</em>, configure the static files middleware as follows:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Code removed for brevity.</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+
+<span class="hll">    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span><span class="p">()</span>
+</span><span class="hll">    <span class="p">{</span>
+</span><span class="hll">        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+</span><span class="hll">            <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;MyStaticFiles&quot;</span><span class="p">)),</span>
+</span><span class="hll">        <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/StaticFiles&quot;</span><span class="p">)</span>
+</span><span class="hll">    <span class="p">});</span>
+</span></pre></div>
+</div>
+<p>A request to <code class="docutils literal"><span class="pre">http://&lt;app&gt;/StaticFiles/test.png</span></code> will serve the <em>test.png</em> file.</p>
+</div>
+<div class="section" id="static-file-authorization">
+<h2><a class="toc-backref" href="#id2">Static file authorization</a><a class="headerlink" href="#static-file-authorization" title="Permalink to this headline">¶</a></h2>
+<p>The static file module provides <strong>no</strong> authorization checks. Any files served by it, including those under <em>wwwroot</em> are publicly available. To serve files based on authorization:</p>
+<ul class="simple">
+<li>Store them outside of <em>wwwroot</em> and any directory accessible to the static file middleware <strong>and</strong></li>
+<li>Serve them through a controller action, returning a <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FileResult/index.html#Microsoft.AspNetCore.Mvc.FileResult" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">FileResult</span></code></a> where authorization is applied</li>
+</ul>
+</div>
+<div class="section" id="enabling-directory-browsing">
+<h2><a class="toc-backref" href="#id3">Enabling directory browsing</a><a class="headerlink" href="#enabling-directory-browsing" title="Permalink to this headline">¶</a></h2>
+<p>Directory browsing allows the user of your web app to see a list of directories and files within a specified directory. Directory browsing is disabled by default for security reasons (see <a class="reference internal" href="#considerations">Considerations</a>). To enable directory browsing, call the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DirectoryBrowserExtensions/index.html#Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseDirectoryBrowser</span></code></a> extension method from  <code class="docutils literal"><span class="pre">Startup.Configure</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Code removed for brevity.</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>                          <span class="c1">// For the wwwroot folder</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+            <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;wwwroot\images&quot;</span><span class="p">)),</span>
+        <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/MyImages&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">UseDirectoryBrowser</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryBrowserOptions</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+            <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;wwwroot\images&quot;</span><span class="p">)),</span>
+        <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/MyImages&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+<p>The code above allows directory browsing of the <em>wwwroot/images</em> folder using the URL http://&lt;app&gt;/MyImages, with links to each file and folder:</p>
+<img alt="../_images/dir-browse.png" src="../_images/dir-browse.png" />
+<p>See <a class="reference internal" href="#considerations">Considerations</a> on the security risks when enabling browsing.</p>
+<p>Note the two <code class="docutils literal"><span class="pre">app.UseStaticFiles</span></code> calls. The first one is required to serve the CSS, images and JavaScript in the <em>wwwroot</em> folder, and the second call for directory browsing of the <em>wwwroot/images</em> folder using the URL http://&lt;app&gt;/MyImages:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Code removed for brevity.</span>
+
+<span class="hll">    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>                          <span class="c1">// For the wwwroot folder</span>
+</span>
+<span class="hll">    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span><span class="p">()</span>
+</span>    <span class="p">{</span>
+        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+            <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;wwwroot\images&quot;</span><span class="p">)),</span>
+        <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/MyImages&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">UseDirectoryBrowser</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryBrowserOptions</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+            <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;wwwroot\images&quot;</span><span class="p">)),</span>
+        <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/MyImages&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="serving-a-default-document">
+<h2><a class="toc-backref" href="#id4">Serving a default document</a><a class="headerlink" href="#serving-a-default-document" title="Permalink to this headline">¶</a></h2>
+<p>Setting a default home page gives site visitors a place to start when visiting your site. In order for your Web app to serve a default page without the user having to fully qualify the URI, call the <code class="docutils literal"><span class="pre">UseDefaultFiles</span></code> extension method from <code class="docutils literal"><span class="pre">Startup.Configure</span></code> as follows.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll">    <span class="n">app</span><span class="p">.</span><span class="n">UseDefaultFiles</span><span class="p">();</span>
+</span>    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseDefaultFiles</span></code></a> must be called before <code class="docutils literal"><span class="pre">UseStaticFiles</span></code> to serve the default file. <code class="docutils literal"><span class="pre">UseDefaultFiles</span></code> is a URL re-writer that doesn&#8217;t actually serve the file. You must enable the static file middleware (<code class="docutils literal"><span class="pre">UseStaticFiles</span></code>) to serve the file.</p>
+</div>
+<p>With <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseDefaultFiles</span></code></a>, requests to a folder will search for:</p>
+<blockquote>
+<div><ul class="simple">
+<li>default.htm</li>
+<li>default.html</li>
+<li>index.htm</li>
+<li>index.html</li>
+</ul>
+</div></blockquote>
+<p>The first file found from the list will be severed as if the request was the fully qualified URI (although the browser URL will continue to show the URI requested).</p>
+<p>The following code shows how to change the default file name to <em>mydefault.html</em>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Serve my app-specific default file, if present.</span>
+    <span class="n">DefaultFilesOptions</span> <span class="n">options</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultFilesOptions</span><span class="p">();</span>
+    <span class="n">options</span><span class="p">.</span><span class="n">DefaultFileNames</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+    <span class="n">options</span><span class="p">.</span><span class="n">DefaultFileNames</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;mydefault.html&quot;</span><span class="p">);</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseDefaultFiles</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usefileserver">
+<h2><a class="toc-backref" href="#id5">UseFileServer</a><a class="headerlink" href="#usefileserver" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerExtensions/index.html#Microsoft.AspNetCore.Builder.FileServerExtensions.UseFileServer" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseFileServer</span></code></a> combines the functionality of <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html#Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseStaticFiles</span></code></a>, <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseDefaultFiles</span></code></a>, and <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DirectoryBrowserExtensions/index.html#Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">UseDirectoryBrowser</span></code></a>.</p>
+<p>The following code enables static files and the default file to be served, but does not allow directory browsing:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseFileServer</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The following code enables static files, default files and  directory browsing:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseFileServer</span><span class="p">(</span><span class="n">enableDirectoryBrowsing</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#considerations">Considerations</a> on the security risks when enabling browsing. As with <code class="docutils literal"><span class="pre">UseStaticFiles</span></code>, <code class="docutils literal"><span class="pre">UseDefaultFiles</span></code>, and <code class="docutils literal"><span class="pre">UseDirectoryBrowser</span></code>, if you wish to serve files that exist outside the <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code>, you instantiate and configure an <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html#Microsoft.AspNetCore.Builder.FileServerOptions" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">FileServerOptions</span></code></a> object that you pass as a parameter to <code class="docutils literal"><span class="pre">UseFileServer</span></code>. For example, given the following directory hierarchy in your Web app:</p>
+<ul class="simple">
+<li>wwwroot<ul>
+<li>css</li>
+<li>images</li>
+<li>...</li>
+</ul>
+</li>
+<li>MyStaticFiles<ul>
+<li>test.png</li>
+<li>default.html</li>
+</ul>
+</li>
+</ul>
+<p>Using the hierarchy example above, you might want to enable static files, default files, and browsing for the <code class="docutils literal"><span class="pre">MyStaticFiles</span></code> directory. In the following code snippet, that is accomplished with a single call to <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html#Microsoft.AspNetCore.Builder.FileServerOptions" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">FileServerOptions</span></code></a>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseFileServer</span><span class="p">(</span><span class="k">new</span> <span class="n">FileServerOptions</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;MyStaticFiles&quot;</span><span class="p">)),</span>
+    <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/StaticFiles&quot;</span><span class="p">),</span>
+    <span class="n">EnableDirectoryBrowsing</span> <span class="p">=</span> <span class="k">true</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Using the file hierarchy and code above:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">URI</th>
+<th class="head">Response</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>http://&lt;app&gt;/StaticFiles/test.png</td>
+<td>StaticFiles/test.png</td>
+</tr>
+<tr class="row-odd"><td>http://&lt;app&gt;/StaticFiles</td>
+<td>MyStaticFiles/default.html</td>
+</tr>
+</tbody>
+</table>
+<p>If no default named files are in the <em>MyStaticFiles</em> directory, http://&lt;app&gt;/StaticFiles returns the directory listing with clickable links:</p>
+<img alt="../_images/db2.PNG" src="../_images/db2.PNG" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">UseDefaultFiles</span></code> and <code class="docutils literal"><span class="pre">UseDirectoryBrowser</span></code> will take the url http://&lt;app&gt;/StaticFiles without the trailing slash and cause a client side redirect to http://&lt;app&gt;/StaticFiles/ (adding the trailing slash). Without the trailing slash relative URLs within the documents would be incorrect.</p>
+</div>
+<div class="section" id="fileextensioncontenttypeprovider">
+<h3>FileExtensionContentTypeProvider<a class="headerlink" href="#fileextensioncontenttypeprovider" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">FileExtensionContentTypeProvider</span></code></a> class contains a  collection that maps file extensions to MIME content types. In the following sample, several file extensions are registered to known MIME types, the &#8221;.rtf&#8221; is replaced, and &#8221;.mp4&#8221; is removed.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// Set up custom content types -associating file extension to MIME type</span>
+<span class="kt">var</span> <span class="n">provider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileExtensionContentTypeProvider</span><span class="p">();</span>
+<span class="c1">// Add new mappings</span>
+<span class="n">provider</span><span class="p">.</span><span class="n">Mappings</span><span class="p">[</span><span class="s">&quot;.myapp&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;application/x-msdownload&quot;</span><span class="p">;</span>
+<span class="n">provider</span><span class="p">.</span><span class="n">Mappings</span><span class="p">[</span><span class="s">&quot;.htm3&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;text/html&quot;</span><span class="p">;</span>
+<span class="n">provider</span><span class="p">.</span><span class="n">Mappings</span><span class="p">[</span><span class="s">&quot;.image&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;image/png&quot;</span><span class="p">;</span>
+<span class="c1">// Replace an existing mapping</span>
+<span class="n">provider</span><span class="p">.</span><span class="n">Mappings</span><span class="p">[</span><span class="s">&quot;.rtf&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;application/x-msdownload&quot;</span><span class="p">;</span>
+<span class="c1">// Remove MP4 videos.</span>
+<span class="n">provider</span><span class="p">.</span><span class="n">Mappings</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="s">&quot;.mp4&quot;</span><span class="p">);</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;wwwroot\images&quot;</span><span class="p">)),</span>
+    <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/MyImages&quot;</span><span class="p">),</span>
+    <span class="n">ContentTypeProvider</span> <span class="p">=</span> <span class="n">provider</span>
+<span class="p">});</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">UseDirectoryBrowser</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryBrowserOptions</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span>
+        <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">(),</span> <span class="s">@&quot;wwwroot\images&quot;</span><span class="p">)),</span>
+    <span class="n">RequestPath</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/MyImages&quot;</span><span class="p">)</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>See   <a class="reference external" href="http://www.iana.org/assignments/media-types/media-types.xhtml">MIME content types</a>.</p>
+</div>
+</div>
+<div class="section" id="non-standard-content-types">
+<h2><a class="toc-backref" href="#id6">Non-standard content types</a><a class="headerlink" href="#non-standard-content-types" title="Permalink to this headline">¶</a></h2>
+<p>The ASP.NET static file middleware understands almost 400 known file content types. If the user requests a file of an unknown file type, the static file middleware returns a HTTP 404 (Not found) response. If directory browsing is enabled, a link to the file will be displayed, but the URI will return an HTTP 404 error.</p>
+<p>The following code enables serving unknown types and will render the unknown file as an image.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span>
+<span class="p">{</span>
+    <span class="n">ServeUnknownFileTypes</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+    <span class="n">DefaultContentType</span> <span class="p">=</span> <span class="s">&quot;image/png&quot;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>With the code above, a request for a file with an unknown content type will be returned as an image.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Enabling <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileOptions/index.html#Microsoft.AspNetCore.Builder.StaticFileOptions.ServeUnknownFileTypes" title="(in ASP.NET API Reference v)"><code class="xref dn dn-property docutils literal"><span class="pre">ServeUnknownFileTypes</span></code></a> is a security risk and using it is discouraged.  <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">FileExtensionContentTypeProvider</span></code></a>  (explained below) provides a safer alternative to serving files with non-standard extensions.</p>
+</div>
+<div class="section" id="considerations">
+<h3>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><code class="docutils literal"><span class="pre">UseDirectoryBrowser</span></code> and <code class="docutils literal"><span class="pre">UseStaticFiles</span></code> can leak secrets. We recommend that you <strong>not</strong> enable directory browsing in production. Be careful about which directories you enable with <code class="docutils literal"><span class="pre">UseStaticFiles</span></code> or <code class="docutils literal"><span class="pre">UseDirectoryBrowser</span></code> as the entire directory and all sub-directories will be accessible. We recommend keeping public content in its own directory such as <em>&lt;content root&gt;/wwwroot</em>, away from application views, configuration files, etc.</p>
+</div>
+<ul>
+<li><p class="first">The URLs for content exposed with <code class="docutils literal"><span class="pre">UseDirectoryBrowser</span></code> and <code class="docutils literal"><span class="pre">UseStaticFiles</span></code> are subject to the case sensitivity and character restrictions of their underlying file system. For example, Windows is case insensitive, but Mac and Linux are not.</p>
+</li>
+<li><p class="first">ASP.NET Core applications hosted in IIS use the ASP.NET Core Module to forward all requests to the application including requests for static files. The IIS static file handler is not used because it doesn&#8217;t get a chance to handle requests before they are handled by the ASP.NET Core Module.</p>
+</li>
+<li><p class="first">To remove the IIS static file handler (at the server or website level):</p>
+<blockquote>
+<div><ul class="simple">
+<li>Navigate to the <strong>Modules</strong> feature</li>
+<li>Select <strong>StaticFileModule</strong> in the list</li>
+<li>Tap <strong>Remove</strong> in the <strong>Actions</strong> sidebar</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If the IIS static file handler is enabled <strong>and</strong> the ASP.NET Core Module (ANCM) is not correctly configured (for example if <em>web.config</em> was not deployed), static files will be served.</p>
+</div>
+<ul class="simple">
+<li>Code files (including c# and Razor) should be placed outside of the app project&#8217;s <code class="docutils literal"><span class="pre">web</span> <span class="pre">root</span></code> (<em>wwwroot</em> by default). This creates a clean separation between your app&#8217;s client side content and server side source code, which prevents server side code from being leaked.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2><a class="toc-backref" href="#id7">Additional Resources</a><a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="middleware.html"><span class="doc">Middleware</span></a></li>
+<li><a class="reference internal" href="../conceptual-overview/aspnet.html"><span class="doc">Introduction to ASP.NET Core</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="routing.html" class="btn btn-neutral float-right" title="Routing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="middleware.html" class="btn btn-neutral" title="Middleware" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

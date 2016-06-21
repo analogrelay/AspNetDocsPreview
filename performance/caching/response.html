@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Response Caching &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Caching" href="index.html"/>
+        <link rel="next" title="🔧 Output Caching" href="output.html"/>
+        <link rel="prev" title="Working with a Distributed Cache" href="distributed.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Performance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../measuring.html">🔧 Measuring Application Performance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Caching</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="memory.html">In Memory Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="distributed.html">Working with a Distributed Cache</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Response Caching</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="output.html">🔧 Output Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Performance</a> &raquo;</li>
+      
+          <li><a href="index.html">Caching</a> &raquo;</li>
+      
+    <li>Response Caching</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/performance/caching/response.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="response-caching">
+<h1>Response Caching<a class="headerlink" href="#response-caching" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-is-response-caching" id="id1">What is Response Caching</a></li>
+<li><a class="reference internal" href="#responsecache-attribute" id="id2">ResponseCache Attribute</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/performance/caching/response-caching/sample">View or download sample code</a></p>
+<div class="section" id="what-is-response-caching">
+<h2><a class="toc-backref" href="#id1">What is Response Caching</a><a class="headerlink" href="#what-is-response-caching" title="Permalink to this headline">¶</a></h2>
+<p><em>Response caching</em> refers to specifying cache-related headers on HTTP responses made by ASP.NET MVC actions. These headers specify how you want client and intermediate (proxy) machines to cache responses to certain requests (if at all). This can reduce the number of requests a client or proxy makes to the web server, since future requests for the same action may be served from the client or proxy&#8217;s cache. In this case, the request is never made to the web server.</p>
+<img alt="../../_images/proxy-and-cache.png" src="../../_images/proxy-and-cache.png" />
+<p>The primary HTTP header used for caching is <code class="docutils literal"><span class="pre">Cache-Control</span></code>. The <a class="reference external" href="https://tools.ietf.org/html/rfc7234#section-5.2">HTTP 1.1 specification</a> details many options for this directive. Three common directives are:</p>
+<dl class="docutils">
+<dt>public</dt>
+<dd>Indicates that the response may be cached.</dd>
+<dt>private</dt>
+<dd>Indicates the response is intended for a single user and <strong>must not</strong> be cached by a shared cache. The response could still be cached in a private cache (for instance, by the user&#8217;s browser).</dd>
+<dt>no-cache</dt>
+<dd>Indicates the response <strong>must not</strong> be used by a cache to satisfy any subsequent request (without successful revalidation with the origin server).</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>Response caching does not cache responses on the web server</strong>. It differs from <a class="reference external" href="http://www.asp.net/mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs">output caching</a>, which would cache responses in memory on the server in earlier versions of ASP.NET and ASP.NET MVC. Output caching middleware is planned to be added to ASP.NET Core in a future release.</p>
+</div>
+<p>Additional HTTP headers used for caching include <code class="docutils literal"><span class="pre">Pragma</span></code> and <code class="docutils literal"><span class="pre">Vary</span></code>, which are described below. Learn more about <a class="reference external" href="https://tools.ietf.org/html/rfc7234#section-3">Caching in HTTP from the specification</a>.</p>
+</div>
+<div class="section" id="responsecache-attribute">
+<h2><a class="toc-backref" href="#id2">ResponseCache Attribute</a><a class="headerlink" href="#responsecache-attribute" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html">ResponseCacheAttribute</a> is used to specify how a controller action&#8217;s headers should be set to control its cache behavior. The attribute has the following properties, all of which are optional unless otherwise noted.</p>
+<dl class="docutils">
+<dt>Duration <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>The maximum duration (in seconds) the response should be cached. <strong>Required</strong> unless NoStore is <code class="docutils literal"><span class="pre">true</span></code>.</dd>
+<dt>Location <code class="docutils literal"><span class="pre">ResponseCacheLocation</span></code></dt>
+<dd>The location where the response may be cached. May be <code class="docutils literal"><span class="pre">Any</span></code>, <code class="docutils literal"><span class="pre">None</span></code>, or <code class="docutils literal"><span class="pre">Client</span></code>. Default is <code class="docutils literal"><span class="pre">Any</span></code>.</dd>
+<dt>NoStore <code class="docutils literal"><span class="pre">bool</span></code></dt>
+<dd>Determines whether the value should be stored or not, and overrides other property values. When <code class="docutils literal"><span class="pre">true</span></code>, <code class="docutils literal"><span class="pre">Duration</span></code> is ignored and <code class="docutils literal"><span class="pre">Location</span></code> is ignored for values other than <code class="docutils literal"><span class="pre">None</span></code>.</dd>
+<dt>VaryByHeader <code class="docutils literal"><span class="pre">string</span></code></dt>
+<dd>When set, a <code class="docutils literal"><span class="pre">vary</span></code> response header will be written with the response.</dd>
+<dt>CacheProfileName <code class="docutils literal"><span class="pre">string</span></code></dt>
+<dd>When set, determines the name of the cache profile to use.</dd>
+<dt>Order <code class="docutils literal"><span class="pre">int</span></code></dt>
+<dd>The order of the filter (from <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IOrderedFilter/index.html">IOrderedFilter</a>).</dd>
+</dl>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html">ResponseCacheAttribute</a> is used to configure and create (via <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IFilterFactory/index.html">IFilterFactory</a>) a <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResponseCacheFilter/index.html">ResponseCacheFilter</a>, which performs the work of writing the appropriate HTTP headers to the response. The filter will first remove any existing headers for <code class="docutils literal"><span class="pre">Vary</span></code>, <code class="docutils literal"><span class="pre">Cache-Control</span></code>, and <code class="docutils literal"><span class="pre">Pragma</span></code>, and then will write out the appropriate headers based on the properties set in the <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html">ResponseCacheAttribute</a>.</p>
+<div class="section" id="the-vary-header">
+<h3>The <code class="docutils literal"><span class="pre">Vary</span></code> Header<a class="headerlink" href="#the-vary-header" title="Permalink to this headline">¶</a></h3>
+<p>This header is only written when the <code class="docutils literal"><span class="pre">VaryByHeader</span></code> propery is set, in which case it is set to that property&#8217;s value.</p>
+</div>
+<div class="section" id="nostore-and-location-none">
+<h3><code class="docutils literal"><span class="pre">NoStore</span></code> and <code class="docutils literal"><span class="pre">Location.None</span></code><a class="headerlink" href="#nostore-and-location-none" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">NoStore</span></code> is a special property that overrides most of the other properties. When this property is true, the <code class="docutils literal"><span class="pre">Cache-Control</span></code> header will be set to &#8220;no-store&#8221;. Additionally, if <code class="docutils literal"><span class="pre">Location</span></code> is set to <code class="docutils literal"><span class="pre">None</span></code>, then <code class="docutils literal"><span class="pre">Cache-Control</span></code> will be set to &#8220;no-store, no-cache&#8221; and <code class="docutils literal"><span class="pre">Pragma</span></code> is likewise set to <code class="docutils literal"><span class="pre">no-cache</span></code>. (If <code class="docutils literal"><span class="pre">NoStore</span></code> is false and <code class="docutils literal"><span class="pre">Location</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, then both <code class="docutils literal"><span class="pre">Cache-Control</span></code> and <code class="docutils literal"><span class="pre">Pragma</span></code> will be set to <code class="docutils literal"><span class="pre">no-cache</span></code>).</p>
+<p>A good scenario in which to set <code class="docutils literal"><span class="pre">NoStore</span></code> to true is error pages. It&#8217;s unlikely you would want to respond to a user&#8217;s request with the error response a different user previously generated, and such responses may include stack traces and other sensitive information that shouldn&#8217;t be stored on intermdiate servers. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Error</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will result in the following headers:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">Cache</span><span class="o">-</span><span class="nx">Control</span><span class="o">:</span> <span class="nx">no</span><span class="o">-</span><span class="nx">store</span><span class="p">,</span><span class="nx">no</span><span class="o">-</span><span class="nx">cache</span>
+<span class="nx">Pragma</span><span class="o">:</span> <span class="nx">no</span><span class="o">-</span><span class="nx">cache</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="location-and-duration">
+<h3>Location and Duration<a class="headerlink" href="#location-and-duration" title="Permalink to this headline">¶</a></h3>
+<p>To enable caching, <code class="docutils literal"><span class="pre">Duration</span></code> must be set to a positive value and <code class="docutils literal"><span class="pre">Location</span></code> must be either <code class="docutils literal"><span class="pre">Any</span></code> (the default) or <code class="docutils literal"><span class="pre">Client</span></code>. In this case, the <code class="docutils literal"><span class="pre">Cache-Control</span></code> header will be set to the location value followed by the &#8220;max-age&#8221; of the response.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">Location</span></code>&#8216;s options of <code class="docutils literal"><span class="pre">Any</span></code> and <code class="docutils literal"><span class="pre">Client</span></code> translate into <code class="docutils literal"><span class="pre">Cache-Control</span></code> header values of <code class="docutils literal"><span class="pre">public</span></code> and <code class="docutils literal"><span class="pre">private</span></code>, respectively. As noted previously, setting <code class="docutils literal"><span class="pre">Location</span></code> to <code class="docutils literal"><span class="pre">None</span></code> will set both <code class="docutils literal"><span class="pre">Cache-Control</span></code> and <code class="docutils literal"><span class="pre">Pragma</span></code> headers to <code class="docutils literal"><span class="pre">no-cache</span></code>.</p>
+</div>
+<p>Below is an example showing the headers produced by setting <code class="docutils literal"><span class="pre">Duration</span></code> and leaving the default <code class="docutils literal"><span class="pre">Location</span></code> value.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[ResponseCache(Duration=60)]</span>
+</pre></div>
+</div>
+<p>Produces the following headers:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">Cache</span><span class="o">-</span><span class="nx">Control</span><span class="o">:</span> <span class="kr">public</span><span class="p">,</span><span class="nx">max</span><span class="o">-</span><span class="nx">age</span><span class="o">=</span><span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cache-profiles">
+<h3>Cache Profiles<a class="headerlink" href="#cache-profiles" title="Permalink to this headline">¶</a></h3>
+<p>Instead of duplicating <code class="docutils literal"><span class="pre">ResponseCache</span></code> settings on many controller action attributes, cache profiles can be configured as options when setting up MVC in the <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method in <code class="docutils literal"><span class="pre">Startup</span></code>. Values found in a referenced cache profile will be used as the defaults by the <code class="docutils literal"><span class="pre">ResponseCache</span></code> attribute, and will be overridden by any properties specified on the attribute.</p>
+<p>Setting up a cache profile:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="n">options</span><span class="p">.</span><span class="n">CacheProfiles</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Default&quot;</span><span class="p">,</span> 
+</span><span class="hll">            <span class="k">new</span> <span class="nf">CacheProfile</span><span class="p">()</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="n">Duration</span><span class="p">=</span><span class="m">60</span>
+</span><span class="hll">            <span class="p">});</span>
+</span><span class="hll">        <span class="n">options</span><span class="p">.</span><span class="n">CacheProfiles</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Never&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="k">new</span> <span class="nf">CacheProfile</span><span class="p">()</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="n">Location</span> <span class="p">=</span> <span class="n">ResponseCacheLocation</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">NoStore</span> <span class="p">=</span> <span class="k">true</span>
+</span><span class="hll">            <span class="p">});</span>
+</span>    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Referencing a cache profile:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[ResponseCache(CacheProfileName=&quot;Default&quot;)]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ResponseCache</span></code> attribute can be applied both to actions (methods) as well as controllers (classes). Method-level attributes will override the settings specified in class-level attributes.</p>
+</div>
+<p>In the following example, a class-level attribute specifies a duration of 30 while a method-level attributes references a cache profile with a duration set to 60.</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[ResponseCache(Duration=30)]</span>
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+<span class="hll"><span class="na">    [ResponseCache(CacheProfileName = &quot;Default&quot;)]</span>
+</span>    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The resulting header:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">Cache</span><span class="o">-</span><span class="nx">Control</span><span class="o">:</span> <span class="kr">public</span><span class="p">,</span><span class="nx">max</span><span class="o">-</span><span class="nx">age</span><span class="o">=</span><span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="output.html" class="btn btn-neutral float-right" title="🔧 Output Caching" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="distributed.html" class="btn btn-neutral" title="Working with a Distributed Cache" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,749 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Filters &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Controllers" href="index.html"/>
+        <link rel="next" title="Dependency Injection and Controllers" href="dependency-injection.html"/>
+        <link rel="prev" title="🔧 Routing to Controller Actions" href="routing.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MVC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../views/index.html">Views</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Controllers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actions.html">Controllers, Actions, and Action Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routing.html">🔧 Routing to Controller Actions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Filters</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dependency-injection.html">Dependency Injection and Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Testing Controller Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application-model.html">🔧 Working with the Application Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">MVC</a> &raquo;</li>
+      
+          <li><a href="index.html">Controllers</a> &raquo;</li>
+      
+    <li>Filters</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/mvc/controllers/filters.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="filters">
+<h1>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p><em>Filters</em> in ASP.NET MVC allow you to run code before or after a particular stage in the execution pipeline. Filters can be configured globally, per-controller, or per-action.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections</p>
+<ul class="simple">
+<li><a class="reference internal" href="#how-do-filters-work" id="id10">How do filters work?</a></li>
+<li><a class="reference internal" href="#configuring-filters" id="id11">Configuring Filters</a></li>
+<li><a class="reference internal" href="#authorization-filters" id="id12">Authorization Filters</a></li>
+<li><a class="reference internal" href="#resource-filters" id="id13">Resource Filters</a></li>
+<li><a class="reference internal" href="#action-filters" id="id14">Action Filters</a></li>
+<li><a class="reference internal" href="#exception-filters" id="id15">Exception Filters</a></li>
+<li><a class="reference internal" href="#result-filters" id="id16">Result Filters</a></li>
+<li><a class="reference internal" href="#filters-vs-middleware" id="id17">Filters vs. Middleware</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/filters/sample">View or download sample from GitHub</a>.</p>
+<div class="section" id="how-do-filters-work">
+<h2><a class="toc-backref" href="#id10">How do filters work?</a><a class="headerlink" href="#how-do-filters-work" title="Permalink to this headline">¶</a></h2>
+<p>Each filter type is executed at a different stage in the pipeline, and thus has its own set of intended scenarios. Choose what type of filter to create based on the task you need it to perform, and where in the request pipeline it executes. Filters run within the MVC Action Invocation Pipeline, sometimes referred to as the <em>Filter Pipeline</em>, which runs after MVC selects the action to execute.</p>
+<img alt="../../_images/filter-pipeline-1.png" src="../../_images/filter-pipeline-1.png" />
+<p>Different filter types run at different points within the pipeline. Some filters, like authorization filters, only run before the next stage in the pipeline, and take no action afterward. Other filters, like action filters, can execute both before and after other parts of the pipeline execute, as shown below.</p>
+<img alt="../../_images/filter-pipeline-2.png" src="../../_images/filter-pipeline-2.png" />
+<div class="section" id="selecting-a-filter">
+<h3>Selecting a Filter<a class="headerlink" href="#selecting-a-filter" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#authorization-filters"><span class="std std-ref">Authorization filters</span></a> are used to determine whether the current user is authorized for the request being made.</p>
+<p><a class="reference internal" href="#resource-filters"><span class="std std-ref">Resource filters</span></a> are the first filter to handle a request after authorization, and the last one to touch the request as it is leaving the filter pipeline. They&#8217;re especially useful to implement caching or otherwise short-circuit the filter pipeline for performance reasons.</p>
+<p><a class="reference internal" href="#action-filters"><span class="std std-ref">Action filters</span></a> wrap calls to individual action method calls, and can manipulate the arguments passed into an action as well as the action result returned from it.</p>
+<p><a class="reference internal" href="#exception-filters"><span class="std std-ref">Exception filters</span></a> are used to apply global policies to unhandled exceptions in the MVC app.</p>
+<p><a class="reference internal" href="#result-filters"><span class="std std-ref">Result filters</span></a> wrap the execution of individual action results, and only run when the action method has executed successfully. They are ideal for logic that must surround view execution or formatter execution.</p>
+</div>
+<div class="section" id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<p>All filters support both synchronous and asynchronous implementations through different interface definitions. Choose the sync or async variant depending on the kind of task you need to perform. They are interchangeable from the framework&#8217;s perspective.</p>
+<p>Synchronous filters define both an On<em>Stage</em>Executing and On<em>Stage</em>Executed method (with noted exceptions). The On<em>Stage</em>Executing method will be called before the event pipeline stage by the Stage name, and the On<em>Stage</em>Executed method will be called after the pipeline stage named by the Stage name.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">FiltersSample.Helper</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.Filters</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">FiltersSample.Filters</span>
+<span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">SampleActionFilter</span> <span class="p">:</span> <span class="n">IActionFilter</span>
+</span>    <span class="p">{</span>
+<span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuting</span><span class="p">(</span><span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="c1">// do something before the action executes</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="c1">// do something after the action executes</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Asynchronous filters define a single On<em>Stage</em>ExecutionAsync method that will surround execution of the pipeline stage named by Stage. The On<em>Stage</em>ExecutionAsync method is provided a <em>Stage</em>ExecutionDelegate delegate which will execute the pipeline stage named by Stage when invoked and awaited.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.Filters</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">FiltersSample.Filters</span>
+<span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">SampleAsyncActionFilter</span> <span class="p">:</span> <span class="n">IAsyncActionFilter</span>
+</span>    <span class="p">{</span>
+<span class="hll">        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnActionExecutionAsync</span><span class="p">(</span><span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">,</span> 
+</span><span class="hll">            <span class="n">ActionExecutionDelegate</span> <span class="n">next</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="c1">// do something before the action executes</span>
+            <span class="k">await</span> <span class="nf">next</span><span class="p">();</span>
+            <span class="c1">// do something after the action executes</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You should only implement <em>either</em> the synchronous or the async version of a filter interface, not both. If you need to perform async work in the filter, implement the async interface. Otherwise, implement the synchronous interface. The framework will check to see if the filter implements the async interface first, and if so, it will call it. If not, it will call the synchronous interface&#8217;s method(s). If you were to implement both interfaces on one class, only the async method would be called by the framework. Also, it doesn&#8217;t matter whether your action is async or not, your filters can be synchronous or async independent of the action.</p>
+</div>
+</div>
+<div class="section" id="filter-scopes">
+<h3>Filter Scopes<a class="headerlink" href="#filter-scopes" title="Permalink to this headline">¶</a></h3>
+<p>Filters can be <em>scoped</em> at three different levels. You can add a particular filter to a particular action as an attribute. You can add a filter to all actions within a controller by applying an attribute at the controller level. Or you can register a filter globally, to be run with every MVC action.</p>
+<p>Global filters are added in the <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method in <code class="docutils literal"><span class="pre">Startup</span></code>, when configuring MVC:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">SampleActionFilter</span><span class="p">));</span> <span class="c1">// by type</span>
+</span><span class="hll">        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">SampleGlobalActionFilter</span><span class="p">());</span> <span class="c1">// an instance</span>
+</span>    <span class="p">});</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">AddHeaderFilterWithDi</span><span class="p">&gt;();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Filters can be added by type, or an instance can be added. If you add an instance, that instance will be used for every request. If you add a type, it will be type-activated, meaning an instance will be created for each request and any constructor dependencies will be populated by DI. Adding a filter by type is equivalent to <code class="docutils literal"><span class="pre">filters.Add(new</span> <span class="pre">TypeFilterAttribute(typeof(MyFilter)))</span></code>.</p>
+<p>It&#8217;s often convenient to implement filter interfaces as <em>Attributes</em>. Filter attributes are applied to controllers and action methods. The framework includes built-in attribute-based filters that you can subclass and customize. For example, the following filter inherits from <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResultFilterAttribute/index.html">ResultFilterAttribute</a>, and overrides its <code class="docutils literal"><span class="pre">OnResultExecuting</span></code> method to add a header to the response.</p>
+<div class="highlight-c#" id="add-header-attribute"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.Filters</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">FiltersSample.Filters</span>
+<span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">AddHeaderAttribute</span> <span class="p">:</span> <span class="n">ResultFilterAttribute</span>
+</span>    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">_value</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">AddHeaderAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+            <span class="n">_value</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnResultExecuting</span><span class="p">(</span><span class="n">ResultExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span>
+                <span class="n">_name</span><span class="p">,</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span> <span class="n">_value</span> <span class="p">});</span>
+            <span class="k">base</span><span class="p">.</span><span class="n">OnResultExecuting</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Attributes allow filters to accept arguments, as shown in the example above. You would add this attribute to a controller or action method and specify the name and value of the HTTP header you wished to add to the response:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[AddHeader(&quot;Author&quot;, &quot;Steve Smith @ardalis&quot;)]</span>
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;Examine the headers using developer tools.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The result of the <code class="docutils literal"><span class="pre">Index</span></code> action is shown below - the response headers are displayed on the bottom right.</p>
+<img alt="../../_images/add-header.png" src="../../_images/add-header.png" />
+<p>Several of the filter interfaces have corresponding attributes that can be used as base classes for custom implementations.</p>
+<p>Filter attributes:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ActionFilterAttribute/index.html">ActionFilterAttribute</a></li>
+<li><a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/AuthorizationFilterAttribute/index.html">AuthorizationFilterAttribute</a></li>
+<li><a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ExceptionFilterAttribute/index.html">ExceptionFilterAttribute</a></li>
+<li><a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResultFilterAttribute/index.html">ResultFilterAttribute</a></li>
+</ul>
+</div>
+<div class="section" id="cancellation-and-short-circuiting">
+<h3>Cancellation and Short Circuiting<a class="headerlink" href="#cancellation-and-short-circuiting" title="Permalink to this headline">¶</a></h3>
+<p>You can short-circuit the filter pipeline at any point by setting the <code class="docutils literal"><span class="pre">Result</span></code> property on the context parameter provided to the filter method. For instance, the following <code class="docutils literal"><span class="pre">ShortCircuitingResourceFilter</span></code> will prevent any other filters from running later in the pipeline, including any action filters.</p>
+<div class="highlight-c#" id="short-circuiting-resource-filter"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.Filters</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">FiltersSample.Filters</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">ShortCircuitingResourceFilterAttribute</span> <span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span>
+            <span class="n">IResourceFilter</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnResourceExecuting</span><span class="p">(</span><span class="n">ResourceExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="n">context</span><span class="p">.</span><span class="n">Result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ContentResult</span><span class="p">()</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="n">Content</span> <span class="p">=</span> <span class="s">&quot;Resource unavailable - header should not be set&quot;</span>
+</span><span class="hll">            <span class="p">};</span>
+</span>        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnResourceExecuted</span><span class="p">(</span><span class="n">ResourceExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the following code, both the <code class="docutils literal"><span class="pre">ShortCircuitingResourceFilter</span></code> and the <code class="docutils literal"><span class="pre">AddHeader</span></code> filter target the <code class="docutils literal"><span class="pre">SomeResource</span></code> action method. However, because the <code class="docutils literal"><span class="pre">ShortCircuitingResourceFilter</span></code> runs first and short-circuits the rest of the pipeline, the <code class="docutils literal"><span class="pre">AddHeader</span></code> filter never runs for the <code class="docutils literal"><span class="pre">SomeResource</span></code> action. This behavior would be the same if both filters were applied at the action method level, provided the <code class="docutils literal"><span class="pre">ShortCircuitingResourceFilter</span></code> ran first (see <a class="reference internal" href="#ordering"><span class="std std-ref">Ordering</span></a>).</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[AddHeader(&quot;Author&quot;, &quot;Steve Smith @ardalis&quot;)]</span>
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+<span class="hll"><span class="na">    [ShortCircuitingResourceFilter]</span>
+</span>    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">SomeResource</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;Successful access to resource - header should be set.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-filters">
+<h2><a class="toc-backref" href="#id11">Configuring Filters</a><a class="headerlink" href="#configuring-filters" title="Permalink to this headline">¶</a></h2>
+<p>Global filters are configured within <code class="docutils literal"><span class="pre">Startup.cs</span></code>. Attribute-based filters that do not require any dependencies can simply inherit from an existing attribute of the appropriate type for the filter in question. To create a filter <em>without</em> global scope that requires dependencies from DI, apply the <code class="docutils literal"><span class="pre">ServiceFilterAttribute</span></code> or <code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code> attribute to the controller or action.</p>
+<div class="section" id="dependency-injection">
+<h3>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h3>
+<p>Filters that are implemented as attributes and added directly to controller classes or action methods cannot have constructor dependencies provided by <a class="reference internal" href="../../fundamentals/dependency-injection.html"><span class="doc">dependency injection</span></a> (DI). This is because attributes must have their constructor parameters supplied where they are applied. This is a limitation of how attributes work.</p>
+<p>However, if your filters have dependencies you need to access from DI, there are several supported approaches. You can apply your filter to a class or action method using</p>
+<ul class="simple">
+<li>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ServiceFilterAttribute/index.html">ServiceFilterAttribute</a></li>
+<li>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TypeFilterAttribute/index.html">TypeFilterAttribute</a> attribute</li>
+<li><a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IFilterFactory/index.html">IFilterFactory</a> implemented on your attribute</li>
+</ul>
+<p>A <code class="docutils literal"><span class="pre">TypeFilter</span></code> will instantiate an instance, using services from DI for its dependencies. A <code class="docutils literal"><span class="pre">ServiceFilter</span></code> retrieves an instance of the filter from DI. The following example demonstrates using a <code class="docutils literal"><span class="pre">ServiceFilter</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[ServiceFilter(typeof(AddHeaderFilterWithDi))]</span>
+</span><span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal"><span class="pre">ServiceFilter</span></code> without registering the filter type in <code class="docutils literal"><span class="pre">ConfigureServices</span></code>, throws the following exception:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>System.InvalidOperationException: No service for type
+&#39;FiltersSample.Filters.AddHeaderFilterWithDI&#39; has been registered.
+</pre></div>
+</div>
+<p>To avoid this exception, you must register the <code class="docutils literal"><span class="pre">AddHeaderFilterWithDI</span></code> type in <code class="docutils literal"><span class="pre">ConfigureServices</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">AddHeaderFilterWithDi</span><span class="p">&gt;();</span>
+</span></pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">ServiceFilterAttribute</span></code> implements <code class="docutils literal"><span class="pre">IFilterFactory</span></code>, which exposes a single method for creating an <code class="docutils literal"><span class="pre">IFilter</span></code> instance. In the case of <code class="docutils literal"><span class="pre">ServiceFilterAttribute</span></code>, the <code class="docutils literal"><span class="pre">IFilterFactory</span></code> interface&#8217;s <code class="docutils literal"><span class="pre">CreateInstance</span></code> method is implemented to load the specified type from the services container (DI).</p>
+<p><code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code> is very similar to <code class="docutils literal"><span class="pre">ServiceFilterAttribute</span></code> (and also implements <code class="docutils literal"><span class="pre">IFilterFactory</span></code>), but its type is not resolved directly from the DI container. Instead, it instantiates the type using an <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/ObjectFactory/index.html">ObjectFactory delegate</a>. Because of this difference, types that are referenced using the <code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code> do not need to be registered with the container first (but they will still have their dependencies fulfilled by the container). Also, <code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code> can optionally accept constructor arguments for the type in question. The following example demonstrates how to pass arguments to a type using <code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code>:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span><span class="hll">[TypeFilter(typeof(AddHeaderAttribute), 
+</span><span class="hll">    Arguments =new object[] { &quot;Author&quot;, &quot;Steve Smith (@ardalis)&quot;})]
+</span>public IActionResult Hi(string name)
+{
+    return Content($&quot;Hi {name}&quot;);
+}
+</pre></div>
+</div>
+<p>If you have a simple filter that doesn&#8217;t require any arguments, but which has constructor dependencies that need to be filled by DI, you can inherit from <code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code>, allowing you to use your own named attribute on classes and methods (instead of <code class="docutils literal"><span class="pre">[TypeFilter(typeof(FilterType))]</span></code>). The following filter shows how this can be implemented:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleActionFilterAttribute</span> <span class="p">:</span> <span class="n">TypeFilterAttribute</span>
+</span><span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="nf">SampleActionFilterAttribute</span><span class="p">():</span><span class="k">base</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">SampleActionFilterImpl</span><span class="p">))</span>
+</span>    <span class="p">{</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="k">private</span> <span class="k">class</span> <span class="nc">SampleActionFilterImpl</span> <span class="p">:</span> <span class="n">IActionFilter</span>
+</span>    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">ILogger</span> <span class="n">_logger</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nf">SampleActionFilterImpl</span><span class="p">(</span><span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_logger</span> <span class="p">=</span> <span class="n">loggerFactory</span><span class="p">.</span><span class="n">CreateLogger</span><span class="p">&lt;</span><span class="n">SampleActionFilterAttribute</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuting</span><span class="p">(</span><span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Business action starting...&quot;</span><span class="p">);</span>
+            <span class="c1">// perform some business logic work</span>
+
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// perform some business logic work</span>
+            <span class="n">_logger</span><span class="p">.</span><span class="n">LogInformation</span><span class="p">(</span><span class="s">&quot;Business action completed.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This filter can be applied to classes or methods using the <code class="docutils literal"><span class="pre">[SampleActionFilter]</span></code> syntax, instead of having to use <code class="docutils literal"><span class="pre">[TypeFilter]</span></code> or <code class="docutils literal"><span class="pre">[ServiceFilter]</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Avoid creating and using filters purely for logging purposes, since the <a class="reference internal" href="../../fundamentals/logging.html"><span class="doc">built-in framework logging features</span></a> should already provide what you need for logging. If you&#8217;re going to add logging to your filters, it should focus on business domain concerns or behavior specific to your filter, rather than MVC actions or other framework events.</p>
+</div>
+<p><code class="docutils literal"><span class="pre">IFilterFactory</span></code> implements <code class="docutils literal"><span class="pre">IFilter</span></code>. Therefore, an <code class="docutils literal"><span class="pre">IFilterFactory</span></code> instance can be used as an <code class="docutils literal"><span class="pre">IFilter</span></code> instance anywhere in the filter pipeline. When the framework prepares to invoke the filter, attempts to cast it to an <code class="docutils literal"><span class="pre">IFilterFactory</span></code>. If that cast succeeds, the <code class="docutils literal"><span class="pre">CreateInstance</span></code> method is called to create the <code class="docutils literal"><span class="pre">IFilter</span></code> instance that will be invoked. This provides a very flexible design, since the precise filter pipeline does not need to be set explicitly when the application starts.</p>
+<p>You can implement <code class="docutils literal"><span class="pre">IFilterFactory</span></code> on your own attribute implementations as another approach to creating filters:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="k">public</span> <span class="k">class</span> <span class="nc">AddHeaderWithFactoryAttribute</span> <span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">IFilterFactory</span>
+</span><span class="p">{</span>
+    <span class="c1">// Implement IFilterFactory</span>
+<span class="hll">    <span class="k">public</span> <span class="n">IFilterMetadata</span> <span class="nf">CreateInstance</span><span class="p">(</span><span class="n">IServiceProvider</span> <span class="n">serviceProvider</span><span class="p">)</span>
+</span><span class="hll">    <span class="p">{</span>
+</span><span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nf">InternalAddHeaderFilter</span><span class="p">();</span>
+</span><span class="hll">    <span class="p">}</span>
+</span>
+    <span class="k">private</span> <span class="k">class</span> <span class="nc">InternalAddHeaderFilter</span> <span class="p">:</span> <span class="n">IResultFilter</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnResultExecuting</span><span class="p">(</span><span class="n">ResultExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span>
+                <span class="s">&quot;Internal&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span> <span class="s">&quot;Header Added&quot;</span> <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">OnResultExecuted</span><span class="p">(</span><span class="n">ResultExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ordering">
+<span id="id2"></span><h3>Ordering<a class="headerlink" href="#ordering" title="Permalink to this headline">¶</a></h3>
+<p>Filters can be applied to action methods or controllers (via attribute) or added to the global filters collection. Scope also generally determines ordering. The filter closest to the action runs first; generally you get overriding behavior without having to explicitly set ordering. This is sometimes referred to as &#8220;Russian doll&#8221; nesting, as each increase in scope is wrapped around the previous scope, like a <a class="reference external" href="https://en.wikipedia.org/wiki/Matryoshka_doll">nesting doll</a>.</p>
+<p>In addition to scope, filters can override their sequence of execution by implementing <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IOrderedFilter/index.html">IOrderedFilter</a>. This interface simply exposes an <code class="docutils literal"><span class="pre">int</span></code> <code class="docutils literal"><span class="pre">Order</span></code> property, and filters execute in ascending numeric order based on this property. All of the built-in filters, including <code class="docutils literal"><span class="pre">TypeFilterAttribute</span></code> and <code class="docutils literal"><span class="pre">ServiceFilterAttribute</span></code>, implement <code class="docutils literal"><span class="pre">IOrderedFilter</span></code>, so you can specify the order of filters when you apply the attribute to a class or method. By default, the <code class="docutils literal"><span class="pre">Order</span></code> property is 0 for all of the built-in filters, so scope is used as a tie-breaker and (unless <code class="docutils literal"><span class="pre">Order</span></code> is set to a non-zero value) is the determining factor.</p>
+<p>Every controller that inherits from the <code class="docutils literal"><span class="pre">Controller</span></code> base class includes <code class="docutils literal"><span class="pre">OnActionExecuting</span></code> and <code class="docutils literal"><span class="pre">OnActionExecuted</span></code> methods. These methods wrap the filters that run for a given action, running first and last. The scope-based order, assuming no <code class="docutils literal"><span class="pre">Order</span></code> has been set for any filter, is:</p>
+<ol class="arabic simple">
+<li>The Controller <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Global filter <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Class filter <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Method filter <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Method filter <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+<li>The Class filter <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+<li>The Global filter <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+<li>The Controller <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">IOrderedFilter</span></code> trumps scope when determining the order in which filters will run. Filters are sorted first by order, then scope is used to break ties. Order defaults to 0 if not set.</p>
+</div>
+<p>To modify the default, scope-based order, you could explicitly set the <code class="docutils literal"><span class="pre">Order</span></code> property of a class-level or method-level filter. For example, adding <code class="docutils literal"><span class="pre">Order=-1</span></code> to a method level attribute:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[MyFilter(Name = &quot;Method Level Attribute&quot;, Order=-1)]</span>
+</pre></div>
+</div>
+<p>In this case, a value of less than zero would ensure this filter ran before both the Global and Class level filters (assuming their <code class="docutils literal"><span class="pre">Order</span></code> property was not set).</p>
+<p>The new order would be:</p>
+<ol class="arabic simple">
+<li>The Controller <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Method filter <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Global filter <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Class filter <code class="docutils literal"><span class="pre">OnActionExecuting</span></code></li>
+<li>The Class filter <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+<li>The Global filter <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+<li>The Method filter <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+<li>The Controller <code class="docutils literal"><span class="pre">OnActionExecuted</span></code></li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">Controller</span></code> class&#8217;s methods always run before and after all filters. These methods are not implemented as <code class="docutils literal"><span class="pre">IFilter</span></code> instances and do not participate in the <code class="docutils literal"><span class="pre">IFilter</span></code> ordering algorithm.</p>
+</div>
+</div>
+</div>
+<div class="section" id="authorization-filters">
+<span id="id3"></span><h2><a class="toc-backref" href="#id12">Authorization Filters</a><a class="headerlink" href="#authorization-filters" title="Permalink to this headline">¶</a></h2>
+<p><em>Authorization Filters</em> control access to action methods, and are the first filters to be executed within the filter pipeline. They have only a before stage, unlike most filters that support before and after methods. You should only write a custom authorization filter if you are writing your own authorization framework. Note that you should not throw exceptions within authorization filters, since nothing will handle the exception (exception filters won&#8217;t handle them). Instead, issue a challenge or find another way.</p>
+<p>Learn more about <a class="reference internal" href="../../security/authorization/index.html"><span class="doc">Authorization</span></a>.</p>
+</div>
+<div class="section" id="resource-filters">
+<span id="id4"></span><h2><a class="toc-backref" href="#id13">Resource Filters</a><a class="headerlink" href="#resource-filters" title="Permalink to this headline">¶</a></h2>
+<p><em>Resource Filters</em> implement either the <code class="docutils literal"><span class="pre">IResourceFilter</span></code> or <code class="docutils literal"><span class="pre">IAsyncResourceFilter</span></code> interface, and their execution wraps most of the filter pipeline (only <a class="reference internal" href="#authorization-filters"><span class="std std-ref">Authorization Filters</span></a> run before them - all other filters and action processing happens between their <code class="docutils literal"><span class="pre">OnResourceExecuting</span></code> and <code class="docutils literal"><span class="pre">OnResourceExecuted</span></code> methods). Resource filters are especially useful if you need to short-circuit most of the work a request is doing. Caching would be one example use case for a resource filter, since if the response is already in the cache, the filter can immediately set a result and avoid the rest of the processing for the action.</p>
+<p>The <a class="reference internal" href="#short-circuiting-resource-filter"><span class="std std-ref">short circuiting resource filter</span></a> shown above is one example of a resource filter. A very naive cache implementation (do not use this in production) that only works with <code class="docutils literal"><span class="pre">ContentResult</span></code> action results is shown below:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="k">public</span> <span class="k">class</span> <span class="nc">NaiveCacheResourceFilterAttribute</span> <span class="p">:</span> <span class="n">Attribute</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">IResourceFilter</span>
+</span><span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">_cache</span> 
+                <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">_cacheKey</span><span class="p">;</span>
+      
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnResourceExecuting</span><span class="p">(</span><span class="n">ResourceExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_cacheKey</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="hll">        <span class="k">if</span> <span class="p">(</span><span class="n">_cache</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">_cacheKey</span><span class="p">))</span>
+</span>        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">cachedValue</span> <span class="p">=</span> <span class="n">_cache</span><span class="p">[</span><span class="n">_cacheKey</span><span class="p">]</span> <span class="k">as</span> <span class="kt">string</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">cachedValue</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="n">context</span><span class="p">.</span><span class="n">Result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ContentResult</span><span class="p">()</span>
+</span><span class="hll">                <span class="p">{</span> <span class="n">Content</span><span class="p">=</span> <span class="n">cachedValue</span> <span class="p">};</span>
+</span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnResourceExecuted</span><span class="p">(</span><span class="n">ResourceExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">String</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">_cacheKey</span><span class="p">)</span> <span class="p">&amp;&amp;</span>
+            <span class="p">!</span><span class="n">_cache</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">_cacheKey</span><span class="p">))</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Result</span> <span class="k">as</span> <span class="n">ContentResult</span><span class="p">;</span>
+</span>            <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="n">_cache</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">_cacheKey</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">Content</span><span class="p">);</span>
+</span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal"><span class="pre">OnResourceExecuting</span></code>, if the result is already in the static dictionary cache, the <code class="docutils literal"><span class="pre">Result</span></code> property is set on <code class="docutils literal"><span class="pre">context</span></code>, and the action short-circuits and returns with the cached result. In the <code class="docutils literal"><span class="pre">OnResourceExecuted</span></code> method, if the current request&#8217;s key isn&#8217;t already in use, the current <code class="docutils literal"><span class="pre">Result</span></code> is stored in the cache, to be used by future requests.</p>
+<p>Adding this filter to a class or method is shown here:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[TypeFilter(typeof(NaiveCacheResourceFilterAttribute))]</span>
+</span><span class="hll"><span class="k">public</span> <span class="k">class</span> <span class="nc">CachedController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class="p">{</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">&quot;This content was generated at &quot;</span> <span class="p">+</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="action-filters">
+<span id="id5"></span><h2><a class="toc-backref" href="#id14">Action Filters</a><a class="headerlink" href="#action-filters" title="Permalink to this headline">¶</a></h2>
+<p><em>Action Filters</em> implement either the <code class="docutils literal"><span class="pre">IActionFilter</span></code> or <code class="docutils literal"><span class="pre">IAsyncActionFilter</span></code> interface and their execution surrounds the execution of action methods. Action filters are ideal for any logic that needs to see the results of model binding, or modify the controller or inputs to an action method. Additionally, action filters can view and directly modify the result of an action method.</p>
+<p>The <code class="docutils literal"><span class="pre">OnActionExecuting</span></code> method runs before the action method, so it can manipulate the inputs to the action by changing <code class="docutils literal"><span class="pre">ActionExecutingContext.ActionArguments</span></code> or manipulate the controller through <code class="docutils literal"><span class="pre">ActionExecutingContext.Controller</span></code>. An <code class="docutils literal"><span class="pre">OnActionExecuting</span></code> method can short-circuit execution of the action method and subsequent action filters by setting <code class="docutils literal"><span class="pre">ActionExecutingContext.Result</span></code>. Throwing an exception in an <code class="docutils literal"><span class="pre">OnActionExecuting</span></code> method will also prevent execution of the action method and subsequent filters, but will be treated as a failure instead of successful result.</p>
+<p>The <code class="docutils literal"><span class="pre">OnActionExecuted</span></code> method runs after the action method and can see and manipulate the results of the action through the <code class="docutils literal"><span class="pre">ActionExecutedContext.Result</span></code> property. <code class="docutils literal"><span class="pre">ActionExecutedContext.Canceled</span></code> will be set to true if the action execution was short-circuited by another filter. <code class="docutils literal"><span class="pre">ActionExecutedContext.Exception</span></code> will be set to a non-null value if the action or a subsequent action filter threw an exception. Setting <code class="docutils literal"><span class="pre">ActionExecutedContext.Exception</span></code> to null effectively &#8216;handles&#8217; an exception, and <code class="docutils literal"><span class="pre">ActionExectedContext.Result</span></code> will then be executed as if it were returned from the action method normally.</p>
+<p>For an <code class="docutils literal"><span class="pre">IAsyncActionFilter</span></code> the <code class="docutils literal"><span class="pre">OnActionExecutionAsync</span></code> combines all the possibilities of <code class="docutils literal"><span class="pre">OnActionExecuting</span></code> and <code class="docutils literal"><span class="pre">OnActionExecuted</span></code>. A call to <code class="docutils literal"><span class="pre">await</span> <span class="pre">next()</span></code> on the <code class="docutils literal"><span class="pre">ActionExecutionDelegate</span></code> will execute any subsequent action filters and the action method, returning an <code class="docutils literal"><span class="pre">ActionExecutedContext</span></code>. To short-circuit inside of an <code class="docutils literal"><span class="pre">OnActionExecutionAsync</span></code>, assign <code class="docutils literal"><span class="pre">ActionExecutingContext.Result</span></code> to some result instance and do not call the <code class="docutils literal"><span class="pre">ActionExectionDelegate</span></code>.</p>
+</div>
+<div class="section" id="exception-filters">
+<span id="id6"></span><h2><a class="toc-backref" href="#id15">Exception Filters</a><a class="headerlink" href="#exception-filters" title="Permalink to this headline">¶</a></h2>
+<p><em>Exception Filters</em> implement either the <code class="docutils literal"><span class="pre">IExceptionFilter</span></code> or <code class="docutils literal"><span class="pre">IAsyncExceptionFilter</span></code> interface.</p>
+<p>Exception filters handle unhandled exceptions, including those that occur during controller creation and <a class="reference internal" href="../models/model-binding.html"><span class="doc">model binding</span></a>. They are only called when an exception occurs in the pipeline. They can provide a single location to implement common error handling policies within an app. The framework provides an abstract <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ExceptionFilterAttribute/index.html">ExceptionFilterAttribute</a> that you should be able to subclass for your needs. Exception filters are good for trapping exceptions that occur within MVC actions, but they&#8217;re not as flexible as error handling middleware. Prefer middleware for the general case, and use filters only where you need to do error handling <em>differently</em> based on which MVC action was chosen.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">One example where you might need a different form of error handling for different actions would be in an app that exposes both API endpoints and actions that return views/HTML. The API endpoints could return error information as JSON, while the view-based actions could return an error page as HTML.</p>
+</div>
+<p>Exception filters do not have two events (for before and after) - they only implement <code class="docutils literal"><span class="pre">OnException</span></code> (or <code class="docutils literal"><span class="pre">OnExceptionAsync</span></code>). The <code class="docutils literal"><span class="pre">ExceptionContext</span></code> provided in the <code class="docutils literal"><span class="pre">OnException</span></code> parameter includes the <code class="docutils literal"><span class="pre">Exception</span></code> that occurred. If you set <code class="docutils literal"><span class="pre">context.Exception</span></code> to null, the effect is that you&#8217;ve handled the exception, so the request will proceed as if it hadn&#8217;t occurred (generally returning a 200 OK status). The following filter uses a custom developer error view to display details about exceptions that occur when the application is in development:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNet.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.Filters</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.ModelBinding</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Mvc.ViewFeatures</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">FiltersSample.Filters</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">CustomExceptionFilterAttribute</span> <span class="p">:</span> <span class="n">ExceptionFilterAttribute</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IHostingEnvironment</span> <span class="n">_hostingEnvironment</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IModelMetadataProvider</span> <span class="n">_modelMetadataProvider</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">CustomExceptionFilterAttribute</span><span class="p">(</span>
+            <span class="n">IHostingEnvironment</span> <span class="n">hostingEnvironment</span><span class="p">,</span>
+            <span class="n">IModelMetadataProvider</span> <span class="n">modelMetadataProvider</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_hostingEnvironment</span> <span class="p">=</span> <span class="n">hostingEnvironment</span><span class="p">;</span>
+            <span class="n">_modelMetadataProvider</span> <span class="p">=</span> <span class="n">modelMetadataProvider</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnException</span><span class="p">(</span><span class="n">ExceptionContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">_hostingEnvironment</span><span class="p">.</span><span class="n">IsDevelopment</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="c1">// do nothing</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ViewResult</span> <span class="p">{</span><span class="n">ViewName</span> <span class="p">=</span> <span class="s">&quot;CustomError&quot;</span><span class="p">};</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">ViewData</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ViewDataDictionary</span><span class="p">(</span><span class="n">_modelMetadataProvider</span><span class="p">,</span><span class="n">context</span><span class="p">.</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Exception&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">Exception</span><span class="p">);</span>
+            <span class="c1">// TODO: Pass additional detailed data via ViewData</span>
+<span class="hll">            <span class="n">context</span><span class="p">.</span><span class="n">Exception</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// mark exception as handled</span>
+</span><span class="hll">            <span class="n">context</span><span class="p">.</span><span class="n">Result</span> <span class="p">=</span> <span class="n">result</span><span class="p">;</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="result-filters">
+<span id="id8"></span><h2><a class="toc-backref" href="#id16">Result Filters</a><a class="headerlink" href="#result-filters" title="Permalink to this headline">¶</a></h2>
+<p><em>Result Filters</em> implement either the <code class="docutils literal"><span class="pre">IResultFilter</span></code> or <code class="docutils literal"><span class="pre">IAsyncResultFilter</span></code> interface and their execution surrounds the execution of action results. Result filters are only executed for successful results - when the action or action filters produce an action result. Result filters are not executed when exception filters handle an exception, unless the exception filter sets <code class="docutils literal"><span class="pre">Exception</span> <span class="pre">=</span> <span class="pre">null</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The kind of result being executed depends on the action in question. An MVC action returning a view would include all razor processing as part of the <code class="docutils literal"><span class="pre">ViewResult</span></code> being executed. An API method might perform some serialization as part of the execution of the result. Learn more about <a class="reference internal" href="actions.html"><span class="doc">action results</span></a></p>
+</div>
+<p>Result filters are ideal for any logic that needs to directly surround view execution or formatter execution. Result filters can replace or modify the action result that&#8217;s responsible for producing the response.</p>
+<p>The <code class="docutils literal"><span class="pre">OnResultExecuting</span></code> method runs before the action result is executed, so it can manipulate the action result through <code class="docutils literal"><span class="pre">ResultExecutingContext.Result</span></code>. An <code class="docutils literal"><span class="pre">OnResultExecuting</span></code> method can short-circuit execution of the action result and subsequent result filters by setting <code class="docutils literal"><span class="pre">ResultExecutingContext.Cancel</span></code> to true. If short-circuited, MVC will not modify the response; you should generally write to the response object directly when short-circuiting to avoid generating an empty response. Throwing an exception in an <code class="docutils literal"><span class="pre">OnResultExecuting</span></code> method will also prevent execution of the action result and subsequent filters, but will be treated as a failure instead of a successful result.</p>
+<p>The <code class="docutils literal"><span class="pre">OnResultExecuted</span></code> method runs after the action result has executed. At this point if no exception was thrown, the response has likely been sent to the client and cannot be changed further. <code class="docutils literal"><span class="pre">ResultExecutedContext.Canceled</span></code> will be set to true if the action result execution was short-circuited by another filter. <code class="docutils literal"><span class="pre">ResultExecutedContext.Exception</span></code> will be set to a non-null value if the action result or a subsequent result filter threw an exception. Setting <code class="docutils literal"><span class="pre">ResultExecutedContext.Exception</span></code> to null effectively &#8216;handles&#8217; an exception and will prevent the exeception from being rethrown by MVC later in the pipeline. If handling an exception in a result filter, consider whether or not it&#8217;s appropriate to write any data to the response. If the action result throws partway through its execution, and the headers have already been flushed to the client, there&#8217;s no reliable mechanism to send a failure code.</p>
+<p>For an <code class="docutils literal"><span class="pre">IAsyncResultFilter</span></code> the <code class="docutils literal"><span class="pre">OnResultExecutionAsync</span></code> combines all the possibilities of <code class="docutils literal"><span class="pre">OnResultExecuting</span></code> and <code class="docutils literal"><span class="pre">OnResultExecuted</span></code>. A call to <code class="docutils literal"><span class="pre">await</span> <span class="pre">next()</span></code> on the <code class="docutils literal"><span class="pre">ResultExecutionDelegate</span></code> will execute any subsequent result filters and the action result, returning a <code class="docutils literal"><span class="pre">ResultExecutedContext</span></code>. To short-circuit inside of an <code class="docutils literal"><span class="pre">OnResultExecutionAsync</span></code>, set <code class="docutils literal"><span class="pre">ResultExecutingContext.Cancel</span></code> to true and do not call the <code class="docutils literal"><span class="pre">ResultExectionDelegate</span></code>.</p>
+<p>You can override the built-in <code class="docutils literal"><span class="pre">ResultFilterAttribute</span></code> to create result filters. The <a class="reference internal" href="#add-header-attribute"><span class="std std-ref">AddHeaderAttribute</span></a> class shown above is an example of a result filter.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you need to add headers to the response, do so before the action result executes. Otherwise, the response may have been sent to the client, and it will be too late to modify it. For a result filter, this means adding the header in <code class="docutils literal"><span class="pre">OnResultExecuting</span></code> rather than <code class="docutils literal"><span class="pre">OnResultExecuted</span></code>.</p>
+</div>
+</div>
+<div class="section" id="filters-vs-middleware">
+<h2><a class="toc-backref" href="#id17">Filters vs. Middleware</a><a class="headerlink" href="#filters-vs-middleware" title="Permalink to this headline">¶</a></h2>
+<p>In general, filters are meant to handle cross-cutting business and application concerns. This is often the same use case for <a class="reference internal" href="../../fundamentals/middleware.html"><span class="doc">middleware</span></a>. Filters are very similar to middleware in capability, but let you scope that behavior and insert it into a location in your app where it makes sense, such as before a view, or after model binding. Filters are a part of MVC, and have access to its context and constructs. For instance, middleware can&#8217;t easily detect whether model validation on a request has generated errors, and respond accordingly, but a filter can easily do so.</p>
+<p>To experiment with filters, <a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/filters/sample">download, test and modify the sample</a>.</p>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dependency-injection.html" class="btn btn-neutral float-right" title="Dependency Injection and Controllers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="routing.html" class="btn btn-neutral" title="🔧 Routing to Controller Actions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

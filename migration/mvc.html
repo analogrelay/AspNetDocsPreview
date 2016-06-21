@@ -1,0 +1,692 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migrating From ASP.NET MVC to ASP.NET Core MVC &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Migration" href="index.html"/>
+        <link rel="next" title="Migrating Configuration" href="configuration.html"/>
+        <link rel="prev" title="Migration" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Migration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating From ASP.NET MVC to ASP.NET Core MVC</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Migrating Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identity.html">Migrating Authentication and Identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webapi.html">Migrating from ASP.NET Web API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http-modules.html">Migrating HTTP Modules to Middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc1-to-rc2.html">Migrating from ASP.NET 5 RC1 to ASP.NET Core</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Migration</a> &raquo;</li>
+      
+    <li>Migrating From ASP.NET MVC to ASP.NET Core MVC</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/migration/mvc.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="migrating-from-asp-net-mvc-to-asp-net-core-mvc">
+<h1>Migrating From ASP.NET MVC to ASP.NET Core MVC<a class="headerlink" href="#migrating-from-asp-net-mvc-to-asp-net-core-mvc" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a>, <a class="reference external" href="https://github.com/danroth27">Daniel Roth</a>, <a class="reference external" href="http://ardalis.com">Steve Smith</a> and <a class="reference external" href="http://scottaddie.com">Scott Addie</a></p>
+<p>This article shows how to get started migrating an ASP.NET MVC project to <a class="reference internal" href="../mvc/index.html"><span class="doc">ASP.NET Core MVC</span></a>. In the process, it highlights many of the things that have changed from ASP.NET MVC. Migrating from ASP.NET MVC is a multiple step process and this article covers the initial setup, basic controllers and views, static content, and client-side dependencies. Additional articles cover migrating configuration and identity code found in many ASP.NET MVC projects.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#create-the-starter-asp-net-mvc-project" id="id1">Create the starter ASP.NET MVC project</a></li>
+<li><a class="reference internal" href="#create-the-asp-net-core-project" id="id2">Create the ASP.NET Core project</a></li>
+<li><a class="reference internal" href="#configure-the-site-to-use-mvc" id="id3">Configure the site to use MVC</a></li>
+<li><a class="reference internal" href="#add-a-controller-and-view" id="id4">Add a controller and view</a></li>
+<li><a class="reference internal" href="#controllers-and-views" id="id5">Controllers and views</a></li>
+<li><a class="reference internal" href="#static-content" id="id6">Static content</a></li>
+<li><a class="reference internal" href="#gulp" id="id7">Gulp</a></li>
+<li><a class="reference internal" href="#npm" id="id8">NPM</a></li>
+<li><a class="reference internal" href="#migrate-the-layout-file" id="id9">Migrate the layout file</a></li>
+<li><a class="reference internal" href="#configure-bundling" id="id10">Configure Bundling</a></li>
+<li><a class="reference internal" href="#solving-http-500-errors" id="id11">Solving HTTP 500 errors</a></li>
+<li><a class="reference internal" href="#additional-resources" id="id12">Additional Resources</a></li>
+</ul>
+</div>
+<div class="section" id="create-the-starter-asp-net-mvc-project">
+<h2><a class="toc-backref" href="#id1">Create the starter ASP.NET MVC project</a><a class="headerlink" href="#create-the-starter-asp-net-mvc-project" title="Permalink to this headline">¶</a></h2>
+<p>To demonstrate the upgrade, we&#8217;ll start by creating a ASP.NET MVC app. Create it with the name <em>WebApp1</em> so the namespace will match the ASP.NET Core project we create in the next step.</p>
+<img alt="../_images/new-project.png" src="../_images/new-project.png" />
+<img alt="../_images/new-project-select-mvc-template.png" src="../_images/new-project-select-mvc-template.png" />
+<p><em>Optional:</em> Change the name of the Solution from <em>WebApp1</em> to <em>Mvc5</em>. Visual Studio will display the new solution name (<em>Mvc5</em>), which will make it easier to tell this project from the next project.</p>
+</div>
+<div class="section" id="create-the-asp-net-core-project">
+<h2><a class="toc-backref" href="#id2">Create the ASP.NET Core project</a><a class="headerlink" href="#create-the-asp-net-core-project" title="Permalink to this headline">¶</a></h2>
+<p>Create a new <em>empty</em> ASP.NET Core web app with the same name as the previous project (<em>WebApp1</em>) so the namespaces in the two projects match. Having the same namespace makes it easier to copy code between the two projects. You&#8217;ll have to create this project in a different directory than the previous project to use the same name.</p>
+<img alt="../_images/new_core.png" src="../_images/new_core.png" />
+<img alt="../_images/new-project-select-empty-aspnet5-template.png" src="../_images/new-project-select-empty-aspnet5-template.png" />
+<ul class="simple">
+<li><em>Optional:</em> Create a new ASP.NET Core app named <em>WebApp1</em> with authentication set to <strong>Individual User Accounts</strong>. Rename this app <em>FullAspNetCore</em>.  Creating this project will save you time in the conversion. You can look at the template generated code to see the end result or to copy code to the conversion project. It&#8217;s also helpful when you get stuck on a conversion step to compare with the template generated project.</li>
+</ul>
+</div>
+<div class="section" id="configure-the-site-to-use-mvc">
+<h2><a class="toc-backref" href="#id3">Configure the site to use MVC</a><a class="headerlink" href="#configure-the-site-to-use-mvc" title="Permalink to this headline">¶</a></h2>
+<p>Open the <em>project.json</em> file.</p>
+<ul class="simple">
+<li>Add <code class="docutils literal"><span class="pre">Microsoft.AspNetCore.Mvc</span></code> and <code class="docutils literal"><span class="pre">Microsoft.AspNetCore.StaticFiles</span></code> to the <code class="docutils literal"><span class="pre">dependencies</span></code> property:</li>
+<li>Add the &#8220;prepublish&#8221; line to the &#8220;scripts&#8221; section:</li>
+</ul>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Microsoft.NETCore.App&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-3002702&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;platform&quot;</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;Microsoft.AspNetCore.Mvc&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;Microsoft.AspNetCore.StaticFiles&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;Microsoft.AspNetCore.Server.IISIntegration&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Microsoft.AspNetCore.Server.Kestrel&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span>
+  <span class="p">},</span>
+
+  <span class="nt">&quot;tools&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Microsoft.AspNetCore.Server.IISIntegration.Tools&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0-preview1-final&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;imports&quot;</span><span class="p">:</span> <span class="s2">&quot;portable-net45+win8+dnxcore50&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nt">&quot;frameworks&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;netcoreapp1.0&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;imports&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;dotnet5.6&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dnxcore50&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;portable-net45+win8&quot;</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nt">&quot;buildOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;emitEntryPoint&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;preserveCompilationContext&quot;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+
+  <span class="nt">&quot;runtimeOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;configProperties&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;System.GC.Server&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="nt">&quot;publishOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;include&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;wwwroot&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;web.config&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+<span class="hll">
+</span>  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;prepublish&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;npm install&quot;</span><span class="p">,</span> <span class="s2">&quot;bower install&quot;</span><span class="p">,</span> <span class="s2">&quot;gulp clean&quot;</span><span class="p">,</span> <span class="s2">&quot;gulp min&quot;</span> <span class="p">],</span>
+    <span class="nt">&quot;postpublish&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%&quot;</span> <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Microsoft.AspNetCore.Mvc</span></code> Installs in the ASP.NET Core MVC framework package</li>
+<li><code class="docutils literal"><span class="pre">Microsoft.AspNetCore.StaticFiles</span></code> is the static file handler. The ASP.NET runtime is modular, and you must explicitly opt in to serve static files (see <a class="reference internal" href="../fundamentals/static-files.html"><span class="doc">Working with Static Files</span></a>).</li>
+<li>The &#8220;scripts&#8221;/&#8221;prepublish&#8221; line is needed for Gulp, Bower and NPM. We&#8217;ll talk about that later.</li>
+<li>Open the <em>Startup.cs</em> file and change the code to match the following:</li>
+</ul>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+    <span class="c1">// This method gets called by the runtime. Use this method to add services to the container.</span>
+    <span class="c1">// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+</span>    <span class="p">}</span>
+
+    <span class="c1">// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+</span><span class="hll">        <span class="p">{</span>
+</span><span class="hll">            <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+</span><span class="hll">                <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+</span><span class="hll">        <span class="p">});</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll"><span class="p">}</span>
+</span></pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">UseStaticFiles</span></code> adds the static file handler. As mentioned previously, the ASP.NET runtime is modular, and you must explicitly opt in to serve static files. <code class="docutils literal"><span class="pre">app.UseMvc(routes</span> <span class="pre">=&gt;</span></code> adds routing. For more information, see <a class="reference internal" href="../fundamentals/startup.html"><span class="doc">Application Startup</span></a> and <a class="reference internal" href="../fundamentals/routing.html"><span class="doc">Routing</span></a>.</p>
+</div>
+<div class="section" id="add-a-controller-and-view">
+<h2><a class="toc-backref" href="#id4">Add a controller and view</a><a class="headerlink" href="#add-a-controller-and-view" title="Permalink to this headline">¶</a></h2>
+<p>In this section, you&#8217;ll add a minimal controller and view to serve as placeholders for the ASP.NET MVC controller and views you&#8217;ll migrate in the next section.</p>
+<ul class="simple">
+<li>Add a <em>Controllers</em> folder.</li>
+<li>Add an <strong>MVC controller class</strong> with the name <em>HomeController.cs</em> to the <em>Controllers</em> folder.</li>
+</ul>
+<img alt="../_images/add_mvc_ctl.png" src="../_images/add_mvc_ctl.png" />
+<ul class="simple">
+<li>Add a <em>Views</em> folder.</li>
+<li>Add a <em>Views/Home</em> folder.</li>
+<li>Add an <em>Index.cshtml</em> MVC view page to the <em>Views/Home</em> folder.</li>
+</ul>
+<img alt="../_images/view.png" src="../_images/view.png" />
+<p>The project structure is shown below:</p>
+<img alt="../_images/project-structure-controller-view.png" src="../_images/project-structure-controller-view.png" />
+<p>Replace the contents of the <em>Views/Home/Index.cshtml</em> file with the following:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello world!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Run the app.</p>
+<img alt="../_images/hello-world.png" src="../_images/hello-world.png" />
+<p>See <a class="reference internal" href="../mvc/controllers/index.html"><span class="doc">Controllers</span></a> and <a class="reference internal" href="../mvc/views/index.html"><span class="doc">Views</span></a> for more information.</p>
+<p>Now that we have a minimal working ASP.NET Core project, we can start migrating functionality from the ASP.NET MVC project. We will need to move the following:</p>
+<ul class="simple">
+<li>client-side content (CSS, fonts, and scripts)</li>
+<li>controllers</li>
+<li>views</li>
+<li>models</li>
+<li>bundling</li>
+<li>filters</li>
+<li>Log in/out, identity (This will be done in the next tutorial.)</li>
+</ul>
+</div>
+<div class="section" id="controllers-and-views">
+<h2><a class="toc-backref" href="#id5">Controllers and views</a><a class="headerlink" href="#controllers-and-views" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Copy each of the methods from the ASP.NET MVC <code class="docutils literal"><span class="pre">HomeController</span></code> to the new <code class="docutils literal"><span class="pre">HomeController</span></code>. Note that in ASP.NET MVC, the built-in template&#8217;s controller action method return type is <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult(v=vs.118).aspx">ActionResult</a>; in ASP.NET Core MVC the actions return <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IActionResult/index.html">IActionResult</a> instead. <code class="docutils literal"><span class="pre">ActionResult</span></code> implements <code class="docutils literal"><span class="pre">IActionResult</span></code>, so there is no need to change the return type of your action methods.</li>
+<li>Copy the <em>About.cshtml</em>, <em>Contact.cshtml</em>, and <em>Index.cshtml</em> Razor view files from the ASP.NET MVC project to the ASP.NET Core project.</li>
+<li>Run the ASP.NET Core app and test each method. We haven&#8217;t migrated the layout file or styles yet, so the rendered views will only contain the content in the view files. You won&#8217;t have the layout file generated links for the <code class="docutils literal"><span class="pre">About</span></code> and <code class="docutils literal"><span class="pre">Contact</span></code> views, so you&#8217;ll have to invoke them from the browser (replace <strong>2468</strong> with the port number used in your project).<ul>
+<li>http://localhost:2468/home/about</li>
+<li>http://localhost:2468/home/contact</li>
+</ul>
+</li>
+</ul>
+<img alt="../_images/contact-page.png" src="../_images/contact-page.png" />
+<p>Note the lack of styling and menu items. We&#8217;ll fix that in the next section.</p>
+</div>
+<div class="section" id="static-content">
+<h2><a class="toc-backref" href="#id6">Static content</a><a class="headerlink" href="#static-content" title="Permalink to this headline">¶</a></h2>
+<p>In previous versions of  ASP.NET MVC, static content was hosted from the root of the web project and was intermixed with server-side files. In ASP.NET Core, static content is hosted in the <em>wwwroot</em> folder. You&#8217;ll want to copy the static content from your old ASP.NET MVC app to the <em>wwwroot</em> folder in your ASP.NET Core project. In this sample conversion:</p>
+<ul class="simple">
+<li>Copy the <em>favicon.ico</em> file from the old MVC project to the <em>wwwroot</em> folder in the ASP.NET Core project.</li>
+</ul>
+<p>The old ASP.NET MVC project uses <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> for its styling and stores the Bootstrap files in the <em>Content</em> and <em>Scripts</em> folders. The template-generated old ASP.NET MVC project references Bootstrap in the layout file (<em>Views/Shared/_Layout.cshtml</em>). You could copy the <em>bootstrap.js</em> and <em>bootstrap.css</em> files from the ASP.NET MVC project to the <em>wwwroot</em> folder in the new project, but that approach doesn&#8217;t use the improved mechanism for managing client-side dependencies in ASP.NET Core.</p>
+<p>In the new project, we&#8217;ll add support for Bootstrap (and other client-side libraries) using <a class="reference external" href="http://bower.io/">Bower</a>:</p>
+<ul class="simple">
+<li>Add a <a class="reference external" href="http://bower.io/">Bower</a> configuration file named <em>bower.json</em> to the project root (Right-click on the project, and then <strong>Add &gt; New Item &gt; Bower Configuration File</strong>). Add <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> and <a class="reference external" href="https://jquery.com/">jQuery</a> to the file (see the highlighted lines below).</li>
+</ul>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;asp.net&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;private&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">    <span class="nt">&quot;bootstrap&quot;</span><span class="p">:</span> <span class="s2">&quot;3.3.6&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;jquery&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.0&quot;</span>
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Upon saving the file, Bower will automatically download the dependencies to the <em>wwwroot/lib</em> folder. You can use the <strong>Search Solution Explorer</strong> box to find the path of the assets.</p>
+<img alt="../_images/search.png" src="../_images/search.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>bower.json</em> is not visible in <strong>Solution Explorer</strong>. You can display the hidden <em>.json</em> files by selecting the project in <strong>Solution Explorer</strong> and then tapping the <strong>Show All Files</strong> icon. You won&#8217;t see <strong>Show All Files</strong> unless the project is selected.</p>
+</div>
+<img alt="../_images/show_all_files.png" src="../_images/show_all_files.png" />
+<p>See <a class="reference internal" href="../client-side/bower.html"><span class="doc">Manage Client-Side Packages with Bower</span></a> for more information.</p>
+</div>
+<div class="section" id="gulp">
+<h2><a class="toc-backref" href="#id7">Gulp</a><a class="headerlink" href="#gulp" title="Permalink to this headline">¶</a></h2>
+<p>When you create a new web app using the ASP.NET Core Web Application template, the project is setup to use <a class="reference external" href="http://gulpjs.com">Gulp</a>. Gulp is a streaming build system for client-side code (HTML, LESS, SASS, etc.). The <em>gulpfile.js</em> contains JavaScript that defines a set of gulp tasks that you can set to run automatically on build events or you can run manually using <strong>Task Runner Explorer</strong>. In this section we&#8217;ll show how to use <em>gulpfile.js</em> to bundle and minify the projects JavaScript and CSS files.</p>
+<p>If you created the optional <em>FullAspNetCore</em> project (a new ASP.NET Core web app with Individual User Accounts), add <em>gulpfile.js</em> from that project to the project we are updating. In Solution Explorer, right-click the web app project and choose <strong>Add &gt; Existing Item</strong>.</p>
+<img alt="../_images/addExisting.png" src="../_images/addExisting.png" />
+<p>Navigate to <em>gulpfile.js</em> from the new ASP.NET Core web app with Individual User Accounts and add the add <em>gulpfile.js</em> file. Alternatively, right-click the web app project and choose <strong>Add &gt; New Item</strong>. Select <strong>Gulp Configuration File</strong>, and name the file <em>gulpfile.js</em>. The <em>gulpfile.js</em> file:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">/// &lt;binding Clean=&#39;clean&#39; /&gt;</span>
+<span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp&quot;</span><span class="p">),</span>
+    <span class="nx">rimraf</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;rimraf&quot;</span><span class="p">),</span>
+    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-concat&quot;</span><span class="p">),</span>
+    <span class="nx">cssmin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-cssmin&quot;</span><span class="p">),</span>
+    <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-uglify&quot;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">webroot</span> <span class="o">=</span> <span class="s2">&quot;./wwwroot/&quot;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">paths</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">js</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;js/**/*.js&quot;</span><span class="p">,</span>
+    <span class="nx">minJs</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;js/**/*.min.js&quot;</span><span class="p">,</span>
+    <span class="nx">css</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;css/**/*.css&quot;</span><span class="p">,</span>
+    <span class="nx">minCss</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;css/**/*.min.css&quot;</span><span class="p">,</span>
+    <span class="nx">concatJsDest</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;js/site.min.js&quot;</span><span class="p">,</span>
+    <span class="nx">concatCssDest</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;css/site.min.css&quot;</span>
+<span class="p">};</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;clean:js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">rimraf</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatJsDest</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;clean:css&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">rimraf</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatCssDest</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;clean&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;clean:js&quot;</span><span class="p">,</span> <span class="s2">&quot;clean:css&quot;</span><span class="p">]);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min:js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="nx">paths</span><span class="p">.</span><span class="nx">js</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span> <span class="o">+</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">minJs</span><span class="p">],</span> <span class="p">{</span> <span class="nx">base</span><span class="o">:</span> <span class="s2">&quot;.&quot;</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatJsDest</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min:css&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="nx">paths</span><span class="p">.</span><span class="nx">css</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span> <span class="o">+</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">minCss</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatCssDest</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssmin</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;min:js&quot;</span><span class="p">,</span> <span class="s2">&quot;min:css&quot;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>The code above performs these functions:</p>
+<ul class="simple">
+<li>Cleans (deletes) the target files.</li>
+<li>Minifies the JavaScript and CSS files.</li>
+<li>Bundles (concatenates) the JavaScript and CSS files.</li>
+</ul>
+<p>See <a class="reference internal" href="../client-side/using-gulp.html"><span class="doc">Using Gulp</span></a>.</p>
+</div>
+<div class="section" id="npm">
+<h2><a class="toc-backref" href="#id8">NPM</a><a class="headerlink" href="#npm" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.npmjs.com/">NPM</a> (Node Package Manager) is a package manager which is used to acquire tooling such as <a class="reference external" href="http://bower.io/">Bower</a> and <a class="reference external" href="http://gulpjs.com/">Gulp</a>; and, it is fully supported in Visual Studio. We&#8217;ll use NPM to manage Gulp dependencies.</p>
+<p>If you created the optional <em>FullAspNetCore</em> project, add the <em>package.json</em> NPM file from that project to the project we are updating. The <em>package.json</em> NPM file lists the dependencies for the client-side build processes defined in <cite>gulpfile.js</cite>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>package.json</em> is not visible in <strong>Solution Explorer</strong>.</p>
+</div>
+<p>Right-click the web app project, choose <strong>Add &gt; Existing Item</strong>, and add the <em>package.json</em> NPM file. Alternatively, you can add a new NPM configuration file as follows:</p>
+<ol class="arabic simple">
+<li>In Solution Explorer, right-click the project</li>
+<li>Select <strong>Add</strong> &gt; <strong>New Item</strong></li>
+<li>Select <strong>NPM Configuration File</strong></li>
+<li>Leave the default name: <em>package.json</em></li>
+<li>Tap <strong>Add</strong></li>
+</ol>
+<p>The <em>package.json</em> file:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;asp.net&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;private&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;gulp&quot;</span><span class="p">:</span> <span class="s2">&quot;3.8.11&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gulp-concat&quot;</span><span class="p">:</span> <span class="s2">&quot;2.5.2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gulp-cssmin&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gulp-uglify&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rimraf&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.8&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Right-click on <em>gulpfile.js</em> and select <strong>Task Runner Explorer</strong>. Double-click on a task to run it.</p>
+<p>For more information, see <a class="reference internal" href="../client-side/index.html"><span class="doc">Client-Side Development</span></a>.</p>
+</div>
+<div class="section" id="migrate-the-layout-file">
+<span id="migrate-layout-file"></span><h2><a class="toc-backref" href="#id9">Migrate the layout file</a><a class="headerlink" href="#migrate-the-layout-file" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Copy the <em>_ViewStart.cshtml</em> file from the old ASP.NET MVC project&#8217;s <em>Views</em> folder into the ASP.NET Core project&#8217;s <em>Views</em> folder. The <em>_ViewStart.cshtml</em> file has not changed in ASP.NET Core MVC.</li>
+<li>Create a <em>Views/Shared</em> folder.</li>
+<li>Optional: Copy <em>_ViewImports.cshtml</em> from the old MVC project&#8217;s <em>Views</em> folder into the ASP.NET Core project&#8217;s <em>Views</em> folder. Remove any namespace declaration in the <em>_ViewImports.cshtml</em> file. The <em>_ViewImports.cshtml</em> file provides namespaces for all the view files and brings  in doc:<cite>Tag Helpers &lt;/mvc/views/tag-helpers/index&gt;</cite>. <a class="reference internal" href="../mvc/views/tag-helpers/index.html"><span class="doc">Tag Helpers</span></a> are used in the new layout file. The <em>_ViewImports.cshtml</em> file is new for ASP.NET Core</li>
+<li>Copy the <em>_Layout.cshtml</em> file from the old ASP.NET MVC project&#8217;s <em>Views/Shared</em> folder into the ASP.NET Core project&#8217;s <em>Views/Shared</em> folder.</li>
+</ul>
+<p>Open <em>_Layout.cshtml</em> file and make the following changes (the completed code is shown below):</p>
+<blockquote>
+<div><ul class="simple">
+<li>Replace &#64;Styles.Render(&#8220;~/Content/css&#8221;) with a &lt;link&gt; element to load <em>bootstrap.css</em> (see below)</li>
+<li>Remove &#64;Scripts.Render(&#8220;~/bundles/modernizr&#8221;)</li>
+<li>Comment out the &#64;Html.Partial(&#8220;_LoginPartial&#8221;) line (surround the line with &#64;*...*&#64;) - we&#8217;ll return to it in a future tutorial</li>
+<li>Replace &#64;Scripts.Render(&#8220;~/bundles/jquery&#8221;) with a &lt;script&gt; element (see below)</li>
+<li>Replace &#64;Scripts.Render(&#8220;~/bundles/bootstrap&#8221;) with a &lt;script&gt; element (see below)</li>
+</ul>
+</div></blockquote>
+<p>The replacement CSS link:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p>The replacement script tags:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/lib/jquery/dist/jquery.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/lib/bootstrap/dist/js/bootstrap.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The updated _Layout.cshtml file is shown below:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>@ViewBag.Title - My ASP.NET Application<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="hll">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot;</span> <span class="p">/&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar navbar-inverse navbar-fixed-top&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-header&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-toggle&quot;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&quot;collapse&quot;</span> <span class="na">data-target</span><span class="o">=</span><span class="s">&quot;.navbar-collapse&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-bar&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-bar&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-bar&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+                @Html.ActionLink(&quot;Application name&quot;, &quot;Index&quot;, &quot;Home&quot;, new { area = &quot;&quot; }, new { @class = &quot;navbar-brand&quot; })
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-collapse collapse&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav navbar-nav&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>@Html.ActionLink(&quot;Home&quot;, &quot;Index&quot;, &quot;Home&quot;)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>@Html.ActionLink(&quot;About&quot;, &quot;About&quot;, &quot;Home&quot;)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>@Html.ActionLink(&quot;Contact&quot;, &quot;Contact&quot;, &quot;Home&quot;)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="hll">                @*@Html.Partial(&quot;_LoginPartial&quot;)*@
+</span>            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container body-content&quot;</span><span class="p">&gt;</span>
+        @RenderBody()
+        <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="ni">&amp;copy;</span> @DateTime.Now.Year - My ASP.NET Application<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="hll">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/lib/jquery/dist/jquery.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span class="hll">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;~/lib/bootstrap/dist/js/bootstrap.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span>    @RenderSection(&quot;scripts&quot;, required: false)
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>View the site in the browser. It should now load correctly, with the expected styles in place.</p>
+<ul class="simple">
+<li>Optional: You might want to try using the new layout file. For this project you can copy the layout file from the <em>FullAspNetCore</em> project. The new layout file uses <a class="reference internal" href="../mvc/views/tag-helpers/index.html"><span class="doc">Tag Helpers</span></a> and has other improvements.</li>
+</ul>
+</div>
+<div class="section" id="configure-bundling">
+<h2><a class="toc-backref" href="#id10">Configure Bundling</a><a class="headerlink" href="#configure-bundling" title="Permalink to this headline">¶</a></h2>
+<p>The ASP.NET MVC starter web template utilized the ASP.NET Web Optimization for bundling. In ASP.NET Core, this functionality is performed as part of the build process using <a class="reference external" href="http://gulpjs.com/">Gulp</a>. We&#8217;ve previously configured bundling and minification; all that&#8217;s left is to change the references to Bootstrap, jQuery and other assets to use the bundled and minified versions. You can see how this is done in the layout file (<em>Views/Shared/_Layout.cshtml</em>) of the full template project. See <a class="reference internal" href="../client-side/bundling-and-minification.html"><span class="doc">Bundling and Minification</span></a> for more information.</p>
+</div>
+<div class="section" id="solving-http-500-errors">
+<h2><a class="toc-backref" href="#id11">Solving HTTP 500 errors</a><a class="headerlink" href="#solving-http-500-errors" title="Permalink to this headline">¶</a></h2>
+<p>There are many problems that can cause a HTTP 500 error message that contain no information on the source of the problem. For example, if the <em>Views/_ViewImports.cshtml</em> file contains a namespace that doesn&#8217;t exist in your project, you&#8217;ll get a HTTP 500 error. To get a detailed error message, add the following code:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span> <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+ <span class="p">{</span>
+<span class="hll">     <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsDevelopment</span><span class="p">())</span>
+</span><span class="hll">     <span class="p">{</span>
+</span><span class="hll">          <span class="n">app</span><span class="p">.</span><span class="n">UseDeveloperExceptionPage</span><span class="p">();</span>
+</span><span class="hll">     <span class="p">}</span>
+</span>
+     <span class="n">app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">();</span>
+
+     <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+     <span class="p">{</span>
+         <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+             <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+             <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+     <span class="p">});</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>See <strong>Using the Developer Exception Page</strong> in <a class="reference internal" href="../fundamentals/error-handling.html"><span class="doc">Error Handling</span></a> for more information.</p>
+</div>
+<div class="section" id="additional-resources">
+<h2><a class="toc-backref" href="#id12">Additional Resources</a><a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../client-side/index.html"><span class="doc">Client-Side Development</span></a></li>
+<li><a class="reference internal" href="../mvc/views/tag-helpers/index.html"><span class="doc">Tag Helpers</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Migrating Configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Migration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

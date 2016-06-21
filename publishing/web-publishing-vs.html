@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How Web Publishing In Visual Studio Works &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Publishing and Deployment" href="index.html"/>
+        <link rel="next" title="Publishing to an Azure Web App with Continuous Deployment" href="azure-continuous-deployment.html"/>
+        <link rel="prev" title="Publishing to IIS with Web Deploy using Visual Studio" href="iis-with-msdeploy.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Publishing and Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="iis.html">Publishing to IIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iis-with-msdeploy.html">Publishing to IIS with Web Deploy using Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How Web Publishing In Visual Studio Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-continuous-deployment.html">Publishing to an Azure Web App with Continuous Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-windows-vm.html">🔧 Publishing to a Windows Virtual Machine on Azure</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker/">Publish to a Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linuxproduction.html">Publish to a Linux Production Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to-customize.html">🔧 How to Customize Publishing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Publishing and Deployment</a> &raquo;</li>
+      
+    <li>How Web Publishing In Visual Studio Works</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/publishing/web-publishing-vs.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="how-web-publishing-in-visual-studio-works">
+<h1>How Web Publishing In Visual Studio Works<a class="headerlink" href="#how-web-publishing-in-visual-studio-works" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://github.com/sayedihashimi">Sayed Ibrahim Hashimi</a></p>
+<p>The web publish experience for ASP.NET Core projects has significantly changed from ASP.NET 4. This doc will provide an overview of the changes and instructions on how to customize the publish process. Unless stated otherwise, the instructions in this article are for publishing from Visual Studio. For an overview of how to publish a web app on ASP.NET Core see <a class="reference internal" href="index.html"><span class="doc">Publishing and Deployment</span></a>.</p>
+<p>In ASP.NET when you publish a Visual Studio web project MSBuild is used to drive the entire process. The project file (.csproj or .vbproj) is used to gather the files that need to be published as well as perform any updates during publish (for example updating web.config). The project file contains the full list of files as well as their type. That information is used to determine the files to publish. The logic was implemented in an MSBuild .targets file. During the publish process MSBuild will call Web Deploy (msdeploy.exe) to transfer the files to the final location. To customize the publish process you would need to update the publish profile, or project file, with custom MSBuild elements.</p>
+<p>In ASP.NET Core the publish process has been simplified, we no longer store a reference to files that the project contains. All files are included in the project by default (files can be excluded from the project or from publish by updating <em>project.json</em>). When you publish an ASP.NET Core project from Visual Studio the following happens:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>A publish profile is created at <code class="docutils literal"><span class="pre">Properties\PublishProfiles\profilename.pubxml</span></code>. The publish profile is an MSBuild file.</li>
+<li>A PowerShell script is created at <code class="docutils literal"><span class="pre">Properties\PublishProfiles\profilename.ps1</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> is called to gather the files to publish to a temporary folder.</li>
+<li>A PowerShell script is called passing in the properties from the publish profile and the location where <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> has placed the files to publish.</li>
+</ol>
+</div></blockquote>
+<p>To create a publish profile in Visual Studio, right click on the project in Solution Explorer and then select Publish.</p>
+<p>The following image shows a visualization of this process.</p>
+<img alt="../_images/image-1.png" src="../_images/image-1.png" />
+<p>In the image above each black circle ● indicates an extension point, we will cover each extension point later in this document.</p>
+<p>When you start a publish operation, the publish dialog is closed and then MSBuild is called to start the process. Visual Studio calls MSBuild to do this so that you can have parity with publishing when using Visual Studio or the command line. The MSBuild layer is pretty thin, for the most part it just calls <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code>. Let’s take a closer look at <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> command will inspect project.json and the project folder to determine the files which need to be published. It will place the files needed to run the application in a single folder ready to be transferred to the final destination.</p>
+<p>After <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> has completed, the PowerShell script for the publish profile is called. Now that we have briefly discussed how publishing works at a high level let’s take a look at the structure of the PowerShell script created for publishing.</p>
+<p>When you create a publish profile in Visual Studio for an ASP.NET Core project a PowerShell script is created that has the following structure.</p>
+<div class="highlight-powershell"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">cmdletbinding</span><span class="p">(</span><span class="n">SupportsShouldProcess</span><span class="p">=</span><span class="nv">$true</span><span class="p">)]</span>
+<span class="k">param</span><span class="p">(</span><span class="nv">$publishProperties</span><span class="p">=@{},</span> <span class="nv">$packOutput</span><span class="p">,</span><span class="nv">$pubProfilePath</span><span class="p">,</span> <span class="nv">$nugetUrl</span><span class="p">)</span>
+
+<span class="nv">$publishModuleVersion</span> <span class="p">=</span> <span class="s1">&#39;1.0.2-beta2&#39;</span>
+
+<span class="c"># functions to bootstrap the process when Visual Studio is not installed</span>
+<span class="c"># have been removed to simplify this doc</span>
+
+<span class="k">try</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(!(</span><span class="nb">Enable-PublishModule</span><span class="p">)){</span>
+        <span class="nb">Enable-PackageDownloader</span>
+        <span class="nb">Enable-NuGetModule</span> <span class="n">-name</span> <span class="s1">&#39;publish-module&#39;</span> <span class="n">-version</span> <span class="nv">$publishModuleVersion</span> <span class="n">-nugetUrl</span> <span class="nv">$nugetUrl</span>
+    <span class="p">}</span>
+
+    <span class="s1">&#39;Calling Publish-AspNet&#39;</span> <span class="p">|</span> <span class="nb">Write-Verbose</span>
+    <span class="c"># call Publish-AspNet to perform the publish operation</span>
+    <span class="n">Publish-AspNet</span> <span class="n">-publishProperties</span> <span class="nv">$publishProperties</span> <span class="n">-packOutput</span> <span class="nv">$packOutput</span> <span class="n">-pubProfilePath</span> <span class="nv">$pubProfilePath</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">{</span>
+    <span class="s2">&quot;An error occurred during publish.n{0}&quot;</span> <span class="o">-f</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Message</span> <span class="p">|</span> <span class="nb">Write-Error</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above snippet some functions have been removed for readability. Those functions are used to bootstrap the script in the case that it’s executed from a machine which doesn’t have Visual Studio installed. The script contains the following important elements:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Script parameters</li>
+<li>Publish module version</li>
+<li>Call to Publish-AspNet</li>
+</ol>
+</div></blockquote>
+<p>The parameters of the script define the contract between Visual Studio and the PowerShell script. You should not change the declared parameters because Visual Studio depends on those. You can add additional parameters, but they must be added at the end.</p>
+<p>The publish module version, denoted by <code class="docutils literal"><span class="pre">$publishModuleVersion</span></code>, defines the version of the web publish module that will be used. Valid version numbers can be found from published versions of the <a class="reference external" href="https://www.nuget.org/packages/publish-module">publish-module NuGet package</a> on nuget.org. Once you create a publish profile the script definition is locked to a particular version of the publish-module package. If you need to update the version of the script you can delete the .ps1 file and then publish again in Visual Studio to get a new script created.</p>
+<p>The call to Publish-AspNet moves the files from your local machine to the final destination. Publish-AspNet will be passed all the properties defined in the .pubxml file, even custom properties. For Web Deploy publish, msdeploy.exe will be called to publish the files to the destination. Publish-AspNet is passed the same parameters as the original script. You can get more info on the parameters for Publish-AspNet use Get-Help Publish-AspNet. If you get an error that the publish-module is not loaded, you can load it with</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Import-Module “${env:ProgramFiles(x86)}\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Publish\Scripts\1.0.1\publish-module.psm1&quot;
+</pre></div>
+</div>
+<p>from a machine which has Visual Studio installed. Now let’s move on to discuss how to customize the publish process.</p>
+<p>How to customize publishing
+In the previous section we saw the visualization of the publish process. The image is shown again to make this easier to follow.</p>
+<img alt="../_images/image-1.png" src="../_images/image-1.png" />
+<p>The image above shows the three main extension points, you’re most likely to use is #3.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Customize the call to <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code></li>
+</ol>
+</div></blockquote>
+<p>Most developers will not need to customize this extension point. Visual Studio starts the publish process by calling an MSBuild target. This target will take care of initializing the environment and calling <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> to layout the files. If you need to customize that call in a way that is not enabled by the publish dialog then you can use MSBuild elements in either the project file (.xproj file) or the publish profile (.pubxml file). We won’t get into details of how to do that here as it’s an advanced scenario that few will need to extend.</p>
+<blockquote>
+<div><ol class="arabic simple" start="2">
+<li>Customize <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code></li>
+</ol>
+</div></blockquote>
+<p>As stated previously <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> is a command line utility that can be used to help publish your ASP.NET Core application. This is a cross platform command line utility (that is, you can use it on Windows, Mac or Linux) and does not require Visual Studio. If you are working on a team in which some developers are not using Visual Studio, then you may want to script building and publishing. When <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> is executed it can be configured to execute custom commands before or after execution. The commands will be listed in project.json in the scripts section.</p>
+<p>The supported scripts for publish are prepublish and postpublish. The ASP.NET Core Web Application template uses the prepublish step by default. The relevant snippet from <em>project.json</em> is shown below.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;prepublish&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;npm install&quot;</span><span class="p">,</span> <span class="s2">&quot;bower install&quot;</span><span class="p">,</span> <span class="s2">&quot;gulp clean&quot;</span><span class="p">,</span> <span class="s2">&quot;gulp min&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here multiple comma separated calls are declared.</p>
+<p>When Visual Studio is used the prepublish and postpublish steps are executed as a part of the call to <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code>. The postpublish script from <em>project.json</em> is executed before the files are published to the remote destination because that takes place immediately after <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> completes.  In the next step we cover customizing the PowerShell script to control what happens to the files after they reach the target destination.</p>
+<blockquote>
+<div><ol class="arabic simple" start="3">
+<li>Customize the publish profile PowerShell Script</li>
+</ol>
+</div></blockquote>
+<p>After creating a publish profile in Visual Studio the PowerShell script <code class="docutils literal"><span class="pre">Properties\PublishProfiles\ProfileName.ps1</span></code> is created. The script does the following:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Runs  <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code>, which will package the web project into a temporary folder to prepare it for the next phase of publishing.</li>
+<li>The profile PowerShell script is directly invoked. The publish properties and the path to the temporary folder are passed in as parameters. Note, the temporary folder will be deleted on each publish.</li>
+</ol>
+</div></blockquote>
+<p>As mentioned previously the most important line in the default publish script is the call to <code class="docutils literal"><span class="pre">Publish-AspNet</span></code>. The call to Publish-AspNet:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Takes the contents of the folder at $packOutput, which contains the results of <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code>, and publishes it to the destination.</li>
+<li>The publish properties are passed in the script parameter <code class="docutils literal"><span class="pre">$publishProperties</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">$publishProperties</span></code> is a PowerShell hashtable which contains all the properties declared in the profile .pubxml file. It also includes values for file text replacements or files to exclude. For more info on the values for <code class="docutils literal"><span class="pre">$publishProperties</span></code> use <code class="docutils literal"><span class="pre">Get-Help</span> <span class="pre">publish-aspnet</span> <span class="pre">–Examples</span></code>.</li>
+</ul>
+</div></blockquote>
+<p>To customize this process, you can edit the PowerShell script directly. To perform an action before publish starts, add the action before the call to <code class="docutils literal"><span class="pre">Publish-AspNet</span></code>. To have an action performed after publish, add the appropriate calls after Publish-AspNet. When Publish-AspNet is called the contents of the $packOutput directory are published to the destination. For example, if you need add a file to the publish process, just copy it to the correct location in <code class="docutils literal"><span class="pre">$packOutput</span></code> before <code class="docutils literal"><span class="pre">Publish-AspNet</span></code> is called. The snippet below shows how to do that.</p>
+<div class="highlight-powershell"><div class="highlight"><pre><span></span><span class="c"># copy files from image repo to the wwwroot\external-images folder</span>
+<span class="nv">$externalImagesSourcePath</span> <span class="p">=</span> <span class="s1">&#39;C:\resources\external-images&#39;</span>
+<span class="nv">$externalImagesDestPath</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Join-Path</span> <span class="s2">&quot;$packOutput\wwwroot&quot;</span> <span class="s1">&#39;external-images&#39;</span><span class="p">)</span>
+<span class="k">if</span><span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$externalImagesDestPath</span><span class="p">)){</span>
+  <span class="n">-Item</span> <span class="n">-Path</span> <span class="nv">$externalImagesDestPath</span> <span class="n">-ItemType</span> <span class="n">Directory</span>
+<span class="p">}</span>
+
+<span class="nb">Get-ChildItem</span> <span class="nv">$externalImagesSourcePath</span> <span class="o">-File</span> <span class="p">|</span> <span class="nb">Copy-Item</span> <span class="n">-Destination</span> <span class="nv">$externalImagesDestPath</span>
+
+<span class="s1">&#39;Calling Publish-AspNet&#39;</span> <span class="p">|</span> <span class="nb">Write-Verbose</span>
+<span class="c"># call Publish-AspNet to perform the publish operation</span>
+<span class="n">Publish-AspNet</span> <span class="n">-publishProperties</span> <span class="nv">$publishProperties</span> <span class="n">-packOutput</span> <span class="nv">$packOutput</span> <span class="n">-pubProfilePath</span> <span class="nv">$pubProfilePath</span>
+</pre></div>
+</div>
+<p>In this snippet external images are copied from <code class="docutils literal"><span class="pre">c:\resources\external-images</span> <span class="pre">to</span> <span class="pre">$packOutput\wwwroot\external-images</span></code>. Before starting the copy operation the script ensures that the destination folder exists. Since the copy operation takes place before the call to <code class="docutils literal"><span class="pre">Publish-AspNet</span></code> the new files will be included in the published content. To perform actions after the files have reached the destination then you can place those commands after the call to <code class="docutils literal"><span class="pre">Publish-AspNet</span></code>.</p>
+<p>You are free to customize, or even completely replace, the Publish-AspNet script provided. As previously mentioned, you will need to preserve the parameter declaration, but the rest is up to you.</p>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="azure-continuous-deployment.html" class="btn btn-neutral float-right" title="Publishing to an Azure Web App with Continuous Deployment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="iis-with-msdeploy.html" class="btn btn-neutral" title="Publishing to IIS with Web Deploy using Visual Studio" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

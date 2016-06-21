@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migrating Authentication and Identity &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Migration" href="index.html"/>
+        <link rel="next" title="Migrating from ASP.NET Web API" href="webapi.html"/>
+        <link rel="prev" title="Migrating Configuration" href="configuration.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Migration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mvc.html">Migrating From ASP.NET MVC to ASP.NET Core MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Migrating Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating Authentication and Identity</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="webapi.html">Migrating from ASP.NET Web API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http-modules.html">Migrating HTTP Modules to Middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rc1-to-rc2.html">Migrating from ASP.NET 5 RC1 to ASP.NET Core</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Migration</a> &raquo;</li>
+      
+    <li>Migrating Authentication and Identity</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/migration/identity.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="migrating-authentication-and-identity">
+<span id="migration-identity"></span><h1>Migrating Authentication and Identity<a class="headerlink" href="#migrating-authentication-and-identity" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>In the previous article we <a class="reference internal" href="configuration.html"><span class="doc">migrated configuration from an ASP.NET MVC project to ASP.NET Core</span></a>. In this article, we migrate the registration, login, and user management features.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#configure-identity-and-membership" id="id1">Configure Identity and Membership</a></li>
+<li><a class="reference internal" href="#migrate-registration-and-login-logic" id="id2">Migrate Registration and Login Logic</a></li>
+<li><a class="reference internal" href="#summary" id="id3">Summary</a></li>
+</ul>
+</div>
+<div class="section" id="configure-identity-and-membership">
+<h2><a class="toc-backref" href="#id1">Configure Identity and Membership</a><a class="headerlink" href="#configure-identity-and-membership" title="Permalink to this headline">¶</a></h2>
+<p>In ASP.NET MVC, authentication and identity features are configured using ASP.NET Identity in Startup.Auth.cs and IdentityConfig.cs, located in the App_Start folder. In ASP.NET Core, these features are configured in <em>Startup.cs</em>. Before pulling in the required services and configuring them, we should add the required dependencies to the project. Open <em>project.json</em> and add <code class="docutils literal"><span class="pre">Microsoft.AspNetCore.Identity.EntityFramework</span></code> and <code class="docutils literal"><span class="pre">Microsoft.AspNetCore.Identity.Cookies</span></code> to the list of dependencies:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;dependencies&quot;: {
+  &quot;Microsoft.AspNetCore.Server.IIS&quot;: &quot;1.0.0-beta3&quot;,
+  &quot;Microsoft.AspNetCore.Mvc&quot;: &quot;6.0.0-beta3&quot;,
+  &quot;Microsoft.Framework.ConfigurationModel.Json&quot;: &quot;1.0.0-beta3&quot;,
+  &quot;Microsoft.AspNetCore.Identity.EntityFramework&quot;: &quot;3.0.0-beta3&quot;,
+  &quot;Microsoft.AspNetCore.Security.Cookies&quot;: &quot;1.0.0-beta3&quot;
+},
+</pre></div>
+</div>
+<p>Now, open Startup.cs and update the ConfigureServices() method to use Entity Framework and Identity services:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Add EF services to the services container.</span>
+  <span class="n">services</span><span class="p">.</span><span class="n">AddEntityFramework</span><span class="p">(</span><span class="n">Configuration</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">AddSqlServer</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;();</span>
+
+  <span class="c1">// Add Identity services to the services container.</span>
+  <span class="n">services</span><span class="p">.</span><span class="n">AddIdentity</span><span class="p">&lt;</span><span class="n">ApplicationUser</span><span class="p">,</span> <span class="n">IdentityRole</span><span class="p">&gt;(</span><span class="n">Configuration</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">AddEntityFrameworkStores</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;();</span>
+
+  <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point, there are two types referenced in the above code that we haven&#8217;t yet migrated from the ASP.NET MVC project: <code class="docutils literal"><span class="pre">ApplicationDbContext</span></code> and <code class="docutils literal"><span class="pre">ApplicationUser</span></code>. Create a new <em>Models</em> folder in the ASP.NET Core project, and add two classes to it corresponding to these types. You will find the ASP.NET MVC versions of these classes in <code class="docutils literal"><span class="pre">/Models/IdentityModels.cs</span></code>, but we will use one file per class in the migrated project since that&#8217;s more clear.</p>
+<p>ApplicationUser.cs:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Identity</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">NewMvc6Project.Models</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">ApplicationUser</span> <span class="p">:</span> <span class="n">IdentityUser</span>
+  <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ApplicationDbContext.cs:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Identity.EntityFramework</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Data.Entity</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">NewMvc6Project.Models</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">IdentityDbContext</span><span class="p">&lt;</span><span class="n">ApplicationUser</span><span class="p">&gt;</span>
+  <span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">_created</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">ApplicationDbContext</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="c1">// Create the database and schema if it doesn&#39;t exist</span>
+      <span class="c1">// This is a temporary workaround to create database until Entity Framework database migrations</span>
+      <span class="c1">// are supported in ASP.NET Core</span>
+      <span class="k">if</span> <span class="p">(!</span><span class="n">_created</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Database</span><span class="p">.</span><span class="n">AsMigrationsEnabled</span><span class="p">().</span><span class="n">ApplyMigrations</span><span class="p">();</span>
+        <span class="n">_created</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnConfiguring</span><span class="p">(</span><span class="n">DbContextOptions</span> <span class="n">options</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">options</span><span class="p">.</span><span class="n">UseSqlServer</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The ASP.NET MVC Starter Web project doesn&#8217;t include much customization of users, or the ApplicationDbContext. When migrating a real application, you will also need to migrate all of the custom properties and methods of your application&#8217;s user and DbContext classes, as well as any other Model classes your application utilizes (for example, if your DbContext has a DbSet&lt;Album&gt;, you will of course need to migrate the Album class).</p>
+<p>With these files in place, the Startup.cs file can be made to compile by updating its using statements:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.Framework.ConfigurationModel</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NewMvc6Project.Models</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Identity</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Our application is now ready to support authentication and identity services - it just needs to have these features exposed to users.</p>
+</div>
+<div class="section" id="migrate-registration-and-login-logic">
+<h2><a class="toc-backref" href="#id2">Migrate Registration and Login Logic</a><a class="headerlink" href="#migrate-registration-and-login-logic" title="Permalink to this headline">¶</a></h2>
+<p>With identity services configured for the application and data access configured using Entity Framework and SQL Server, we are now ready to add support for registration and login to the application. Recall that <a class="reference internal" href="mvc.html#migrate-layout-file"><span class="std std-ref">earlier in the migration process</span></a> we commented out a reference to _LoginPartial in _Layout.cshtml. Now it&#8217;s time to return to that code, uncomment it, and add in the necessary controllers and views to support login functionality.</p>
+<p>Update _Layout.cshtml; uncomment the &#64;Html.Partial line:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>      &lt;li&gt;@Html.ActionLink(&quot;Contact&quot;, &quot;Contact&quot;, &quot;Home&quot;)&lt;/li&gt;
+    &lt;/ul&gt;
+    @*@Html.Partial(&quot;_LoginPartial&quot;)*@
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+<p>Now, add a new MVC View Page called _LoginPartial to the Views/Shared folder:</p>
+<p>Update _LoginPartial.cshtml with the following code (replace all of its contents):</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">@using</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">Principal</span>
+
+<span class="n">@if</span> <span class="p">(</span><span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">IsAuthenticated</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="p">(</span><span class="n">Html</span><span class="p">.</span><span class="n">BeginForm</span><span class="p">(</span><span class="s">&quot;LogOff&quot;</span><span class="p">,</span> <span class="s">&quot;Account&quot;</span><span class="p">,</span> <span class="n">FormMethod</span><span class="p">.</span><span class="n">Post</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="s">&quot;logoutForm&quot;</span><span class="p">,</span> <span class="n">@class</span> <span class="p">=</span> <span class="s">&quot;navbar-right&quot;</span> <span class="p">}))</span>
+    <span class="p">{</span>
+        <span class="n">@Html</span><span class="p">.</span><span class="n">AntiForgeryToken</span><span class="p">()</span>
+        <span class="p">&lt;</span><span class="n">ul</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;nav navbar-nav navbar-right&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">li</span><span class="p">&gt;</span>
+                <span class="n">@Html</span><span class="p">.</span><span class="n">ActionLink</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span> <span class="p">+</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">GetUserName</span><span class="p">()</span> <span class="p">+</span> <span class="s">&quot;!&quot;</span><span class="p">,</span> <span class="s">&quot;Manage&quot;</span><span class="p">,</span> <span class="s">&quot;Account&quot;</span><span class="p">,</span> <span class="n">routeValues</span><span class="p">:</span> <span class="k">null</span><span class="p">,</span> <span class="n">htmlAttributes</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> <span class="n">title</span> <span class="p">=</span> <span class="s">&quot;Manage&quot;</span> <span class="p">})</span>
+            <span class="p">&lt;/</span><span class="n">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="n">li</span><span class="p">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="p">=</span><span class="s">&quot;javascript:document.getElementById(&#39;logoutForm&#39;).submit()&quot;</span><span class="p">&gt;</span><span class="n">Log</span> <span class="n">off</span><span class="p">&lt;/</span><span class="n">a</span><span class="p">&gt;&lt;/</span><span class="n">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="n">ul</span><span class="p">&gt;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="p">&lt;</span><span class="n">ul</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;nav navbar-nav navbar-right&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">li</span><span class="p">&gt;</span><span class="n">@Html</span><span class="p">.</span><span class="n">ActionLink</span><span class="p">(</span><span class="s">&quot;Register&quot;</span><span class="p">,</span> <span class="s">&quot;Register&quot;</span><span class="p">,</span> <span class="s">&quot;Account&quot;</span><span class="p">,</span> <span class="n">routeValues</span><span class="p">:</span> <span class="k">null</span><span class="p">,</span> <span class="n">htmlAttributes</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="s">&quot;registerLink&quot;</span> <span class="p">})&lt;/</span><span class="n">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">li</span><span class="p">&gt;</span><span class="n">@Html</span><span class="p">.</span><span class="n">ActionLink</span><span class="p">(</span><span class="s">&quot;Log in&quot;</span><span class="p">,</span> <span class="s">&quot;Login&quot;</span><span class="p">,</span> <span class="s">&quot;Account&quot;</span><span class="p">,</span> <span class="n">routeValues</span><span class="p">:</span> <span class="k">null</span><span class="p">,</span> <span class="n">htmlAttributes</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="s">&quot;loginLink&quot;</span> <span class="p">})&lt;/</span><span class="n">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">ul</span><span class="p">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point, you should be able to refresh the site in your browser.</p>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id3">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>ASP.NET Core introduces changes to the ASP.NET Identity features. In this article, you have seen how to migrate the authentication and user management features of an ASP.NET Identity to ASP.NET Core.</p>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="webapi.html" class="btn btn-neutral float-right" title="Migrating from ASP.NET Web API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Migrating Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

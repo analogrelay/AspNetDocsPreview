@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model Binding &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Models" href="index.html"/>
+        <link rel="next" title="Model Validation" href="validation.html"/>
+        <link rel="prev" title="Models" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MVC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Model Binding</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Model Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="formatting.html">🔧 Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom-formatters.html">🔧 Custom Formatters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../views/index.html">Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">MVC</a> &raquo;</li>
+      
+          <li><a href="index.html">Models</a> &raquo;</li>
+      
+    <li>Model Binding</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/mvc/models/model-binding.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="model-binding">
+<h1>Model Binding<a class="headerlink" href="#model-binding" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://github.com/rachelappel">Rachel Appel</a></p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction-to-model-binding" id="id1">Introduction to model binding</a></li>
+<li><a class="reference internal" href="#how-model-binding-works" id="id2">How model binding works</a></li>
+<li><a class="reference internal" href="#customize-model-binding-behavior-with-attributes" id="id3">Customize model binding behavior with attributes</a></li>
+<li><a class="reference internal" href="#binding-formatted-data-from-the-request-body" id="id4">Binding formatted data from the request body</a></li>
+</ul>
+</div>
+<div class="section" id="introduction-to-model-binding">
+<h2><a class="toc-backref" href="#id1">Introduction to model binding</a><a class="headerlink" href="#introduction-to-model-binding" title="Permalink to this headline">¶</a></h2>
+<p>Model binding in ASP.NET Core MVC maps data from HTTP requests to action method parameters. The parameters may be simple types such as strings, integers, or floats, or they may be complex types. This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data. MVC solves this problem by abstracting binding away so developers don&#8217;t have to keep rewriting a slightly different version of that same code in every app. Writing your own text to type converter code is tedious, and error prone.</p>
+</div>
+<div class="section" id="how-model-binding-works">
+<h2><a class="toc-backref" href="#id2">How model binding works</a><a class="headerlink" href="#how-model-binding-works" title="Permalink to this headline">¶</a></h2>
+<p>When MVC receives an HTTP request, it routes it to a specific action method of a controller. It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method&#8217;s parameters. For example, consider the following URL:</p>
+<p><cite>http://contoso.com/movies/edit/2</cite></p>
+<p>Since the route template looks like this, <code class="docutils literal"><span class="pre">{controller=Home}/{action=Index}/{id?}</span></code>, <code class="docutils literal"><span class="pre">movies/edit/2</span></code> routes to the <code class="docutils literal"><span class="pre">Movies</span></code> controller, and its <code class="docutils literal"><span class="pre">Edit</span></code> action method. It also accepts an optional parameter called <code class="docutils literal"><span class="pre">id</span></code>. The code for the action method should look something like this:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The strings in the URL route are not case sensitive.</p>
+</div>
+<p>MVC will try to bind request data to the action parameters by name. MVC will look for values for each parameter using the parameter name and the names of its public settable properties. In the above example, the only action parameter is named <code class="docutils literal"><span class="pre">id</span></code>, which MVC binds to the value with the same name in the route values. In addition to route values MVC will bind data from various parts of the request and it does so in a set order. Below is a list of the data sources in the order that model binding looks through them:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">Form</span> <span class="pre">values</span></code>: These are form values that go in the HTTP request using the POST method. (including jQuery POST requests).</li>
+<li><code class="docutils literal"><span class="pre">Route</span> <span class="pre">values</span></code>: The set of route values provided by <a class="reference external" href="https://docs.asp.net/projects/mvc/en/latest/controllers/routing.html">routing</a>.</li>
+<li><code class="docutils literal"><span class="pre">Query</span> <span class="pre">strings</span></code>: The query string part of the URI.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Form values, route data, and query strings are all stored as name-value pairs.</p>
+</div>
+<p>Since model binding asked for a key named <code class="docutils literal"><span class="pre">id</span></code> and there is nothing named <code class="docutils literal"><span class="pre">id</span></code> in the form values, it moved on to the route values looking for that key. In our example, it&#8217;s a match. Binding happens, and the value is converted to the integer 2. The same request using Edit(string id) would convert to the string &#8220;2&#8221;.</p>
+<p>So far the example uses simple types. In MVC simple types are any .NET primitive type or type with a string type converter. If the action method&#8217;s parameter were a class such as the <code class="docutils literal"><span class="pre">Movie</span></code> type, which contains both simple and complex types as properties, MVC&#8217;s model binding will still handle it nicely. It uses reflection and recursion to traverse the properties of complex types looking for matches. Model binding looks for the pattern parameter_name.property_name to bind values to properties. If it doesn&#8217;t find matching values of this form, it will attempt to bind using just the property name. For those types such as <code class="docutils literal"><span class="pre">Collection</span></code> types, model binding looks for matches to <cite>parameter_name[index]</cite> or just <cite>[index]</cite>. Model binding treats  <code class="docutils literal"><span class="pre">Dictionary</span></code> types similarly, asking for <cite>parameter_name[key]</cite> or just <cite>[key]</cite>, as long as the keys are simple types. Keys that are supported match the field names HTML and tag helpers generated for the same model type. This enables round-tripping values so that the form fields remain filled with the user&#8217;s input for their convenience, for example, when bound data from a create or edit did not pass validation.</p>
+<p>In order for binding to happen the class must have a public default constructor and member to be bound must be public writable properties. When model binding happens the class will only be instantiated using the public default constructor, then the properties can be set.</p>
+<p>When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter. If binding fails, MVC does not throw an error. You can query for model state errors by checking the <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code> property.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Each entry in the controller&#8217;s <code class="docutils literal"><span class="pre">ModelState</span></code> property is a <code class="docutils literal"><span class="pre">ModelStateEntry</span></code> containing an <code class="docutils literal"><span class="pre">Errors</span> <span class="pre">property</span></code>. It&#8217;s rarely necessary to query this collection yourself. Use <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code> instead.</p>
+</div>
+<p>Additionally, there are some special data types that MVC must consider when performing model binding:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">IFormFile</span></code>, <code class="docutils literal"><span class="pre">IEnumerable&lt;IFormFile&gt;</span></code>: One or more uploaded files that are part of the HTTP request.</li>
+<li><code class="docutils literal"><span class="pre">CancelationToken</span></code>: Used to cancel activity in asynchronous controllers.</li>
+</ul>
+<p>These types can be bound to action parameters or to properties on a class type.</p>
+<p>Once model binding is complete, <a class="reference external" href="https://docs.asp.net/projects/mvc/en/latest/models/validation.html">validation</a> occurs. Default model binding works great for the vast majority of development scenarios. It is also extensible so if you have unique needs you can customize the built-in behavior.</p>
+</div>
+<div class="section" id="customize-model-binding-behavior-with-attributes">
+<h2><a class="toc-backref" href="#id3">Customize model binding behavior with attributes</a><a class="headerlink" href="#customize-model-binding-behavior-with-attributes" title="Permalink to this headline">¶</a></h2>
+<p>MVC contains several attributes that you can use to direct its default model binding behavior to a different source. For example, you can specify whether binding is required for a property, or if it should never happen at all by using the <code class="docutils literal"><span class="pre">[BindRequired]</span></code> or <code class="docutils literal"><span class="pre">[BindNever]</span></code> attributes. Alternatively, you can override the default data source, and specify the model binder&#8217;s data source. Below is a list of model binding attributes:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">[BindRequired]</span></code>: This attribute adds a model state error if binding cannot occur.</li>
+<li><code class="docutils literal"><span class="pre">[BindNever]</span></code>: Tells the model binder to never bind to this parameter.</li>
+<li><code class="docutils literal"><span class="pre">[FromHeader]</span></code>, <code class="docutils literal"><span class="pre">[FromQuery]</span></code>, <code class="docutils literal"><span class="pre">[FromRoute]</span></code>, <code class="docutils literal"><span class="pre">[FromForm]</span></code>: Use these to specify the exact binding source you want to apply.</li>
+<li><code class="docutils literal"><span class="pre">[FromServices]</span></code>: This attribute uses <a class="reference internal" href="../../fundamentals/dependency-injection.html"><span class="doc">dependency injection</span></a> to bind parameters from services.</li>
+<li><code class="docutils literal"><span class="pre">[FromBody]</span></code>: Use the configured formatters to bind data from the request body. The formatter is selected based on content type of the request.</li>
+<li><code class="docutils literal"><span class="pre">[ModelBinder]</span></code>: Used to override the default model binder, binding source and name.</li>
+</ul>
+<p>Attributes are very helpful tools when you need to override the default behavior of model binding.</p>
+</div>
+<div class="section" id="binding-formatted-data-from-the-request-body">
+<h2><a class="toc-backref" href="#id4">Binding formatted data from the request body</a><a class="headerlink" href="#binding-formatted-data-from-the-request-body" title="Permalink to this headline">¶</a></h2>
+<p>Request data can come in a variety of formats including JSON, XML and many others. When you use the [FromBody] attribute to indicate that you want to bind a parameter to data in the request body, MVC uses a configured set of formatters to handle the request data based on its content type. By default MVC includes a <code class="docutils literal"><span class="pre">JsonInputFormatter</span></code> class for handling JSON data, but you can add additional formatters for handling XML and other custom formats.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">JsonInputFormatter</span></code> is the default formatter and it is based off of <a class="reference external" href="http://www.newtonsoft.com/json">Json.NET</a>.</p>
+</div>
+<p>ASP.NET selects input formatters based on the <a class="reference external" href="https://www.w3.org/Protocols/rfc1341/4_Content-Type.html">Content-Type</a> header and the type of the parameter, unless there is an attribute applied to it specifying otherwise. If you&#8217;d like to use XML or another format you must configure it in the <cite>Startup.cs</cite> file, but you may first have to obtain a reference to <code class="docutils literal"><span class="pre">Microsoft.AspNetCore.Mvc.Formatters.Xml</span></code> using NuGet. Your startup code should look something like this:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">()</span>
+       <span class="p">.</span><span class="n">AddXmlSerializerFormatters</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Code in the <cite>Startup.cs</cite> file contains a <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method with a <code class="docutils literal"><span class="pre">services</span></code> argument you can use to build up services for your ASP.NET app. In the sample, we are adding an XML formatter as a service that MVC will provide for this app. The <code class="docutils literal"><span class="pre">options</span></code> argument passed into the <code class="docutils literal"><span class="pre">AddMvc</span></code> method allows you to add and manage filters, formatters, and other system options from MVC upon app startup. Then apply the <code class="docutils literal"><span class="pre">Consumes</span></code> attribute to controller classes or action methods to work with the format you want.</p>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="validation.html" class="btn btn-neutral float-right" title="Model Validation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Models" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

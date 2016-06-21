@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Controller methods and views &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Building your first ASP.NET Core MVC app with Visual Studio" href="index.html"/>
+        <link rel="next" title="Adding Search" href="search.html"/>
+        <link rel="prev" title="Working with SQL Server LocalDB" href="working-with-sql.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="start-mvc.html">Getting started with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-controller.html">Adding a controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-view.html">Adding a view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-model.html">Adding a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working-with-sql.html">Working with SQL Server LocalDB</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Controller methods and views</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Adding Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-field.html">Adding a New Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Adding Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="details.html">Examining the Details and Delete methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a> &raquo;</li>
+      
+    <li>Controller methods and views</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tutorials/first-mvc-app/controller-methods-views.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="controller-methods-and-views">
+<h1>Controller methods and views<a class="headerlink" href="#controller-methods-and-views" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>We have a good start to the movie app, but the presentation is not ideal. We don&#8217;t want to see the time on the release date and <strong>ReleaseDate</strong> should be two words.</p>
+<img alt="../../_images/m55.png" src="../../_images/m55.png" />
+<p>Open the <em>Models/Movie.cs</em> file and add the highlighted lines shown below:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="hll"><span class="na">    [Display(Name = &quot;Release Date&quot;)]</span>
+</span><span class="hll"><span class="na">    [DataType(DataType.Date)]</span>
+</span>    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">ReleaseDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Genre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Price</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Right click on a red squiggly line <strong>&gt; Quick Actions</strong>.</li>
+</ul>
+<blockquote>
+<div><img alt="../../_images/qa.png" src="../../_images/qa.png" />
+</div></blockquote>
+<ul class="simple">
+<li>Tap <code class="docutils literal"><span class="pre">using</span> <span class="pre">System.ComponentModel.DataAnnotations;</span></code></li>
+</ul>
+<blockquote>
+<div><img alt="../../_images/da.png" src="../../_images/da.png" />
+</div></blockquote>
+<p>Visual studio adds <code class="docutils literal"><span class="pre">using</span> <span class="pre">System.ComponentModel.DataAnnotations;</span></code>.</p>
+<p>Let&#8217;s remove the <code class="docutils literal"><span class="pre">using</span></code> statements that are not needed. They show up by default in a light grey font. Right click anywhere in the <em>Movie.cs</em> file <strong>&gt; Organize Usings &gt; Remove Unnecessary Usings</strong>.</p>
+<img alt="../../_images/rm.png" src="../../_images/rm.png" />
+<p>The updated code:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MvcMovie.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">        [Display(Name = &quot;Release Date&quot;)]</span>
+<span class="na">        [DataType(DataType.Date)]</span>
+        <span class="k">public</span> <span class="n">DateTime</span> <span class="n">ReleaseDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Genre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Price</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We&#8217;ll cover <a class="reference external" href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx">DataAnnotations</a> in the next tutorial. The <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx">Display</a> attribute specifies what to display for the name of a field (in this case &#8220;Release Date&#8221; instead of &#8220;ReleaseDate&#8221;). The <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx">DataType</a> attribute specifies the type of the data, in this case it&#8217;s a date, so the time information stored in the field is not displayed.</p>
+<p>Browse to the <code class="docutils literal"><span class="pre">Movies</span></code> controller and hold the mouse pointer over an <strong>Edit</strong> link to see the target URL.</p>
+<img alt="../../_images/edit7.png" src="../../_images/edit7.png" />
+<p>The <strong>Edit</strong>, <strong>Details</strong>, and <strong>Delete</strong> links are generated by the MVC Core Anchor Tag Helper in the <em>Views/Movies/Index.cshtml</em> file.</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="hll">    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Edit&quot;</span> <span class="na">asp-route-id</span><span class="o">=</span><span class="s">&quot;@item.ID&quot;</span><span class="p">&gt;</span>Edit<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> |
+</span><span class="hll">    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Details&quot;</span> <span class="na">asp-route-id</span><span class="o">=</span><span class="s">&quot;@item.ID&quot;</span><span class="p">&gt;</span>Details<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> |
+</span><span class="hll">    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Delete&quot;</span> <span class="na">asp-route-id</span><span class="o">=</span><span class="s">&quot;@item.ID&quot;</span><span class="p">&gt;</span>Delete<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../mvc/views/tag-helpers/intro.html"><span class="doc">Tag Helpers</span></a> enable server-side code to participate in creating and rendering HTML elements in Razor files. In the code above, the <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/AnchorTagHelper/index.html">AnchorTagHelper</a> dynamically generates the HTML <code class="docutils literal"><span class="pre">href</span></code> attribute value from the controller action method and route id. You use <strong>View Source</strong> from your favorite browser or use the <strong>F12</strong> tools to examine the generated markup. The <strong>F12</strong> tools are shown below.</p>
+<img alt="../../_images/f12.png" src="../../_images/f12.png" />
+<p>Recall the format for routing set in the <em>Startup.cs</em> file.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>ASP.NET Core translates <code class="docutils literal"><span class="pre">http://localhost:1234/Movies/Edit/4</span></code> into a request to the <code class="docutils literal"><span class="pre">Edit</span></code> action method of the <code class="docutils literal"><span class="pre">Movies</span></code> controller with the parameter <code class="docutils literal"><span class="pre">ID</span></code> of 4. (Controller methods are also known as action methods.)</p>
+<p><a class="reference internal" href="../../mvc/views/tag-helpers/index.html"><span class="doc">Tag Helpers</span></a> are one of the most popular new features in ASP.NET Core. See <a class="reference internal" href="#additional-resources">Additional resources</a> for more information.</p>
+<p>Open the <code class="docutils literal"><span class="pre">Movies</span></code> controller and examine the two <code class="docutils literal"><span class="pre">Edit</span></code> action methods:</p>
+<img alt="../../_images/11.png" src="../../_images/11.png" />
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// GET: Movies/Edit/5</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Edit</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">var</span> <span class="n">movie</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">movie</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// POST: Movies/Edit/5</span>
+<span class="c1">// To protect from overposting attacks, please enable the specific properties you want to bind to, for </span>
+<span class="c1">// more details see http://go.microsoft.com/fwlink/?LinkId=317598.</span>
+<span class="na">[HttpPost]</span>
+<span class="na">[ValidateAntiForgeryToken]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">Bind</span><span class="p">(</span><span class="s">&quot;ID,Genre,Price,ReleaseDate,Title&quot;</span><span class="p">)]</span> <span class="n">Movie</span> <span class="n">movie</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">!=</span> <span class="n">movie</span><span class="p">.</span><span class="n">ID</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">_context</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+            <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">DbUpdateConcurrencyException</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">MovieExists</span><span class="p">(</span><span class="n">movie</span><span class="p">.</span><span class="n">ID</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="k">throw</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nf">RedirectToAction</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">[Bind]</span></code> attribute is one way to protect against <a class="reference external" href="http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost">over-posting</a>. You should only include properties in the <code class="docutils literal"><span class="pre">[Bind]</span></code> attribute that you want to change. See <a class="reference external" href="http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost">Protect your controller from over-posting</a> for more information. <a class="reference external" href="http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/">ViewModels</a> provide an alternative approach to prevent over-posting.</p>
+<p>Notice the second <code class="docutils literal"><span class="pre">Edit</span></code> action method is preceded by the <code class="docutils literal"><span class="pre">[HttpPost]</span></code> attribute.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[HttpPost]</span>
+</span><span class="na">[ValidateAntiForgeryToken]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">Bind</span><span class="p">(</span><span class="s">&quot;ID,Genre,Price,ReleaseDate,Title&quot;</span><span class="p">)]</span> <span class="n">Movie</span> <span class="n">movie</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">!=</span> <span class="n">movie</span><span class="p">.</span><span class="n">ID</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">_context</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+            <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">DbUpdateConcurrencyException</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">MovieExists</span><span class="p">(</span><span class="n">movie</span><span class="p">.</span><span class="n">ID</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="k">throw</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nf">RedirectToAction</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html">[HttpPost]</a> attribute specifies that this <code class="docutils literal"><span class="pre">Edit</span></code> method can be invoked <em>only</em> for <code class="docutils literal"><span class="pre">POST</span></code> requests. You could apply the <code class="docutils literal"><span class="pre">[HttpGet]</span></code> attribute to the first edit method, but that&#8217;s not necessary because <code class="docutils literal"><span class="pre">[HttpGet]</span></code> is the default.</p>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ValidateAntiForgeryTokenAttribute/index.html">[ValidateAntiForgeryToken]</a> attribute is used to prevent forgery of a request and is paired up with an anti-forgery token generated in the edit view file (<em>Views/Movies/Edit.cshtml</em>). The edit view file generates the anti-forgery token in the <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Form Tag Helper</span></a>.</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Edit&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Form Tag Helper</span></a> generates a hidden anti-forgery token that must match the <code class="docutils literal"><span class="pre">[ValidateAntiForgeryToken]</span></code> generated anti-forgery token in the <code class="docutils literal"><span class="pre">Edit</span></code> method of the Movies controller. For more information, see <a class="reference internal" href="../../security/anti-request-forgery.html"><span class="doc">🔧 Anti-Request Forgery</span></a>.</p>
+<p>The <code class="docutils literal"><span class="pre">HttpGet</span> <span class="pre">Edit</span></code> method takes the movie <code class="docutils literal"><span class="pre">ID</span></code> parameter, looks up the movie using the Entity Framework <code class="docutils literal"><span class="pre">SingleOrDefaultAsync</span></code> method, and returns the selected movie to the Edit view. If a movie cannot be found, <code class="docutils literal"><span class="pre">NotFound</span></code> (HTTP 404) is returned.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// GET: Movies/Edit/5</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Edit</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">var</span> <span class="n">movie</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">movie</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When the scaffolding system created the Edit view, it examined the <code class="docutils literal"><span class="pre">Movie</span></code> class and created code to render <code class="docutils literal"><span class="pre">&lt;label&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;input&gt;</span></code> elements for each property of the class. The following example shows the Edit view that was generated by the visual studio scaffolding system:</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="hll">@model MvcMovie.Models.Movie
+</span>
+@{
+    ViewData[&quot;Title&quot;] = &quot;Edit&quot;;
+}
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Edit<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Edit&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-horizontal&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Movie<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">asp-validation-summary</span><span class="o">=</span><span class="s">&quot;ModelOnly&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;ID&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-2 control-label&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">asp-validation-for</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-2 control-label&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">asp-validation-for</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;ReleaseDate&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-2 control-label&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;ReleaseDate&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">asp-validation-for</span><span class="o">=</span><span class="s">&quot;ReleaseDate&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Title&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-2 control-label&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Title&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">asp-validation-for</span><span class="o">=</span><span class="s">&quot;Title&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-offset-2 col-md-10&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Save&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">asp-action</span><span class="o">=</span><span class="s">&quot;Index&quot;</span><span class="p">&gt;</span>Back to List<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync(&quot;_ValidationScriptsPartial&quot;);}
+}
+</pre></div>
+</div>
+<p>Notice how the view template has a <code class="docutils literal"><span class="pre">&#64;model</span> <span class="pre">MvcMovie.Models.Movie</span></code> statement at the top of the file — this specifies that the view expects the model for the view template to be of type <code class="docutils literal"><span class="pre">Movie</span></code>.</p>
+<p>The scaffolded code uses several Tag Helper methods to streamline the HTML markup. The - <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Label Tag Helper</span></a> displays the name of the field (&#8220;Title&#8221;, &#8220;ReleaseDate&#8221;, &#8220;Genre&#8221;, or &#8220;Price&#8221;). The <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Input Tag Helper</span></a> renders an HTML <code class="docutils literal"><span class="pre">&lt;input&gt;</span></code> element. The <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Validation Tag Helper</span></a> displays any validation messages associated with that property.</p>
+<p>Run the application and navigate to the <code class="docutils literal"><span class="pre">/Movies</span></code> URL. Click an <strong>Edit</strong> link. In the browser, view the source for the page. The generated HTML for the <code class="docutils literal"><span class="pre">&lt;form&gt;</span></code> element is shown below.</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="hll"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/Movies/Edit/7&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+</span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-horizontal&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Movie<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">hr</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger&quot;</span> <span class="p">/&gt;</span>
+<span class="hll">        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">data-val</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">data-val-required</span><span class="o">=</span><span class="s">&quot;The ID field is required.&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;ID&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;ID&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;7&quot;</span> <span class="p">/&gt;</span>
+</span>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;control-label col-md-2&quot;</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+<span class="hll">                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Western&quot;</span> <span class="p">/&gt;</span>
+</span>                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger field-validation-valid&quot;</span> <span class="na">data-valmsg-for</span><span class="o">=</span><span class="s">&quot;Genre&quot;</span> <span class="na">data-valmsg-replace</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;control-label col-md-2&quot;</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+<span class="hll">                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">data-val</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">data-val-number</span><span class="o">=</span><span class="s">&quot;The field Price must be a number.&quot;</span> <span class="na">data-val-required</span><span class="o">=</span><span class="s">&quot;The Price field is required.&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;3.99&quot;</span> <span class="p">/&gt;</span>
+</span>                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-danger field-validation-valid&quot;</span> <span class="na">data-valmsg-for</span><span class="o">=</span><span class="s">&quot;Price&quot;</span> <span class="na">data-valmsg-replace</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="c">&lt;!-- Markup removed for brevity --&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-offset-2 col-md-10&quot;</span><span class="p">&gt;</span>
+<span class="hll">                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Save&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="p">/&gt;</span>
+</span>            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="hll">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;__RequestVerificationToken&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;CfDJ8Inyxgp63fRFqUePGvuI5jGZsloJu1L7X9le1gy7NCIlSduCRx9jDQClrV9pOTTmqUyXnJBXhmrjcUVDJyDUMm7-MF_9rK8aAZdRdlOri7FmKVkRe_2v5LIHGKFcTjPrWPYnc9AdSbomkiOSaTEg7RU&quot;</span> <span class="p">/&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">&lt;input&gt;</span></code> elements are in an <code class="docutils literal"><span class="pre">HTML</span> <span class="pre">&lt;form&gt;</span></code> element whose <code class="docutils literal"><span class="pre">action</span></code> attribute is set to post to the <code class="docutils literal"><span class="pre">/Movies/Edit/id</span></code> URL. The form data will be posted to the server when the <code class="docutils literal"><span class="pre">Save</span></code> button is clicked. The last line before the closing <code class="docutils literal"><span class="pre">&lt;/form&gt;</span></code> element shows the hidden <a class="reference external" href=":doc:/security/anti-request-forgery">XSRF</a> token generated by the <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Form Tag Helper</span></a>.</p>
+<div class="section" id="processing-the-post-request">
+<h2>Processing the POST Request<a class="headerlink" href="#processing-the-post-request" title="Permalink to this headline">¶</a></h2>
+<p>The following listing shows the <code class="docutils literal"><span class="pre">[HttpPost]</span></code> version of the <code class="docutils literal"><span class="pre">Edit</span></code> action method.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="hll"><span class="na">[HttpPost]</span>
+</span><span class="hll"><span class="na">[ValidateAntiForgeryToken]</span>
+</span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Edit</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">Bind</span><span class="p">(</span><span class="s">&quot;ID,Genre,Price,ReleaseDate,Title&quot;</span><span class="p">)]</span> <span class="n">Movie</span> <span class="n">movie</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">!=</span> <span class="n">movie</span><span class="p">.</span><span class="n">ID</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+</span>    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="n">_context</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+</span><span class="hll">            <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+</span>        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">DbUpdateConcurrencyException</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">MovieExists</span><span class="p">(</span><span class="n">movie</span><span class="p">.</span><span class="n">ID</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="k">throw</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="hll">        <span class="k">return</span> <span class="nf">RedirectToAction</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">[ValidateAntiForgeryToken]</span></code> attribute validates the hidden <a class="reference external" href=":doc:/security/anti-request-forgery">XSRF</a> token generated by the anti-forgery token generator in the
+<a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Form Tag Helper</span></a></p>
+<p>The <a class="reference internal" href="../../mvc/models/model-binding.html"><span class="doc">model binding</span></a> system takes the posted form values and creates a <code class="docutils literal"><span class="pre">Movie</span></code> object that&#8217;s passed as the <code class="docutils literal"><span class="pre">movie</span></code> parameter. The <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code> method verifies that the data submitted in the form can be used to modify (edit or update) a <code class="docutils literal"><span class="pre">Movie</span></code> object. If the data is valid it&#8217;s saved. The updated (edited) movie data is saved to the database by calling the <code class="docutils literal"><span class="pre">SaveChangesAsync</span></code> method of database context. After saving the data, the code redirects the user to the <code class="docutils literal"><span class="pre">Index</span></code> action method of the <code class="docutils literal"><span class="pre">MoviesController</span></code> class, which displays the movie collection, including the changes just made.</p>
+<p>Before the form is posted to the server, client side validation checks any validation rules on the fields. If there are any validation errors, an error message is displayed and the form is not posted. If JavaScript is disabled, you won&#8217;t have client side validation but the server will detect the posted values that are not valid, and the form values will be redisplayed with error messages. Later in the tutorial we examine <a class="reference internal" href="../../mvc/models/validation.html"><span class="doc">Model Validation</span></a> validation in more detail. The <a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Validation Tag Helper</span></a> in the <em>Views/Book/Edit.cshtml</em> view template takes care of displaying appropriate error messages.</p>
+<img alt="../../_images/val.png" src="../../_images/val.png" />
+<p>All the <code class="docutils literal"><span class="pre">HttpGet</span></code> methods in the movie controller follow a similar pattern. They get a movie object (or list of objects, in the case of <code class="docutils literal"><span class="pre">Index</span></code>), and pass the object (model) to the view. The <code class="docutils literal"><span class="pre">Create</span></code> method passes an empty movie object to the <code class="docutils literal"><span class="pre">Create</span></code> view. All the methods that create, edit, delete, or otherwise modify data do so in the <code class="docutils literal"><span class="pre">[HttpPost]</span></code> overload of the method. Modifying data in an HTTP GET method is a security risk, as in <a class="reference external" href="http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx">ASP.NET MVC Tip #46 – Don’t use Delete Links because they create Security Holes</a>. Modifying data in a <code class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></code> method also violates HTTP best practices and the architectural <a class="reference external" href="http://rest.elkstein.org/">REST</a> pattern, which specifies that GET requests should not change the state of your application. In other words, performing a GET operation should be a safe operation that has no side effects and doesn&#8217;t modify your persisted data.</p>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../fundamentals/localization.html"><span class="doc">Globalization and localization</span></a></li>
+<li><a class="reference internal" href="../../mvc/views/tag-helpers/intro.html"><span class="doc">Introduction to Tag Helpers</span></a></li>
+<li><a class="reference internal" href="../../mvc/views/tag-helpers/authoring.html"><span class="doc">Authoring Tag Helpers</span></a></li>
+<li><a class="reference internal" href="../../security/anti-request-forgery.html"><span class="doc">🔧 Anti-Request Forgery</span></a></li>
+<li>Protect your controller from <a class="reference external" href="http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost">over-posting</a></li>
+<li><a class="reference external" href="http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/">ViewModels</a></li>
+<li><a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Form Tag Helper</span></a></li>
+<li><a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Input Tag Helper</span></a></li>
+<li><a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Label Tag Helper</span></a></li>
+<li><a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Select Tag Helper</span></a></li>
+<li><a class="reference internal" href="../../mvc/views/working-with-forms.html"><span class="doc">Validation Tag Helper</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="search.html" class="btn btn-neutral float-right" title="Adding Search" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="working-with-sql.html" class="btn btn-neutral" title="Working with SQL Server LocalDB" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

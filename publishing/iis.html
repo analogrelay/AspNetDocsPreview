@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Publishing to IIS &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Publishing and Deployment" href="index.html"/>
+        <link rel="next" title="Publishing to IIS with Web Deploy using Visual Studio" href="iis-with-msdeploy.html"/>
+        <link rel="prev" title="Publishing and Deployment" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Publishing and Deployment</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Publishing to IIS</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="iis-with-msdeploy.html">Publishing to IIS with Web Deploy using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web-publishing-vs.html">How Web Publishing In Visual Studio Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-continuous-deployment.html">Publishing to an Azure Web App with Continuous Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-windows-vm.html">🔧 Publishing to a Windows Virtual Machine on Azure</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker/">Publish to a Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linuxproduction.html">Publish to a Linux Production Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to-customize.html">🔧 How to Customize Publishing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Publishing and Deployment</a> &raquo;</li>
+      
+    <li>Publishing to IIS</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/publishing/iis.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="publishing-to-iis">
+<h1>Publishing to IIS<a class="headerlink" href="#publishing-to-iis" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://github.com/GuardRex">Luke Latham</a> and <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#supported-operating-systems" id="id1">Supported operating systems</a></li>
+<li><a class="reference internal" href="#iis-configuration" id="id2">IIS configuration</a></li>
+<li><a class="reference internal" href="#install-the-net-core-windows-server-hosting-bundle" id="id3">Install the .NET Core Windows Server Hosting bundle</a></li>
+<li><a class="reference internal" href="#deploy-the-application" id="id4">Deploy the application</a></li>
+<li><a class="reference internal" href="#configure-the-website-in-iis" id="id5">Configure the website in IIS</a></li>
+<li><a class="reference internal" href="#create-a-data-protection-registry-hive" id="id6">Create a Data Protection Registry Hive</a></li>
+<li><a class="reference internal" href="#common-errors" id="id7">Common errors</a></li>
+<li><a class="reference internal" href="#additional-resources" id="id8">Additional resources</a></li>
+</ul>
+</div>
+<div class="section" id="supported-operating-systems">
+<h2><a class="toc-backref" href="#id1">Supported operating systems</a><a class="headerlink" href="#supported-operating-systems" title="Permalink to this headline">¶</a></h2>
+<p>The following operating systems are supported:</p>
+<ul class="simple">
+<li>Windows 7 and newer</li>
+<li>Windows Server 2008 R2 and newer*</li>
+</ul>
+<p>*Conceptually, the IIS configuration described in this document also applies to hosting ASP.NET Core applications on Nano Server IIS, but refer to <a class="reference internal" href="../tutorials/nano-server.html"><span class="doc">ASP.NET Core on Nano Server</span></a> for specific instructions.</p>
+</div>
+<div class="section" id="iis-configuration">
+<h2><a class="toc-backref" href="#id2">IIS configuration</a><a class="headerlink" href="#iis-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Enable the <strong>Web Server (IIS)</strong> server role and establish role services.</p>
+<div class="section" id="windows-desktop-operating-systems">
+<h3>Windows desktop operating systems<a class="headerlink" href="#windows-desktop-operating-systems" title="Permalink to this headline">¶</a></h3>
+<p>Navigate to <strong>Control Panel &gt; Programs &gt; Programs and Features &gt; Turn Windows features on or off</strong> (left side of the screen). Open the group for <strong>Internet Information Services</strong> and <strong>Web Management Tools</strong>. Check the box for <strong>IIS Management Console</strong>. Check the box for <strong>World Wide Web Services</strong>. Accept the default features for <strong>World Wide Web Services</strong> or customize the IIS features to suit your needs.</p>
+<img alt="../_images/wf.png" src="../_images/wf.png" />
+</div>
+<div class="section" id="windows-server-operating-systems">
+<h3>Windows Server operating systems<a class="headerlink" href="#windows-server-operating-systems" title="Permalink to this headline">¶</a></h3>
+<p>For server operating systems, use the <strong>Add Roles and Features Wizard</strong> via the <strong>Manage</strong> menu or the link in <strong>Server Manager</strong>. On the <strong>Server Roles</strong> step, check the box for <strong>Web Server (IIS)</strong>.</p>
+<img alt="../_images/rs.png" src="../_images/rs.png" />
+<p>On the <strong>Role services</strong> step, select the IIS role services you desire or accept the default role services provided.</p>
+<img alt="../_images/role-services.png" src="../_images/role-services.png" />
+<p>Proceed through the <strong>Confirmation</strong> step to enable the web server role and services.</p>
+</div>
+</div>
+<div class="section" id="install-the-net-core-windows-server-hosting-bundle">
+<span id="unlock-handlers"></span><h2><a class="toc-backref" href="#id3">Install the .NET Core Windows Server Hosting bundle</a><a class="headerlink" href="#install-the-net-core-windows-server-hosting-bundle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Install the <a class="reference external" href="http://go.microsoft.com/fwlink/?LinkId=798480">.NET Core Windows Server Hosting</a> bundle on the server. The bundle will install the .NET Core Runtime, .NET Core Library, and the ASP.NET Core Module. The module creates the reverse-proxy between IIS and the Kestrel server.</li>
+<li>Execute <strong>iisreset</strong> at the command line or restart the server to pickup changes to the system PATH.</li>
+</ol>
+</div>
+<div class="section" id="deploy-the-application">
+<h2><a class="toc-backref" href="#id4">Deploy the application</a><a class="headerlink" href="#deploy-the-application" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>On the target IIS server, create a folder to contain the application&#8217;s assets.</li>
+<li>Within the folder you created, create a <em>logs</em> folder to hold application logs (if you plan to enable logging). If you plan to deploy your application with a <em>logs</em> folder in the payload, you may skip this step.</li>
+<li>Deploy the application to the folder you created on the target IIS server. MSDeploy (Web Deploy) is the recommended mechanism for deployment, but you may use any of several methods to move the application to the server (for example, Xcopy, Robocopy, or PowerShell). Visual Studio users may use the <a class="reference external" href="https://github.com/aspnet/vsweb-publish/blob/master/samples/default-publish.ps1">default Visual Studio web publish script</a>. For information on using Web Deploy, see <a class="reference internal" href="iis-with-msdeploy.html"><span class="doc">Publishing to IIS with Web Deploy using Visual Studio</span></a>.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>.NET Core applications are hosted via a reverse-proxy between IIS and the Kestrel server. In order to create the reverse-proxy, the <em>web.config</em> file must be present at the content root path (typically the app base path) of the deployed application, which is the website physical path provided to IIS.</p>
+<p class="last">Sensitive files exist on the app&#8217;s physical path, including subfolders, such as <em>my_application.runtimeconfig.json</em>, <em>my_application.xml</em> (XML Documentation comments), and <em>my_application.deps.json</em>. The <em>web.config</em> file is required to create the reverse proxy to Kestrel, which prevents IIS from serving these and other sensitive files. <strong>Therefore, it is important that the web.config file is never accidently renamed or removed from the deployment.</strong></p>
+</div>
+</div>
+<div class="section" id="configure-the-website-in-iis">
+<h2><a class="toc-backref" href="#id5">Configure the website in IIS</a><a class="headerlink" href="#configure-the-website-in-iis" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In <strong>IIS Manager</strong>, create a new website. Provide a <strong>Site name</strong> and set the <strong>Physical path</strong> to the application&#8217;s assets folder that you created. Provide the <strong>Binding</strong> configuration and create the website.</li>
+<li>Set the application pool to <strong>No Managed Code</strong>. ASP.NET Core runs in a separate process and manages the runtime.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you change the default identity of the application pool from <strong>ApplicationPoolIdentity</strong>, verify the new identity has the required permissions to access the application&#8217;s assets and database.</p>
+</div>
+<p>Open the <strong>Add Website</strong> window.</p>
+<blockquote>
+<div><img alt="../_images/addwebsitecontextmenu.png" src="../_images/addwebsitecontextmenu.png" />
+</div></blockquote>
+<p>Configure the website.</p>
+<blockquote>
+<div><img alt="../_images/addwebsite.png" src="../_images/addwebsite.png" />
+</div></blockquote>
+<p>In the <strong>Application Pools</strong> panel, open the <strong>Edit Application Pool</strong> window by right-clicking on the website&#8217;s application pool and selecting <strong>Basic Settings...</strong> from the popup menu.</p>
+<blockquote>
+<div><img alt="../_images/basicsettingscontextmenu.png" src="../_images/basicsettingscontextmenu.png" />
+</div></blockquote>
+<p>Set the <strong>.NET CLR version</strong> to <strong>No Managed Code</strong>.</p>
+<blockquote>
+<div><img alt="../_images/editapppool.png" src="../_images/editapppool.png" />
+</div></blockquote>
+<p>Browse the website.</p>
+<blockquote>
+<div><img alt="../_images/browsewebsite.png" src="../_images/browsewebsite.png" />
+</div></blockquote>
+</div>
+<div class="section" id="create-a-data-protection-registry-hive">
+<h2><a class="toc-backref" href="#id6">Create a Data Protection Registry Hive</a><a class="headerlink" href="#create-a-data-protection-registry-hive" title="Permalink to this headline">¶</a></h2>
+<p>Data Protection keys used by ASP.NET applications are stored in registry hives external to the applications. To persist the keys for a given application, you must create a registry hive for the application&#8217;s application pool.</p>
+<p>For standalone IIS installations, you may use the <a class="reference external" href="https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1">Data Protection Provision-AutoGenKeys.ps1 PowerShell script</a> for each application pool used with an ASP.NET Core application. The keys will be persisted in the registry.</p>
+<p>In web farm scenarios, an application can be configured to use a UNC path to store its data protection key ring. By default, the data protection keys are not encrypted. You can deploy an x509 certificate to each machine to encrypt the key ring. See <a class="reference internal" href="../security/data-protection/configuration/overview.html#data-protection-configuring"><span class="std std-ref">Configuring Data Protection</span></a> for details.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Data Protection is used by various ASP.NET middlewares, including those used in authentication. Even if you do not specifically call any Data Protection APIs from your own code you should configure Data Protection with the deployment script or in your own code. If you do not configure data protection when using IIS by default the keys will be held in memory and discarded when your application closes or restarts. This will then, for example, invalidate any cookies written by the cookie authentication and users will have to login again.</p>
+</div>
+</div>
+<div class="section" id="common-errors">
+<h2><a class="toc-backref" href="#id7">Common errors</a><a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h2>
+<p>The following is not a complete list of errors. Should you encounter an error not listed here, please leave a detailed error message in the DISQUS section below (click <strong>Show comments</strong> to open the DISQUS panel).</p>
+<p>To diagnose problems with IIS deployments, study browser output, examine the server&#8217;s <strong>Application</strong> log through <strong>Event Viewer</strong>, and enable module logging. The <strong>ASP.NET Core Module</strong> log will be found on the path provided in the <cite>stdoutLogFile</cite> attribute of the <cite>&lt;aspNetCore&gt;</cite> element in <em>web.config</em>. Any folders on the path provided in the attribute value must exist in the deployment. You must also set <cite>stdoutLogEnabled=&#8221;true&#8221;</cite> to enable module logging. Applications that use the <cite>publish-iis</cite> tooling to create the <em>web.config</em> file will default the <cite>stdoutLogEnabled</cite> setting to <cite>false</cite>, so you must manually provide the file or modify the file in order to enable module logging.</p>
+<p>A quick way to determine if the IIS reverse proxy to the Kestrel server is working properly is to perform a simple static file request for a stylesheet, script, or image from the application&#8217;s static assets in <em>wwwroot</em> using <a class="reference internal" href="../fundamentals/static-files.html"><span class="doc">Static File middleware</span></a>. If the application can serve static files but MVC Views and other endpoints are failing, the problem is less likely related to the IIS-ASP.NET Core Module-Kestrel configuration and more likely within the application itself (for example, MVC routing or 500 Internal Server Error). In most cases, enabling application logging will assist in troubleshooting problems within the application. See <a class="reference internal" href="../fundamentals/logging.html"><span class="doc">Logging</span></a> for more information.</p>
+<p>Common errors and general troubleshooting instructions:</p>
+<div class="section" id="installer-unable-to-obtain-vc-redistributable">
+<h3>Installer unable to obtain VC++ Redistributable<a class="headerlink" href="#installer-unable-to-obtain-vc-redistributable" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Installer Exception:</strong> Installation of the .NET Core Windows Server Hosting Bundle fails with <em>0x80070002 - The system cannot find the file specified</em>.</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>If the server does not have Internet access while installing the server hosting bundle, this exception will ensue when the installer is prevented from obtaining the <em>Microsoft Visual C++ 2015 Redistributable (x64)</em> packages online. You may obtain an installer for the packages from the <a class="reference external" href="https://www.microsoft.com/en-us/download/details.aspx?id=48145">Microsoft Download Center</a>.</li>
+</ul>
+</div>
+<div class="section" id="useurls-called-before-useiisintegration">
+<h3>UseUrls called before UseIISIntegration<a class="headerlink" href="#useurls-called-before-useiisintegration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> No response</li>
+<li><strong>Application Log:</strong> Process &#8216;PROC_ID&#8217; failed to start. Port = PORT, Error Code = &#8216;-2147023829&#8217;.</li>
+<li><strong>ASP.NET Core Module Log:</strong> Unhandled Exception: System.AggregateException: One or more errors occurred. (Error -4092 EACCES permission denied)</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>If your application uses the <cite>UseUrls</cite> extension on <cite>WebHostBuilder</cite>, make sure you have positioned the <cite>UseUrls</cite> extension before the <cite>UseIISIntegration</cite> extension on <cite>WebHostBuilder</cite>. <cite>UseIISIntegration</cite> must overwrite any values you provide in <cite>UseUrls</cite> in order for the reverse-proxy to succeed.</li>
+</ul>
+</div>
+<div class="section" id="platform-conflicts-with-rid">
+<h3>Platform conflicts with RID<a class="headerlink" href="#platform-conflicts-with-rid" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> No response</li>
+<li><strong>Application Log:</strong> Faulting module: KERNELBASE.dll Exception code: 0xe0434352 Faulting module path: C:WINDOWSsystem32KERNELBASE.dll</li>
+<li><strong>ASP.NET Core Module Log:</strong> Unhandled Exception: System.BadImageFormatException: Could not load file or assembly &#8216;teststandalone.dll&#8217; or one of its dependencies. An attempt was made to load a program with an incorrect format.</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>If you published a self-contained application, confirm that you didn&#8217;t set a <strong>platform</strong> in <strong>buildOptions</strong> of <em>project.json</em> that conflicts with the publishing RID. For example, do not specify a <strong>platform</strong> of <strong>x86</strong> and publish with an RID of <strong>win81-x64</strong> (<strong>dotnet publish -c Release -r win81-x64</strong>). The project will publish without warning or error but fail with the above logged exceptions on the server.</li>
+</ul>
+</div>
+<div class="section" id="uri-endpoint-wrong-or-stopped-website">
+<h3>URI endpoint wrong or stopped website<a class="headerlink" href="#uri-endpoint-wrong-or-stopped-website" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> ERR_CONNECTION_REFUSED</li>
+<li><strong>Application Log:</strong> No entry</li>
+<li><strong>ASP.NET Core Module Log:</strong> Log file not created</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>Confirm you are using the correct URI endpoint for the application. Check your bindings.</li>
+<li>Confirm that the IIS website is not in the <cite>Stopped</cite> state.</li>
+</ul>
+</div>
+<div class="section" id="corewebengine-or-w3svc-server-features-disabled">
+<h3>CoreWebEngine or W3SVC server features disabled<a class="headerlink" href="#corewebengine-or-w3svc-server-features-disabled" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>OS Exception:</strong> The IIS 7.0 CoreWebEngine and W3SVC features must be installed to use the Microsoft HTTP Platform Handler 1.x.</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>Confirm that you have enabled the proper server role and features. See <a class="reference internal" href="#iis-configuration">IIS Configuration</a>.</li>
+</ul>
+</div>
+<div class="section" id="incorrect-website-physical-path-or-application-missing">
+<h3>Incorrect website physical path or application missing<a class="headerlink" href="#incorrect-website-physical-path-or-application-missing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> 403 Forbidden: Access is denied <strong>&#8211;OR&#8211;</strong> 403.14 Forbidden: The Web server is configured to not list the contents of this directory.</li>
+<li><strong>Application Log:</strong> No entry</li>
+<li><strong>ASP.NET Core Module Log:</strong> Log file not created</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>Check the IIS website <strong>Basic Settings</strong> and the physical application assets folder. Confirm that the application is in the folder at the IIS website <strong>Physical path</strong>.</li>
+</ul>
+</div>
+<div class="section" id="incorrect-server-role-module-not-installed-or-incorrect-permissions">
+<h3>Incorrect server role, module not installed, or incorrect permissions<a class="headerlink" href="#incorrect-server-role-module-not-installed-or-incorrect-permissions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> 500.19 Internal Server Error: The requested page cannot be accessed because the related configuration data for the page is invalid.</li>
+<li><strong>Application Log:</strong> No entry</li>
+<li><strong>ASP.NET Core Module Log:</strong> Log file not created</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>Confirm that you have enabled the proper server role. See <a class="reference internal" href="#iis-configuration">IIS Configuration</a>.</li>
+<li>Check <strong>Programs &amp; Features</strong> and confirm that the <strong>Microsoft ASP.NET Core Module</strong> has been installed. If the <strong>Microsoft ASP.NET Core Module</strong> is not present in the list of installed programs, install the module. See <a class="reference internal" href="#iis-configuration">IIS Configuration</a>.</li>
+<li>Make sure that the <strong>Application Pool Process Model Identity</strong> is either set to <strong>ApplicationPoolIdentity</strong>; or if a custom identity is in use, confirm the identity has the correct permissions to access the application&#8217;s assets folder.</li>
+</ul>
+</div>
+<div class="section" id="incorrect-proecesspath-bundle-not-installed-or-server-not-restarted">
+<h3>Incorrect <cite>proecessPath</cite>, bundle not installed, or server not restarted<a class="headerlink" href="#incorrect-proecesspath-bundle-not-installed-or-server-not-restarted" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> 502.3 Bad Gateway: There was a connection error while trying to route the request.</li>
+<li><strong>Application Log:</strong> Process &#8216;0&#8217; failed to start. Port = PORT, Error Code = &#8216;-2147024894&#8217;.</li>
+<li><strong>ASP.NET Core Module Log:</strong> Log file created but empty</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>Check the <cite>processPath</cite> attribute on the <cite>&lt;aspNetCore&gt;</cite> element in <em>web.config</em> to confirm that it is <cite>dotnet</cite> for a portable application or <cite>.\my_application.exe</cite> for a self-contained application.</li>
+<li>You may have deployed a portable application without installing .NET Core on the server. If you are attempting to deploy a portable application and have not installed .NET Core, run the <strong>.NET Core Windows Server Hosting Bundle Installer</strong> on the server. See <a class="reference internal" href="#install-the-net-core-windows-server-hosting-bundle">Install the .NET Core Windows Server Hosting Bundle</a>.</li>
+<li>You may have deployed a portable application and installed .NET Core without restarting the server. Restart the server.</li>
+</ul>
+</div>
+<div class="section" id="incorrect-arguments-of-aspnetcore-element">
+<h3>Incorrect <cite>arguments</cite> of <cite>&lt;aspNetCore&gt;</cite> element<a class="headerlink" href="#incorrect-arguments-of-aspnetcore-element" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> 502.3 Bad Gateway: There was a connection error while trying to route the request.</li>
+<li><strong>Application Log:</strong> Process &#8216;PROC_ID&#8217; failed to start. Port = PORT, Error Code = &#8216;-2147023829&#8217;.</li>
+<li><strong>ASP.NET Core Module Log:</strong> Unhandled Exception: System.FormatException: Unrecognized argument format <strong>&#8211;OR &#8211;</strong> Expected to load required hostpolicy.dll from [IIS_WEBSITE_PHYSICAL_PATH] - This may be because of an invalid .NET Core FX configuration in the directory.</li>
+</ul>
+<p>Troubleshooting:</p>
+<ul class="simple">
+<li>Examine the <cite>arguments</cite> attribute on the <cite>&lt;aspNetCore&gt;</cite> element in <em>web.config</em> to confirm that it is either (a) <cite>.\my_applciation.dll</cite> for a portable application; or (b) not present, an empty string (<cite>arguments=&#8221;&#8220;</cite>), or a list of your application&#8217;s arguments (<cite>arguments=&#8221;arg1, arg2, ...&#8221;</cite>) for a self-contained application.</li>
+</ul>
+</div>
+<div class="section" id="stopped-application-pool">
+<h3>Stopped Application Pool<a class="headerlink" href="#stopped-application-pool" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Browser:</strong> 503 Service Unavailable</li>
+<li><strong>Application Log:</strong> No entry</li>
+<li><strong>ASP.NET Core Module Log:</strong> Log file not created</li>
+</ul>
+<p>Troubleshooting</p>
+<ul class="simple">
+<li>Confirm that the Application Pool is not in the <cite>Stopped</cite> state.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2><a class="toc-backref" href="#id8">Additional resources</a><a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../conceptual-overview/aspnet.html"><span class="doc">Introduction to ASP.NET Core</span></a></li>
+<li><a class="reference external" href="http://www.iis.net/">The Official Microsoft IIS Site</a></li>
+<li><a class="reference external" href="https://technet.microsoft.com/en-us/library/bb625087.aspx">Microsoft TechNet Library: Windows Server</a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="iis-with-msdeploy.html" class="btn btn-neutral float-right" title="Publishing to IIS with Web Deploy using Visual Studio" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Publishing and Deployment" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

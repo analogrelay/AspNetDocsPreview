@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examining the Details and Delete methods &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Building your first ASP.NET Core MVC app with Visual Studio" href="index.html"/>
+        <link rel="next" title="ASP.NET Core on Nano Server" href="../nano-server.html"/>
+        <link rel="prev" title="Adding Validation" href="validation.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="start-mvc.html">Getting started with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-controller.html">Adding a controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-view.html">Adding a view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-model.html">Adding a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working-with-sql.html">Working with SQL Server LocalDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller-methods-views.html">Controller methods and views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Adding Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-field.html">Adding a New Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Adding Validation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Examining the Details and Delete methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a> &raquo;</li>
+      
+    <li>Examining the Details and Delete methods</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tutorials/first-mvc-app/details.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="examining-the-details-and-delete-methods">
+<h1>Examining the Details and Delete methods<a class="headerlink" href="#examining-the-details-and-delete-methods" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>Open the Movie controller and examine the <code class="docutils literal"><span class="pre">Details</span></code> method:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// GET: Movies/Details/5</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Details</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">var</span> <span class="n">movie</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">movie</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The MVC scaffolding engine that created this action method adds a comment showing a HTTP request that invokes the method. In this case it&#8217;s a GET request with three URL segments, the <code class="docutils literal"><span class="pre">Movies</span></code> controller, the <code class="docutils literal"><span class="pre">Details</span></code> method and a <code class="docutils literal"><span class="pre">id</span></code> value. Recall these segments are defined in Startup.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span>    <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+<span class="hll">            <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+</span>    <span class="p">});</span>
+</pre></div>
+</div>
+<p>Code First makes it easy to search for data using the <code class="docutils literal"><span class="pre">SingleOrDefaultAsync</span></code> method. An important security feature built into the method is that the code verifies that the search method has found a movie before the code tries to do anything with it. For example, a hacker could introduce errors into the site by changing the URL created by the links from  <em>http://localhost:xxxx/Movies/Details/1</em> to something like  <em>http://localhost:xxxx/Movies/Details/12345</em> (or some other value that doesn&#8217;t represent an actual movie). If you did not check for a null movie, the app would throw an exception.</p>
+<p>Examine the Delete and DeleteConfirmed methods.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// GET: Movies/Delete/5</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Delete</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">var</span> <span class="n">movie</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">movie</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// POST: Movies/Delete/5</span>
+<span class="na">[HttpPost, ActionName(&quot;Delete&quot;)]</span>
+<span class="na">[ValidateAntiForgeryToken]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">DeleteConfirmed</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">movie</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nf">RedirectToAction</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span> <span class="pre">Delete</span></code> method doesn&#8217;t delete the specified movie, it returns a view of the movie where you can submit (HttpPost) the deletion. Performing a delete operation in response to a GET request (or for that matter, performing an edit operation, create operation, or any other operation that changes data) opens up a security hole.</p>
+<p>The <code class="docutils literal"><span class="pre">[HttpPost]</span></code> method that deletes the data is named <code class="docutils literal"><span class="pre">DeleteConfirmed</span></code> to give the HTTP POST method a unique signature or name. The two method signatures are shown below:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// GET: Movies/Delete/5</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Delete</span><span class="p">(</span><span class="kt">int?</span> <span class="n">id</span><span class="p">)</span>
+
+<span class="c1">// POST: Movies/Delete/5</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">DeleteConfirmed</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The common language runtime (CLR) requires overloaded methods to have a unique parameter signature (same method name but different list of parameters). However, here you need two <code class="docutils literal"><span class="pre">Delete</span></code> methods &#8211; one for GET and one for POST &#8211; that both have the same parameter signature. (They both need to accept a single integer as a parameter.)</p>
+<p>There are two approaches to this problem, one is to give the methods different names. That&#8217;s what the scaffolding mechanism did in the preceding example. However, this introduces a small problem: ASP.NET maps segments of a URL to action methods by name, and if you rename a method, routing normally wouldn&#8217;t be able to find that method. The solution is what you see in the example, which is to add the <code class="docutils literal"><span class="pre">ActionName(&quot;Delete&quot;)</span></code> attribute to the <code class="docutils literal"><span class="pre">DeleteConfirmed</span></code> method. That attribute performs mapping for the routing system so that a URL that includes /Delete/ for a POST request will find the <code class="docutils literal"><span class="pre">DeleteConfirmed</span></code> method.</p>
+<p>Another common work around for methods that have identical names and signatures is to artificially change the signature of the POST method to include an extra (unused) parameter. That&#8217;s what we did in a previous post when we added the <code class="docutils literal"><span class="pre">notUsed</span></code> parameter. You could do the same thing here for the <code class="docutils literal"><span class="pre">[HttpPost]</span> <span class="pre">Delete</span></code> method:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// POST: Movies/Delete/5</span>
+<span class="na">[HttpPost]</span>
+<span class="na">[ValidateAntiForgeryToken]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Delete</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">notUsed</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">movie</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="n">_context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">movie</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">SaveChangesAsync</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nf">RedirectToAction</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../nano-server.html" class="btn btn-neutral float-right" title="ASP.NET Core on Nano Server" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="validation.html" class="btn btn-neutral" title="Adding Validation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

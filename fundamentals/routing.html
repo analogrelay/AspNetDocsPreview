@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Routing &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Fundamentals" href="index.html"/>
+        <link rel="next" title="Diagnostics" href="diagnostics.html"/>
+        <link rel="prev" title="Working with Static Files" href="static-files.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="startup.html">Application Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-files.html">Working with Static Files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Routing</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localization.html">Globalization and localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-providers.html">🔧 File Providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependency-injection.html">Dependency Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Working with Multiple Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app-state.html">Managing Application State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-features.html">Request Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="owin.html">OWIN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Fundamentals</a> &raquo;</li>
+      
+    <li>Routing</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/fundamentals/routing.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="routing">
+<h1>Routing<a class="headerlink" href="#routing" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>Routing middleware is used to map requests to route handlers. Routes are configured when the application starts up, and can extract values from the URL that will be passed as arguments to route handlers. Routing functionality is also responsible for generating links that correspond to routes in ASP.NET apps.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections</p>
+<ul class="simple">
+<li><a class="reference internal" href="#routing-middleware" id="id7">Routing Middleware</a></li>
+<li><a class="reference internal" href="#configuring-routing" id="id8">Configuring Routing</a></li>
+<li><a class="reference internal" href="#template-routes" id="id9">Template Routes</a></li>
+<li><a class="reference internal" href="#route-builder-extensions" id="id10">Route Builder Extensions</a></li>
+<li><a class="reference internal" href="#link-generation" id="id11">Link Generation</a></li>
+<li><a class="reference internal" href="#recommendations" id="id12">Recommendations</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/routing/sample">View or download sample code</a></p>
+<div class="section" id="routing-middleware">
+<h2><a class="toc-backref" href="#id7">Routing Middleware</a><a class="headerlink" href="#routing-middleware" title="Permalink to this headline">¶</a></h2>
+<p>The routing <a class="reference internal" href="middleware.html"><span class="doc">middleware</span></a> uses <em>routes</em> to map requests to an <code class="docutils literal"><span class="pre">IRouter</span></code> instance. The <code class="docutils literal"><span class="pre">IRouter</span></code> instance chooses whether or not to handle the request, and how. The request is considered handled if its <code class="docutils literal"><span class="pre">RouteContext.Handler</span></code> property is set to a non-null value. If no route handler is found for a request, then the middleware calls <em>next</em> (and the next middleware in the request pipeline is invoked).</p>
+<p>To use routing, add it to the <strong>dependencies</strong> in <em>project.json</em>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;Microsoft.NETCore.App&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0-rc2-3002702&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;platform&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;Microsoft.AspNetCore.Server.Kestrel&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+<span class="hll">  <span class="s2">&quot;Microsoft.AspNetCore.Routing&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+</span>  <span class="s2">&quot;Microsoft.Extensions.Logging.Console&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;Microsoft.AspNetCore.Server.IISIntegration&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0-rc2-final&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>Add routing to <code class="docutils literal"><span class="pre">ConfigureServices</span></code> in <em>Startup.cs</em>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll">    <span class="n">services</span><span class="p">.</span><span class="n">AddRouting</span><span class="p">();</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-routing">
+<h2><a class="toc-backref" href="#id8">Configuring Routing</a><a class="headerlink" href="#configuring-routing" title="Permalink to this headline">¶</a></h2>
+<p>Routing is enabled in the <code class="docutils literal"><span class="pre">Configure</span></code> method in the <code class="docutils literal"><span class="pre">Startup</span></code> class. Create an instance of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Routing/RouteBuilder/index.html#routebuilder-class">RouteBuilder</a>, passing a reference to <code class="docutils literal"><span class="pre">IApplicationBuilder</span></code>. You can optionally provide a <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Routing/RouteBuilder/index.html#prop-Microsoft.AspNet.Routing.RouteBuilder.DefaultHandler">DefaultHandler</a> as well. Add additional routes using <code class="docutils literal"><span class="pre">MapRoute</span></code> and when finished call <code class="docutils literal"><span class="pre">app.UseRouter</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>public void Configure(IApplicationBuilder app,
+    ILoggerFactory loggerFactory)
+{
+    loggerFactory.AddConsole(minLevel: LogLevel.Trace);
+
+<span class="hll">    var defaultHandler = new RouteHandler((c) =&gt; 
+</span><span class="hll">        c.Response.WriteAsync($&quot;Hello world! Route values: &quot; +
+</span><span class="hll">        $&quot;{string.Join(&quot;, &quot;, c.GetRouteData().Values)}&quot;)
+</span><span class="hll">        );
+</span>
+<span class="hll">    var routeBuilder = new RouteBuilder(app, defaultHandler);
+</span>
+    routeBuilder.AddHelloRoute(app);
+
+    routeBuilder.MapRoute(
+        &quot;Track Package Route&quot;,
+        &quot;package/{operation:regex(track|create|detonate)}/{id:int}&quot;);
+
+<span class="hll">    app.UseRouter(routeBuilder.Build());
+</span></pre></div>
+</div>
+<p>Pass <code class="docutils literal"><span class="pre">UseRouter</span></code> the result of the <code class="docutils literal"><span class="pre">RouteBuilder.Build</span></code> method.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you are only configuring a single route, you can simply call <code class="docutils literal"><span class="pre">app.UseRouter</span></code> and pass in the <code class="docutils literal"><span class="pre">IRouter</span></code> instance you wish to use, bypassing the need to use a <code class="docutils literal"><span class="pre">RouteBuilder</span></code>.</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">defaultHandler</span></code> route handler is used as the default for the <code class="docutils literal"><span class="pre">RouteBuilder</span></code>. Calls to <code class="docutils literal"><span class="pre">MapRoute</span></code> will use this handler by default. A second handler is configured within the <code class="docutils literal"><span class="pre">HelloRouter</span></code> instance added by the <code class="docutils literal"><span class="pre">AddHelloRoute</span></code> extension method. This extension methods adds a new <code class="docutils literal"><span class="pre">Route</span></code> to the <code class="docutils literal"><span class="pre">RouteBuilder</span></code>, passing in an instance of <code class="docutils literal"><span class="pre">IRouter</span></code>, a template string, and an <code class="docutils literal"><span class="pre">IInlineConstraintResolver</span></code> (which is responsible for enforcing any route constraints specified):</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="n">IRouteBuilder</span> <span class="nf">AddHelloRoute</span><span class="p">(</span><span class="k">this</span> <span class="n">IRouteBuilder</span> <span class="n">routeBuilder</span><span class="p">,</span>
+    <span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">routeBuilder</span><span class="p">.</span><span class="n">Routes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Route</span><span class="p">(</span><span class="k">new</span> <span class="n">HelloRouter</span><span class="p">(),</span>
+<span class="hll">        <span class="s">&quot;hello/{name:alpha}&quot;</span><span class="p">,</span> 
+</span>        <span class="n">app</span><span class="p">.</span><span class="n">ApplicationServices</span><span class="p">.</span><span class="n">GetService</span><span class="p">&lt;</span><span class="n">IInlineConstraintResolver</span><span class="p">&gt;()));</span>
+
+    <span class="k">return</span> <span class="n">routeBuilder</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">HelloRouter</span></code> is a custom <code class="docutils literal"><span class="pre">IRouter</span></code> implementation. <code class="docutils literal"><span class="pre">AddHelloRoute</span></code> adds an instance of this router to the <code class="docutils literal"><span class="pre">RouteBuilder</span></code> using a template string, &#8220;hello/{name:alpha}&#8221;. This template will only match requests of the form &#8220;hello/{name}&#8221; where <cite>name</cite> is constrained to be alphabetical. Matching requests will be handled by <code class="docutils literal"><span class="pre">HelloRouter</span></code> (which implements the <code class="docutils literal"><span class="pre">IRouter</span></code> interface), which responds to requests with a simple greeting.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+
+namespace RoutingSample
+{
+<span class="hll">    public class HelloRouter : IRouter
+</span>    {
+        public Task RouteAsync(RouteContext context)
+        {
+            var name = context.RouteData.Values[&quot;name&quot;] as string;
+            if (String.IsNullOrEmpty(name))
+            {
+                return Task.FromResult(0);
+            }
+            var requestPath = context.HttpContext.Request.Path;
+            if (requestPath.StartsWithSegments(&quot;/hello&quot;, StringComparison.OrdinalIgnoreCase))
+            {
+<span class="hll">                context.Handler = async c =&gt;
+</span><span class="hll">                {
+</span><span class="hll">                    await c.Response.WriteAsync($&quot;Hi, {name}!&quot;);
+</span><span class="hll">                };
+</span>            }
+            return Task.FromResult(0);
+        }
+
+        public VirtualPathData GetVirtualPath(VirtualPathContext context)
+        {
+            return null;
+        }
+    }
+}
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">HelloRouter</span></code> checks to see if <code class="docutils literal"><span class="pre">RouteData</span></code> includes a value for the key <code class="docutils literal"><span class="pre">name</span></code>. If not, it immediately returns without handling the request. Likewise, it checks to see if the request begins with &#8220;/hello&#8221;. Otherwise, the <code class="docutils literal"><span class="pre">Handler</span></code> property is set to a delegate that responds with a greeting. Setting the <code class="docutils literal"><span class="pre">Handler</span></code> property prevents additional routes from handling the request. The <code class="docutils literal"><span class="pre">GetVirtualPath</span></code> method is used for <a class="reference internal" href="#link-generation"><span class="std std-ref">link generation</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Remember, it&#8217;s possible for a particular route <strong>template</strong> to match a given request, but the associated route <strong>handler</strong> can still reject it, allowing a different route to handle the request.)</p>
+</div>
+<p>This route was configured to use an <a class="reference internal" href="#route-constraints"><span class="std std-ref">inline constraint</span></a>, signified by the <code class="docutils literal"><span class="pre">:alpha</span></code> in the name route value. This constraint limits which requests this route will handle, in this case to alphabetical values for <code class="docutils literal"><span class="pre">name</span></code>. Thus, a request for &#8220;/hello/steve&#8221; will be handled, but a request to &#8220;/hello/123&#8221; will not (instead, in this sample the request will not match any routes and will use the &#8220;app.Run&#8221; delegate).</p>
+</div>
+<div class="section" id="template-routes">
+<h2><a class="toc-backref" href="#id9">Template Routes</a><a class="headerlink" href="#template-routes" title="Permalink to this headline">¶</a></h2>
+<p>The most common way to define routes is using <code class="docutils literal"><span class="pre">TemplateRoute</span></code> and route template strings. When a <code class="docutils literal"><span class="pre">TemplateRoute</span></code> matches, it calls its target <code class="docutils literal"><span class="pre">IRouter</span></code> handler. In a typical MVC app, you might use a default template route with a string like this one:</p>
+<img alt="../_images/default-mvc-routetemplate.png" src="../_images/default-mvc-routetemplate.png" />
+<p>This route template would be handled by the <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Infrastructure/MvcRouteHandler/index.html">MvcRouteHandler</a> <code class="docutils literal"><span class="pre">IRouter</span></code> instance. Tokens within curly braces (<code class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></code>) define <cite>route value</cite> parameters which will be bound if the route is matched. You can define more than one route value parameter in a route segment, but they must be separated by a literal value. For example <code class="docutils literal"><span class="pre">{controller=Home}{action=Index}</span></code> would not be a valid route, since there is no literal value between <code class="docutils literal"><span class="pre">{controller}</span></code> and <code class="docutils literal"><span class="pre">{action}</span></code>. These route value parameters must have a name, and may have additional attributes specified.</p>
+<p>You can use the <code class="docutils literal"><span class="pre">*</span></code> character as a prefix to a route value name to bind to the rest of the URI. For example, <code class="docutils literal"><span class="pre">blog/{*slug}</span></code> would match any URI that started with <code class="docutils literal"><span class="pre">/blog/</span></code> and had any value following it (which would be assigned to the <code class="docutils literal"><span class="pre">slug</span></code> route value).</p>
+<p>Route value parameters may have <em>default values</em>, designated by specifying the default after the parameter name, separated by an <code class="docutils literal"><span class="pre">=</span></code>. For example, <code class="docutils literal"><span class="pre">controller=Home</span></code> would define <code class="docutils literal"><span class="pre">Home</span></code> as the default value for <code class="docutils literal"><span class="pre">controller</span></code>. The default value is used if no value is present in the URL for the parameter. In addition to default values, route parameters may be optional (specified by appending a <code class="docutils literal"><span class="pre">?</span></code> to the end of the parameter name, as in <code class="docutils literal"><span class="pre">id?</span></code>). The difference between optional and &#8220;has default&#8221; is that a route parameter with a default value always produces a value; an optional parameter may not. Route parameters may also have constraints, which further restrict which routes the template will match.</p>
+<p>The following table demonstrates some route template and their expected behavior.</p>
+<table border="1" class="docutils" id="id4">
+<caption><span class="caption-text">Route Template Values</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Route Template</th>
+<th class="head">Example Matching URL</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hello</td>
+<td>/hello</td>
+<td>Will only match the single path &#8216;/hello&#8217;</td>
+</tr>
+<tr class="row-odd"><td>{Page=Home}</td>
+<td>/</td>
+<td>Will match and set <code class="docutils literal"><span class="pre">Page</span></code> to <code class="docutils literal"><span class="pre">Home</span></code>.</td>
+</tr>
+<tr class="row-even"><td>{Page=Home}</td>
+<td>/Contact</td>
+<td>Will match and set <code class="docutils literal"><span class="pre">Page</span></code> to <code class="docutils literal"><span class="pre">Contact</span></code></td>
+</tr>
+<tr class="row-odd"><td>{controller}/{action}/{id?}</td>
+<td>/Products/List</td>
+<td>Will map to <code class="docutils literal"><span class="pre">Products</span></code> controller and <code class="docutils literal"><span class="pre">List</span></code> method; Since <code class="docutils literal"><span class="pre">id</span></code> was not supplied in the URL, it&#8217;s ignored.</td>
+</tr>
+<tr class="row-even"><td>{controller}/{action}/{id?}</td>
+<td>/Products/Details/123</td>
+<td>Will map to <code class="docutils literal"><span class="pre">Products</span></code> controller and <code class="docutils literal"><span class="pre">Details</span></code> method, with <code class="docutils literal"><span class="pre">id</span></code> set to <code class="docutils literal"><span class="pre">123</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>{controller=Home}/{action=Index}/{id?}</td>
+<td>/</td>
+<td>Will map to <code class="docutils literal"><span class="pre">Home</span></code> controller and <code class="docutils literal"><span class="pre">Index</span></code> method; <code class="docutils literal"><span class="pre">id</span></code> is ignored.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="route-constraints">
+<span id="id1"></span><h3>Route Constraints<a class="headerlink" href="#route-constraints" title="Permalink to this headline">¶</a></h3>
+<p>Adding a colon <code class="docutils literal"><span class="pre">:</span></code> after the name allows additional inline constraints to be set on a route value parameter. Constraints with types always use the invariant culture - they assume the URL is non-localizable. Route constraints limit which URLs will match a route - URLs that do not match the constraint are ignored by the route.</p>
+<table border="1" class="docutils" id="id5">
+<caption><span class="caption-text">Inline Route Constraints</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">constraint</th>
+<th class="head">Example</th>
+<th class="head">Example Match</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">int</span></code></td>
+<td>{id:int}</td>
+<td>123</td>
+<td>Matches any integer</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">bool</span></code></td>
+<td>{active:bool}</td>
+<td>true</td>
+<td>Matches <code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">datetime</span></code></td>
+<td>{dob:datetime}</td>
+<td>2016-01-01</td>
+<td>Matches a valid <code class="docutils literal"><span class="pre">DateTime</span></code> value (in the invariant culture - see <a class="reference external" href="http://msdn.microsoft.com/en-us/library/aszyst2c(v=vs.110).aspx">options</a>)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">decimal</span></code></td>
+<td>{price:decimal}</td>
+<td>49.99</td>
+<td>Matches a valid <code class="docutils literal"><span class="pre">decimal</span></code> value</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">double</span></code></td>
+<td>{price:double}</td>
+<td>4.234</td>
+<td>Matches a valid <code class="docutils literal"><span class="pre">double</span></code> value</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">float</span></code></td>
+<td>{price:float}</td>
+<td>3.14</td>
+<td>Matches a valid <code class="docutils literal"><span class="pre">float</span></code> value</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">guid</span></code></td>
+<td>{id:guid}</td>
+<td>7342570B-44E7-471C-A267-947DD2A35BF9</td>
+<td>Matches a valid <code class="docutils literal"><span class="pre">Guid</span></code> value</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">long</span></code></td>
+<td>{ticks:long}</td>
+<td>123456789</td>
+<td>Matches a valid <code class="docutils literal"><span class="pre">long</span></code> value</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">minlength(value)</span></code></td>
+<td>{username:minlength(5)}</td>
+<td>steve</td>
+<td>String must be at least 5 characters long.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">maxlength(value)</span></code></td>
+<td>{filename:maxlength(8)}</td>
+<td>somefile</td>
+<td>String must be no more than 8 characters long.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">length(min,max)</span></code></td>
+<td>{filename:length(4,16)}</td>
+<td>Somefile.txt</td>
+<td>String must be at least 8 and no more than 16 characters long.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">min(value)</span></code></td>
+<td>{age:min(18)}</td>
+<td>19</td>
+<td>Value must be at least 18.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">max(value)</span></code></td>
+<td>{age:max(120)}</td>
+<td>91</td>
+<td>Value must be no more than 120.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">range(min,max)</span></code></td>
+<td>{age:range(18,120)}</td>
+<td>91</td>
+<td>Value must be at least 18 but no more than 120.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">alpha</span></code></td>
+<td>{name:alpha}</td>
+<td>Steve</td>
+<td>String must consist of alphabetical characters.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">regex(expression)</span></code></td>
+<td>{ssn:regex(d{3}-d{2}-d{4})}</td>
+<td>123-45-6789</td>
+<td>String must match the provided regular expression.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">required</span></code></td>
+<td>{name:required}</td>
+<td>Steve</td>
+<td>Used to enforce that a non-parameter value is present during during URL generation.</td>
+</tr>
+</tbody>
+</table>
+<p>Inline constraints must match one of the above options, or an exception will be thrown.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">To constrain a parameter to a known set of possible values, you can use a regex: <code class="docutils literal"><span class="pre">{action:regex(list|get|create)}</span></code>. This would only match the <code class="docutils literal"><span class="pre">action</span></code> route value to <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">get</span></code>, or <code class="docutils literal"><span class="pre">create</span></code>. If passed into the constraints dictionary, the string &#8220;list|get|create&#8221; would be equivalent. Constraints that are passed in the constraints dictionary (not inline within a template) that don&#8217;t match one of the known constraints are also treated as regular expressions.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Avoid using constraints for <strong>validation</strong>, because doing so means that invalid input will result in a 404 (Not Found) instead of a 400 with an appropriate error message. Route constraints should be used to <strong>disambiguate</strong> between routes, not validate the inputs for a particular route.</p>
+</div>
+<p>Constraints can be <em>chained</em>. You can specify that a route value is of a certain type and also must fall within a specified range, for example: <code class="docutils literal"><span class="pre">{age:int:range(1,120)}</span></code>.  Numeric constraints like <code class="docutils literal"><span class="pre">min</span></code>, <code class="docutils literal"><span class="pre">max</span></code>, and <code class="docutils literal"><span class="pre">range</span></code> will automatically convert the value to <code class="docutils literal"><span class="pre">long</span></code> before being applied unless another numeric type is specified.</p>
+<p>Route templates must be unambiguous, or they will be ignored. For example, <code class="docutils literal"><span class="pre">{id?}/{foo}</span></code> is ambiguous, because it&#8217;s not clear which route value would be bound to a request for &#8220;/bar&#8221;. Similarly, <code class="docutils literal"><span class="pre">{*everything}/{plusone}</span></code> would be ambiguous, because the first route parameter would match everything from that part of the request on, so it&#8217;s not clear what the <code class="docutils literal"><span class="pre">plusone</span></code> parameter would match.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is a special case route for filenames, such that you can define a route value like <code class="docutils literal"><span class="pre">files/{filename}.{ext?}</span></code>. When both <code class="docutils literal"><span class="pre">filename</span></code> and <code class="docutils literal"><span class="pre">ext</span></code> exist, both values will be populated. However, if only <code class="docutils literal"><span class="pre">filename</span></code> exists in the URL, the trailing period <code class="docutils literal"><span class="pre">.</span></code> is also optional. Thus, these would both match: <code class="docutils literal"><span class="pre">/files/foo.txt</span></code> and <code class="docutils literal"><span class="pre">/files/foo</span></code>.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Enable <a class="reference internal" href="logging.html"><span class="doc">Logging</span></a> to see how the built in routing implementations, such as <code class="docutils literal"><span class="pre">TemplateRoute</span></code>, match requests.</p>
+</div>
+</div>
+</div>
+<div class="section" id="route-builder-extensions">
+<h2><a class="toc-backref" href="#id10">Route Builder Extensions</a><a class="headerlink" href="#route-builder-extensions" title="Permalink to this headline">¶</a></h2>
+<p>Several <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RouteBuilderExtensions/index.html">extension methods on RouteBuilder</a> are available for convenience. The most common of these is <code class="docutils literal"><span class="pre">MapRoute</span></code>, which allows the specification of a route given a name and template, and optionally default values, constraints, and/or <a class="reference internal" href="#data-tokens"><span class="std std-ref">data tokens</span></a>. When using these extensions, you must have specified the <code class="docutils literal"><span class="pre">DefaultHandler</span></code> and <code class="docutils literal"><span class="pre">ServiceProvider</span></code> properties of the <code class="docutils literal"><span class="pre">RouteBuilder</span></code> instance to which you&#8217;re adding the route. These <code class="docutils literal"><span class="pre">MapRoute</span></code> extensions add new <code class="docutils literal"><span class="pre">TemplateRoute</span></code> instances to the <code class="docutils literal"><span class="pre">RouteBuilder</span></code> that each target the <code class="docutils literal"><span class="pre">IRouter</span></code> configured as the <code class="docutils literal"><span class="pre">DefaultHandler</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">MapRoute</span></code> doesn&#8217;t take an <code class="docutils literal"><span class="pre">IRouter</span></code> parameter - it only adds routes that will be handled by the <code class="docutils literal"><span class="pre">DefaultHandler</span></code>. Since the default handler is an <code class="docutils literal"><span class="pre">IRouter</span></code>, it may decide not to handle the request. For example, MVC is typically configured as a default handler that only handles requests that match an available controller action.</p>
+</div>
+<div class="section" id="data-tokens">
+<span id="id2"></span><h3>Data Tokens<a class="headerlink" href="#data-tokens" title="Permalink to this headline">¶</a></h3>
+<p>Data tokens represent data that is carried along if the route matches. They&#8217;re implemented as a property bag for developer-specified data. You can use data tokens to store data you want to associate with a route, when you don&#8217;t want the semantics of defaults. Data tokens have no impact on the <strong>behavior</strong> of the route, while defaults do. Data tokens can also be any arbitrary types, while defaults really need to be things that can be converted to/from strings.</p>
+</div>
+</div>
+<div class="section" id="link-generation">
+<span id="id3"></span><h2><a class="toc-backref" href="#id11">Link Generation</a><a class="headerlink" href="#link-generation" title="Permalink to this headline">¶</a></h2>
+<p>Routing is also used to generate URLs based on route definitions. This is used by helpers to generate links to known actions on MVC <a class="reference internal" href="../mvc/controllers/index.html"><span class="doc">controllers</span></a>, but can also be used independent of MVC. Given a set of route values, and optionally a route name, you can produce a <code class="docutils literal"><span class="pre">VirtualPathContext</span></code> object. Using the <code class="docutils literal"><span class="pre">VirtualPathContext</span></code> object along with a <code class="docutils literal"><span class="pre">RouteCollection</span></code>, you can generate a <code class="docutils literal"><span class="pre">VirtualPath</span></code>. <code class="docutils literal"><span class="pre">IRouter</span></code> implementations participate in link generation through the <code class="docutils literal"><span class="pre">GetVirtualPath</span></code> method.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Learn more about <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Routing/UrlHelper/index.html?highlight=urlhelper">UrlHelper</a> and <a class="reference internal" href="../mvc/controllers/routing.html"><span class="doc">Routing to Controller Actions</span></a>.</p>
+</div>
+<p>The example below shows how to generate a link to a route given a dictionary of route values and a <code class="docutils literal"><span class="pre">RouteCollection</span></code>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// demonstrate link generation</span>
+<span class="hll"><span class="kt">var</span> <span class="n">trackingRouteCollection</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RouteCollection</span><span class="p">();</span>
+</span><span class="hll"><span class="n">trackingRouteCollection</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">routeBuilder</span><span class="p">.</span><span class="n">Routes</span><span class="p">[</span><span class="m">1</span><span class="p">]);</span> <span class="c1">// &quot;Track Package Route&quot;</span>
+</span>
+<span class="n">app</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+<span class="hll">    <span class="kt">var</span> <span class="n">dictionary</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RouteValueDictionary</span>
+</span>    <span class="p">{</span>
+        <span class="p">{</span><span class="s">&quot;operation&quot;</span><span class="p">,</span><span class="s">&quot;create&quot;</span> <span class="p">},</span>
+        <span class="p">{</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="m">123</span><span class="p">}</span>
+    <span class="p">};</span>
+
+<span class="hll">    <span class="kt">var</span> <span class="n">vpc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">VirtualPathContext</span><span class="p">(</span><span class="n">context</span><span class="p">,</span>
+</span><span class="hll">        <span class="k">null</span><span class="p">,</span> <span class="n">dictionary</span><span class="p">,</span> <span class="s">&quot;Track Package Route&quot;</span><span class="p">);</span>
+</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="s">&quot;text/html&quot;</span><span class="p">;</span>
+    <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="s">&quot;Menu&lt;hr/&gt;&quot;</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="s">@&quot;&lt;a href=&#39;&quot;</span> <span class="p">+</span>
+<span class="hll">        <span class="n">trackingRouteCollection</span><span class="p">.</span><span class="n">GetVirtualPath</span><span class="p">(</span><span class="n">vpc</span><span class="p">).</span><span class="n">VirtualPath</span> <span class="p">+</span>
+</span><span class="hll">        <span class="s">&quot;&#39;&gt;Create Package 123&lt;/a&gt;&lt;br/&gt;&quot;</span><span class="p">);</span>
+</span></pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">VirtualPath</span></code> generated at the end of the sample above is <code class="docutils literal"><span class="pre">/package/create/123</span></code>.</p>
+<p>The second parameter to the <code class="docutils literal"><span class="pre">VirtualPathContext</span></code> constructor is a collection of <cite>ambient values</cite>. Ambient values provide convenience by limiting the number of values a developer must specify within a certain request context. The current route values of the current request are considered ambient values for link generation. For example, in an MVC application if you are in the About action of the HomeController, you don&#8217;t need to specify the controller route value to link to the Index action (the ambient value of Home will be used).</p>
+<p>Ambient values that don&#8217;t match a parameter are ignored, and ambient values are also ignored when an explicitly-provided value overrides it, going from left to right in the URL.</p>
+<p>Values that are explicitly provided but which don&#8217;t match anything are added to the query string.</p>
+<table border="1" class="docutils" id="id6">
+<caption><span class="caption-text">Generating Links</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Matched Route</th>
+<th class="head">Ambient Values</th>
+<th class="head">Explicit Values</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">{controller}/{action}/{id?}</span></code></td>
+<td>controller=&#8221;Home&#8221;</td>
+<td>action=&#8221;About&#8221;</td>
+<td><code class="docutils literal"><span class="pre">/Home/About</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">{controller}/{action}/{id?}</span></code></td>
+<td>controller=&#8221;Home&#8221;</td>
+<td>controller=&#8221;Order&#8221;,action=&#8221;About&#8221;</td>
+<td><code class="docutils literal"><span class="pre">/Order/About</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">{controller}/{action}/{id?}</span></code></td>
+<td>controller=&#8221;Home&#8221;,color=&#8221;Red&#8221;</td>
+<td>action=&#8221;About&#8221;</td>
+<td><code class="docutils literal"><span class="pre">/Home/About</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">{controller}/{action}/{id?}</span></code></td>
+<td>controller=&#8221;Home&#8221;</td>
+<td>action=&#8221;About&#8221;,color=&#8221;Red&#8221;</td>
+<td><code class="docutils literal"><span class="pre">/Home/About?color=Red</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>If a route has a default value that doesn&#8217;t match a parameter and that value is explicitly provided, it must match the default value. For example:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span><span class="s">&quot;blog_route&quot;</span><span class="p">,</span> <span class="s">&quot;blog/{*slug}&quot;</span><span class="p">,</span>
+  <span class="n">defaults</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="p">=</span> <span class="s">&quot;Blog&quot;</span><span class="p">,</span> <span class="n">action</span> <span class="p">=</span> <span class="s">&quot;ReadPost&quot;</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Link generation would only generate a link for this route when the matching values for controller and action are provided.</p>
+</div>
+<div class="section" id="recommendations">
+<h2><a class="toc-backref" href="#id12">Recommendations</a><a class="headerlink" href="#recommendations" title="Permalink to this headline">¶</a></h2>
+<p>Routing is a powerful feature that is built into the default ASP.NET MVC project template such that most apps will be able to leverage it without having to customize its behavior. This is by design; customizing routing behavior is an advanced development approach. Keep in mind the following recommendations with regard to routing:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Most apps shouldn&#8217;t need custom routes. The default route will work in most cases.</li>
+<li>Attribute routes should be used for all APIs.</li>
+<li>Attribute routes are recommended for when you need complete control over your app&#8217;s URLs.</li>
+<li>Conventional routing is recommended for when <strong>all</strong> of your controllers/actions fit a uniform URL convention.</li>
+<li>Don&#8217;t use custom routes unless you understand them well and are sure you need them.</li>
+<li>Routes can be tricky to test and debug.</li>
+<li>Routes should not be used as a means of securing your controllers or their action methods.</li>
+<li>Avoid building or changing route collections at runtime.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="diagnostics.html" class="btn btn-neutral float-right" title="Diagnostics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="static-files.html" class="btn btn-neutral" title="Working with Static Files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

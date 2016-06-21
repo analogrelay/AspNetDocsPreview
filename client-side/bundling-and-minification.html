@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bundling and Minification &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Client-Side Development" href="index.html"/>
+        <link rel="next" title="🔧 Working with a Content Delivery Network (CDN)" href="cdn.html"/>
+        <link rel="prev" title="Styling Applications with Less, Sass, and Font Awesome" href="less-sass-fa.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Client-Side Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using-gulp.html">Using Gulp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-grunt.html">Using Grunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bower.html">Manage Client-Side Packages with Bower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Building Beautiful, Responsive Sites with Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knockout.html">Knockout.js MVVM Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="angular.html">Using Angular for Single Page Applications (SPAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="less-sass-fa.html">Styling Applications with Less, Sass, and Font Awesome</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bundling and Minification</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cdn.html">🔧 Working with a Content Delivery Network (CDN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="responsive-design.html">🔧 Responsive Design for the Mobile Web</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.typescriptlang.org/docs/handbook/asp-net-core.html">TypeScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yeoman.html">Building Projects with Yeoman</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Client-Side Development</a> &raquo;</li>
+      
+    <li>Bundling and Minification</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/client-side/bundling-and-minification.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="bundling-and-minification">
+<h1>Bundling and Minification<a class="headerlink" href="#bundling-and-minification" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a>, <a class="reference external" href="https://github.com/Erikre">Erik Reitan</a> and <a class="reference external" href="https://github.com/danroth27">Daniel Roth</a></p>
+<p>Bundling and minification are two techniques you can use in ASP.NET to improve page load performance for your web application. Bundling combines multiple files into a single file. Minification performs a variety of different code optimizations to scripts and CSS, which results in smaller payloads. Used together, bundling and minification improves load time performance by reducing the number of requests to the server and reducing the size of the requested assets (such as CSS and JavaScript files).</p>
+<p>This article explains the benefits of using bundling and minification, including how these features can be used with ASP.NET Core applications.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
+<li><a class="reference internal" href="#bundling" id="id2">Bundling</a></li>
+<li><a class="reference internal" href="#minification" id="id3">Minification</a></li>
+<li><a class="reference internal" href="#impact-of-bundling-and-minification" id="id4">Impact of Bundling and Minification</a></li>
+<li><a class="reference internal" href="#controlling-bundling-and-minification" id="id5">Controlling Bundling and Minification</a></li>
+<li><a class="reference internal" href="#see-also" id="id6">See Also</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In ASP.NET Core apps, you bundle and minify the client-side resources during design-time using third party tools, such as <a class="reference internal" href="using-gulp.html"><span class="doc">Gulp</span></a> and <a class="reference internal" href="using-grunt.html"><span class="doc">Grunt</span></a>. By using design-time bundling and minification, the minified files are created prior to the application’s deployment. Bundling and minifying before deployment provides the advantage of reduced server load. However, it’s important to recognize that design-time bundling and minification increases build complexity and only works with static files.</p>
+<p>Bundling and minification primarily improve the first page request load time. Once a web page has been requested, the browser caches the assets (JavaScript, CSS and images) so bundling and minification won’t provide any performance boost when requesting the same page, or pages on the same site requesting the same assets. If you don’t set the expires header correctly on your assets, and you don’t use bundling and minification, the browsers freshness heuristics will mark the assets stale after a few days and the browser will require a validation request for each asset. In this case, bundling and minification provide a performance increase even after the first page request.</p>
+</div>
+<div class="section" id="bundling">
+<h2><a class="toc-backref" href="#id2">Bundling</a><a class="headerlink" href="#bundling" title="Permalink to this headline">¶</a></h2>
+<p>Bundling is a feature that makes it easy to combine or bundle multiple files into a single file. Because bundling combines multiple files into a single file, it reduces the number of requests to the server that is required to retrieve and display a web asset, such as a web page. You can create CSS, JavaScript and other bundles. Fewer files, means fewer HTTP requests from your browser to the server or from the service providing your application. This results in improved first page load performance.</p>
+<p>Bundling can be accomplished using the <a class="reference external" href="https://www.npmjs.com/package/gulp-concat">gulp-concat</a> plugin, which is installed with the Node Package Manager (<a class="reference external" href="https://www.npmjs.com/">npm</a>). Add the <code class="docutils literal"><span class="pre">gulp-concat</span></code> package to the <code class="docutils literal"><span class="pre">devDependencies</span></code> section of your <em>package.json</em> file. To edit your <em>package.json</em> file from Visual Studio right-click on the <strong>npm</strong> node under <strong>Dependencies</strong> in the solution explorer and select <strong>Open package.json</strong>:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;asp.net&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;private&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;gulp&quot;</span><span class="p">:</span> <span class="s2">&quot;3.8.11&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;gulp-concat&quot;</span><span class="p">:</span> <span class="s2">&quot;2.5.2&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;gulp-cssmin&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.7&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gulp-uglify&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rimraf&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.8&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></code> to install the specified packages. Visual Studio will automatically install npm packages whenever <em>package.json</em> is modified.</p>
+<p>In your <em>gulpfile.js</em> import the <code class="docutils literal"><span class="pre">gulp-concat</span></code> module:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp&quot;</span><span class="p">),</span>
+    <span class="nx">rimraf</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;rimraf&quot;</span><span class="p">),</span>
+<span class="hll">    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-concat&quot;</span><span class="p">),</span>
+</span>    <span class="nx">cssmin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-cssmin&quot;</span><span class="p">),</span>
+    <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-uglify&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Use <a class="reference external" href="http://www.tldp.org/LDP/abs/html/globbingref.html">globbing</a> patterns to specify the files that you want to bundle and minify:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">paths</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">js</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;js/**/*.js&quot;</span><span class="p">,</span>
+    <span class="nx">minJs</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;js/**/*.min.js&quot;</span><span class="p">,</span>
+    <span class="nx">css</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;css/**/*.css&quot;</span><span class="p">,</span>
+    <span class="nx">minCss</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;css/**/*.min.css&quot;</span><span class="p">,</span>
+    <span class="nx">concatJsDest</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;js/site.min.js&quot;</span><span class="p">,</span>
+    <span class="nx">concatCssDest</span><span class="o">:</span> <span class="nx">webroot</span> <span class="o">+</span> <span class="s2">&quot;css/site.min.css&quot;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>You can then define gulp tasks that run <code class="docutils literal"><span class="pre">concat</span></code> on the desired files and output the result to your webroot:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min:js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="nx">paths</span><span class="p">.</span><span class="nx">js</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span> <span class="o">+</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">minJs</span><span class="p">],</span> <span class="p">{</span> <span class="nx">base</span><span class="o">:</span> <span class="s2">&quot;.&quot;</span> <span class="p">})</span>
+<span class="hll">        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatJsDest</span><span class="p">))</span>
+</span>        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min:css&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="nx">paths</span><span class="p">.</span><span class="nx">css</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span> <span class="o">+</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">minCss</span><span class="p">])</span>
+<span class="hll">        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatCssDest</span><span class="p">))</span>
+</span>        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssmin</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options">gulp.src</a> function emits a stream of files that can be <a class="reference external" href="http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options">piped</a> to gulp plugins. An array of globs specifies the files to emit using <a class="reference external" href="https://github.com/isaacs/node-glob">node-glob syntax</a>. The glob beginning with <code class="docutils literal"><span class="pre">!</span></code> excludes matching files from the glob results up to that point.</p>
+</div>
+<div class="section" id="minification">
+<h2><a class="toc-backref" href="#id3">Minification</a><a class="headerlink" href="#minification" title="Permalink to this headline">¶</a></h2>
+<p>Minification performs a variety of different code optimizations to reduce the size of requested assets (such as CSS, image, JavaScript files). Common results of minification include removing unnecessary white space and comments, and shortening variable names to one character.</p>
+<p>Consider the following JavaScript function:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">AddAltToImg</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">imageTagAndImageID</span><span class="p">,</span> <span class="nx">imageContext</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">///&lt;signature&gt;</span>
+  <span class="c1">///&lt;summary&gt; Adds an alt tab to the image</span>
+  <span class="c1">// &lt;/summary&gt;</span>
+  <span class="c1">//&lt;param name=&quot;imgElement&quot; type=&quot;String&quot;&gt;The image selector.&lt;/param&gt;</span>
+  <span class="c1">//&lt;param name=&quot;ContextForImage&quot; type=&quot;String&quot;&gt;The image context.&lt;/param&gt;</span>
+  <span class="c1">///&lt;/signature&gt;</span>
+  <span class="kd">var</span> <span class="nx">imageElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">imageTagAndImageID</span><span class="p">,</span> <span class="nx">imageContext</span><span class="p">);</span>
+  <span class="nx">imageElement</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="nx">imageElement</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/ID/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After minification, the function is reduced to the following:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">AddAltToImg</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="nx">a</span><span class="p">){</span><span class="kd">var</span> <span class="nx">r</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="nx">a</span><span class="p">);</span><span class="nx">r</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;alt&quot;</span><span class="p">,</span><span class="nx">r</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/ID/</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))};</span>
+</pre></div>
+</div>
+<p>In addition to removing the comments and unnecessary whitespace, the following parameters and variable names were renamed (shortened) as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="72%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Original</th>
+<th class="head">Renamed</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imageTagAndImageID</td>
+<td>t</td>
+</tr>
+<tr class="row-odd"><td>imageContext</td>
+<td>a</td>
+</tr>
+<tr class="row-even"><td>imageElement</td>
+<td>r</td>
+</tr>
+</tbody>
+</table>
+<p>To minify your JavaScript files you can use the <a class="reference external" href="https://www.npmjs.com/package/gulp-uglify">gulp-uglify</a> plugin. For CSS you can use the <a class="reference external" href="https://www.npmjs.com/package/gulp-cssmin">gulp-cssmin</a> plugin. Install these packages using npm as before:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;asp.net&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;private&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;gulp&quot;</span><span class="p">:</span> <span class="s2">&quot;3.8.11&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gulp-concat&quot;</span><span class="p">:</span> <span class="s2">&quot;2.5.2&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;gulp-cssmin&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1.7&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;gulp-uglify&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;rimraf&quot;</span><span class="p">:</span> <span class="s2">&quot;2.2.8&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Import the <code class="docutils literal"><span class="pre">gulp-uglify</span></code> and <code class="docutils literal"><span class="pre">gulp-cssmin</span></code> modules in your <em>gulpfile.js</em> file:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp&quot;</span><span class="p">),</span>
+    <span class="nx">rimraf</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;rimraf&quot;</span><span class="p">),</span>
+    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-concat&quot;</span><span class="p">),</span>
+<span class="hll">    <span class="nx">cssmin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-cssmin&quot;</span><span class="p">),</span>
+</span><span class="hll">    <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;gulp-uglify&quot;</span><span class="p">);</span>
+</span></pre></div>
+</div>
+<p>Add <code class="docutils literal"><span class="pre">uglify</span></code> to minify your bundled JavaScript files and <code class="docutils literal"><span class="pre">cssmin</span></code> to minify your bundled CSS files.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min:js&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="nx">paths</span><span class="p">.</span><span class="nx">js</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span> <span class="o">+</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">minJs</span><span class="p">],</span> <span class="p">{</span> <span class="nx">base</span><span class="o">:</span> <span class="s2">&quot;.&quot;</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatJsDest</span><span class="p">))</span>
+<span class="hll">        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+</span>        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;min:css&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="nx">paths</span><span class="p">.</span><span class="nx">css</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span> <span class="o">+</span> <span class="nx">paths</span><span class="p">.</span><span class="nx">minCss</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">concatCssDest</span><span class="p">))</span>
+<span class="hll">        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssmin</span><span class="p">())</span>
+</span>        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>To run bundling and minification tasks from the command-line using gulp (<code class="docutils literal"><span class="pre">gulp</span> <span class="pre">min</span></code>), or you can also execute any of your gulp tasks from within Visual Studio using the <strong>Task Runner Explorer</strong>. To use the <strong>Task Runner Explorer</strong> select <em>gulpfile.js</em> in the Solution Explorer and then select <strong>Tools &gt; Task Runner Explorer</strong>:</p>
+<img alt="../_images/task-runner-explorer.png" src="../_images/task-runner-explorer.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The gulp tasks for bundling and minification do not general run when your project is built and must be run manually.</p>
+</div>
+</div>
+<div class="section" id="impact-of-bundling-and-minification">
+<h2><a class="toc-backref" href="#id4">Impact of Bundling and Minification</a><a class="headerlink" href="#impact-of-bundling-and-minification" title="Permalink to this headline">¶</a></h2>
+<p>The following table shows several important differences between listing all the assets individually and using bundling and minification on a simple web page:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="19%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Action</th>
+<th class="head">With B/M</th>
+<th class="head">Without B/M</th>
+<th class="head">Change</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>File Requests</td>
+<td>7</td>
+<td>18</td>
+<td>157%</td>
+</tr>
+<tr class="row-odd"><td>KB Transferred</td>
+<td>156</td>
+<td>264.68</td>
+<td>70%</td>
+</tr>
+<tr class="row-even"><td>Load Time (MS)</td>
+<td>885</td>
+<td>2360</td>
+<td>167%</td>
+</tr>
+</tbody>
+</table>
+<p>The bytes sent had a significant reduction with bundling as browsers are fairly verbose with the HTTP headers that they apply on requests. The load time shows a big improvement, however this example was run locally. You will get greater gains in performance when using bundling and minification with assets transferred over a network.</p>
+</div>
+<div class="section" id="controlling-bundling-and-minification">
+<h2><a class="toc-backref" href="#id5">Controlling Bundling and Minification</a><a class="headerlink" href="#controlling-bundling-and-minification" title="Permalink to this headline">¶</a></h2>
+<p>In general, you want to use the bundled and minified files of your app only in a production environment. During development, you want to use your original files so your app is easier to debug.</p>
+<p>You can specify which scripts and CSS files to include in your pages using the environment tag helper in your layout pages(See <a class="reference internal" href="../mvc/views/tag-helpers/index.html"><span class="doc">Tag Helpers</span></a>). The environment tag helper will only render its contents when running in specific environments. See <a class="reference internal" href="../fundamentals/environments.html"><span class="doc">Working with Multiple Environments</span></a> for details on specifying the current environment.</p>
+<p>The following environment tag will render the unprocessed CSS files when running in the <code class="docutils literal"><span class="pre">Development</span></code> environment:</p>
+<div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">environment</span> <span class="na">names</span><span class="o">=</span><span class="s">&quot;Development&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot;</span> <span class="p">/&gt;</span>
+<span class="hll">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/css/site.css&quot;</span> <span class="p">/&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">environment</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>This environment tag will render the bundled and minified CSS files only when running in <code class="docutils literal"><span class="pre">Production</span></code> or <code class="docutils literal"><span class="pre">Staging</span></code>:</p>
+<div class="highlight-html"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">environment</span> <span class="na">names</span><span class="o">=</span><span class="s">&quot;Staging,Production&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css&quot;</span>
+          <span class="na">asp-fallback-href</span><span class="o">=</span><span class="s">&quot;~/lib/bootstrap/dist/css/bootstrap.min.css&quot;</span>
+          <span class="na">asp-fallback-test-class</span><span class="o">=</span><span class="s">&quot;sr-only&quot;</span> <span class="na">asp-fallback-test-property</span><span class="o">=</span><span class="s">&quot;position&quot;</span> <span class="na">asp-fallback-test-value</span><span class="o">=</span><span class="s">&quot;absolute&quot;</span> <span class="p">/&gt;</span>
+<span class="hll">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;~/css/site.min.css&quot;</span> <span class="na">asp-append-version</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="p">/&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">environment</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="see-also">
+<h2><a class="toc-backref" href="#id6">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="using-gulp.html"><span class="doc">Using Gulp</span></a></li>
+<li><a class="reference internal" href="using-grunt.html"><span class="doc">Using Grunt</span></a></li>
+<li><a class="reference internal" href="../fundamentals/environments.html"><span class="doc">Working with Multiple Environments</span></a></li>
+<li><a class="reference internal" href="../mvc/views/tag-helpers/index.html"><span class="doc">Tag Helpers</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cdn.html" class="btn btn-neutral float-right" title="🔧 Working with a Content Delivery Network (CDN)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="less-sass-fa.html" class="btn btn-neutral" title="Styling Applications with Less, Sass, and Font Awesome" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

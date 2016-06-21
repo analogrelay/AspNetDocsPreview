@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Claims-Based Authorization &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Authorization" href="index.html"/>
+        <link rel="next" title="Custom Policy-Based Authorization" href="policies.html"/>
+        <link rel="prev" title="Role based Authorization" href="roles.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Security</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../authentication/index.html">Authentication</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Authorization</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple.html">Simple Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roles.html">Role based Authorization</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Claims-Based Authorization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="policies.html">Custom Policy-Based Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dependencyinjection.html">Dependency Injection in Requirement Handlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resourcebased.html">Resource Based Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views.html">View Based Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="limitingidentitybyscheme.html">Limiting identity by scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization-filters.html">🔧 Authorization Filters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data-protection/index.html">Data Protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app-secrets.html">Safe storage of app secrets during development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../enforcing-ssl.html">🔧 Enforcing SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../anti-request-forgery.html">🔧 Anti-Request Forgery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../open-redirect.html">🔧 Preventing Open Redirect Attacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cross-site-scripting.html">🔧 Preventing Cross-Site Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cors.html">Enabling Cross-Origin Requests (CORS)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Security</a> &raquo;</li>
+      
+          <li><a href="index.html">Authorization</a> &raquo;</li>
+      
+    <li>Claims-Based Authorization</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/security/authorization/claims.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="claims-based-authorization">
+<span id="security-authorization-claims-based"></span><h1>Claims-Based Authorization<a class="headerlink" href="#claims-based-authorization" title="Permalink to this headline">¶</a></h1>
+<p>When an identity is created it may be assigned one or more claims issued by a trusted party. A claim is key value pair, the key being the claim name and the value being the claim value. A claim is what the subject is, not what the subject can do. For example you may have a Drivers License, issued by a local driving license authority. Your driver&#8217;s license has your date of birth on it. In this case the claim name would be DateOfBirth, the claim value would be your date of birth, for example 8th June 1970 and the issuer would be the driving license authority. Claims based authorization, at its simplest, checks the value of a claim and allows access to a resource based upon that value. For example if you want access to a night club the authorization process might be:</p>
+<p>The door security officer would evaluate the value of your date of birth  claim and whether they trust the issuer (the driving license authority) before granting you access.</p>
+<p>An identity can contain multiple claims with multiple values and can contain multiple claims of the same type.</p>
+<div class="section" id="adding-claims-checks">
+<h2>Adding claims checks<a class="headerlink" href="#adding-claims-checks" title="Permalink to this headline">¶</a></h2>
+<p>Claim based authorization checks are declarative - the developer embeds them within their code, against a controller or an action within a controller, specifying claims which the current user must possess, and optionally the value the claim must hold to access the requested resource. Claims requirements are policy based, the developer must build and register a policy expressing the claims requirements.</p>
+<p>The simplest type of claim policy looks for the presence of a claim and does not check the value.</p>
+<p>First you need to build and register the policy. This takes place as part of the Authorization service configuration, which normally takes part in <code class="docutils literal"><span class="pre">ConfigureServices()</span></code> in your <em>Startup.cs</em> file.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+
+    <span class="n">services</span><span class="p">.</span><span class="n">AddAuthorization</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">AddPolicy</span><span class="p">(</span><span class="s">&quot;EmployeeOnly&quot;</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span> <span class="n">policy</span><span class="p">.</span><span class="n">RequireClaim</span><span class="p">(</span><span class="s">&quot;EmployeeNumber&quot;</span><span class="p">));</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this case the EmployeeOnly policy checks for the presence of an EmployeeNumber claim on the current identity.</p>
+<p>You then apply the policy using the <code class="docutils literal"><span class="pre">Policy</span></code> parameter on the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute to specify the policy name;</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">VacationBalance</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">Authorize</span></code> attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">VacationController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">VacationBalance</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you have a controller that is protected by the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute, but want to allow anonymous access to particular actions you apply the <code class="docutils literal"><span class="pre">AllowAnonymous</span></code> attribute;</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">VacationController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">VacationBalance</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+<span class="na">    [AllowAnonymous]</span>
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">VacationPolicy</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Most claims come with a value. You can specify a list of allowed values when creating the policy. The following example would only succeed for employees whose employee number was 1, 2, 3, 4 or 5.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+
+    <span class="n">services</span><span class="p">.</span><span class="n">AddAuthorization</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">AddPolicy</span><span class="p">(</span><span class="s">&quot;Founders&quot;</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span>
+                          <span class="n">policy</span><span class="p">.</span><span class="n">RequireClaim</span><span class="p">(</span><span class="s">&quot;EmployeeNumber&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;5&quot;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-policy-evaluation">
+<h2>Multiple Policy Evaluation<a class="headerlink" href="#multiple-policy-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>If you apply multiple policies to a controller or action then all policies must pass before access is granted. For example;</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SalaryController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Payslip</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+<span class="na">    [Authorize(Policy = &quot;HumanResources&quot;)]</span>
+    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">UpdateSalary</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example any identity which fulfills the EmployeeOnly policy can access the Payslip action as that policy is enforced on the controller. However in order to call the UpdateSalary action the identity must fulfill <em>both</em> the EmployeeOnly policy and the HumanResources policy.</p>
+<p>If you want more complicated policies, such as taking a date of birth claim, calculating an age from it then checking the age is 21 or older then you need to write <a class="reference internal" href="policies.html#security-authorization-policies-based"><span class="std std-ref">custom policy handlers</span></a>.</p>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="policies.html" class="btn btn-neutral float-right" title="Custom Policy-Based Authorization" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="roles.html" class="btn btn-neutral" title="Role based Authorization" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

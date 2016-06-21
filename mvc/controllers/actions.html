@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Controllers, Actions, and Action Results &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Controllers" href="index.html"/>
+        <link rel="next" title="🔧 Routing to Controller Actions" href="routing.html"/>
+        <link rel="prev" title="Controllers" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MVC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../views/index.html">Views</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Controllers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Controllers, Actions, and Action Results</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="routing.html">🔧 Routing to Controller Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dependency-injection.html">Dependency Injection and Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Testing Controller Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="areas.html">Areas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application-model.html">🔧 Working with the Application Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">MVC</a> &raquo;</li>
+      
+          <li><a href="index.html">Controllers</a> &raquo;</li>
+      
+    <li>Controllers, Actions, and Action Results</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/mvc/controllers/actions.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="controllers-actions-and-action-results">
+<h1>Controllers, Actions, and Action Results<a class="headerlink" href="#controllers-actions-and-action-results" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>Actions and action results are a fundamental part of how developers build apps using ASP.NET MVC.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-is-a-controller" id="id1">What is a Controller</a></li>
+<li><a class="reference internal" href="#defining-actions" id="id2">Defining Actions</a></li>
+</ul>
+</div>
+<div class="section" id="what-is-a-controller">
+<h2><a class="toc-backref" href="#id1">What is a Controller</a><a class="headerlink" href="#what-is-a-controller" title="Permalink to this headline">¶</a></h2>
+<p>In ASP.NET MVC, a <cite>Controller</cite> is used to define and group a set of actions. An <cite>action</cite> (or <cite>action method</cite>) is a method on a controller that handles incoming requests. Controllers provide a logical means of grouping similar actions together, allowing common sets of rules (e.g. routing, caching, authorization) to be applied collectively. Incoming requests are mapped to actions through <a class="reference internal" href="routing.html"><span class="doc">routing</span></a>.</p>
+<p>In ASP.NET Core MVC, a controller can be any instantiable class that ends in &#8220;Controller&#8221; or inherits from a class that ends with &#8220;Controller&#8221;. Controllers should follow the <a class="reference external" href="http://deviq.com/explicit-dependencies-principle">Explicit Dependencies Principle</a> and request any dependencies their actions require through their constructor using <a class="reference internal" href="dependency-injection.html"><span class="doc">dependency injection</span></a>.</p>
+<p>By convention, controller classes:</p>
+<ul class="simple">
+<li>Are located in the root-level &#8220;Controllers&#8221; folder</li>
+<li>Inherit from Microsoft.AspNetCore.Mvc.Controller</li>
+</ul>
+<p>These two conventions are not required.</p>
+<p>Within the Model-View-Controller pattern, a Controller is responsible for the initial processing of the request and instantiation of the Model. Generally, business decisions should  be performed within the Model.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Model should be a <cite>Plain Old CLR Object (POCO)</cite>, not a <code class="docutils literal"><span class="pre">DbContext</span></code> or database-related type.</p>
+</div>
+<p>The controller takes the result of the model&#8217;s processing (if any), returns the proper view along with the associated view data. Learn more: <a class="reference internal" href="../overview.html"><span class="doc">🔧 Overview of ASP.NET MVC</span></a> and <a class="reference internal" href="../../tutorials/first-mvc-app/start-mvc.html"><span class="doc">Getting started with ASP.NET Core MVC and Visual Studio</span></a>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The Controller is a <cite>UI level</cite> abstraction. Its responsibility is to ensure incoming request data is valid and to choose which view (or result for an API) should be returned. In well-factored apps it will not directly include data access or business logic, but instead will delegate to services handling these responsibilities.</p>
+</div>
+</div>
+<div class="section" id="defining-actions">
+<h2><a class="toc-backref" href="#id2">Defining Actions</a><a class="headerlink" href="#defining-actions" title="Permalink to this headline">¶</a></h2>
+<p>Any public method on a controller type is an action. Parameters on actions are bound to request data and validated using <a class="reference internal" href="../models/model-binding.html"><span class="doc">model binding</span></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Action methods that accept parameters should verify the <code class="docutils literal"><span class="pre">ModelState.IsValid</span></code> property is true.</p>
+</div>
+<p>Action methods should contain logic for mapping an incoming request to a business concern. Business concerns should typically be represented as services that your controller accesses through <a class="reference internal" href="dependency-injection.html"><span class="doc">dependency injection</span></a>. Actions then map the result of the business action to an application state.</p>
+<p>Actions can return anything, but frequently will return an instance of <code class="docutils literal"><span class="pre">IActionResult</span></code> (or <code class="docutils literal"><span class="pre">Task&lt;IActionResult&gt;</span></code> for async methods) that produces a response. The action method is responsible for choosing <cite>what kind of response</cite>; the action result <cite>does the responding</cite>.</p>
+<div class="section" id="controller-helper-methods">
+<h3>Controller Helper Methods<a class="headerlink" href="#controller-helper-methods" title="Permalink to this headline">¶</a></h3>
+<p>Although not required, most developers will want to have their controllers inherit from the base <code class="docutils literal"><span class="pre">Controller</span></code> class. Doing so provides controllers with access to many properties and helpful methods, including the following helper methods designed to assist in returning various responses:</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="../views/index.html"><span class="doc">View</span></a></dt>
+<dd>Returns a view that uses a model to render HTML. Example: <code class="docutils literal"><span class="pre">return</span> <span class="pre">View(customer);</span></code></dd>
+<dt>HTTP Status Code</dt>
+<dd>Return an HTTP status code. Example: <code class="docutils literal"><span class="pre">return</span> <span class="pre">BadRequest();</span></code></dd>
+<dt>Formatted Response</dt>
+<dd>Return <code class="docutils literal"><span class="pre">Json</span></code> or similar to format an object in a specific manner. Example: <code class="docutils literal"><span class="pre">return</span> <span class="pre">Json(customer);</span></code></dd>
+<dt>Content negotiated response</dt>
+<dd>Instead of returning an object directly, an action can return a content negotiated response (using <code class="docutils literal"><span class="pre">Ok</span></code>, <code class="docutils literal"><span class="pre">Created</span></code>, <code class="docutils literal"><span class="pre">CreatedAtRoute</span></code> or <code class="docutils literal"><span class="pre">CreatedAtAction</span></code>). Examples: <code class="docutils literal"><span class="pre">return</span> <span class="pre">Ok();</span></code> or <code class="docutils literal"><span class="pre">return</span> <span class="pre">CreatedAtRoute(&quot;routename&quot;,values,newobject&quot;);</span></code></dd>
+<dt>Redirect</dt>
+<dd>Returns a redirect to another action or destination (using <code class="docutils literal"><span class="pre">Redirect</span></code>,``LocalRedirect``,``RedirectToAction`` or <code class="docutils literal"><span class="pre">RedirectToRoute</span></code>). Example: <code class="docutils literal"><span class="pre">return</span> <span class="pre">RedirectToAction(&quot;Complete&quot;,</span> <span class="pre">new</span> <span class="pre">{id</span> <span class="pre">=</span> <span class="pre">123});</span></code></dd>
+</dl>
+<p>In addition to the methods above, an action can also simply return an object. In this case, the object will be formatted based on the client&#8217;s request. Learn more about <a class="reference internal" href="../models/formatting.html"><span class="doc">🔧 Formatting</span></a></p>
+</div>
+<div class="section" id="cross-cutting-concerns">
+<h3>Cross-Cutting Concerns<a class="headerlink" href="#cross-cutting-concerns" title="Permalink to this headline">¶</a></h3>
+<p>In most apps, many actions will share parts of their workflow. For instance, most of an app might be available only to authenticated users, or might benefit from caching. When you want to perform some logic before or after an action method runs, you can use a <cite>filter</cite>. You can help keep your actions from growing too large by using <a class="reference internal" href="filters.html"><span class="doc">Filters</span></a> to handle these cross-cutting concerns. This can help eliminate duplication within your actions, allowing them to follow the <a class="reference external" href="http://deviq.com/don-t-repeat-yourself/">Don&#8217;t Repeat Yourself (DRY) principle</a>.</p>
+<p>In the case of authorization and authentication, you can apply the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute to any actions that require it. Adding it to a controller will apply it to all actions within that controller. Adding this attribute will ensure the appropriate filter is applied to any request for this action. Some attributes can be applied at both controller and action levels to provide granular control over filter behavior. Learn more: <a class="reference internal" href="filters.html"><span class="doc">Filters</span></a> and <a class="reference internal" href="../../security/authorization/authorization-filters.html"><span class="doc">🔧 Authorization Filters</span></a>.</p>
+<dl class="docutils">
+<dt>Other examples of cross-cutting concerns in MVC apps may include:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference internal" href="filters.html#exception-filters"><span class="std std-ref">Error handling</span></a></li>
+<li><a class="reference internal" href="../../performance/caching/response.html"><span class="doc">Response Caching</span></a></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Many cross-cutting concerns can be handled using filters in MVC apps. Another option to keep in mind that is available to any ASP.NET Core app is custom <a class="reference internal" href="../../fundamentals/middleware.html"><span class="doc">middleware</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="routing.html" class="btn btn-neutral float-right" title="🔧 Routing to Controller Actions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Controllers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1524 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migrating HTTP Modules to Middleware &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Migration" href="index.html"/>
+        <link rel="next" title="Migrating from ASP.NET 5 RC1 to ASP.NET Core" href="rc1-to-rc2.html"/>
+        <link rel="prev" title="Migrating from ASP.NET Web API" href="webapi.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Migration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mvc.html">Migrating From ASP.NET MVC to ASP.NET Core MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Migrating Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identity.html">Migrating Authentication and Identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webapi.html">Migrating from ASP.NET Web API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating HTTP Modules to Middleware</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rc1-to-rc2.html">Migrating from ASP.NET 5 RC1 to ASP.NET Core</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Migration</a> &raquo;</li>
+      
+    <li>Migrating HTTP Modules to Middleware</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/migration/http-modules.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="migrating-http-modules-to-middleware">
+<h1>Migrating HTTP Modules to Middleware<a class="headerlink" href="#migrating-http-modules-to-middleware" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://www.linkedin.com/in/mattperdeck">Matt Perdeck</a></p>
+<p>This article shows how to migrate existing ASP.NET <a class="reference external" href="https://msdn.microsoft.com/en-us/library/bb398986.aspx">HTTP modules and handlers</a> to ASP.NET Core <a class="reference internal" href="../fundamentals/middleware.html#fundamentals-middleware"><span class="std std-ref">middleware</span></a>.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#handlers-and-modules-revisited" id="id3">Handlers and modules revisited</a></li>
+<li><a class="reference internal" href="#from-handlers-and-modules-to-middleware" id="id4">From handlers and modules to middleware</a></li>
+<li><a class="reference internal" href="#migrating-module-code-to-middleware" id="id5">Migrating module code to middleware</a></li>
+<li><a class="reference internal" href="#migrating-module-insertion-into-the-request-pipeline" id="id6">Migrating module insertion into the request pipeline</a></li>
+<li><a class="reference internal" href="#migrating-handler-code-to-middleware" id="id7">Migrating handler code to middleware</a></li>
+<li><a class="reference internal" href="#migrating-handler-insertion-into-the-request-pipeline" id="id8">Migrating handler insertion into the request pipeline</a></li>
+<li><a class="reference internal" href="#loading-middleware-options-using-the-options-pattern" id="id9">Loading middleware options using the options pattern</a></li>
+<li><a class="reference internal" href="#loading-middleware-options-through-direct-injection" id="id10">Loading middleware options through direct injection</a></li>
+<li><a class="reference internal" href="#migrating-to-the-new-httpcontext" id="id11">Migrating to the new HttpContext</a></li>
+<li><a class="reference internal" href="#additional-resources" id="id12">Additional Resources</a></li>
+</ul>
+</div>
+<div class="section" id="handlers-and-modules-revisited">
+<h2><a class="toc-backref" href="#id3">Handlers and modules revisited</a><a class="headerlink" href="#handlers-and-modules-revisited" title="Permalink to this headline">¶</a></h2>
+<p>Before proceeding to ASP.NET Core middleware, let&#8217;s first recap how HTTP modules and handlers work:</p>
+<img alt="../_images/moduleshandlers.png" src="../_images/moduleshandlers.png" />
+<dl class="docutils">
+<dt>Handlers are:</dt>
+<dd><ul class="first last simple">
+<li>Classes that implement <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.web.ihttphandler(v=vs.100).aspx">IHttpHandler</a></li>
+<li>Used to handle requests with a given file name or extension, such as <em>.report</em></li>
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/46c5ddfy(v=vs.100).aspx">Configured</a> in <em>Web.config</em></li>
+</ul>
+</dd>
+<dt>Modules are:</dt>
+<dd><ul class="first last simple">
+<li>Classes that implement <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.web.ihttpmodule(v=vs.100).aspx">IHttpModule</a></li>
+<li>Invoked for every request</li>
+<li>Able to short-circuit (stop further processing of a request)</li>
+<li>Able to add to the HTTP response, or create their own</li>
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms227673(v=vs.100).aspx">Configured</a> in <em>Web.config</em></li>
+</ul>
+</dd>
+</dl>
+<p><strong>The order in which modules process incoming requests is determined by:</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms227673(v=vs.100).aspx">application life cycle</a>, which is a series events fired by ASP.NET: <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.web.httpapplication.beginrequest(v=vs.100).aspx">BeginRequest</a>, <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.web.httpapplication.authenticaterequest(v=vs.100).aspx">AuthenticateRequest</a>, etc. Each module can create a handler for one or more events.</li>
+<li>For the same event, the order in which they are configured in <em>Web.config</em>.</li>
+</ol>
+</div></blockquote>
+<p>In addition to modules, you can add handlers for the life cycle events to your <em>Global.asax.cs</em> file. These handlers run after the handlers in the configured modules.</p>
+</div>
+<div class="section" id="from-handlers-and-modules-to-middleware">
+<h2><a class="toc-backref" href="#id4">From handlers and modules to middleware</a><a class="headerlink" href="#from-handlers-and-modules-to-middleware" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Middleware are simpler than HTTP modules and handlers:</dt>
+<dd><ul class="first last simple">
+<li>Modules, handlers, <em>Global.asax.cs</em>, <em>Web.config</em> (except for IIS configuration) and the application life cycle are gone</li>
+<li>The roles of both modules and handlers have been taken over by middleware</li>
+<li>Middleware are configured using code rather than in <em>Web.config</em></li>
+<li><a class="reference internal" href="../fundamentals/middleware.html#middleware-run-map-use"><span class="std std-ref">Pipeline branching</span></a> lets you send requests to specific middleware, based on not only the URL but also on request headers, query strings, etc.</li>
+</ul>
+</dd>
+<dt>Middleware are very similar to modules:</dt>
+<dd><ul class="first last simple">
+<li>Invoked in principle for every request</li>
+<li>Able to short-circuit a request, by <a class="reference internal" href="#http-modules-shortcircuiting-middleware"><span class="std std-ref">not passing the request to the next middleware</span></a></li>
+<li>Able to create their own HTTP response</li>
+</ul>
+</dd>
+<dt>Middleware and modules are processed in a different order:</dt>
+<dd><ul class="first last simple">
+<li>Order of middleware is based on the order in which they are inserted into the request pipeline, while order of modules is mainly based on <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms227673(v=vs.100).aspx">application life cycle</a> events</li>
+<li>Order of middleware for responses is the reverse from that for requests, while order of modules is the same for requests and responses</li>
+<li>See <a class="reference external" href="../fundamentals/middleware.html#creating-a-middleware-pipeline-with-iapplicationbuilder">Creating a middleware pipeline with IApplicationBuilder</a></li>
+</ul>
+</dd>
+</dl>
+<img alt="../_images/middleware.png" src="../_images/middleware.png" />
+<p>Note how in the image above, the authentication middleware short-circuited the request.</p>
+</div>
+<div class="section" id="migrating-module-code-to-middleware">
+<h2><a class="toc-backref" href="#id5">Migrating module code to middleware</a><a class="headerlink" href="#migrating-module-code-to-middleware" title="Permalink to this headline">¶</a></h2>
+<p>An existing HTTP module will look similar to this:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 4 module</span>
+
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+
+<span class="hll"><span class="k">namespace</span> <span class="nn">MyApp.Modules</span>
+</span><span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyModule</span> <span class="p">:</span> <span class="n">IHttpModule</span>
+</span>    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">(</span><span class="n">HttpApplication</span> <span class="n">application</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">application</span><span class="p">.</span><span class="n">BeginRequest</span> <span class="p">+=</span> <span class="p">(</span><span class="k">new</span> <span class="n">EventHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">Application_BeginRequest</span><span class="p">));</span>
+            <span class="n">application</span><span class="p">.</span><span class="n">EndRequest</span> <span class="p">+=</span> <span class="p">(</span><span class="k">new</span> <span class="n">EventHandler</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">Application_EndRequest</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Application_BeginRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">source</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">HttpContext</span> <span class="n">context</span> <span class="p">=</span> <span class="p">((</span><span class="n">HttpApplication</span><span class="p">)</span><span class="n">source</span><span class="p">).</span><span class="n">Context</span><span class="p">;</span>
+
+<span class="hll">            <span class="c1">// Do something with context near the beginning of request processing.</span>
+</span>        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Application_EndRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">source</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">HttpContext</span> <span class="n">context</span> <span class="p">=</span> <span class="p">((</span><span class="n">HttpApplication</span><span class="p">)</span><span class="n">source</span><span class="p">).</span><span class="n">Context</span><span class="p">;</span>
+
+<span class="hll">            <span class="c1">// Do something with context near the end of request processing.</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>As shown in the <a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">Middleware</span></a> page,
+an ASP.NET Core middleware is simply a class that exposes an <code class="docutils literal"><span class="pre">Invoke</span></code> method taking an <code class="docutils literal"><span class="pre">HttpContext</span></code> and returning a <code class="docutils literal"><span class="pre">Task</span></code>. Your new middleware will look like this:</p>
+<div class="highlight-c#" id="http-modules-usemiddleware"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 middleware</span>
+
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyApp.Middleware</span>
+<span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyMiddleware</span>
+</span>    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">RequestDelegate</span> <span class="n">_next</span><span class="p">;</span>
+
+<span class="hll">        <span class="k">public</span> <span class="nf">MyMiddleware</span><span class="p">(</span><span class="n">RequestDelegate</span> <span class="n">next</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="n">_next</span> <span class="p">=</span> <span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="c1">// Do something with context near the beginning of request processing.</span>
+</span>
+            <span class="k">await</span> <span class="n">_next</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+
+<span class="hll">            <span class="c1">// Clean up.</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">MyMiddlewareExtensions</span>
+</span>    <span class="p">{</span>
+<span class="hll">        <span class="k">public</span> <span class="k">static</span> <span class="n">IApplicationBuilder</span> <span class="nf">UseMyMiddleware</span><span class="p">(</span><span class="k">this</span> <span class="n">IApplicationBuilder</span> <span class="n">builder</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+<span class="hll">            <span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">MyMiddleware</span><span class="p">&gt;();</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The above middleware template was taken from the section on
+<a class="reference internal" href="../fundamentals/middleware.html#middleware-writing-middleware"><span class="std std-ref">writing middleware</span></a>.</p>
+<p>The <cite>MyMiddlewareExtensions</cite> helper class makes it easier to configure your middleware in your <code class="docutils literal"><span class="pre">Startup</span></code> class.
+The <code class="docutils literal"><span class="pre">UseMyMiddleware</span></code> method adds your middleware class to the request pipeline. Services required by the middleware get injected in the middleware&#8217;s constructor.</p>
+<p id="http-modules-shortcircuiting-middleware">Your module might terminate a request, for example if the user is not authorized:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 4 module that may terminate the request</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">Application_BeginRequest</span><span class="p">(</span><span class="n">Object</span> <span class="n">source</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">HttpContext</span> <span class="n">context</span> <span class="p">=</span> <span class="p">((</span><span class="n">HttpApplication</span><span class="p">)</span><span class="n">source</span><span class="p">).</span><span class="n">Context</span><span class="p">;</span>
+
+    <span class="c1">// Do something with context near the beginning of request processing.</span>
+
+<span class="hll">    <span class="k">if</span> <span class="p">(</span><span class="n">TerminateRequest</span><span class="p">())</span>
+</span><span class="hll">    <span class="p">{</span>
+</span><span class="hll">        <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+</span><span class="hll">        <span class="k">return</span><span class="p">;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>A middleware handles this by simply not calling <code class="docutils literal"><span class="pre">Invoke</span></code> on the next middleware in the pipeline. Keep in mind that this does not
+fully terminate the request, because previous middlewares will still be invoked when the response makes its way back through the pipeline.</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 middleware that may terminate the request</span>
+
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Do something with context near the beginning of request processing.</span>
+
+<span class="hll">    <span class="k">if</span> <span class="p">(!</span><span class="n">TerminateRequest</span><span class="p">())</span>
+</span><span class="hll">        <span class="k">await</span> <span class="n">_next</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</span>
+    <span class="c1">// Clean up.</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>When you migrate your module&#8217;s functionality to your new middleware, you may find that your code doesn&#8217;t compile because the <code class="docutils literal"><span class="pre">HttpContext</span></code> class
+has significantly changed in ASP.NET Core. <a class="reference external" href="#migrating-to-the-new-httpcontext">Later on</a>, you&#8217;ll see how to migrate to the new ASP.NET Core HttpContext.</p>
+</div>
+<div class="section" id="migrating-module-insertion-into-the-request-pipeline">
+<h2><a class="toc-backref" href="#id6">Migrating module insertion into the request pipeline</a><a class="headerlink" href="#migrating-module-insertion-into-the-request-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>HTTP modules are typically added to the request pipeline using <em>Web.config</em>:</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="c">&lt;!--ASP.NET 4 web.config--&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;/httpHandlers&gt;</span>
+    
+<span class="hll">    <span class="nt">&lt;modules&gt;</span>
+</span>      
+    <span class="nt">&lt;/handlers&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Convert this by <a class="reference external" href="../fundamentals/middleware.html#creating-a-middleware-pipeline-with-iapplicationbuilder">adding your new middleware</a>
+to the request pipeline in your <code class="docutils literal"><span class="pre">Startup</span></code> class:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 Startup class</span>
+
+<span class="k">namespace</span> <span class="nn">Asp.Net5</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> 
+            <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// ...</span>
+
+<span class="hll">            <span class="n">app</span><span class="p">.</span><span class="n">UseMyMiddleware</span><span class="p">();</span>
+</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The exact spot in the pipeline where you insert your new middleware depends on the event
+that it handled as a module (<code class="docutils literal"><span class="pre">BeginRequest</span></code>, <code class="docutils literal"><span class="pre">EndRequest</span></code>, etc.) and its order in your list of modules in <em>Web.config</em>.</p>
+<p>As previously stated, there is no more application life cycle in ASP.NET Core and the order in which responses are processed by middleware differs from the order used by modules. This could make your ordering decision more  challenging.</p>
+<p>If ordering becomes a problem, you could split your module into multiple middleware that can be ordered independently.</p>
+</div>
+<div class="section" id="migrating-handler-code-to-middleware">
+<h2><a class="toc-backref" href="#id7">Migrating handler code to middleware</a><a class="headerlink" href="#migrating-handler-code-to-middleware" title="Permalink to this headline">¶</a></h2>
+<p>An HTTP handler looks something like this:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 4 handler</span>
+
+<span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+
+<span class="hll"><span class="k">namespace</span> <span class="nn">MyApp.HttpHandlers</span>
+</span><span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyHandler</span> <span class="p">:</span> <span class="n">IHttpHandler</span>
+</span>    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsReusable</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">ProcessRequest</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="kt">string</span> <span class="n">response</span> <span class="p">=</span> <span class="n">GenerateResponse</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="n">GetContentType</span><span class="p">();</span>
+</span><span class="hll">            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Output</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>In your ASP.NET Core project, you would translate this to a middleware similar to this:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 middleware migrated from a handler</span>
+
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="hll"><span class="k">namespace</span> <span class="nn">MyApp.Middleware</span>
+</span><span class="p">{</span>
+<span class="hll">    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyHandlerMiddleware</span>
+</span>    <span class="p">{</span>
+
+        <span class="c1">// Must have constructor with this signature, otherwise exception at run time</span>
+<span class="hll">        <span class="k">public</span> <span class="nf">MyHandlerMiddleware</span><span class="p">(</span><span class="n">RequestDelegate</span> <span class="n">next</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="c1">// This is an HTTP Handler, so no need to store next</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="kt">string</span> <span class="n">response</span> <span class="p">=</span> <span class="n">GenerateResponse</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="n">GetContentType</span><span class="p">();</span>
+</span><span class="hll">            <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">MyHandlerExtensions</span>
+</span>    <span class="p">{</span>
+<span class="hll">        <span class="k">public</span> <span class="k">static</span> <span class="n">IApplicationBuilder</span> <span class="nf">UseMyHandler</span><span class="p">(</span><span class="k">this</span> <span class="n">IApplicationBuilder</span> <span class="n">builder</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+<span class="hll">            <span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">MyHandlerMiddleware</span><span class="p">&gt;();</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>This middleware is very similar to the middleware corresponding to modules. The only real difference is that here there is no
+call to <code class="docutils literal"><span class="pre">_next.Invoke(context)</span></code>. That makes sense, because the handler is at the end of the request pipeline, so there will be no next middleware to invoke.</p>
+</div>
+<div class="section" id="migrating-handler-insertion-into-the-request-pipeline">
+<h2><a class="toc-backref" href="#id8">Migrating handler insertion into the request pipeline</a><a class="headerlink" href="#migrating-handler-insertion-into-the-request-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Configuring an HTTP handler is done in <em>Web.config</em> and looks something like this:</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="c">&lt;!--ASP.NET 4 web.config--&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;/httpHandlers&gt;</span>
+
+    <span class="nt">&lt;/modules&gt;</span>
+<span class="hll">
+</span><span class="hll">    <span class="nt">&lt;validation</span> <span class="na">validateIntegratedModeConfiguration=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+</span>    <span class="nt">&lt;handlers&gt;</span>
+    <span class="nt">&lt;/handlers&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>You could convert this by adding your new handler middleware to the request pipeline in your <code class="docutils literal"><span class="pre">Startup</span></code> class, similar to middleware converted from modules. The problem with that approach; it would send all requests to your new handler middleware. However, you only want requests with a given extension to reach your middleware. That would give you the same functionality you had with your HTTP handler.</p>
+<p>One solution is to branch the pipeline for requests with a given extension, using the <code class="docutils literal"><span class="pre">MapWhen</span></code> extension method.
+You do this in the same <code class="docutils literal"><span class="pre">Configure</span></code> method where you add the other middleware:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 Startup class</span>
+
+<span class="k">namespace</span> <span class="nn">Asp.Net5</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> 
+            <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// ...</span>
+
+<span class="hll">            <span class="n">app</span><span class="p">.</span><span class="n">MapWhen</span><span class="p">(</span>
+</span><span class="hll">                <span class="n">context</span> <span class="p">=&gt;</span> <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">EndsWith</span><span class="p">(</span><span class="s">&quot;.report&quot;</span><span class="p">),</span>
+</span><span class="hll">                <span class="n">appBranch</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span><span class="hll">                    <span class="c1">// ... optionally add more middleware to this branch</span>
+</span><span class="hll">                    <span class="n">appBranch</span><span class="p">.</span><span class="n">UseMyHandler</span><span class="p">();</span>
+</span><span class="hll">                <span class="p">});</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><code class="docutils literal"><span class="pre">MapWhen</span></code> takes these parameters:</p>
+<ol class="arabic simple">
+<li>A lambda that takes the <code class="docutils literal"><span class="pre">HttpContext</span></code> and returns <code class="docutils literal"><span class="pre">true</span></code> if the request should go down the branch.
+This means you can branch requests not just based on their extension, but also on request headers, query string parameters, etc.</li>
+<li>A lambda that takes an <code class="docutils literal"><span class="pre">IApplicationBuilder</span></code> and adds all the middleware for the branch.
+This means you can add additional middleware to the branch in front of your handler middleware.</li>
+</ol>
+<p>Middleware added to the pipeline before the branch will be invoked on all requests; the branch will have no impact on them.</p>
+</div>
+<div class="section" id="loading-middleware-options-using-the-options-pattern">
+<h2><a class="toc-backref" href="#id9">Loading middleware options using the options pattern</a><a class="headerlink" href="#loading-middleware-options-using-the-options-pattern" title="Permalink to this headline">¶</a></h2>
+<p>Some modules and handlers have configuration options that are stored in <em>Web.config</em>.
+However, in ASP.NET Core a new configuration model is used in place of <em>Web.config</em>.</p>
+<p>The new <a class="reference internal" href="../fundamentals/configuration.html"><span class="doc">configuration system</span></a> gives you these options to solve this:</p>
+<ul class="simple">
+<li>Directly inject the options into the middleware, as shown in the <a class="reference internal" href="#loading-middleware-options-through-direct-injection"><span class="std std-ref">next section</span></a>.</li>
+<li>Use the <a class="reference internal" href="../fundamentals/configuration.html#options-config-objects"><span class="std std-ref">options pattern</span></a>:</li>
+</ul>
+<ol class="arabic">
+<li><p class="first">Create a class to hold your middleware options, for example:</p>
+<blockquote>
+<div><div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyMiddlewareOptions</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Param1</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Param2</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">Store the option values</p>
+<blockquote>
+<div><p>The new configuration system allows you to essentially store option values anywhere you want. However, most sites use
+<em>appsettings.json</em>, so we&#8217;ll take that approach:</p>
+<div class="highlight-json"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;MyMiddlewareOptionsSection&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Param1&quot;</span><span class="p">:</span> <span class="s2">&quot;Param1Value&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Param2&quot;</span><span class="p">:</span> <span class="s2">&quot;Param2Value&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p><em>MyMiddlewareOptionsSection</em> here is simply a section name. It doesn&#8217;t have to be the same as the name of your options class.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Associate the option values with the options class</p>
+<blockquote>
+<div><p>The options pattern uses ASP.NET Core&#8217;s dependency injection framework to associate the options type (such as <code class="docutils literal"><span class="pre">MyMiddlewareOptions</span></code>)
+with an <code class="docutils literal"><span class="pre">MyMiddlewareOptions</span></code> object that has the actual options.</p>
+<p>Update your <code class="docutils literal"><span class="pre">Startup</span></code> class:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>If you&#8217;re using <em>appsettings.json</em>, add it to the configuration builder in the <code class="docutils literal"><span class="pre">Startup</span></code> constructor:</li>
+</ol>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Set up configuration sources.</span>
+        <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConfigurationBuilder</span><span class="p">()</span>
+<span class="hll">            <span class="p">.</span><span class="n">AddJsonFile</span><span class="p">(</span><span class="s">&quot;appsettings.json&quot;</span><span class="p">)</span>
+</span>            <span class="p">.</span><span class="n">AddEnvironmentVariables</span><span class="p">();</span>
+        <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="loweralpha simple" start="2">
+<li>Configure the options service:</li>
+</ol>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="n">services</span><span class="p">.</span><span class="n">AddOptions</span><span class="p">();</span>
+</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="loweralpha simple" start="3">
+<li>Associate your options with your options class:</li>
+</ol>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">services</span><span class="p">.</span><span class="n">AddOptions</span><span class="p">();</span>
+
+<span class="hll">        <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;(</span>
+</span><span class="hll">            <span class="n">Configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&quot;MyMiddlewareOptionsSection&quot;</span><span class="p">));</span>
+</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">Inject the options into your middleware constructor. This is similar to injecting options into a controller.</p>
+<blockquote>
+<div><div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">MyApp.Middleware</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">MyMiddlewareWithParams</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">RequestDelegate</span> <span class="n">_next</span><span class="p">;</span>
+<span class="hll">        <span class="k">private</span> <span class="k">readonly</span> <span class="n">MyMiddlewareOptions</span> <span class="n">_myMiddlewareOptions</span><span class="p">;</span>
+</span>
+        <span class="k">public</span> <span class="nf">MyMiddlewareWithParams</span><span class="p">(</span><span class="n">RequestDelegate</span> <span class="n">next</span><span class="p">,</span>
+<span class="hll">            <span class="n">IOptions</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;</span> <span class="n">optionsAccessor</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="n">_next</span> <span class="p">=</span> <span class="n">next</span><span class="p">;</span>
+<span class="hll">            <span class="n">_myMiddlewareOptions</span> <span class="p">=</span> <span class="n">optionsAccessor</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+</span>        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Do something with context near the beginning of request processing</span>
+<span class="hll">            <span class="c1">// using configuration in _myMiddlewareOptions</span>
+</span>
+            <span class="k">await</span> <span class="n">_next</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+
+            <span class="c1">// Do something with context near the end of request processing</span>
+<span class="hll">            <span class="c1">// using configuration in _myMiddlewareOptions</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <a class="reference external" href="#http-modules-usemiddleware">UseMiddleware</a> extension method that adds your middleware to the
+<code class="docutils literal"><span class="pre">IApplicationBuilder</span></code> takes care of dependency injection.</p>
+<p>This is not limited to <code class="docutils literal"><span class="pre">IOptions</span></code> objects. Any other object that your middleware requires can be injected this way.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="loading-middleware-options-through-direct-injection">
+<span id="id2"></span><h2><a class="toc-backref" href="#id10">Loading middleware options through direct injection</a><a class="headerlink" href="#loading-middleware-options-through-direct-injection" title="Permalink to this headline">¶</a></h2>
+<p>The options pattern has the advantage that it creates loose coupling between options values and their consumers.
+Once you&#8217;ve associated an options class with the actual options values, any other class can get access to the options
+through the dependency injection framework. There is no need to pass around options values.</p>
+<p>This breaks down though if you want to use the same middleware twice, with different options. For example an authorization middleware
+used in different branches allowing different roles. You can&#8217;t associate two different options objects with the one options class.</p>
+<p>The solution is to get the options objects with the actual options values in your <code class="docutils literal"><span class="pre">Startup</span></code> class and pass those directly to each instance of your middleware.</p>
+<ol class="arabic">
+<li><p class="first">Add a second key to <em>appsettings.json</em></p>
+<blockquote>
+<div><p>To add a second set of options to the
+<em>appsettings.json</em> file, simply use a new key to uniquely identify it:</p>
+<div class="highlight-json"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="hll">  <span class="nt">&quot;MyMiddlewareOptionsSection2&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;Param1&quot;</span><span class="p">:</span> <span class="s2">&quot;Param1Value2&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;Param2&quot;</span><span class="p">:</span> <span class="s2">&quot;Param2Value2&quot;</span>
+</span><span class="hll">  <span class="p">},</span>
+</span>  <span class="nt">&quot;MyMiddlewareOptionsSection&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Param1&quot;</span><span class="p">:</span> <span class="s2">&quot;Param1Value&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Param2&quot;</span><span class="p">:</span> <span class="s2">&quot;Param2Value&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">Retrieve options values. The <code class="docutils literal"><span class="pre">Get</span></code> method on the <code class="docutils literal"><span class="pre">Configuration</span></code> property lets you retrieve options values:</p>
+<blockquote>
+<div><div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 Startup class</span>
+
+<span class="k">namespace</span> <span class="nn">Asp.Net5</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> 
+            <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// ...</span>
+
+<span class="hll">            <span class="kt">var</span> <span class="n">myMiddlewareOptions</span> <span class="p">=</span> 
+</span><span class="hll">                <span class="n">Configuration</span><span class="p">.</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;(</span><span class="s">&quot;MyMiddlewareOptionsSection&quot;</span><span class="p">);</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="kt">var</span> <span class="n">myMiddlewareOptions2</span> <span class="p">=</span> 
+</span><span class="hll">                <span class="n">Configuration</span><span class="p">.</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;(</span><span class="s">&quot;MyMiddlewareOptionsSection2&quot;</span><span class="p">);</span>
+</span>
+            <span class="c1">// ...</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">Pass options values to middleware. The <code class="docutils literal"><span class="pre">Use...</span></code> extension method (which adds your middleware to the pipeline) is a logical place to pass in the option values:</p>
+<blockquote>
+<div><div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// ASP.NET 5 Startup class</span>
+
+<span class="k">namespace</span> <span class="nn">Asp.Net5</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> 
+            <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// ...</span>
+
+            <span class="kt">var</span> <span class="n">myMiddlewareOptions</span> <span class="p">=</span> 
+                <span class="n">Configuration</span><span class="p">.</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;(</span><span class="s">&quot;MyMiddlewareOptionsSection&quot;</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">myMiddlewareOptions2</span> <span class="p">=</span> 
+                <span class="n">Configuration</span><span class="p">.</span><span class="n">Get</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;(</span><span class="s">&quot;MyMiddlewareOptionsSection2&quot;</span><span class="p">);</span>
+
+<span class="hll">            <span class="n">app</span><span class="p">.</span><span class="n">UseMyMiddlewareWithParams</span><span class="p">(</span><span class="n">myMiddlewareOptions</span><span class="p">);</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="c1">// ...</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="n">app</span><span class="p">.</span><span class="n">UseMyMiddlewareWithParams</span><span class="p">(</span><span class="n">myMiddlewareOptions2</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">Enable middleware to take an options parameter. Provide an overload of the <code class="docutils literal"><span class="pre">Use...</span></code> extension method (that takes the options parameter and passes it to <code class="docutils literal"><span class="pre">UseMiddleware</span></code>). When <code class="docutils literal"><span class="pre">UseMiddleware</span></code> is called with parameters, it passes the parameters to your middleware constructor when it instantiates the middleware object.</p>
+<blockquote>
+<div><div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.AspNet.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.OptionsModel</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyApp.Middleware</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">MyMiddlewareWithParamsExtensions</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="n">IApplicationBuilder</span> <span class="nf">UseMyMiddlewareWithParams</span><span class="p">(</span>
+            <span class="k">this</span> <span class="n">IApplicationBuilder</span> <span class="n">builder</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">MyMiddlewareWithParams</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+<span class="hll">        <span class="k">public</span> <span class="k">static</span> <span class="n">IApplicationBuilder</span> <span class="nf">UseMyMiddlewareWithParams</span><span class="p">(</span>
+</span><span class="hll">            <span class="k">this</span> <span class="n">IApplicationBuilder</span> <span class="n">builder</span><span class="p">,</span> <span class="n">MyMiddlewareOptions</span> <span class="n">myMiddlewareOptions</span><span class="p">)</span>
+</span><span class="hll">        <span class="p">{</span>
+</span><span class="hll">            <span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">MyMiddlewareWithParams</span><span class="p">&gt;(</span>
+</span><span class="hll">                <span class="k">new</span> <span class="n">OptionsWrapper</span><span class="p">&lt;</span><span class="n">MyMiddlewareOptions</span><span class="p">&gt;(</span><span class="n">myMiddlewareOptions</span><span class="p">));</span>
+</span><span class="hll">        <span class="p">}</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note how this wraps the options object in an <code class="docutils literal"><span class="pre">OptionsWrapper</span></code> object. This implements <code class="docutils literal"><span class="pre">IOptions</span></code>, as expected by
+the middleware constructor:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1">// Remove this when Microsoft.Extensions.Options becomes available from NuGet</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">OptionsWrapper</span><span class="p">&lt;</span><span class="n">TOptions</span><span class="p">&gt;</span> <span class="p">:</span> <span class="n">IOptions</span><span class="p">&lt;</span><span class="n">TOptions</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">TOptions</span> <span class="p">:</span> <span class="n">class</span><span class="p">,</span> <span class="k">new</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">OptionsWrapper</span><span class="p">(</span><span class="n">TOptions</span> <span class="n">options</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Value</span> <span class="p">=</span> <span class="n">options</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">TOptions</span> <span class="n">Value</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="migrating-to-the-new-httpcontext">
+<h2><a class="toc-backref" href="#id11">Migrating to the new HttpContext</a><a class="headerlink" href="#migrating-to-the-new-httpcontext" title="Permalink to this headline">¶</a></h2>
+<p>You saw earlier that the <code class="docutils literal"><span class="pre">Invoke</span></code> method in your middleware takes a parameter of type <code class="docutils literal"><span class="pre">HttpContext</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">HttpContext</span></code> has significantly changed in ASP.NET Core. This section shows how to translate the most commonly used properties of
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.web.httpcontext(v=vs.110).aspx">System.Web.HttpContext</a> to the
+new <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/HttpContext/index.html">Microsoft.AspNetCore.Http.HttpContext</a>.</p>
+<div class="section" id="httpcontext">
+<h3>HttpContext<a class="headerlink" href="#httpcontext" title="Permalink to this headline">¶</a></h3>
+<p><strong>HttpContext.Items</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">IDictionary</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">items</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Items</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Unique request ID (no System.Web.HttpContext counterpart)</strong></p>
+<p>Gives you a unique id for each request. Very useful to include in your logs.</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">requestId</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">TraceIdentifier</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="httpcontext-request">
+<h3>HttpContext.Request<a class="headerlink" href="#httpcontext-request" title="Permalink to this headline">¶</a></h3>
+<p><strong>HttpContext.Request.HttpMethod</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">httpMethod</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Method</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.QueryString</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">IReadableStringCollection</span> <span class="n">queryParameters</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Query</span><span class="p">;</span>
+
+<span class="c1">// If no query parameter &quot;key&quot; used, values will have 0 items</span>
+<span class="c1">// If single value used for a key (...?key=v1), values will have 1 item (&quot;v1&quot;)</span>
+<span class="c1">// If key has multiple values (...?key=v1&amp;key=v2), values will have 2 items (&quot;v1&quot; and &quot;v2&quot;)</span>
+<span class="n">IList</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">values</span> <span class="p">=</span> <span class="n">queryParameters</span><span class="p">[</span><span class="s">&quot;key&quot;</span><span class="p">];</span>
+
+<span class="c1">// If no query parameter &quot;key&quot; used, value will be &quot;&quot;</span>
+<span class="c1">// If single value used for a key (...?key=v1), value will be &quot;v1&quot;</span>
+<span class="c1">// If key has multiple values (...?key=v1&amp;key=v2), value will be &quot;v1,v2&quot;</span>
+<span class="kt">string</span> <span class="k">value</span> <span class="p">=</span> <span class="n">queryParameters</span><span class="p">[</span><span class="s">&quot;key&quot;</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.Url and HttpContext.Request.RawUrl</strong> translate to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// using Microsoft.AspNet.Http.Extensions;</span>
+<span class="kt">var</span> <span class="n">url</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">GetDisplayUrl</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.IsSecureConnection</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">isSecureConnection</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">IsHttps</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.UserHostAddress</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">var</span> <span class="n">userHostAddress</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Connection</span><span class="p">.</span><span class="n">RemoteIpAddress</span><span class="p">?.</span><span class="n">ToString</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.Cookies</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">IReadableStringCollection</span> <span class="n">cookies</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Cookies</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">unknownCookieValue</span> <span class="p">=</span> <span class="n">cookies</span><span class="p">[</span><span class="s">&quot;unknownCookie&quot;</span><span class="p">];</span> <span class="c1">// will be null (no exception)</span>
+<span class="kt">string</span> <span class="n">knownCookieValue</span> <span class="p">=</span> <span class="n">cookies</span><span class="p">[</span><span class="s">&quot;cookie1name&quot;</span><span class="p">];</span>     <span class="c1">// will be actual value</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.Headers</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// using Microsoft.AspNet.Http.Headers;</span>
+<span class="c1">// using Microsoft.Net.Http.Headers;</span>
+
+<span class="n">IHeaderDictionary</span> <span class="n">headersDictionary</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Headers</span><span class="p">;</span>
+
+<span class="c1">// GetTypedHeaders extension method provides strongly typed access to many headers</span>
+<span class="kt">var</span> <span class="n">requestHeaders</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">GetTypedHeaders</span><span class="p">();</span>
+<span class="n">CacheControlHeaderValue</span> <span class="n">cacheControlHeaderValue</span> <span class="p">=</span> <span class="n">requestHeaders</span><span class="p">.</span><span class="n">CacheControl</span><span class="p">;</span>
+
+<span class="c1">// For unknown header, unknownheaderValues has zero items and unknownheaderValue is &quot;&quot;</span>
+<span class="n">IList</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">unknownheaderValues</span> <span class="p">=</span> <span class="n">headersDictionary</span><span class="p">[</span><span class="s">&quot;unknownheader&quot;</span><span class="p">];</span>
+<span class="kt">string</span> <span class="n">unknownheaderValue</span> <span class="p">=</span> <span class="n">headersDictionary</span><span class="p">[</span><span class="s">&quot;unknownheader&quot;</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
+
+<span class="c1">// For known header, knownheaderValues has 1 item and knownheaderValue is the value</span>
+<span class="n">IList</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">knownheaderValues</span> <span class="p">=</span> <span class="n">headersDictionary</span><span class="p">[</span><span class="n">HeaderNames</span><span class="p">.</span><span class="n">AcceptLanguage</span><span class="p">];</span>
+<span class="kt">string</span> <span class="n">knownheaderValue</span> <span class="p">=</span> <span class="n">headersDictionary</span><span class="p">[</span><span class="n">HeaderNames</span><span class="p">.</span><span class="n">AcceptLanguage</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.UserAgent</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">userAgent</span> <span class="p">=</span> <span class="n">headersDictionary</span><span class="p">[</span><span class="n">HeaderNames</span><span class="p">.</span><span class="n">UserAgent</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.UrlReferrer</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">urlReferrer</span> <span class="p">=</span> <span class="n">headersDictionary</span><span class="p">[</span><span class="n">HeaderNames</span><span class="p">.</span><span class="n">Referer</span><span class="p">].</span><span class="n">ToString</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.ContentType</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// using Microsoft.Net.Http.Headers;</span>
+
+<span class="n">MediaTypeHeaderValue</span> <span class="n">mediaHeaderValue</span> <span class="p">=</span> <span class="n">requestHeaders</span><span class="p">.</span><span class="n">ContentType</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">contentType</span> <span class="p">=</span> <span class="n">mediaHeaderValue</span><span class="p">?.</span><span class="n">MediaType</span><span class="p">;</span>   <span class="c1">// ex. application/x-www-form-urlencoded</span>
+<span class="kt">string</span> <span class="n">contentMainType</span> <span class="p">=</span> <span class="n">mediaHeaderValue</span><span class="p">?.</span><span class="n">Type</span><span class="p">;</span>    <span class="c1">// ex. application</span>
+<span class="kt">string</span> <span class="n">contentSubType</span> <span class="p">=</span> <span class="n">mediaHeaderValue</span><span class="p">?.</span><span class="n">SubType</span><span class="p">;</span>  <span class="c1">// ex. x-www-form-urlencoded</span>
+
+<span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span> <span class="n">requestEncoding</span> <span class="p">=</span> <span class="n">mediaHeaderValue</span><span class="p">?.</span><span class="n">Encoding</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Request.Form</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">HasFormContentType</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">IFormCollection</span> <span class="n">form</span><span class="p">;</span>
+
+    <span class="n">form</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Form</span><span class="p">;</span> <span class="c1">// sync</span>
+    <span class="c1">// Or</span>
+    <span class="n">form</span> <span class="p">=</span> <span class="k">await</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">ReadFormAsync</span><span class="p">();</span> <span class="c1">// async</span>
+
+    <span class="kt">string</span> <span class="n">firstName</span> <span class="p">=</span> <span class="n">form</span><span class="p">[</span><span class="s">&quot;firstname&quot;</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="n">lastName</span> <span class="p">=</span> <span class="n">form</span><span class="p">[</span><span class="s">&quot;lastname&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Read form values only if the content sub type is <em>x-www-form-urlencoded</em> or <em>form-data</em>.</p>
+</div>
+<p><strong>HttpContext.Request.InputStream</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">inputBody</span><span class="p">;</span>
+<span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">StreamReader</span><span class="p">(</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Body</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="n">inputBody</span> <span class="p">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p>Use this code only in a handler type middleware, at the end of a pipeline.</p>
+<p>You can read the raw body as shown above only once per request. Middleware trying to read the body after the first read will read an empty body.</p>
+<p class="last">This does not apply to reading a form as shown earlier, because that is done from a buffer.</p>
+</div>
+<p><strong>HttpContext.Request.RequestContext.RouteData</strong></p>
+<p>RouteData is not available in middleware in RC1.</p>
+</div>
+<div class="section" id="httpcontext-response">
+<h3>HttpContext.Response<a class="headerlink" href="#httpcontext-response" title="Permalink to this headline">¶</a></h3>
+<p><strong>HttpContext.Response.Status and HttpContext.Response.StatusDescription</strong> translate to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// using Microsoft.AspNet.Http;</span>
+<span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">=</span> <span class="n">StatusCodes</span><span class="p">.</span><span class="n">Status200OK</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Response.ContentEncoding and HttpContext.Response.ContentType</strong> translate to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// using Microsoft.Net.Http.Headers;</span>
+<span class="kt">var</span> <span class="n">mediaType</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MediaTypeHeaderValue</span><span class="p">(</span><span class="s">&quot;application/json&quot;</span><span class="p">);</span>
+<span class="n">mediaType</span><span class="p">.</span><span class="n">Encoding</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">;</span>
+<span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="n">mediaType</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Response.ContentType</strong> on its own also translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">ContentType</span> <span class="p">=</span> <span class="s">&quot;text/html&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Response.Output</strong> translates to:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="kt">string</span> <span class="n">responseContent</span> <span class="p">=</span> <span class="n">GetResponseContent</span><span class="p">();</span>
+<span class="k">await</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="n">responseContent</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Response.TransmitFile</strong></p>
+<p>Serving up a file is discussed <a class="reference external" href="../fundamentals/request-features.html#middleware-and-request-features">here</a>.</p>
+<p><strong>HttpContext.Response.Headers</strong></p>
+<p>Sending response headers is complicated by the fact that if you set them after anything has been written to the
+response body, they will not be sent.</p>
+<p>The solution is to set a callback method that will be called right before writing to the response starts. This is best done at the
+start of the <code class="docutils literal"><span class="pre">Invoke</span></code> method in your middleware. It is this callback method that sets your response headers.</p>
+<p>The following code sets a callback method called <code class="docutils literal"><span class="pre">SetHeaders</span></code>:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">httpContext</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">OnStarting</span><span class="p">(</span><span class="n">SetHeaders</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">httpContext</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The <code class="docutils literal"><span class="pre">SetHeaders</span></code> callback method would look like this:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// using Microsoft.AspNet.Http.Headers;</span>
+<span class="c1">// using Microsoft.Net.Http.Headers;</span>
+
+<span class="k">private</span> <span class="n">Task</span> <span class="nf">SetHeaders</span><span class="p">(</span><span class="kt">object</span> <span class="n">context</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">httpContext</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpContext</span><span class="p">)</span><span class="n">context</span><span class="p">;</span>
+
+    <span class="c1">// Set header with single value</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">&quot;ResponseHeaderName&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;headerValue&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Set header with multiple values</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="n">responseHeaderValues</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span> <span class="s">&quot;headerValue1&quot;</span><span class="p">,</span> <span class="s">&quot;headerValue1&quot;</span> <span class="p">};</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">&quot;ResponseHeaderName&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">responseHeaderValues</span><span class="p">;</span>
+
+    <span class="c1">// Translating ASP.NET 4&#39;s HttpContext.Response.RedirectLocation  </span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="n">HeaderNames</span><span class="p">.</span><span class="n">Location</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;http://www.example.com&quot;</span><span class="p">;</span>
+    <span class="c1">// Or</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Redirect</span><span class="p">(</span><span class="s">&quot;http://www.example.com&quot;</span><span class="p">);</span>
+
+    <span class="c1">// GetTypedHeaders extension method provides strongly typed access to many headers</span>
+    <span class="kt">var</span> <span class="n">responseHeaders</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">GetTypedHeaders</span><span class="p">();</span>
+
+    <span class="c1">// Translating ASP.NET 4&#39;s HttpContext.Response.CacheControl </span>
+    <span class="n">responseHeaders</span><span class="p">.</span><span class="n">CacheControl</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CacheControlHeaderValue</span>
+    <span class="p">{</span>
+        <span class="n">MaxAge</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">TimeSpan</span><span class="p">(</span><span class="m">365</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+        <span class="c1">// Many more properties available </span>
+    <span class="p">};</span>
+
+    <span class="c1">// If you use .Net 4.6+, Task.CompletedTask will be a bit faster</span>
+    <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">FromResult</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>HttpContext.Response.Cookies</strong></p>
+<p>Cookies travel to the browser in a <em>Set-Cookie</em> response header. As a result, sending cookies requires the same callback as used for sending response headers:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">httpContext</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">OnStarting</span><span class="p">(</span><span class="n">SetCookies</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">httpContext</span><span class="p">);</span>
+    <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">OnStarting</span><span class="p">(</span><span class="n">SetHeaders</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">httpContext</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The <code class="docutils literal"><span class="pre">SetCookies</span></code> callback method would look like the following:</p>
+<blockquote>
+<div><div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="n">Task</span> <span class="nf">SetCookies</span><span class="p">(</span><span class="kt">object</span> <span class="n">context</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">httpContext</span> <span class="p">=</span> <span class="p">(</span><span class="n">HttpContext</span><span class="p">)</span><span class="n">context</span><span class="p">;</span>
+
+    <span class="n">IResponseCookies</span> <span class="n">responseCookies</span> <span class="p">=</span> <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Cookies</span><span class="p">;</span>
+
+    <span class="n">responseCookies</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="s">&quot;cookie1name&quot;</span><span class="p">,</span> <span class="s">&quot;cookie1value&quot;</span><span class="p">);</span>
+    <span class="n">responseCookies</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="s">&quot;cookie2name&quot;</span><span class="p">,</span> <span class="s">&quot;cookie2value&quot;</span><span class="p">,</span>
+        <span class="k">new</span> <span class="n">CookieOptions</span> <span class="p">{</span> <span class="n">Expires</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="m">5</span><span class="p">),</span> <span class="n">HttpOnly</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+
+    <span class="c1">// If you use .Net 4.6+, Task.CompletedTask will be a bit faster</span>
+    <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">FromResult</span><span class="p">(</span><span class="m">0</span><span class="p">);</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2><a class="toc-backref" href="#id12">Additional Resources</a><a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/bb398986.aspx">HTTP Handlers and HTTP Modules Overview</a></li>
+<li><a class="reference internal" href="../fundamentals/configuration.html"><span class="doc">Configuration</span></a></li>
+<li><a class="reference internal" href="../fundamentals/startup.html"><span class="doc">Application Startup</span></a></li>
+<li><a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">Middleware</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rc1-to-rc2.html" class="btn btn-neutral float-right" title="Migrating from ASP.NET 5 RC1 to ASP.NET Core" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="webapi.html" class="btn btn-neutral" title="Migrating from ASP.NET Web API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

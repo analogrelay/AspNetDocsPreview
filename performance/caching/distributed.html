@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Working with a Distributed Cache &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Caching" href="index.html"/>
+        <link rel="next" title="Response Caching" href="response.html"/>
+        <link rel="prev" title="In Memory Caching" href="memory.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Performance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../measuring.html">🔧 Measuring Application Performance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Caching</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="memory.html">In Memory Caching</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Working with a Distributed Cache</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="response.html">Response Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="output.html">🔧 Output Caching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Performance</a> &raquo;</li>
+      
+          <li><a href="index.html">Caching</a> &raquo;</li>
+      
+    <li>Working with a Distributed Cache</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/performance/caching/distributed.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="working-with-a-distributed-cache">
+<h1>Working with a Distributed Cache<a class="headerlink" href="#working-with-a-distributed-cache" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>Distributed caches can improve the performance and scalability of ASP.NET Core apps, especially when hosted in a cloud or server farm environment. This article explains how to work with ASP.NET Core&#8217;s built-in distributed cache abstractions and implementations.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-is-a-distributed-cache" id="id1">What is a Distributed Cache</a></li>
+<li><a class="reference internal" href="#the-idistributedcache-interface" id="id2">The IDistributedCache Interface</a></li>
+<li><a class="reference internal" href="#using-a-redis-distributed-cache" id="id3">Using a Redis Distributed Cache</a></li>
+<li><a class="reference internal" href="#using-a-sql-server-distributed-cache" id="id4">Using a SQL Server Distributed Cache</a></li>
+<li><a class="reference internal" href="#recommendations" id="id5">Recommendations</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/performance/caching/distributed/sample">View or download sample code</a></p>
+<div class="section" id="what-is-a-distributed-cache">
+<h2><a class="toc-backref" href="#id1">What is a Distributed Cache</a><a class="headerlink" href="#what-is-a-distributed-cache" title="Permalink to this headline">¶</a></h2>
+<p>A distributed cache is shared by multiple app servers (see <a class="reference internal" href="memory.html#caching-basics"><span class="std std-ref">Caching Basics</span></a>). The information in the cache is not stored in the memory of individual web servers, and the cached data is available to all of the app&#8217;s servers. This provides several advantages:</p>
+<ol class="arabic simple">
+<li>Cached data is coherent on all web servers. Users don&#8217;t see different results depending on which web server handles their request</li>
+<li>Cached data survives web server restarts and deployments. Individual web servers can be removed or added without impacting the cache.</li>
+<li>The source data store has fewer requests made to it (than with multiple in-memory caches or no cache at all).</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If using a SQL Server Distributed Cache, some of these advantages are only true if a separate database instance is used for the cache than for the app&#8217;s source data.</p>
+</div>
+<p>Like any cache, a distributed cache can dramatically improve an app&#8217;s responsiveness, since typically data can be retrieved from the cache much faster than from a relational database (or web service).</p>
+<p>Cache configuration is implementation specific. This article describes how to configure both Redis and SQL Server distributed caches. Regardless of which implementation is selected, the app interacts with the cache using a common <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> interface.</p>
+</div>
+<div class="section" id="the-idistributedcache-interface">
+<h2><a class="toc-backref" href="#id2">The IDistributedCache Interface</a><a class="headerlink" href="#the-idistributedcache-interface" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> interface includes synchronous and asynchronous methods. The interface allows items to be added, retrieved, and removed from the distributed cache implementation. The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> interface includes the following methods:</p>
+<dl class="docutils">
+<dt>Get, GetAsync</dt>
+<dd>Takes a string key and retrieves a cached item as a <code class="docutils literal"><span class="pre">byte[]</span></code> if found in the cache.</dd>
+<dt>Set, SetAsync</dt>
+<dd>Adds an item (as <code class="docutils literal"><span class="pre">byte[]</span></code>) to the cache using a string key.</dd>
+<dt>Refresh, RefreshAsync</dt>
+<dd>Refreshes an item in the cache based on its key, resetting its sliding expiration timeout (if any).</dd>
+<dt>Remove, RemoveAsync</dt>
+<dd>Removes a cache entry based on its key.</dd>
+</dl>
+<p>To use the <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> interface:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Specify the dependencies needed in <em>project.json</em>.</li>
+<li>Configure the specific implementation of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> in your <code class="docutils literal"><span class="pre">Startup</span></code> class&#8217;s <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method, and add it to the container there.</li>
+<li>From the app&#8217;s <a class="reference internal" href="../../fundamentals/middleware.html"><span class="doc">Middleware</span></a> or MVC controller classes, request an instance of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> from the constructor. The instance will be provided by <a class="reference internal" href="../../fundamentals/dependency-injection.html"><span class="doc">Dependency Injection</span></a> (DI).</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is no need to use a Singleton or Scoped lifetime for <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> instances (at least for the built-in implementations). You can also create an instance wherever you might need one (instead of using <a class="reference internal" href="../../fundamentals/dependency-injection.html"><span class="doc">Dependency Injection</span></a>), but this can make your code harder to test, and violates the <a class="reference external" href="http://deviq.com/explicit-dependencies-principle/">Explicit Dependencies Principle</a>.</p>
+</div>
+<p>The following example shows how to use an instance of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> in a simple middleware component:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNet.Http</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Caching.Distributed</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">DistCacheSample</span>
+<span class="p">{</span>
+    <span class="c1">// You may need to install the Microsoft.AspNet.Http.Abstractions package into your project</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">StartTimeHeader</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">RequestDelegate</span> <span class="n">_next</span><span class="p">;</span>
+<span class="hll">        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IDistributedCache</span> <span class="n">_cache</span><span class="p">;</span>
+</span>
+        <span class="k">public</span> <span class="nf">StartTimeHeader</span><span class="p">(</span><span class="n">RequestDelegate</span> <span class="n">next</span><span class="p">,</span>
+<span class="hll">            <span class="n">IDistributedCache</span> <span class="n">cache</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="n">_next</span> <span class="p">=</span> <span class="n">next</span><span class="p">;</span>
+<span class="hll">            <span class="n">_cache</span> <span class="p">=</span> <span class="n">cache</span><span class="p">;</span>
+</span>        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">Invoke</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">httpContext</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">startTimeString</span> <span class="p">=</span> <span class="s">&quot;Not found.&quot;</span><span class="p">;</span>
+<span class="hll">            <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_cache</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="s">&quot;lastServerStartTime&quot;</span><span class="p">);</span>
+</span><span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="n">startTimeString</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
+</span><span class="hll">            <span class="p">}</span>
+</span>
+            <span class="n">httpContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="s">&quot;Last-Server-Start-Time&quot;</span><span class="p">,</span> <span class="n">startTimeString</span><span class="p">);</span>
+
+            <span class="k">await</span> <span class="n">_next</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">httpContext</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Extension method used to add the middleware to the HTTP request pipeline.</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">StartTimeHeaderExtensions</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="n">IApplicationBuilder</span> <span class="nf">UseStartTimeHeader</span><span class="p">(</span><span class="k">this</span> <span class="n">IApplicationBuilder</span> <span class="n">builder</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">StartTimeHeader</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the code above, the cached value is read, but never written. In this sample, the value is only set when a server starts up, and doesn&#8217;t change. In a multi-server scenario, the most recent server to start will overwrite any previous values that were set by other servers. The <code class="docutils literal"><span class="pre">Get</span></code> and <code class="docutils literal"><span class="pre">Set</span></code> methods use the <code class="docutils literal"><span class="pre">byte[]</span></code> type. Therefore, the string value must be converted using <code class="docutils literal"><span class="pre">Encoding.UTF8.GetString</span></code> (for <code class="docutils literal"><span class="pre">Get</span></code>) and <code class="docutils literal"><span class="pre">Encoding.UTF8.GetBytes</span></code> (for <code class="docutils literal"><span class="pre">Set</span></code>).</p>
+<p>The following code from <em>Startup.cs</em> shows the value being set:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span>
+<span class="hll">            <span class="n">IDistributedCache</span> <span class="n">cache</span><span class="p">)</span>
+</span>        <span class="p">{</span>
+            <span class="n">app</span><span class="p">.</span><span class="n">UseIISPlatformHandler</span><span class="p">();</span>
+
+<span class="hll">            <span class="kt">var</span> <span class="n">serverStartTimeString</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+</span><span class="hll">            <span class="kt">byte</span><span class="p">[]</span> <span class="n">val</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">serverStartTimeString</span><span class="p">);</span>
+</span><span class="hll">            <span class="n">cache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;lastServerStartTime&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span>
+            <span class="n">app</span><span class="p">.</span><span class="n">UseStartTimeHeader</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> is configured in the <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method, it is available to the <code class="docutils literal"><span class="pre">Configure</span></code> method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.</p>
+</div>
+</div>
+<div class="section" id="using-a-redis-distributed-cache">
+<h2><a class="toc-backref" href="#id3">Using a Redis Distributed Cache</a><a class="headerlink" href="#using-a-redis-distributed-cache" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://redis.io">Redis</a> is an open source in-memory data store, which is often used as a distributed cache. You can use it locally, and you can configure an <a class="reference external" href="https://azure.microsoft.com/en-us/services/cache/">Azure Redis Cache</a> for your Azure-hosted ASP.NET Core apps. Your ASP.NET Core app configures the cache implementation using a <code class="docutils literal"><span class="pre">RedisDistributedCache</span></code> instance.</p>
+<p>You configure the Redis implementation in <code class="docutils literal"><span class="pre">ConfigureServices</span></code> and access it in your app code by requesting an instance of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> (see the code above).</p>
+<p>In the sample code, a <code class="docutils literal"><span class="pre">RedisCache</span></code> implementation is used when the server is configured for a <code class="docutils literal"><span class="pre">Staging</span></code> environment. Thus the <code class="docutils literal"><span class="pre">ConfigureStagingServices</span></code> method configures the <code class="docutils literal"><span class="pre">RedisCache</span></code>:</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="c1">/// &lt;summary&gt;</span>
+        <span class="c1">/// Use Redis Cache in Staging</span>
+        <span class="c1">/// &lt;/summary&gt;</span>
+        <span class="c1">/// &lt;param name=&quot;services&quot;&gt;&lt;/param&gt;</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureStagingServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// use Redis</span>
+<span class="hll">            <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IDistributedCache</span><span class="p">&gt;(</span><span class="n">serviceProvider</span> <span class="p">=&gt;</span> 
+</span><span class="hll">                <span class="k">new</span> <span class="nf">RedisCache</span><span class="p">(</span><span class="k">new</span> <span class="n">RedisCacheOptions</span>
+</span><span class="hll">                <span class="p">{</span>
+</span><span class="hll">                    <span class="n">Configuration</span> <span class="p">=</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+</span><span class="hll">                    <span class="n">InstanceName</span> <span class="p">=</span> <span class="s">&quot;SampleInstance&quot;</span>
+</span><span class="hll">                <span class="p">}));</span>
+</span>        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To install Redis on your local machine, install the chocolatey package <a class="reference external" href="http://chocolatey.org/packages/redis-64/">http://chocolatey.org/packages/redis-64/</a> and run <code class="docutils literal"><span class="pre">redis-server</span></code> from a command prompt.</p>
+</div>
+</div>
+<div class="section" id="using-a-sql-server-distributed-cache">
+<h2><a class="toc-backref" href="#id4">Using a SQL Server Distributed Cache</a><a class="headerlink" href="#using-a-sql-server-distributed-cache" title="Permalink to this headline">¶</a></h2>
+<p>The SqlServerCache implementation allows the distributed cache to use a SQL Server database as its backing store. The installation script installs a table with the name you specify. The table will have the following schema:</p>
+<img alt="../../_images/SqlServerCacheTable.png" src="../../_images/SqlServerCacheTable.png" />
+<p>Like all cache implementations, your app should get and set cache values using an instance of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a>, not a <code class="docutils literal"><span class="pre">SqlServerCache</span></code>. The sample implements <code class="docutils literal"><span class="pre">SqlServerCache</span></code> in the <code class="docutils literal"><span class="pre">Production</span></code> environment (so it is configured in <code class="docutils literal"><span class="pre">ConfigureProductionServices</span></code>).</p>
+<div class="highlight-c#"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>        <span class="c1">/// &lt;summary&gt;</span>
+        <span class="c1">/// Use SQL Server Cache in Production</span>
+        <span class="c1">/// &lt;/summary&gt;</span>
+        <span class="c1">/// &lt;param name=&quot;services&quot;&gt;&lt;/param&gt;</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureProductionServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Use SQL Server</span>
+            <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IDistributedCache</span><span class="p">&gt;(</span><span class="n">serviceProvider</span> <span class="p">=&gt;</span>
+<span class="hll">            <span class="k">new</span> <span class="nf">SqlServerCache</span><span class="p">(</span><span class="k">new</span> <span class="n">CacheOptions</span><span class="p">(</span><span class="k">new</span> <span class="n">SqlServerCacheOptions</span><span class="p">()</span>
+</span><span class="hll">            <span class="p">{</span>
+</span><span class="hll">                <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">SchemaName</span> <span class="p">=</span> <span class="s">&quot;dbo&quot;</span><span class="p">,</span>
+</span><span class="hll">                <span class="n">TableName</span> <span class="p">=</span> <span class="s">&quot;TestCache&quot;</span>
+</span><span class="hll">            <span class="p">})));</span>
+</span>        <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ConnectionString</span></code> (and optionally, <code class="docutils literal"><span class="pre">SchemaName</span></code> and <code class="docutils literal"><span class="pre">TableName</span></code>) should typically be stored outside of source control (such as UserSecrets), as they may contain credentials.</p>
+</div>
+</div>
+<div class="section" id="recommendations">
+<h2><a class="toc-backref" href="#id5">Recommendations</a><a class="headerlink" href="#recommendations" title="Permalink to this headline">¶</a></h2>
+<p>When deciding which implementation of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> is right for your app, choose between Redis and SQL Server based on your existing infrastructure and environment, your performance requirements, and your team&#8217;s experience. If your team is more comfortable working with Redis, it&#8217;s an excellent choice. If your team prefers SQL Server, you can be confident in that implementation as well. Note that A traditional caching solution stores data in-memory which allows for fast retrieval of data. You should store commonly used data in a cache and store the entire data in a backend persistent store such as SQL Server or Azure Storage.
+Redis Cache is a caching solution which gives you high throughput and low latency as compared to SQL Cache. Also, you should avoid using the in-memory implementation (<code class="docutils literal"><span class="pre">MemoryCache</span></code>) in multi-server environments.</p>
+<p>Azure Resources:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/services/redis-cache/">Redis Cache on Azure</a></li>
+<li><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/services/sql-database/">SQL Database on Azure</a></li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The in-memory implementation of <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html">IDistributedCache</a> should only be used for testing purposes or for applications that are hosted on just one server instance.</p>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="response.html" class="btn btn-neutral float-right" title="Response Caching" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="memory.html" class="btn btn-neutral" title="In Memory Caching" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

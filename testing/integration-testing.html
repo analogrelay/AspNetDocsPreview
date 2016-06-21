@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Integration Testing &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Testing" href="index.html"/>
+        <link rel="next" title="Working with Data" href="../data/index.html"/>
+        <link rel="prev" title="Unit Testing" href="unit-testing.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Testing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unit-testing.html">Unit Testing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Integration Testing</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mvc/controllers/testing.html">Testing Controller Logic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Testing</a> &raquo;</li>
+      
+    <li>Integration Testing</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/testing/integration-testing.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="integration-testing">
+<h1>Integration Testing<a class="headerlink" href="#integration-testing" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>Integration testing ensures that an application&#8217;s components function correctly when assembled together. ASP.NET Core supports integration testing using unit test frameworks and a built-in test web host that can be used to handle requests without network overhead.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction-to-integration-testing" id="id1">Introduction to Integration Testing</a></li>
+<li><a class="reference internal" href="#integration-testing-asp-net" id="id2">Integration Testing ASP.NET</a></li>
+<li><a class="reference internal" href="#refactoring-to-use-middleware" id="id3">Refactoring to use Middleware</a></li>
+<li><a class="reference internal" href="#summary" id="id4">Summary</a></li>
+<li><a class="reference internal" href="#additional-resources" id="id5">Additional Resources</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/docs/tree/master/aspnet/testing/integration-testing/sample">View or download sample code</a></p>
+<div class="section" id="introduction-to-integration-testing">
+<h2><a class="toc-backref" href="#id1">Introduction to Integration Testing</a><a class="headerlink" href="#introduction-to-integration-testing" title="Permalink to this headline">¶</a></h2>
+<p>Integration tests verify that different parts of an application work correctly together. Unlike <a class="reference internal" href="unit-testing.html"><span class="doc">Unit Testing</span></a>, integration tests frequently involve application infrastructure concerns, such as a database, file system, network resources, or web requests and responses. Unit tests use fakes or mock objects in place of these concerns, but the purpose of integration tests is to confirm that the system works as expected with these systems.</p>
+<p>Integration tests, because they exercise larger segments of code and because they rely on infrastructure elements, tend to be orders of magnitude slower than unit tests. Thus, it&#8217;s a good idea to limit how many integration tests you write, especially if you can test the same behavior with a unit test.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If some behavior can be tested using either a unit test or an integration test, prefer the unit test, since it will be almost always be faster. You might have dozens or hundreds of unit tests with many different inputs, but just a handful of integration tests covering the most important scenarios.</p>
+</div>
+<p>Testing the logic within your own methods is usually the domain of unit tests. Testing how your application works within its framework (e.g. ASP.NET) or with a database is where integration tests come into play. It doesn&#8217;t take too many integration tests to confirm that you&#8217;re able to write a row to and then read a row from the database. You don&#8217;t need to test every possible permutation of your data access code - you only need to test enough to give you confidence that your application is working properly.</p>
+</div>
+<div class="section" id="integration-testing-asp-net">
+<h2><a class="toc-backref" href="#id2">Integration Testing ASP.NET</a><a class="headerlink" href="#integration-testing-asp-net" title="Permalink to this headline">¶</a></h2>
+<p>To get set up to run integration tests, you&#8217;ll need to create a test project, refer to your ASP.NET web project, and install a test runner. This process is described in the <a class="reference internal" href="unit-testing.html"><span class="doc">Unit Testing</span></a> documentation, along with more detailed instructions on running tests and recommendations for naming your tests and test classes.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Separate your unit tests and your integration tests using different projects. This helps ensure you don&#8217;t accidentally introduce infrastructure concerns into your unit tests, and lets you easily choose to run all tests, or just one set or the other.</p>
+</div>
+<div class="section" id="the-test-host">
+<h3>The Test Host<a class="headerlink" href="#the-test-host" title="Permalink to this headline">¶</a></h3>
+<p>ASP.NET includes a test host that can be added to integration test projects and used to host ASP.NET applications, serving test requests without the need for a real web host. The provided sample includes an integration test project which has been configured to use <a class="reference external" href="https://xunit.github.io">xUnit</a> and the Test Host, as you can see from this excerpt from its <em>project.json</em> file:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;dependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">&quot;PrimeWeb&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;xunit&quot;</span><span class="o">:</span> <span class="s2">&quot;2.1.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;xunit.runner.dnx&quot;</span><span class="o">:</span> <span class="s2">&quot;2.1.0-rc1-build204&quot;</span><span class="p">,</span>
+<span class="hll">  <span class="s2">&quot;Microsoft.AspNet.TestHost&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0.0-rc1-final&quot;</span>
+</span><span class="p">},</span>
+</pre></div>
+</div>
+<p>Once the Microsoft.AspNetCore.TestHost package is included in the project, you will be able to create and configure a TestServer in your tests. The following test shows how to verify that a request made to the root of a site returns &#8220;Hello World!&#8221; and should run successfully against the default ASP.NET Empty Web template created by Visual Studio.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">readonly</span> <span class="n">TestServer</span> <span class="n">_server</span><span class="p">;</span>
+<span class="k">private</span> <span class="k">readonly</span> <span class="n">HttpClient</span> <span class="n">_client</span><span class="p">;</span>
+<span class="k">public</span> <span class="nf">PrimeWebDefaultRequestShould</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// Arrange</span>
+<span class="hll">    <span class="n">_server</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TestServer</span><span class="p">(</span><span class="n">TestServer</span><span class="p">.</span><span class="n">CreateBuilder</span><span class="p">()</span>
+</span><span class="hll">        <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;());</span>
+</span>    <span class="n">_client</span> <span class="p">=</span> <span class="n">_server</span><span class="p">.</span><span class="n">CreateClient</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="na">[Fact]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ReturnHelloWorld</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// Act</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="n">response</span><span class="p">.</span><span class="n">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+    <span class="kt">var</span> <span class="n">responseString</span> <span class="p">=</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+
+    <span class="c1">// Assert</span>
+    <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">,</span>
+        <span class="n">responseString</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These tests are using the Arrange-Act-Assert pattern, but in this case all of the Arrange step is done in the constructor, which creates an instance of <code class="docutils literal"><span class="pre">TestServer</span></code>. There are several different ways to configure a <code class="docutils literal"><span class="pre">TestServer</span></code> when you create it; in this example we are passing in the <code class="docutils literal"><span class="pre">Configure</span></code> method from our system under test (SUT)&#8217;s <code class="docutils literal"><span class="pre">Startup</span></code> class. This method will be used to configure the request pipeline of the <code class="docutils literal"><span class="pre">TestServer</span></code> identically to how the SUT server would be configured.</p>
+<p>In the Act portion of the test, a request is made to the <code class="docutils literal"><span class="pre">TestServer</span></code> instance for the &#8220;/&#8221; path, and the response is read back into a string. This string is then compared with the expected string of &#8220;Hello World!&#8221;. If they match, the test passes, otherwise it fails.</p>
+<p>Now we can add a few additional integration tests to confirm that the prime checking functionality works via the web application:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">PrimeWebCheckPrimeShould</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">TestServer</span> <span class="n">_server</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">HttpClient</span> <span class="n">_client</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">PrimeWebCheckPrimeShould</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Arrange</span>
+<span class="hll">        <span class="n">_server</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TestServer</span><span class="p">(</span><span class="n">TestServer</span><span class="p">.</span><span class="n">CreateBuilder</span><span class="p">()</span>
+</span><span class="hll">            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;());</span>
+</span>        <span class="n">_client</span> <span class="p">=</span> <span class="n">_server</span><span class="p">.</span><span class="n">CreateClient</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">GetCheckPrimeResponseString</span><span class="p">(</span>
+        <span class="kt">string</span> <span class="n">querystring</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">request</span> <span class="p">=</span> <span class="s">&quot;/checkprime&quot;</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(!</span><span class="n">String</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">querystring</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">request</span> <span class="p">+=</span> <span class="s">&quot;?&quot;</span> <span class="p">+</span> <span class="n">querystring</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+        <span class="n">response</span><span class="p">.</span><span class="n">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsStringAsync</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="na">    [Fact]</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ReturnInstructionsGivenEmptyQueryString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Act</span>
+        <span class="kt">var</span> <span class="n">responseString</span> <span class="p">=</span> <span class="k">await</span> <span class="n">GetCheckPrimeResponseString</span><span class="p">();</span>
+
+        <span class="c1">// Assert</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;Pass in a number to check in the form /checkprime?5&quot;</span><span class="p">,</span>
+            <span class="n">responseString</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="na">    [Fact]</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ReturnPrimeGiven5</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Act</span>
+        <span class="kt">var</span> <span class="n">responseString</span> <span class="p">=</span> <span class="k">await</span> <span class="n">GetCheckPrimeResponseString</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Assert</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;5 is prime!&quot;</span><span class="p">,</span>
+            <span class="n">responseString</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="na">    [Fact]</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ReturnNotPrimeGiven6</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Act</span>
+        <span class="kt">var</span> <span class="n">responseString</span> <span class="p">=</span> <span class="k">await</span> <span class="n">GetCheckPrimeResponseString</span><span class="p">(</span><span class="s">&quot;6&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Assert</span>
+        <span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="s">&quot;6 is NOT prime!&quot;</span><span class="p">,</span>
+            <span class="n">responseString</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that we&#8217;re not really trying to test the correctness of our prime number checker with these tests, but rather that the web application is doing what we expect. We already have unit test coverage that gives us confidence in <code class="docutils literal"><span class="pre">PrimeService</span></code>, as you can see here:</p>
+<img alt="../_images/test-explorer.png" src="../_images/test-explorer.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can learn more about the unit tests in the <a class="reference internal" href="unit-testing.html"><span class="doc">Unit Testing</span></a> article.</p>
+</div>
+<p>Now that we have a set of passing tests, it&#8217;s a good time to think about whether we&#8217;re happy with the current way in which we&#8217;ve designed our application. If we see any <a class="reference external" href="http://deviq.com/code-smells/">code smells</a>, now may be a good time to refactor the application to improve its design.</p>
+</div>
+</div>
+<div class="section" id="refactoring-to-use-middleware">
+<h2><a class="toc-backref" href="#id3">Refactoring to use Middleware</a><a class="headerlink" href="#refactoring-to-use-middleware" title="Permalink to this headline">¶</a></h2>
+<p>Refactoring is the process of changing an application&#8217;s code to improve its design without changing its behavior. It should ideally be done when there is a suite of passing tests, since these help ensure the system&#8217;s behavior remains the same before and after the changes. Looking at the way in which the prime checking logic is implemented in our web application, we see:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span>  <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span>
+      <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="c1">// Add the platform handler to the request pipeline.</span>
+      <span class="n">app</span><span class="p">.</span><span class="n">UseIISPlatformHandler</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsDevelopment</span><span class="p">())</span>
+      <span class="p">{</span>
+          <span class="n">app</span><span class="p">.</span><span class="n">UseDeveloperExceptionPage</span><span class="p">();</span>
+      <span class="p">}</span>
+
+      <span class="n">app</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">=&gt;</span>
+      <span class="p">{</span>
+<span class="hll">          <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Path</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;checkprime&quot;</span><span class="p">))</span>
+</span><span class="hll">          <span class="p">{</span>
+</span><span class="hll">              <span class="kt">int</span> <span class="n">numberToCheck</span><span class="p">;</span>
+</span><span class="hll">              <span class="k">try</span>
+</span><span class="hll">              <span class="p">{</span>
+</span><span class="hll">                  <span class="n">numberToCheck</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">QueryString</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">Replace</span><span class="p">(</span><span class="s">&quot;?&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">));</span>
+</span><span class="hll">                  <span class="kt">var</span> <span class="n">primeService</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PrimeService</span><span class="p">();</span>
+</span><span class="hll">                  <span class="k">if</span> <span class="p">(</span><span class="n">primeService</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">(</span><span class="n">numberToCheck</span><span class="p">))</span>
+</span><span class="hll">                  <span class="p">{</span>
+</span><span class="hll">                      <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="n">numberToCheck</span> <span class="p">+</span> <span class="s">&quot; is prime!&quot;</span><span class="p">);</span>
+</span><span class="hll">                  <span class="p">}</span>
+</span><span class="hll">                  <span class="k">else</span>
+</span><span class="hll">                  <span class="p">{</span>
+</span><span class="hll">                      <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="n">numberToCheck</span> <span class="p">+</span> <span class="s">&quot; is NOT prime!&quot;</span><span class="p">);</span>
+</span><span class="hll">                  <span class="p">}</span>
+</span><span class="hll">              <span class="p">}</span>
+</span><span class="hll">              <span class="k">catch</span>
+</span><span class="hll">              <span class="p">{</span>
+</span><span class="hll">                  <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="s">&quot;Pass in a number to check in the form /checkprime?5&quot;</span><span class="p">);</span>
+</span><span class="hll">              <span class="p">}</span>
+</span><span class="hll">          <span class="p">}</span>
+</span>          <span class="k">else</span>
+          <span class="p">{</span>
+              <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+          <span class="p">}</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>This code works, but it&#8217;s far from how we would like to implement this kind of functionality in an ASP.NET application, even as simple a one as this is. Imagine what the <code class="docutils literal"><span class="pre">Configure</span></code> method would look like if we needed to add this much code to it every time we added another URL endpoint!</p>
+<p>One option we can consider is adding <a class="reference internal" href="../mvc/index.html"><span class="doc">MVC</span></a> to the application, and creating a controller to handle the prime checking. However, assuming we don&#8217;t currently need any other MVC functionality, that&#8217;s a bit overkill.</p>
+<p>We can, however, take advantage of ASP.NET Core <a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">middleware</span></a>, which will help us encapsulate the prime checking logic in its own class and achieve better <a class="reference external" href="http://deviq.com/separation-of-concerns/">separation of concerns</a> within the <code class="docutils literal"><span class="pre">Configure</span></code> method.</p>
+<p>We want to allow the path the middleware uses to be specified as a parameter, so the middleware class expects a <code class="docutils literal"><span class="pre">RequestDelegate</span></code> and a <code class="docutils literal"><span class="pre">PrimeCheckerOptions</span></code> instance in its constructor. If the path of the request doesn&#8217;t match what this middleware is configured to expect, we simply call the next middleware in the chain and do nothing further. The rest of the implementation code that was in <code class="docutils literal"><span class="pre">Configure</span></code> is now in the <code class="docutils literal"><span class="pre">Invoke</span></code> method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since our middleware depends on the <code class="docutils literal"><span class="pre">PrimeService</span></code> service, we are also requesting an instance of this service via the constructor. The framework will provide this service via <a class="reference internal" href="../fundamentals/dependency-injection.html"><span class="doc">Dependency Injection</span></a>, assuming it has been configured (e.g. in <code class="docutils literal"><span class="pre">ConfigureServices</span></code>).</p>
+</div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Http;
+using PrimeWeb.Services;
+using System;
+using System.Threading.Tasks;
+
+namespace PrimeWeb.Middleware
+{
+    public class PrimeCheckerMiddleware
+    {
+        private readonly RequestDelegate _next;
+        private readonly PrimeCheckerOptions _options;
+        private readonly PrimeService _primeService;
+
+        public PrimeCheckerMiddleware(RequestDelegate next,
+            PrimeCheckerOptions options,
+            PrimeService primeService)
+        {
+            if (next == null)
+            {
+                throw new ArgumentNullException(nameof(next));
+            }
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+            if (primeService == null)
+            {
+                throw new ArgumentNullException(nameof(primeService));
+            }
+
+            _next = next;
+            _options = options;
+            _primeService = primeService;
+        }
+
+        public async Task Invoke(HttpContext context)
+        {
+<span class="hll">            HttpRequest request = context.Request;
+</span><span class="hll">            if (!request.Path.HasValue ||
+</span><span class="hll">                request.Path != _options.Path)
+</span><span class="hll">            {
+</span><span class="hll">                await _next.Invoke(context);
+</span><span class="hll">            }
+</span><span class="hll">            else
+</span><span class="hll">            {
+</span><span class="hll">                int numberToCheck;
+</span><span class="hll">                if (int.TryParse(request.QueryString.Value.Replace(&quot;?&quot;, &quot;&quot;), out numberToCheck))
+</span><span class="hll">                {
+</span><span class="hll">                    if (_primeService.IsPrime(numberToCheck))
+</span><span class="hll">                    {
+</span><span class="hll">                        await context.Response.WriteAsync($&quot;{numberToCheck} is prime!&quot;);
+</span><span class="hll">                    }
+</span><span class="hll">                    else
+</span><span class="hll">                    {
+</span><span class="hll">                        await context.Response.WriteAsync($&quot;{numberToCheck} is NOT prime!&quot;);
+</span><span class="hll">                    }
+</span><span class="hll">                }
+</span><span class="hll">                else
+</span><span class="hll">                {
+</span><span class="hll">                    await context.Response.WriteAsync($&quot;Pass in a number to check in the form {_options.Path}?5&quot;);
+</span><span class="hll">                }
+</span>            }
+        }
+    }
+}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since this middleware acts as an endpoint in the request delegate chain when its path matches, there is no call to <code class="docutils literal"><span class="pre">_next.Invoke</span></code> in the case where this middleware handles the request.</p>
+</div>
+<p>With this middleware in place and some helpful extension methods created to make configuring it easier, the refactored <code class="docutils literal"><span class="pre">Configure</span></code> method looks like this:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span>
+    <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Add the platform handler to the request pipeline.</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseIISPlatformHandler</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">IsDevelopment</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">UseDeveloperExceptionPage</span><span class="p">();</span>
+    <span class="p">}</span>
+
+<span class="hll">    <span class="n">app</span><span class="p">.</span><span class="n">UsePrimeChecker</span><span class="p">();</span>
+</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">Run</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">WriteAsync</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Following this refactoring, we are confident that the web application still works as before, since our integration tests are all passing.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">It&#8217;s a good idea to commit your changes to source control after you complete a refactoring and your tests all pass. If you&#8217;re practicing Test Driven Development, <a class="reference external" href="http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development">consider adding Commit to your Red-Green-Refactor cycle</a>.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id4">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Integration testing provides a higher level of verification than unit testing. It tests application infrastructure and how different parts of an application work together. ASP.NET Core is very testable, and ships with a <code class="docutils literal"><span class="pre">TestServer</span></code> that makes wiring up integration tests for web server endpoints very easy.</p>
+</div>
+<div class="section" id="additional-resources">
+<h2><a class="toc-backref" href="#id5">Additional Resources</a><a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="unit-testing.html"><span class="doc">Unit Testing</span></a></li>
+<li><a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">Middleware</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data/index.html" class="btn btn-neutral float-right" title="Working with Data" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="unit-testing.html" class="btn btn-neutral" title="Unit Testing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

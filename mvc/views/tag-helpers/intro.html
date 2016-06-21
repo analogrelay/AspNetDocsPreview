@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Tag Helpers &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../../index.html"/>
+        <link rel="up" title="Tag Helpers" href="index.html"/>
+        <link rel="next" title="Authoring Tag Helpers" href="authoring.html"/>
+        <link rel="prev" title="Tag Helpers" href="index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">MVC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../models/index.html">Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Views</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../razor.html">🔧 Razor Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dynamic-vs-static.html">🔧 Dynamic vs Strongly Typed Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-forms.html">Working with Forms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../html-helpers.html">🔧 HTML Helpers</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Tag Helpers</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Introduction to Tag Helpers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-forms.html">Working with Forms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="authoring.html">Authoring Tag Helpers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../partial.html">Partial Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dependency-injection.html">Injecting Services Into Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../view-components.html">View Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../custom-view-engine.html">🔧 Creating a Custom View Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mobile.html">🔧 Building Mobile Specific Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../controllers/index.html">Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">MVC</a> &raquo;</li>
+      
+          <li><a href="../index.html">Views</a> &raquo;</li>
+      
+          <li><a href="index.html">Tag Helpers</a> &raquo;</li>
+      
+    <li>Introduction to Tag Helpers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/mvc/views/tag-helpers/intro.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="introduction-to-tag-helpers">
+<h1>Introduction to Tag Helpers<a class="headerlink" href="#introduction-to-tag-helpers" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#what-are-tag-helpers">What are Tag Helpers?</a></li>
+<li><a class="reference internal" href="#what-tag-helpers-provide">What Tag Helpers provide</a></li>
+<li><a class="reference internal" href="#managing-tag-helper-scope">Managing Tag Helper scope</a></li>
+<li><a class="reference internal" href="#intellisense-support-for-tag-helpers">IntelliSense support for Tag Helpers</a></li>
+<li><a class="reference internal" href="#tag-helpers-compared-to-html-helpers">Tag Helpers compared to HTML Helpers</a></li>
+<li><a class="reference internal" href="#tag-helpers-compared-to-web-server-controls">Tag Helpers compared to Web Server Controls</a></li>
+<li><a class="reference internal" href="#customizing-the-tag-helper-element-font">Customizing the Tag Helper element font</a></li>
+<li><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="what-are-tag-helpers">
+<h2>What are Tag Helpers?<a class="headerlink" href="#what-are-tag-helpers" title="Permalink to this headline">¶</a></h2>
+<p>Tag Helpers enable server-side code to participate in creating and rendering HTML elements in Razor files. For example, the built-in <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ImageTagHelper/index.html">ImageTagHelper</a> can append a version number to the image name. Whenever the image changes, the server generates a new unique version for the image, so clients are guaranteed to get the current image (instead of a stale cached image). There are many built-in Tag Helpers for common tasks - such as creating forms, links, loading assets and more - and even more available in public GitHub repositories and as NuGet packages.
+Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or parent tag. For example, the built-in <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/LabelTagHelper/index.html">LabelTagHelper</a> can target the HTML <code class="docutils literal"><span class="pre">&lt;label&gt;</span></code> element when the <code class="docutils literal"><span class="pre">LabelTagHelper</span></code> attributes are applied.
+If you&#8217;re familiar with <a class="reference external" href="http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers">HTML Helpers</a>, Tag Helpers reduce the explicit transitions between HTML and C# in Razor views. <a class="reference internal" href="#tag-helpers-compared-to-html-helpers">Tag Helpers compared to HTML Helpers</a> explains the differences in more detail.</p>
+</div>
+<div class="section" id="what-tag-helpers-provide">
+<h2>What Tag Helpers provide<a class="headerlink" href="#what-tag-helpers-provide" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>An HTML-friendly development experience</strong></dt>
+<dd>For the most part, Razor markup using Tag Helpers looks like standard HTML. Front-end designers conversant with HTML/CSS/JavaScript can edit Razor without learning C# Razor syntax.</dd>
+<dt><strong>A rich IntelliSense environment for creating HTML and Razor markup</strong></dt>
+<dd>This is in sharp contrast to HTML Helpers, the previous approach to server-side creation of markup in Razor views. <a class="reference internal" href="#tag-helpers-compared-to-html-helpers">Tag Helpers compared to HTML Helpers</a> explains the differences in more detail. <a class="reference internal" href="#intellisense-support-for-tag-helpers">IntelliSense support for Tag Helpers</a> explains the IntelliSense environment. Even developers experienced with Razor C# syntax are more productive using Tag Helpers than writing C# Razor markup.</dd>
+<dt><strong>A way to make you more productive and able to produce more robust, reliable, and maintainable code using information only available on the server</strong></dt>
+<dd>For example, historically the mantra on updating images was to change the name of the image when you change the image. Images should be aggressively cached for performance reasons, and unless you change the name of an image, you risk clients getting a stale copy. Historically, after an image was edited, the name had to be changed and each reference to the image in the web app needed to be updated. Not only is this very labor intensive, it&#8217;s also error prone (you could miss a reference, accidentally enter the wrong string, etc.) The built-in <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ImageTagHelper/index.html">ImageTagHelper</a> can do this for you automatically. The <code class="docutils literal"><span class="pre">ImageTagHelper</span></code> can append a version number to the image name, so whenever the image changes, the server automatically generates a new unique version for the image. Clients are guaranteed to get the current image. This robustness and labor savings comes essentially free by using the <code class="docutils literal"><span class="pre">ImageTagHelper</span></code>.</dd>
+</dl>
+<p>Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element. For example, the <code class="docutils literal"><span class="pre">&lt;input&gt;</span></code> element used in many of the views in the <em>Views/Account</em> folder contains the <code class="docutils literal"><span class="pre">asp-for</span></code> attribute, which extracts the name of the specified model property into the rendered HTML. The following Razor markup:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">asp-for</span><span class="o">=</span><span class="s">&quot;Email&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Generates the following HTML:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;Email&quot;</span><span class="p">&gt;</span>Email<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">asp-for</span></code> attribute is made available by the <code class="docutils literal"><span class="pre">For</span></code> property in the <code class="docutils literal"><span class="pre">LabelTagHelper</span></code>. See <a class="reference internal" href="authoring.html"><span class="doc">Authoring Tag Helpers</span></a> for more information.</p>
+</div>
+<div class="section" id="managing-tag-helper-scope">
+<h2>Managing Tag Helper scope<a class="headerlink" href="#managing-tag-helper-scope" title="Permalink to this headline">¶</a></h2>
+<p>Tag Helpers scope is controlled by a combination of <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code>, <code class="docutils literal"><span class="pre">&#64;removeTagHelper</span></code>, and the &#8221;!&#8221; opt-out character.</p>
+<div class="section" id="addtaghelper-makes-tag-helpers-available">
+<h3><code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> makes Tag Helpers available<a class="headerlink" href="#addtaghelper-makes-tag-helpers-available" title="Permalink to this headline">¶</a></h3>
+<p>If you create a new ASP.NET Core web app named <em>AuthoringTagHelpers</em> (with no authentication), the following <em>Views/_ViewImports.cshtml</em> file will be added to your project:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>@using AuthoringTagHelpers
+<span class="hll">@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+</span></pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> directive makes Tag Helpers available to the view. In this case, the view file is <em>Views/_ViewImports.cshtml</em>, which by default is inherited by all view files in the <em>Views</em> folder and sub-directories; making Tag Helpers available. The code above uses the wildcard syntax (&#8220;*&#8221;) to specify that all Tag Helpers in the specified assembly (<em>Microsoft.AspNetCore.Mvc.TagHelpers</em>) will be available to every view file in the <em>Views</em> directory or sub-directory. The first parameter after <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> specifies the Tag Helpers to load (we are using &#8220;*&#8221; for all Tag Helpers), and the second parameter &#8220;Microsoft.AspNetCore.Mvc.TagHelpers&#8221; specifies the assembly containing the Tag Helpers. <em>Microsoft.AspNetCore.Mvc.TagHelpers</em> is the assembly for the built-in ASP.NET Core Tag Helpers.</p>
+<p>To expose all of the Tag Helpers in this project (which creates an assembly named <em>AuthoringTagHelpers</em>), you would use the following:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>@using AuthoringTagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<span class="hll">@addTagHelper &quot;*, AuthoringTagHelpers&quot;
+</span></pre></div>
+</div>
+<p>If your project contains an <code class="docutils literal"><span class="pre">EmailTagHelper</span></code> with the default namespace (<code class="docutils literal"><span class="pre">AuthoringTagHelpers.TagHelpers.EmailTagHelper</span></code>), you can provide the fully qualified name (FQN) of the Tag Helper:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>@using AuthoringTagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<span class="hll">@addTagHelper &quot;AuthoringTagHelpers.TagHelpers3.EmailTagHelper, AuthoringTagHelpers&quot;
+</span></pre></div>
+</div>
+<p>To add a Tag Helper to a view using an FQN, you first add the FQN (<code class="docutils literal"><span class="pre">AuthoringTagHelpers.TagHelpers.EmailTagHelper</span></code>), and then the assembly name (<em>AuthoringTagHelpers</em>). Most developers prefer to use the  &#8220;*&#8221; wildcard syntax. The wildcard syntax allows you to insert the wildcard character &#8220;*&#8221; as the suffix in an FQN. For example, any of the following directives will bring in the <code class="docutils literal"><span class="pre">EmailTagHelper</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">@addTagHelper</span> <span class="s">&quot;AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers&quot;</span>
+<span class="n">@addTagHelper</span> <span class="s">&quot;AuthoringTagHelpers.TagHelpers.Email*, AuthoringTagHelpers&quot;</span>
+</pre></div>
+</div>
+<p>As mentioned previously, adding the <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> directive to the <em>Views/_ViewImports.cshtml</em> file makes the Tag Helper available to all view files in the <em>Views</em> directory and sub-directories. You can use the <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> directive in specific view files if you want to opt-in to exposing the Tag Helper to only those views.</p>
+</div>
+<div class="section" id="removetaghelper-removes-tag-helpers">
+<h3><code class="docutils literal"><span class="pre">&#64;removeTagHelper</span></code> removes Tag Helpers<a class="headerlink" href="#removetaghelper-removes-tag-helpers" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">&#64;removeTagHelper</span></code> has the same two parameters as <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code>, and it removes a Tag Helper that was previously added. For example, <code class="docutils literal"><span class="pre">&#64;removeTagHelper</span></code> applied to a specific view removes the specified Tag Helper from the view. Using <code class="docutils literal"><span class="pre">&#64;removeTagHelper</span></code> in a <em>Views/Folder/_ViewImports.cshtml</em> file removes the specified Tag Helper from all of the views in <em>Folder</em>.</p>
+</div>
+<div class="section" id="controlling-tag-helper-scope-with-the-viewimports-cshtml-file">
+<h3>Controlling Tag Helper scope with the <em>_ViewImports.cshtml</em> file<a class="headerlink" href="#controlling-tag-helper-scope-with-the-viewimports-cshtml-file" title="Permalink to this headline">¶</a></h3>
+<p>You can add a <em>_ViewImports.cshtml</em> to any view folder, and the view engine adds the directives from that <em>_ViewImports.cshtml</em> file to those contained in the <em>Views/_ViewImports.cshtml</em> file. If you added an empty <em>Views/Home/_ViewImports.cshtml</em> file for the <em>Home</em> views, there would be no change because the <em>_ViewImports.cshtml</em> file is additive. Any <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> directives you add to the <em>Views/Home/_ViewImports.cshtml</em> file (that are not in the default <em>Views/_ViewImports.cshtml</em> file) would expose those Tag Helpers to views only in the <em>Home</em> folder.</p>
+</div>
+<div class="section" id="opting-out-of-individual-elements">
+<h3>Opting out of individual elements<a class="headerlink" href="#opting-out-of-individual-elements" title="Permalink to this headline">¶</a></h3>
+<p>You can disable a Tag Helper at the element level with the Tag Helper opt-out character (&#8221;!&#8221;). For example, <code class="docutils literal"><span class="pre">Email</span></code> validation is disabled in the <code class="docutils literal"><span class="pre">&lt;span&gt;</span></code> with the Tag Helper opt-out character:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="p">&lt;!</span><span class="n">span</span> <span class="n">asp</span><span class="p">-</span><span class="n">validation</span><span class="p">-</span><span class="k">for</span><span class="p">=</span><span class="s">&quot;Email&quot;</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;&lt;/!</span><span class="n">span</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>You must apply the Tag Helper opt-out character to the opening and closing tag. (The Visual Studio editor automatically adds the opt-out character to the closing tag when you add one to the opening tag). After you add the opt-out character, the element and Tag Helper attributes are no longer displayed in a distinctive font.</p>
+</div>
+<div class="section" id="using-taghelperprefix-to-make-tag-helper-usage-explicit">
+<h3>Using <code class="docutils literal"><span class="pre">&#64;tagHelperPrefix</span></code> to make Tag Helper usage explicit<a class="headerlink" href="#using-taghelperprefix-to-make-tag-helper-usage-explicit" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">&#64;tagHelperPrefix</span></code> directive allows you to specify a tag prefix string to enable Tag Helper support and to make Tag Helper usage explicit. In the code image below, the Tag Helper prefix is set to <code class="docutils literal"><span class="pre">th:</span></code>, so only those elements using the prefix <code class="docutils literal"><span class="pre">th:</span></code> support Tag Helpers (Tag Helper-enabled elements have a distinctive font). The <code class="docutils literal"><span class="pre">&lt;label&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;input&gt;</span></code> elements have the Tag Helper prefix and are Tag Helper-enabled, while the <code class="docutils literal"><span class="pre">&lt;span&gt;</span></code> element does not.</p>
+<img alt="../../../_images/thp.png" src="../../../_images/thp.png" />
+<p>The same hierarchy rules that apply to <code class="docutils literal"><span class="pre">&#64;addTagHelper</span></code> also apply to <code class="docutils literal"><span class="pre">&#64;tagHelperPrefix</span></code>.</p>
+</div>
+</div>
+<div class="section" id="intellisense-support-for-tag-helpers">
+<h2>IntelliSense support for Tag Helpers<a class="headerlink" href="#intellisense-support-for-tag-helpers" title="Permalink to this headline">¶</a></h2>
+<p>When you create a new ASP.NET web app in Visual Studio, it adds &#8220;Microsoft.AspNetCore.Tooling.Razor&#8221; to the <em>project.json</em> file. This is the package that adds Tag Helper tooling.</p>
+<p>Consider writing an HTML <code class="docutils literal"><span class="pre">&lt;label&gt;</span></code> element. As soon as you enter <code class="docutils literal"><span class="pre">&lt;l</span></code> in the Visual Studio editor, IntelliSense displays matching elements:</p>
+<img alt="../../../_images/label.png" src="../../../_images/label.png" />
+<p>Not only do you get HTML help, but the icon (the &#8220;&#64;&#8221; symbol with &#8220;&lt;&gt;&#8221; under it).</p>
+<img alt="../../../_images/tagSym.png" src="../../../_images/tagSym.png" />
+<p>identifies the element as targeted by Tag Helpers. Pure HTML elements (such as the <code class="docutils literal"><span class="pre">fieldset</span></code>) display the &#8220;&lt;&gt;&#8221;icon.</p>
+<p>A pure HTML <code class="docutils literal"><span class="pre">&lt;label&gt;</span></code> tag displays the HTML tag (with the default Visual Studio color theme) in a brown font, the attributes in red, and the attribute values in blue.</p>
+<img alt="../../../_images/LableHtmlTag.png" src="../../../_images/LableHtmlTag.png" />
+<p>After you enter <code class="docutils literal"><span class="pre">&lt;label</span></code>, IntelliSense lists the available HTML/CSS attributes and the Tag Helper-targeted attributes:</p>
+<img alt="../../../_images/labelattr.png" src="../../../_images/labelattr.png" />
+<p>IntelliSense statement completion allows you to enter the tab key to complete the statement with the selected value:</p>
+<img alt="../../../_images/stmtcomplete.png" src="../../../_images/stmtcomplete.png" />
+<p>As soon as a Tag Helper attribute is entered, the tag and attribute fonts change. Using the default Visual Studio &#8220;Blue&#8221; or &#8220;Light&#8221; color theme, the font is bold purple. If you&#8217;re using the &#8220;Dark&#8221; theme the font is bold teal. The images in this document were taken using the default theme.</p>
+<img alt="../../../_images/labelaspfor2.png" src="../../../_images/labelaspfor2.png" />
+<p>You can enter the Visual Studio <em>CompleteWord</em> shortcut (Ctrl +spacebar is the <a class="reference external" href="https://msdn.microsoft.com/en-us/library/da5kh0wa.aspx">default</a>) inside the double quotes (&#8220;&#8221;), and you are now in C#, just like you would be in a C# class. IntelliSense displays all the methods and properties on the page model. The methods and properties are available because the property type is <code class="docutils literal"><span class="pre">ModelExpression</span></code>. In the image below, I&#8217;m editing the <code class="docutils literal"><span class="pre">Register</span></code> view, so the <code class="docutils literal"><span class="pre">RegisterViewModel</span></code> is available.</p>
+<img alt="../../../_images/intellemail.png" src="../../../_images/intellemail.png" />
+<p>IntelliSense lists the properties and methods available to the model on the page. The rich IntelliSense environment helps you select the CSS class:</p>
+<img alt="../../../_images/iclass.png" src="../../../_images/iclass.png" />
+<img alt="../../../_images/intel3.png" src="../../../_images/intel3.png" />
+</div>
+<div class="section" id="tag-helpers-compared-to-html-helpers">
+<h2>Tag Helpers compared to HTML Helpers<a class="headerlink" href="#tag-helpers-compared-to-html-helpers" title="Permalink to this headline">¶</a></h2>
+<p>Tag Helpers attach to HTML elements in Razor views, while <a class="reference external" href="http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers">HTML Helpers</a> are invoked as methods interspersed with HTML in Razor views. Consider the following Razor markup, which creates an HTML label with the CSS class &#8220;caption&#8221;:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>@Html.Label(&quot;FirstName&quot;, &quot;First Name:&quot;, new {@class=&quot;caption&quot;})
+</pre></div>
+</div>
+<p>The at (<code class="docutils literal"><span class="pre">&#64;</span></code>) symbol tells Razor this is the start of code. The next two parameters (&#8220;FirstName&#8221; and &#8220;First Name:&#8221;) are strings, so <a class="reference external" href="https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx">IntelliSense</a> can&#8217;t help. The last argument:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>new {@class=&quot;caption&quot;}
+</pre></div>
+</div>
+<p>Is an anonymous object used to represent attributes. Because <strong>class</strong> is a reserved keyword in C#, you use the <code class="docutils literal"><span class="pre">&#64;</span></code> symbol to force C# to interpret &#8220;&#64;class=&#8221; as a symbol (property name). To a front-end designer (someone familiar with HTML/CSS/JavaScript and other client technologies but not familiar with C# and Razor), most of the line is foreign. The entire line must be authored with no help from IntelliSense.</p>
+<p>Using the <code class="docutils literal"><span class="pre">LabelTagHelper</span></code>, the same markup can be written as:</p>
+<img alt="../../../_images/label2.png" src="../../../_images/label2.png" />
+<p>With the Tag Helper version, as soon as you enter <code class="docutils literal"><span class="pre">&lt;l</span></code> in the Visual Studio editor, IntelliSense displays matching elements:</p>
+<img alt="../../../_images/label.png" src="../../../_images/label.png" />
+<p>IntelliSense helps you write the entire line. The <code class="docutils literal"><span class="pre">LabelTagHelper</span></code> also defaults to setting the content of the <code class="docutils literal"><span class="pre">asp-for</span></code> attribute value (&#8220;FirstName&#8221;) to &#8220;First Name&#8221;; It converts camel-cased properties to a sentence composed of the property name with a space where each new upper-case letter occurs. In the following markup:</p>
+<img alt="../../../_images/label2.png" src="../../../_images/label2.png" />
+<p>generates:</p>
+<blockquote>
+<div><div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;caption&quot;</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;FirstName&quot;</span><span class="p">&gt;</span>First Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The  camel-cased to sentence-cased content is not used if you add content to the <code class="docutils literal"><span class="pre">&lt;label&gt;</span></code>. For example:</p>
+<img alt="../../../_images/1stName.png" src="../../../_images/1stName.png" />
+<p>generates:</p>
+<blockquote>
+<div><div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;caption&quot;</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;FirstName&quot;</span><span class="p">&gt;</span>Name First<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The following code image shows the Form portion of the <em>Views/Account/Register.cshtml</em> Razor view generated from the legacy ASP.NET 4.5.x MVC template included with Visual Studio 2015.</p>
+<img alt="../../../_images/regCS.png" src="../../../_images/regCS.png" />
+<p>The Visual Studio editor displays C# code with a grey background. For example, the <code class="docutils literal"><span class="pre">AntiForgeryToken</span></code> HTML Helper:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span>@Html.AntiForgeryToken()
+</pre></div>
+</div>
+<p>is displayed with a grey background. Most of the markup in the Register view is C#. Compare that to the equivalent approach using Tag Helpers:</p>
+<img alt="../../../_images/regTH.png" src="../../../_images/regTH.png" />
+<p>The markup is much cleaner and easier to read, edit, and maintain than the HTML Helpers approach. The C# code is reduced to the minimum that the server needs to know about. The Visual Studio editor displays markup targeted by a Tag Helper in a distinctive font.</p>
+<p>Consider the <em>Email</em> group:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">label</span> <span class="n">asp</span><span class="p">-</span><span class="k">for</span><span class="p">=</span><span class="s">&quot;Email&quot;</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;col-md-2 control-label&quot;</span><span class="p">&gt;&lt;/</span><span class="n">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;col-md-10&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="n">input</span> <span class="n">asp</span><span class="p">-</span><span class="k">for</span><span class="p">=</span><span class="s">&quot;Email&quot;</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;form-control&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="n">span</span> <span class="n">asp</span><span class="p">-</span><span class="n">validation</span><span class="p">-</span><span class="k">for</span><span class="p">=</span><span class="s">&quot;Email&quot;</span> <span class="n">class</span><span class="p">=</span><span class="s">&quot;text-danger&quot;</span><span class="p">&gt;&lt;/</span><span class="n">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Each of the &#8220;asp-&#8221; attributes has a value of &#8220;Email&#8221;, but &#8220;Email&#8221; is not a string. In this context, &#8220;Email&#8221; is the C# model expression property for the <code class="docutils literal"><span class="pre">RegisterViewModel</span></code>.</p>
+<p>The Visual Studio editor helps you write <strong>all</strong> of the markup in the Tag Helper approach of the register form, while Visual Studio provides no help for most of the code in the HTML Helpers approach. <a class="reference internal" href="#intellisense-support-for-tag-helpers">IntelliSense support for Tag Helpers</a> goes into detail on working with Tag Helpers in the Visual Studio editor.</p>
+</div>
+<div class="section" id="tag-helpers-compared-to-web-server-controls">
+<h2>Tag Helpers compared to Web Server Controls<a class="headerlink" href="#tag-helpers-compared-to-web-server-controls" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Tag Helpers don&#8217;t own the element they&#8217;re associated with; they simply participate in the rendering of the element and content. ASP.NET <a class="reference external" href="https://msdn.microsoft.com/en-us/library/7698y1f0.aspx">Web Server controls</a> are declared and invoked on a page.</li>
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/zsyt68f1.aspx">Web Server controls</a> have a non-trivial lifecycle that can make developing and debugging difficult.</li>
+<li>Web Server controls allow you to add functionality to the client Document Object Model (DOM) elements by using a client control. Tag Helpers have no DOM.</li>
+<li>Web Server controls include automatic browser detection. Tag Helpers have no knowledge of the browser.</li>
+<li>Multiple Tag Helpers can act on the same element (see <a class="reference external" href="http://mvc.readthedocs.org/en/latest/views/tag-helpers/authoring.html#avoiding-tag-helper-conflicts">Avoiding Tag Helper conflicts</a> ) while you typically can&#8217;t compose Web Server controls.</li>
+<li>Tag Helpers can modify the tag and content of HTML elements that they&#8217;re scoped to, but don&#8217;t directly modify anything else on a page. Web Server controls have a less specific scope and can perform actions that affect other parts of your page; enabling unintended side effects.</li>
+<li>Web Server controls use type converters to convert strings into objects. With Tag Helpers, you work natively in C#, so you don&#8217;t need to do type conversion.</li>
+<li>Web Server controls use <a class="reference external" href="https://msdn.microsoft.com/en-us/library/system.componentmodel%28v=vs.110%29.aspx">System.ComponentModel</a> to implement the run-time and design-time behavior of components and controls. <code class="docutils literal"><span class="pre">System.ComponentModel</span></code> includes the base classes and interfaces for implementing attributes and type converters, binding to data sources, and licensing components. Contrast that to Tag Helpers, which typically derive from <code class="docutils literal"><span class="pre">TagHelper</span></code>, and the <code class="docutils literal"><span class="pre">TagHelper</span></code> base class exposes only two methods, <code class="docutils literal"><span class="pre">Process</span></code> and <code class="docutils literal"><span class="pre">ProcessAsync</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="customizing-the-tag-helper-element-font">
+<h2>Customizing the Tag Helper element font<a class="headerlink" href="#customizing-the-tag-helper-element-font" title="Permalink to this headline">¶</a></h2>
+<p>You can customize the font and colorization from <strong>Tools</strong> &gt; <strong>Options</strong> &gt; <strong>Environment</strong> &gt; <strong>Fonts and Colors</strong>:</p>
+<img alt="../../../_images/fontoptions2.png" src="../../../_images/fontoptions2.png" />
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="authoring.html"><span class="doc">Authoring Tag Helpers</span></a></li>
+<li><a class="reference internal" href="index.html"><span class="doc">Working with Forms (Tag Helpers)</span></a></li>
+<li><a class="reference external" href="https://github.com/dpaquette/TagHelperSamples">TagHelperSamples on GitHub</a> contains Tag Helper samples for working with <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a>.</li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="authoring.html" class="btn btn-neutral float-right" title="Authoring Tag Helpers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Tag Helpers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

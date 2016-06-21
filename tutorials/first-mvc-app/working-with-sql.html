@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Working with SQL Server LocalDB &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Building your first ASP.NET Core MVC app with Visual Studio" href="index.html"/>
+        <link rel="next" title="Controller methods and views" href="controller-methods-views.html"/>
+        <link rel="prev" title="Adding a model" href="adding-model.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="start-mvc.html">Getting started with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-controller.html">Adding a controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-view.html">Adding a view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-model.html">Adding a model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Working with SQL Server LocalDB</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="controller-methods-views.html">Controller methods and views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Adding Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="new-field.html">Adding a New Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Adding Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="details.html">Examining the Details and Delete methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a> &raquo;</li>
+      
+    <li>Working with SQL Server LocalDB</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tutorials/first-mvc-app/working-with-sql.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="working-with-sql-server-localdb">
+<h1>Working with SQL Server LocalDB<a class="headerlink" href="#working-with-sql-server-localdb" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>The <code class="docutils literal"><span class="pre">ApplicationDbContext</span></code> class handles the task of connecting to the database and mapping <code class="docutils literal"><span class="pre">Movie</span></code> objects to database records. The database context is registered with the <a class="reference internal" href="../../fundamentals/dependency-injection.html"><span class="doc">Dependency Injection</span></a> container in the <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method in the <em>Startup.cs</em> file:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="c1">// This method gets called by the runtime. Use this method to add services to the container.</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Add framework services.</span>
+<span class="hll">    <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+</span><span class="hll">        <span class="n">options</span><span class="p">.</span><span class="n">UseSqlServer</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="s">&quot;DefaultConnection&quot;</span><span class="p">)));</span>
+</span></pre></div>
+</div>
+<p>The ASP.NET Core <a class="reference internal" href="../../fundamentals/configuration.html"><span class="doc">Configuration</span></a> system reads the <code class="docutils literal"><span class="pre">ConnectionString</span></code>. For local development, it gets the connection string from the <em>appsettings.json</em> file:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;ConnectionStrings&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">    <span class="s2">&quot;DefaultConnection&quot;</span><span class="o">:</span> <span class="s2">&quot;Server=(localdb)\\mssqllocaldb;Database=aspnet-MvcMovie-7db2893b-375e-48bd-86a3-bb9779b72ebe;Trusted_Connection=True;MultipleActiveResultSets=true&quot;</span>
+</span>  <span class="p">},</span>
+  <span class="s2">&quot;Logging&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;IncludeScopes&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server. See <a class="reference internal" href="../../fundamentals/configuration.html"><span class="doc">Configuration</span></a> .</p>
+<div class="section" id="sql-server-express-localdb">
+<h2>SQL Server Express LocalDB<a class="headerlink" href="#sql-server-express-localdb" title="Permalink to this headline">¶</a></h2>
+<p>LocalDB is a lightweight version of the SQL Server Express Database Engine that is targeted for program development. LocalDB starts on demand and runs in user mode, so there is no complex configuration. By default, LocalDB database creates &#8220;*.mdf&#8221; files in the <em>C:/Users/&lt;user&gt;</em> directory.</p>
+<ul class="simple">
+<li>From the <strong>View</strong> menu, open <strong>SQL Server Object Explorer</strong> (SSOX).</li>
+</ul>
+<img alt="../../_images/ssox1.png" src="../../_images/ssox1.png" />
+<ul class="simple">
+<li>Right click on the <code class="docutils literal"><span class="pre">Movie</span></code> table <strong>&gt; View Designer</strong></li>
+</ul>
+<img alt="../../_images/design.png" src="../../_images/design.png" />
+<img alt="../../_images/dv.png" src="../../_images/dv.png" />
+<p>Note the key icon next to <code class="docutils literal"><span class="pre">ID</span></code>. By default, EF will make a property named <code class="docutils literal"><span class="pre">ID</span></code> the primary key.</p>
+<ul class="simple">
+<li>Right click on the <code class="docutils literal"><span class="pre">Movie</span></code> table <strong>&gt; View Data</strong></li>
+</ul>
+<img alt="../../_images/ssox2.png" src="../../_images/ssox2.png" />
+<img alt="../../_images/vd22.png" src="../../_images/vd22.png" />
+</div>
+<div class="section" id="seed-the-database">
+<h2>Seed the database<a class="headerlink" href="#seed-the-database" title="Permalink to this headline">¶</a></h2>
+<p>Create a new class named <code class="docutils literal"><span class="pre">SeedData</span></code> in the <em>Models</em> folder. Replace the generated code with the following:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MvcMovie.Data</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MvcMovie.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">SeedData</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Initialize</span><span class="p">(</span><span class="n">IServiceProvider</span> <span class="n">serviceProvider</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationDbContext</span><span class="p">(</span>
+                <span class="n">serviceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;&gt;()))</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">Any</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="k">return</span><span class="p">;</span>   <span class="c1">// DB has been seeded</span>
+                <span class="p">}</span>
+
+                <span class="n">context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span>
+                     <span class="k">new</span> <span class="n">Movie</span>
+                     <span class="p">{</span>
+                         <span class="n">Title</span> <span class="p">=</span> <span class="s">&quot;When Harry Met Sally&quot;</span><span class="p">,</span>
+                         <span class="n">ReleaseDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&quot;1989-1-11&quot;</span><span class="p">),</span>
+                         <span class="n">Genre</span> <span class="p">=</span> <span class="s">&quot;Romantic Comedy&quot;</span><span class="p">,</span>
+                         <span class="n">Price</span> <span class="p">=</span> <span class="m">7.99</span><span class="n">M</span>
+                     <span class="p">},</span>
+
+                     <span class="k">new</span> <span class="n">Movie</span>
+                     <span class="p">{</span>
+                         <span class="n">Title</span> <span class="p">=</span> <span class="s">&quot;Ghostbusters &quot;</span><span class="p">,</span>
+                         <span class="n">ReleaseDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&quot;1984-3-13&quot;</span><span class="p">),</span>
+                         <span class="n">Genre</span> <span class="p">=</span> <span class="s">&quot;Comedy&quot;</span><span class="p">,</span>
+                         <span class="n">Price</span> <span class="p">=</span> <span class="m">8.99</span><span class="n">M</span>
+                     <span class="p">},</span>
+
+                     <span class="k">new</span> <span class="n">Movie</span>
+                     <span class="p">{</span>
+                         <span class="n">Title</span> <span class="p">=</span> <span class="s">&quot;Ghostbusters 2&quot;</span><span class="p">,</span>
+                         <span class="n">ReleaseDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&quot;1986-2-23&quot;</span><span class="p">),</span>
+                         <span class="n">Genre</span> <span class="p">=</span> <span class="s">&quot;Comedy&quot;</span><span class="p">,</span>
+                         <span class="n">Price</span> <span class="p">=</span> <span class="m">9.99</span><span class="n">M</span>
+                     <span class="p">},</span>
+
+                   <span class="k">new</span> <span class="n">Movie</span>
+                   <span class="p">{</span>
+                       <span class="n">Title</span> <span class="p">=</span> <span class="s">&quot;Rio Bravo&quot;</span><span class="p">,</span>
+                       <span class="n">ReleaseDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&quot;1959-4-15&quot;</span><span class="p">),</span>
+                       <span class="n">Genre</span> <span class="p">=</span> <span class="s">&quot;Western&quot;</span><span class="p">,</span>
+                       <span class="n">Price</span> <span class="p">=</span> <span class="m">3.99</span><span class="n">M</span>
+                   <span class="p">}</span>
+                <span class="p">);</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">SaveChanges</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice if there are any movies in the DB, the seed initializer returns.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Movie</span><span class="p">.</span><span class="n">Any</span><span class="p">())</span>
+    <span class="p">{</span>
+<span class="hll">        <span class="k">return</span><span class="p">;</span>   <span class="c1">// DB has been seeded</span>
+</span>    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Add the seed initializer to the end of the <code class="docutils literal"><span class="pre">Configure</span></code> method in the <em>Startup.cs</em> file:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span>    <span class="n">app</span><span class="p">.</span><span class="n">UseMvc</span><span class="p">(</span><span class="n">routes</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s">&quot;default&quot;</span><span class="p">,</span>
+            <span class="n">template</span><span class="p">:</span> <span class="s">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span><span class="p">);</span>
+    <span class="p">});</span>
+
+<span class="hll">    <span class="n">SeedData</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">ApplicationServices</span><span class="p">);</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Test the app</p>
+<ul class="simple">
+<li>Delete all the records in the DB. You can do this with the delete links in the browser or from SSOX.</li>
+<li>Force the app to initialize (call the methods in the <code class="docutils literal"><span class="pre">Startup</span></code> class) so the seed method runs. To force initialization, IIS Express must be stopped and restarted. You can do this with any of the following approaches:</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the database doesn&#8217;t initialize, put a break point on the line <code class="docutils literal"><span class="pre">if</span> <span class="pre">(context.Movie.Any())</span></code> and start debugging.</p>
+</div>
+<img alt="../../_images/dbg.png" src="../../_images/dbg.png" />
+<p>The app shows the seeded data.</p>
+<img alt="../../_images/m55.png" src="../../_images/m55.png" />
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="controller-methods-views.html" class="btn btn-neutral float-right" title="Controller methods and views" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="adding-model.html" class="btn btn-neutral" title="Adding a model" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

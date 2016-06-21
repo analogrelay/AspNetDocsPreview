@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Deploy an ASP.NET Core web app to Azure using Visual Studio &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Building your first ASP.NET Core MVC app with Visual Studio" href="first-mvc-app/index.html"/>
+        <link rel="prev" title="Building Your First Web API with ASP.NET Core MVC and Visual Studio" href="first-web-api.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deploy an ASP.NET Core web app to Azure using Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="first-mvc-app/index.html">Building your first ASP.NET Core MVC app with Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+    <li>Deploy an ASP.NET Core web app to Azure using Visual Studio</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/publish-to-azure-webapp-using-vs.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="deploy-an-asp-net-core-web-app-to-azure-using-visual-studio">
+<h1>Deploy an ASP.NET Core web app to Azure using Visual Studio<a class="headerlink" href="#deploy-an-asp-net-core-web-app-to-azure-using-visual-studio" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#set-up-the-development-environment" id="id1">Set up the development environment</a></li>
+<li><a class="reference internal" href="#create-a-web-app" id="id2">Create a web app</a></li>
+<li><a class="reference internal" href="#test-the-app-locally" id="id3">Test the app locally</a></li>
+<li><a class="reference internal" href="#deploy-the-app-to-azure" id="id4">Deploy the app to Azure</a></li>
+</ul>
+</div>
+<div class="section" id="set-up-the-development-environment">
+<h2><a class="toc-backref" href="#id1">Set up the development environment</a><a class="headerlink" href="#set-up-the-development-environment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://go.microsoft.com/fwlink/?linkid=518003">Install the latest Azure SDK for Visual Studio 2015</a>. The SDK installs Visual Studio 2015 if you don&#8217;t already have it.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SDK installation can take more than 30 minutes if your machine doesn&#8217;t have many of the dependencies.</p>
+</div>
+<ul class="simple">
+<li>Install <a class="reference external" href="http://go.microsoft.com/fwlink/?LinkID=798306">.NET Core + Visual Studio tooling</a></li>
+<li>Verify your <a class="reference external" href="https://portal.azure.com/">Azure account</a>. You can <a class="reference external" href="https://azure.microsoft.com/pricing/free-trial/">open a free Azure account</a> or <a class="reference external" href="https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/">Activate Visual Studio subscriber benefits</a>.</li>
+</ul>
+</div>
+<div class="section" id="create-a-web-app">
+<h2><a class="toc-backref" href="#id2">Create a web app</a><a class="headerlink" href="#create-a-web-app" title="Permalink to this headline">¶</a></h2>
+<p>From the Visual Studio <strong>Start</strong> page, tap <strong>New Project</strong>.</p>
+<img alt="../_images/new_project1.png" src="../_images/new_project1.png" />
+<p>Alternatively, you can use the menus to create a new project. Tap <strong>File &gt; New &gt; Project</strong>.</p>
+<img alt="../_images/alt_new_project1.png" src="../_images/alt_new_project1.png" />
+<p>Complete the <strong>New Project</strong> dialog:</p>
+<ul class="simple">
+<li>In the left pane, tap <strong>Web</strong></li>
+<li>In the center pane, tap <strong>ASP.NET Core Web Application (.NET Core)</strong></li>
+<li>Tap <strong>OK</strong></li>
+</ul>
+<img alt="../_images/new_prj.png" src="../_images/new_prj.png" />
+<p>In the <strong>New ASP.NET Core Web Application (.NET Core)</strong> dialog:</p>
+<ul class="simple">
+<li>Tap <strong>Web Application</strong></li>
+<li>Verify <strong>Authentication</strong> is set to <strong>Individual User Accounts</strong></li>
+<li>Verify <strong>Host in the cloud</strong> is <strong>not</strong> checked</li>
+<li>Tap <strong>OK</strong></li>
+</ul>
+<img alt="../_images/noath.png" src="../_images/noath.png" />
+</div>
+<div class="section" id="test-the-app-locally">
+<h2><a class="toc-backref" href="#id3">Test the app locally</a><a class="headerlink" href="#test-the-app-locally" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Use <strong>Ctl-F5</strong> to run the app</li>
+<li>Tap the <strong>About</strong> and <strong>Contact</strong> links. Depending on the size of your device, you might need to click the navigation icon to show the links</li>
+</ul>
+<img alt="../_images/show.png" src="../_images/show.png" />
+<ul class="simple">
+<li>Tap <strong>Register</strong> and register a new user. You can use a fictitious email. When you submit, you&#8217;ll get the following error:</li>
+</ul>
+<img alt="../_images/mig.png" src="../_images/mig.png" />
+<p>You can fix the problem two different ways:</p>
+<ul>
+<li><p class="first">Tap <strong>Apply Migrations</strong> and when the page updates, refresh the screen</p>
+</li>
+<li><p class="first">Run the following from the command line in the project directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dotnet</span> <span class="n">ef</span> <span class="n">database</span> <span class="n">update</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The app displays the email registration used to register and a <strong>Log off</strong> link.</p>
+<img alt="../_images/hello.png" src="../_images/hello.png" />
+</div>
+<div class="section" id="deploy-the-app-to-azure">
+<h2><a class="toc-backref" href="#id4">Deploy the app to Azure</a><a class="headerlink" href="#deploy-the-app-to-azure" title="Permalink to this headline">¶</a></h2>
+<p>Right click on the project and select <strong>Publish</strong></p>
+<img alt="../_images/pub.png" src="../_images/pub.png" />
+<p>In the <strong>Publish</strong> dialog, tap <strong>Microsoft Azure App Service</strong></p>
+<img alt="../_images/maas1.png" src="../_images/maas1.png" />
+<p>Tap <strong>New</strong> to enter a new resource group. Creating a new resource group will make it easy to delete all the Azure resources you create in this tutorial.</p>
+<img alt="../_images/newrg1.png" src="../_images/newrg1.png" />
+<p>Create a new resource group and app service plan:</p>
+<ul class="simple">
+<li>Tap <strong>New</strong> for the resource group and enter a name for the new resource group</li>
+<li>Tap <strong>New</strong> for the  app service plan and select a location near you. You can keep the default generated name</li>
+<li>Tap <strong>Explore additional Azure services</strong> to create a new database</li>
+</ul>
+<img alt="../_images/cas.png" src="../_images/cas.png" />
+<ul class="simple">
+<li>Tap the green <strong>+</strong> icon to create a new SQL Database</li>
+</ul>
+<img alt="../_images/sql.png" src="../_images/sql.png" />
+<ul class="simple">
+<li>Tap  <strong>New</strong> on the <strong>Configure SQL Database</strong> dialog</li>
+</ul>
+<img alt="../_images/conf.png" src="../_images/conf.png" />
+<ul class="simple">
+<li>You can keep the default <strong>Server Name</strong></li>
+<li>Enter an administrator user name and password, and then tap <strong>OK</strong>. Remember the user name and password.</li>
+</ul>
+<img alt="../_images/dbrick.png" src="../_images/dbrick.png" />
+<ul class="simple">
+<li>Tap <strong>OK</strong> on the  <strong>Configure SQL Database</strong> dialog</li>
+<li>Tap <strong>Create</strong> on the <strong>Create App Service</strong> dialog</li>
+</ul>
+<img alt="../_images/create_as.png" src="../_images/create_as.png" />
+<ul class="simple">
+<li>Tap <strong>Next</strong> in the <strong>Publish</strong> dialog</li>
+</ul>
+<img alt="../_images/pubc.png" src="../_images/pubc.png" />
+<ul>
+<li><p class="first">On the <strong>Settings</strong> stage of the <strong>Publish</strong> dialog:</p>
+<ul class="simple">
+<li>Check <strong>Use this connection string at runtime</strong></li>
+<li>Check <strong>Apply this migration on publish</strong></li>
+</ul>
+<img alt="../_images/pubs.png" src="../_images/pubs.png" />
+</li>
+<li><p class="first">Tap <strong>Publish</strong></p>
+</li>
+</ul>
+<p>Visual Studio will publish your app to Azure and launch the cloud app in your browser.</p>
+<div class="section" id="test-your-app-in-azure">
+<h3>Test your app in Azure<a class="headerlink" href="#test-your-app-in-azure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Test the <strong>About</strong> and <strong>Contact</strong> links</li>
+<li>Register a new user</li>
+</ul>
+<img alt="../_images/final.png" src="../_images/final.png" />
+</div>
+<div class="section" id="update-the-app">
+<h3>Update the app<a class="headerlink" href="#update-the-app" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Edit the <em>Views/Home/About.cshtml</em> Razor view file. Change the content, for example:</li>
+</ul>
+<div class="highlight-html"><div class="highlight"><pre><span></span>@{
+    ViewData[&quot;Title&quot;] = &quot;About&quot;;
+}
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>@ViewData[&quot;Title&quot;].<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>@ViewData[&quot;Message&quot;]<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+
+<span class="hll"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>My updated about page.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></pre></div>
+</div>
+<ul class="simple">
+<li>Right click on the project and select <strong>Publish</strong></li>
+</ul>
+<img alt="../_images/pub.png" src="../_images/pub.png" />
+<ul class="simple">
+<li>Tap <strong>Publish</strong> and verify the changes you made are displayed on Azure</li>
+</ul>
+</div>
+<div class="section" id="clean-up">
+<h3>Clean up<a class="headerlink" href="#clean-up" title="Permalink to this headline">¶</a></h3>
+<p>When you have finished testing the app, log into the <a class="reference external" href="https://portal.azure.com/">Azure portal</a> and delete the app.</p>
+<ul class="simple">
+<li>Log into the <a class="reference external" href="https://portal.azure.com/">Azure portal</a></li>
+<li>In the left blade tap <strong>Resource groups</strong> and then tap the resource group you created</li>
+</ul>
+<img alt="../_images/portalrg.png" src="../_images/portalrg.png" />
+<ul class="simple">
+<li>In the <strong>Resource group</strong> blade tap <strong>Delete</strong></li>
+<li>Enter the name of the resource group and tap <strong>Delete</strong></li>
+</ul>
+<img alt="../_images/rgd.png" src="../_images/rgd.png" />
+</div>
+<div class="section" id="next-steps">
+<h3>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="first-mvc-app/start-mvc.html"><span class="doc">Getting started with ASP.NET Core MVC and Visual Studio</span></a></li>
+<li><a class="reference internal" href="../conceptual-overview/aspnet.html"><span class="doc">Introduction to ASP.NET Core</span></a></li>
+<li><a class="reference internal" href="../fundamentals/index.html"><span class="doc">Fundamentals</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="first-mvc-app/index.html" class="btn btn-neutral float-right" title="Building your first ASP.NET Core MVC app with Visual Studio" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="first-web-api.html" class="btn btn-neutral" title="Building Your First Web API with ASP.NET Core MVC and Visual Studio" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

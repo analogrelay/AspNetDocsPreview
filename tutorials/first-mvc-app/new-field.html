@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adding a New Field &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Building your first ASP.NET Core MVC app with Visual Studio" href="index.html"/>
+        <link rel="next" title="Adding Validation" href="validation.html"/>
+        <link rel="prev" title="Adding Search" href="search.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../first-web-api.html">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="start-mvc.html">Getting started with ASP.NET Core MVC and Visual Studio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-controller.html">Adding a controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-view.html">Adding a view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding-model.html">Adding a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working-with-sql.html">Working with SQL Server LocalDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller-methods-views.html">Controller methods and views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Adding Search</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a New Field</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="validation.html">Adding Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="details.html">Examining the Details and Delete methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+      
+          <li><a href="index.html">Building your first ASP.NET Core MVC app with Visual Studio</a> &raquo;</li>
+      
+    <li>Adding a New Field</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/tutorials/first-mvc-app/new-field.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="adding-a-new-field">
+<h1>Adding a New Field<a class="headerlink" href="#adding-a-new-field" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>In this section you&#8217;ll use <a class="reference external" href="http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html">Entity Framework</a> Code First Migrations to add a new field to the model and migrate that change to the database.</p>
+<p>When you use EF Code First to automatically create a database, Code First adds a table to the database to help track whether the schema of the database is in sync with the model classes it was generated from. If they aren&#8217;t in sync, EF throws an exception. This makes it easier to track down issues at development time that you might otherwise only find (by obscure errors) at run time.</p>
+<div class="section" id="adding-a-rating-property-to-the-movie-model">
+<h2>Adding a Rating Property to the Movie Model<a class="headerlink" href="#adding-a-rating-property-to-the-movie-model" title="Permalink to this headline">¶</a></h2>
+<p>Open the <em>Models/Movie.cs</em> file and add a <code class="docutils literal"><span class="pre">Rating</span></code> property:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Movie</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="na">    [Display(Name = &quot;Release Date&quot;)]</span>
+<span class="na">    [DataType(DataType.Date)]</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">ReleaseDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Genre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Price</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="hll">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Rating</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Build the app (Ctrl+Shift+B).</p>
+<p>Because you&#8217;ve added a new field to the <code class="docutils literal"><span class="pre">Movie</span></code> class, you also need to update the binding white list so this new property will be included. Update the <code class="docutils literal"><span class="pre">[Bind]</span></code> attribute for <code class="docutils literal"><span class="pre">Create</span></code> and <code class="docutils literal"><span class="pre">Edit</span></code> action methods to include the <code class="docutils literal"><span class="pre">Rating</span></code> property:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Bind(&quot;ID,Title,ReleaseDate,Genre,Price,Rating&quot;)]</span>
+</pre></div>
+</div>
+<p>You also need to update the view templates in order to display, create and edit the new <code class="docutils literal"><span class="pre">Rating</span></code> property in the browser view.</p>
+<p>Edit the <em>/Views/Movies/Index.cshtml</em> file and add a <code class="docutils literal"><span class="pre">Rating</span></code> field:</p>
+<div class="highlight-HTML"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+            @Html.DisplayNameFor(model =&gt; model.movies[0].Genre)
+        <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+            @Html.DisplayNameFor(model =&gt; model.movies[0].Price)
+        <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+            @Html.DisplayNameFor(model =&gt; model.movies[0].ReleaseDate)
+        <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+            @Html.DisplayNameFor(model =&gt; model.movies[0].Title)
+        <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>
+<span class="hll">            @Html.DisplayNameFor(model =&gt; model.movies[0].Rating)
+</span>        <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+        @foreach (var item in Model.movies)
+        {
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                    @Html.DisplayFor(modelItem =&gt; item.Genre)
+                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                    @Html.DisplayFor(modelItem =&gt; item.Price)
+                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                    @Html.DisplayFor(modelItem =&gt; item.ReleaseDate)
+                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                    @Html.DisplayFor(modelItem =&gt; item.Title)
+                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="hll">                    @Html.DisplayFor(modelItem =&gt; item.Rating)
+</span>                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Update the <em>/Views/Movies/Create.cshtml</em> with a <code class="docutils literal"><span class="pre">Rating</span></code> field. You can copy/paste the previous &#8220;form group&#8221; and let intelliSense help you update the fields. IntelliSense works with <a class="reference internal" href="../../mvc/views/tag-helpers/intro.html"><span class="doc">Tag Helpers</span></a>.</p>
+<img alt="../../_images/cr.png" src="../../_images/cr.png" />
+<p>The app won&#8217;t work until we update the DB to include the new field. If you run it now, you&#8217;ll get the following <code class="docutils literal"><span class="pre">SqlException</span></code>:</p>
+<img alt="../../_images/se1.png" src="../../_images/se1.png" />
+<p>You&#8217;re seeing this error because the updated Movie model class is different than the schema of the Movie table of the existing database. (There&#8217;s no Rating column in the database table.)</p>
+<p>There are a few approaches to resolving the error:</p>
+<ol class="arabic simple">
+<li>Have the Entity Framework automatically drop and re-create the database based on the new model class schema. This approach is very convenient early in the development cycle when you are doing active development on a test database; it allows you to quickly evolve the model and database schema together. The downside, though, is that you lose existing data in the database — so you don&#8217;t want to use this approach on a production database! Using an initializer to automatically seed a database with test data is often a productive way to develop an application.</li>
+<li>Explicitly modify the schema of the existing database so that it matches the model classes. The advantage of this approach is that you keep your data. You can make this change either manually or by creating a database change script.</li>
+<li>Use Code First Migrations to update the database schema.</li>
+</ol>
+<p>For this tutorial, we&#8217;ll use Code First Migrations.</p>
+<p>Update the <code class="docutils literal"><span class="pre">SeedData</span></code> class so that it provides a value for the new column. A sample change is shown below, but you&#8217;ll want to make this change for each <code class="docutils literal"><span class="pre">new</span> <span class="pre">Movie</span></code>.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span>     <span class="k">new</span> <span class="n">Movie</span>
+     <span class="p">{</span>
+         <span class="n">Title</span> <span class="p">=</span> <span class="s">&quot;When Harry Met Sally&quot;</span><span class="p">,</span>
+         <span class="n">ReleaseDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&quot;1989-1-11&quot;</span><span class="p">),</span>
+         <span class="n">Genre</span> <span class="p">=</span> <span class="s">&quot;Romantic Comedy&quot;</span><span class="p">,</span>
+<span class="hll">         <span class="n">Rating</span> <span class="p">=</span> <span class="s">&quot;R&quot;</span><span class="p">,</span>
+</span>         <span class="n">Price</span> <span class="p">=</span> <span class="m">7.99</span><span class="n">M</span>
+     <span class="p">},</span>
+</pre></div>
+</div>
+<p>Build the solution then open a command prompt. Enter the following commands:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">dotnet ef migrations add Rating</span>
+<span class="go">dotnet ef database update</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">migrations</span> <span class="pre">add</span></code> command tells the migration framework to examine the current <code class="docutils literal"><span class="pre">Movie</span></code> model with the current <code class="docutils literal"><span class="pre">Movie</span></code> DB schema and create the necessary code to migrate the DB to the new model. The name &#8220;Rating&#8221; is arbitrary and is used to name the migration file. It&#8217;s helpful to use a meaningful name for the migration step.</p>
+<p>If you delete all the records in the DB, the initialize will seed the DB and include the <code class="docutils literal"><span class="pre">Rating</span></code> field. You can do this with the delete links in the browser or from SSOX.</p>
+<p>Run the app and verify you can create/edit/display movies with a <code class="docutils literal"><span class="pre">Rating</span></code> field. You should also add the <code class="docutils literal"><span class="pre">Rating</span></code> field to the <code class="docutils literal"><span class="pre">Edit</span></code>, <code class="docutils literal"><span class="pre">Details</span></code>, and <code class="docutils literal"><span class="pre">Delete</span></code> view templates.</p>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="validation.html" class="btn btn-neutral float-right" title="Adding Validation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="search.html" class="btn btn-neutral" title="Adding Search" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

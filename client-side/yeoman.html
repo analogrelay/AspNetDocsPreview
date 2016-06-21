@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building Projects with Yeoman &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Client-Side Development" href="index.html"/>
+        <link rel="next" title="Mobile" href="../mobile/index.html"/>
+        <link rel="prev" title="🔧 Responsive Design for the Mobile Web" href="responsive-design.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Client-Side Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using-gulp.html">Using Gulp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-grunt.html">Using Grunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bower.html">Manage Client-Side Packages with Bower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Building Beautiful, Responsive Sites with Bootstrap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knockout.html">Knockout.js MVVM Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="angular.html">Using Angular for Single Page Applications (SPAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="less-sass-fa.html">Styling Applications with Less, Sass, and Font Awesome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bundling-and-minification.html">Bundling and Minification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cdn.html">🔧 Working with a Content Delivery Network (CDN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="responsive-design.html">🔧 Responsive Design for the Mobile Web</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.typescriptlang.org/docs/handbook/asp-net-core.html">TypeScript</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building Projects with Yeoman</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Client-Side Development</a> &raquo;</li>
+      
+    <li>Building Projects with Yeoman</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/client-side/yeoman.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="building-projects-with-yeoman">
+<h1>Building Projects with Yeoman<a class="headerlink" href="#building-projects-with-yeoman" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a>, <a class="reference external" href="http://scottaddie.com">Scott Addie</a>, <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a> and <a class="reference external" href="http://blog.falafel.com/author/noel-rice/">Noel Rice</a></p>
+<p><a class="reference external" href="http://yeoman.io/">Yeoman</a> generates complete projects for a given set of client tools. Yeoman is an open-source tool that works like a Visual Studio project template. The Yeoman command line tool <a class="reference external" href="https://github.com/yeoman/yo">yo</a> works alongside a Yeoman generator. Generators define the technologies that go into a project.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-node-js-npm-and-yeoman" id="id1">Install Node.js, npm, and Yeoman</a></li>
+<li><a class="reference internal" href="#create-an-asp-net-app" id="id2">Create an ASP.NET app</a></li>
+<li><a class="reference internal" href="#restore-build-and-run" id="id3">Restore, build and run</a></li>
+<li><a class="reference internal" href="#specifying-the-client-side-task-runner" id="id4">Specifying the client-side task runner</a></li>
+<li><a class="reference internal" href="#building-and-running-from-visual-studio" id="id5">Building and Running from Visual Studio</a></li>
+<li><a class="reference internal" href="#restoring-building-and-hosting-from-the-command-line" id="id6">Restoring, Building, and Hosting from the Command Line</a></li>
+<li><a class="reference internal" href="#adding-to-your-project-with-sub-generators" id="id7">Adding to Your Project with Sub Generators</a></li>
+<li><a class="reference internal" href="#related-resources" id="id8">Related Resources</a></li>
+</ul>
+</div>
+<div class="section" id="install-node-js-npm-and-yeoman">
+<h2><a class="toc-backref" href="#id1">Install Node.js, npm, and Yeoman</a><a class="headerlink" href="#install-node-js-npm-and-yeoman" title="Permalink to this headline">¶</a></h2>
+<p>To get started with Yeoman install <a class="reference external" href="https://nodejs.org/en/">Node.js</a>. The installer includes <a class="reference external" href="https://nodejs.org/en/">Node.js</a> and <a class="reference external" href="https://www.npmjs.com/">npm</a>.</p>
+<p>Follow the instructions on <a class="reference external" href="http://yeoman.io/learning/">http://yeoman.io/learning/</a> to install <a class="reference external" href="https://github.com/yeoman/yo">yo</a>, bower, grunt, and gulp.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">npm install -g yo bower grunt-cli gulp</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you get the error <code class="docutils literal"><span class="pre">npm</span> <span class="pre">ERR!</span> <span class="pre">Please</span> <span class="pre">try</span> <span class="pre">running</span> <span class="pre">this</span> <span class="pre">command</span> <span class="pre">again</span> <span class="pre">as</span> <span class="pre">root/Administrator.</span></code> on Mac OS, run the following command using <a class="reference external" href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man8/sudo.8.html">sudo</a>: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">npm</span> <span class="pre">install</span> <span class="pre">-g</span> <span class="pre">yo</span> <span class="pre">bower</span> <span class="pre">grunt-cli</span> <span class="pre">gulp</span></code></p>
+</div>
+<p>From the command line, install the ASP.NET generator:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">npm install -g generator-aspnet</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you get a permission error, run the command under <code class="docutils literal"><span class="pre">sudo</span></code> as described above.</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">–g</span></code> flag installs the generator globally, so that it can be used from any path.</p>
+</div>
+<div class="section" id="create-an-asp-net-app">
+<h2><a class="toc-backref" href="#id2">Create an ASP.NET app</a><a class="headerlink" href="#create-an-asp-net-app" title="Permalink to this headline">¶</a></h2>
+<p>Create a directory for your projects</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">mkdir src</span>
+<span class="go">cd src</span>
+</pre></div>
+</div>
+<p>Run the ASP.NET generator for <code class="docutils literal"><span class="pre">yo</span></code></p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">yo aspnet</span>
+</pre></div>
+</div>
+<p>The generator displays a menu. Arrow down to the <strong>Empty Web Application</strong> project and tap <strong>Enter</strong>:</p>
+<img alt="../_images/yeoman-yo-aspnet.png" src="../_images/yeoman-yo-aspnet.png" />
+<p>Use &#8220;EmptyWeb1&#8221; for the app name and then tap <strong>Enter</strong></p>
+<p>Yeoman will scaffold the project and its supporting files. Suggested next steps are also provided in the form of commands.</p>
+<img alt="../_images/yeoman-yo-aspnet-created.png" src="../_images/yeoman-yo-aspnet-created.png" />
+<p>The <a class="reference external" href="https://www.npmjs.com/package/generator-aspnet">ASP.NET generator</a> creates ASP.NET Core projects that can be loaded into Visual Studio Code, Visual Studio, or run from the command line.</p>
+</div>
+<div class="section" id="restore-build-and-run">
+<h2><a class="toc-backref" href="#id3">Restore, build and run</a><a class="headerlink" href="#restore-build-and-run" title="Permalink to this headline">¶</a></h2>
+<p>Follow the suggested commands by changing directories to the <code class="docutils literal"><span class="pre">EmptyWeb1</span></code> directory. Then run <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">restore</span></code>.</p>
+<img alt="../_images/dotnet-restore.png" src="../_images/dotnet-restore.png" />
+<p>Build and run the app using <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">build</span></code> and <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">run</span></code>:</p>
+<img alt="../_images/dotnet-build-run.png" src="../_images/dotnet-build-run.png" />
+<p>At this point you can navigate to the URL shown to test the newly created ASP.NET Core app.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If you were directed to this tutorial from <a class="reference internal" href="../tutorials/your-first-mac-aspnet.html"><span class="doc">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</span></a>, you can return now.</p>
+</div>
+</div>
+<div class="section" id="specifying-the-client-side-task-runner">
+<h2><a class="toc-backref" href="#id4">Specifying the client-side task runner</a><a class="headerlink" href="#specifying-the-client-side-task-runner" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.npmjs.com/package/generator-aspnet">ASP.NET generator</a> creates supporting files to configure client-side build tools. A <a class="reference internal" href="using-grunt.html"><span class="doc">Grunt</span></a> or <a class="reference internal" href="using-gulp.html"><span class="doc">Gulp</span></a> task runner file is added to your project to automate build tasks for Web projects. The default generator creates <em>gulpfile.js</em> to run tasks. Running the generator with the <code class="docutils literal"><span class="pre">--grunt</span></code> argument generates <em>Gruntfile.js</em>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">yo aspnet --grunt</span>
+</pre></div>
+</div>
+<p>The generator also configures <em>package.json</em> to load <a class="reference internal" href="using-grunt.html"><span class="doc">Grunt</span></a> or <a class="reference internal" href="using-gulp.html"><span class="doc">Gulp</span></a> dependencies. It also adds <em>bower.json</em> and <em>.bowerrc</em> files to restore client-side packages using the <a class="reference internal" href="bower.html"><span class="doc">Bower</span></a> client-side package manager.</p>
+</div>
+<div class="section" id="building-and-running-from-visual-studio">
+<h2><a class="toc-backref" href="#id5">Building and Running from Visual Studio</a><a class="headerlink" href="#building-and-running-from-visual-studio" title="Permalink to this headline">¶</a></h2>
+<p>You can load your generated ASP.NET Core web project directly into Visual Studio, then build and run your project from there. Follow the instructions above to scaffold a new ASP.NET Core app using yeoman. This time, choose <strong>Web Application</strong> from the menu and name the app <code class="docutils literal"><span class="pre">MyWebApp</span></code>.</p>
+<p>Open Visual Studio. From the File menu, select <span class="menuselection">Open ‣ Project/Solution</span>.</p>
+<p>In the Open Project dialog, navigate to the <em>project.json</em> file, select it, and click the <strong>Open</strong> button. In the Solution Explorer, the project should look something like the screenshot below.</p>
+<img alt="../_images/yeoman-solution.png" src="../_images/yeoman-solution.png" />
+<p>Yeoman scaffolds a MVC web application, complete with both server- and client-side build support. Server-side dependencies are listed under the <strong>References</strong> node, and client-side dependencies in the <strong>Dependencies</strong> node of Solution Explorer. Dependencies are restored automatically when the project is loaded.</p>
+<img alt="../_images/yeoman-loading-dependencies.png" src="../_images/yeoman-loading-dependencies.png" />
+<p>When all the dependencies are restored, press <strong>F5</strong> to run the project. The default home page displays in the browser.</p>
+<img alt="../_images/yeoman-home-page.png" src="../_images/yeoman-home-page.png" />
+</div>
+<div class="section" id="restoring-building-and-hosting-from-the-command-line">
+<h2><a class="toc-backref" href="#id6">Restoring, Building, and Hosting from the Command Line</a><a class="headerlink" href="#restoring-building-and-hosting-from-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>You can prepare and host your web application using the <a class="reference external" href="https://microsoft.com/net/core">.NET Core</a> command-line interface.</p>
+<p>From the command line, change the current directory to the folder containing the project (that is, the folder containing the <cite>project.json</cite> file):</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">cd src\MyWebApp</span>
+</pre></div>
+</div>
+<p>From the command line, restore the project&#8217;s NuGet package dependencies:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">dotnet restore</span>
+</pre></div>
+</div>
+<p>Run the application:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">dotnet run</span>
+</pre></div>
+</div>
+<p>The cross-platform <a class="reference internal" href="../fundamentals/servers.html#kestrel"><span class="std std-ref">Kestrel</span></a> web server will begin listening on port 5000.</p>
+<p>Open a web browser, and navigate to http://localhost:5000.</p>
+<img alt="../_images/yeoman-home-page_5000.png" src="../_images/yeoman-home-page_5000.png" />
+</div>
+<div class="section" id="adding-to-your-project-with-sub-generators">
+<h2><a class="toc-backref" href="#id7">Adding to Your Project with Sub Generators</a><a class="headerlink" href="#adding-to-your-project-with-sub-generators" title="Permalink to this headline">¶</a></h2>
+<p>You can add new generated files using Yeoman even after the project is created. Use <a class="reference external" href="https://www.npmjs.com/package/generator-aspnet#sub-generators">sub generators</a> to add any of the file types that make up your project. For example, to add a new class to your project, enter the <code class="docutils literal"><span class="pre">yo</span> <span class="pre">aspnet:Class</span></code> command followed by the name of the class. Execute the following command from the directory in which the file should be created:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">yo aspnet:Class Person</span>
+</pre></div>
+</div>
+<p>The result is a file named Person.cs with a class named <code class="docutils literal"><span class="pre">Person</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyNamespace</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">Person</span><span class="p">()</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="related-resources">
+<h2><a class="toc-backref" href="#id8">Related Resources</a><a class="headerlink" href="#related-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../fundamentals/servers.html"><span class="doc">Servers (HttpPlatformHandler, Kestrel and WebListener)</span></a></li>
+<li><a class="reference internal" href="../tutorials/your-first-mac-aspnet.html"><span class="doc">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</span></a></li>
+<li><a class="reference internal" href="../fundamentals/index.html"><span class="doc">Fundamentals</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../mobile/index.html" class="btn btn-neutral float-right" title="Mobile" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="responsive-design.html" class="btn btn-neutral" title="🔧 Responsive Design for the Mobile Web" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

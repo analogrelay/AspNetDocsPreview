@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Partial Views &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../../index.html"/>
+        <link rel="up" title="Views" href="index.html"/>
+        <link rel="next" title="Injecting Services Into Views" href="dependency-injection.html"/>
+        <link rel="prev" title="Authoring Tag Helpers" href="tag-helpers/authoring.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MVC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">🔧 Overview of ASP.NET MVC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Views</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="razor.html">🔧 Razor Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic-vs-static.html">🔧 Dynamic vs Strongly Typed Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working-with-forms.html">Working with Forms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="html-helpers.html">🔧 HTML Helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tag-helpers/index.html">Tag Helpers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Partial Views</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dependency-injection.html">Injecting Services Into Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="view-components.html">View Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom-view-engine.html">🔧 Creating a Custom View Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mobile.html">🔧 Building Mobile Specific Views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">MVC</a> &raquo;</li>
+      
+          <li><a href="index.html">Views</a> &raquo;</li>
+      
+    <li>Partial Views</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/mvc/views/partial.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="partial-views">
+<h1>Partial Views<a class="headerlink" href="#partial-views" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="http://ardalis.com">Steve Smith</a></p>
+<p>ASP.NET Core MVC supports partial views, which are useful when you have reusable parts of web pages you want to share between different views.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-are-partial-views" id="id1">What are Partial Views?</a></li>
+<li><a class="reference internal" href="#when-should-i-use-partial-views" id="id2">When Should I Use Partial Views?</a></li>
+<li><a class="reference internal" href="#declaring-partial-views" id="id3">Declaring Partial Views</a></li>
+<li><a class="reference internal" href="#referencing-a-partial-view" id="id4">Referencing a Partial View</a></li>
+<li><a class="reference internal" href="#accessing-data-from-partial-views" id="id5">Accessing Data From Partial Views</a></li>
+</ul>
+</div>
+<p><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/partial/sample">View or download sample code</a></p>
+<div class="section" id="what-are-partial-views">
+<h2><a class="toc-backref" href="#id1">What are Partial Views?</a><a class="headerlink" href="#what-are-partial-views" title="Permalink to this headline">¶</a></h2>
+<p>A partial view is a view that is rendered within another view. The HTML output generated by executing the partial view is rendered into the calling (or parent) view. Like views, partial views use the <em>.cshtml</em> file extension.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you&#8217;re coming from an ASP.NET Web Forms background, partial views are similar to <a class="reference external" href="https://msdn.microsoft.com/en-us/library/y6wb1a0e.aspx">user controls</a>.</p>
+</div>
+</div>
+<div class="section" id="when-should-i-use-partial-views">
+<h2><a class="toc-backref" href="#id2">When Should I Use Partial Views?</a><a class="headerlink" href="#when-should-i-use-partial-views" title="Permalink to this headline">¶</a></h2>
+<p>Partial views are an effective way of breaking up large views into smaller components. They can reduce duplication of view content and allow view elements to be reused. Common layout elements should be specified in <a class="reference internal" href="layout.html"><span class="doc">layout.cshtml</span></a>. Non-layout reusable content can be encapsulated into partial views.</p>
+<p>If you have a complex page made up of several logical pieces, it can be helpful to work with each piece as its own partial view. Each piece of the page can be viewed in isolation from the rest of the page, and the view for the page itself becomes much simpler since it only contains the overall page structure and calls to render the partial views.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Follow the <a class="reference external" href="http://deviq.com/don-t-repeat-yourself/">Don&#8217;t Repeat Yourself Principle</a> in your views.</p>
+</div>
+</div>
+<div class="section" id="declaring-partial-views">
+<h2><a class="toc-backref" href="#id3">Declaring Partial Views</a><a class="headerlink" href="#declaring-partial-views" title="Permalink to this headline">¶</a></h2>
+<p>Partial views are created like any other view: you create a <em>.cshtml</em> file within the <em>Views</em> folder. There is no semantic difference between a partial view and a regular view - they are just rendered differently. You can have a view that is returned directly from a controller&#8217;s <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html#Microsoft.AspNetCore.Mvc.ViewResult" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">ViewResult</span></code></a>, and the  same view can be used as a partial view. The main difference between how a view and a partial view are rendered is that partial views do not run <em>_ViewStart</em> (while views do - learn more about <em>_ViewStart</em> in <a class="reference internal" href="layout.html"><span class="doc">Layout</span></a>).</p>
+</div>
+<div class="section" id="referencing-a-partial-view">
+<h2><a class="toc-backref" href="#id4">Referencing a Partial View</a><a class="headerlink" href="#referencing-a-partial-view" title="Permalink to this headline">¶</a></h2>
+<p>From within a view page, there are several ways in which you can render a partial view. The simplest is to use <code class="docutils literal"><span class="pre">Html.Partial</span></code>, which returns an <code class="docutils literal"><span class="pre">IHtmlString</span></code> and can be referenced by prefixing the call with <code class="docutils literal"><span class="pre">&#64;</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@Html</span><span class="o">.</span><span class="n">Partial</span><span class="p">(</span><span class="s2">&quot;AuthorPartial&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html#Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.PartialAsync" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">PartialAsync</span></code></a> method is available for partial views containing asynchronous code (although code in views is generally discouraged):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@await</span> <span class="n">Html</span><span class="o">.</span><span class="n">PartialAsync</span><span class="p">(</span><span class="s2">&quot;AuthorPartial&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can render a partial view with <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/HtmlHelperPartialExtensions/index.html#Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">RenderPartial</span></code></a>. This method doesn&#8217;t return a result, it streams the rendered output directly to the response. Because it doesn&#8217;t return a result, it must be called within a razor code block (you can also call <code class="docutils literal"><span class="pre">RenderPartialAsync</span></code> if necessary):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">@</span><span class="p">{</span>
+    <span class="n">Html</span><span class="o">.</span><span class="n">RenderPartial</span><span class="p">(</span><span class="s2">&quot;AuthorPartial&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Because it streams the result directly, <code class="docutils literal"><span class="pre">RenderPartial</span></code>/<code class="docutils literal"><span class="pre">RenderPartialAsync</span></code> may perform better in some scenarios. However, in most cases it&#8217;s recommended you use <code class="docutils literal"><span class="pre">Render</span></code> (or <code class="docutils literal"><span class="pre">RenderAsync</span></code>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If your views need to execute code, the recommended pattern is to use a <a class="reference internal" href="view-components.html"><span class="doc">view component</span></a> instead of a partial view.</p>
+</div>
+<div class="section" id="partial-view-discovery">
+<h3>Partial View Discovery<a class="headerlink" href="#partial-view-discovery" title="Permalink to this headline">¶</a></h3>
+<p>When referencing a partial view, you can refer to its location in several ways:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>// Uses a view in current folder with this name
+// If none is found, searches the Shared folder
+@Html.Partial(&quot;ViewName&quot;)
+
+// A view with this name must be in the same folder
+@Html.Partial(&quot;ViewName.cshtml&quot;)
+
+// Locate the view based on the application root
+// Paths that start with &quot;/&quot; or &quot;~/&quot; refer to same location
+@Html.Partial(&quot;~/Views/Folder/ViewName.cshtml&quot;)
+@Html.Partial(&quot;/Views/Folder/ViewName.cshtml&quot;)
+
+// Locate the view using relative paths
+@Html.Partial(&quot;../Account/LoginPartial.cshtml&quot;)
+</pre></div>
+</div>
+<p>If desired, you can have different partial views with the same name in different view folders. When referencing the views by name (without file extension), views in each folder will use the partial view in the same folder with them. You can also specify a default partial view to use, placing it in the <em>Shared</em> folder. This view will be used by any views that don&#8217;t have their own copy of the partial view in their folder. In this way, you can have a default partial view (in <em>Shared</em>), which can be overridden by a partial view with the same name in the same folder as the parent view.</p>
+<p>Partial views can be <em>chained</em>. That is, a partial view can call another partial view (as long as you don&#8217;t create a loop). Within each view or partial view, relative paths are always relative to that view, not the root or parent view.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you declare a <a class="reference internal" href="razor.html"><span class="doc">razor</span></a> <code class="docutils literal"><span class="pre">section</span></code> in a partial view, it will not be visible to its parent(s); it will be limited to the partial view.</p>
+</div>
+</div>
+</div>
+<div class="section" id="accessing-data-from-partial-views">
+<h2><a class="toc-backref" href="#id5">Accessing Data From Partial Views</a><a class="headerlink" href="#accessing-data-from-partial-views" title="Permalink to this headline">¶</a></h2>
+<p>When a partial view is instantiated, it gets a copy of the parent view&#8217;s <code class="docutils literal"><span class="pre">ViewData</span></code> collection. Updates made to the data within the partial view are not persisted to the parent view. <code class="docutils literal"><span class="pre">ViewData</span></code> changed in a partial view is lost when the partial view returns.</p>
+<p>You can pass an instance of <code class="docutils literal"><span class="pre">ViewDataDictionary</span></code> to the partial view:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">@Html</span><span class="p">.</span><span class="n">Partial</span><span class="p">(</span><span class="s">&quot;PartialName&quot;</span><span class="p">,</span> <span class="n">customViewData</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also pass a model into a partial view. This can be the page&#8217;s view model, or some portion of it, or a custom object. Simply pass in the model as the second parameter when calling <code class="docutils literal"><span class="pre">Partial</span></code>/<code class="docutils literal"><span class="pre">PartialAsync</span></code> or <code class="docutils literal"><span class="pre">RenderPartial</span></code>/<code class="docutils literal"><span class="pre">RenderPartialAsync</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">@Html</span><span class="p">.</span><span class="n">Partial</span><span class="p">(</span><span class="s">&quot;PartialName&quot;</span><span class="p">,</span> <span class="n">viewModel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can pass an instance of <code class="docutils literal"><span class="pre">ViewDataDictionary</span></code> and a view model to a partial view:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">@Html</span><span class="p">.</span><span class="n">Partial</span><span class="p">(</span><span class="s">&quot;PartialName&quot;</span><span class="p">,</span> <span class="n">viewModel</span><span class="p">,</span> <span class="n">customViewData</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="an-example">
+<h3>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h3>
+<p>The following view specifies a view model of type <code class="docutils literal"><span class="pre">Article</span></code>. <code class="docutils literal"><span class="pre">Article</span></code> has an <code class="docutils literal"><span class="pre">AuthorName</span></code> property that is passed to an <em>AuthorPartial</em>, and a property of type <code class="docutils literal"><span class="pre">List&lt;ArticleSection&gt;</span></code>, which is passed (in a loop) to a partial devoted to rendering that type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@using</span> <span class="n">PartialViewsSample</span><span class="o">.</span><span class="n">ViewModels</span>
+<span class="hll"><span class="nd">@model</span> <span class="n">Article</span>
+</span>
+<span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="nd">@Model</span><span class="o">.</span><span class="n">Title</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+<span class="hll"><span class="nd">@Html</span><span class="o">.</span><span class="n">Partial</span><span class="p">(</span><span class="s2">&quot;AuthorPartial&quot;</span><span class="p">,</span> <span class="n">Model</span><span class="o">.</span><span class="n">AuthorName</span><span class="p">)</span>
+</span><span class="nd">@Model</span><span class="o">.</span><span class="n">PublicationDate</span>
+
+<span class="nd">@foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">section</span> <span class="ow">in</span> <span class="nd">@Model</span><span class="o">.</span><span class="n">Sections</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="hll">    <span class="nd">@Html</span><span class="o">.</span><span class="n">Partial</span><span class="p">(</span><span class="s2">&quot;ArticleSection&quot;</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The <em>AuthorPartial</em> (which in this case is in the <em>/Views/Shared</em> folder):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="hll"><span class="nd">@model</span> <span class="n">string</span>
+</span><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="nd">@Model</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+    <span class="n">This</span> <span class="n">partial</span> <span class="n">view</span> <span class="n">came</span> <span class="kn">from</span> <span class="o">/</span><span class="n">Views</span><span class="o">/</span><span class="n">Shared</span><span class="o">/</span><span class="n">AuthorPartial</span><span class="o">.</span><span class="n">cshtml</span><span class="o">.&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The <em>ArticleSection</em> partial:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@using</span> <span class="n">PartialViewsSample</span><span class="o">.</span><span class="n">ViewModels</span>
+<span class="hll"><span class="nd">@model</span> <span class="n">ArticleSection</span>
+</span>
+<span class="o">&lt;</span><span class="n">h3</span><span class="o">&gt;</span><span class="nd">@Model</span><span class="o">.</span><span class="n">Title</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="nd">@Model</span><span class="o">.</span><span class="n">Content</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>At runtime, the partials are rendered into the parent view, which itself is rendered within the shared <em>_Layout.cshtml</em>, resulting in output like this:</p>
+<img alt="../../_images/output.png" src="../../_images/output.png" />
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dependency-injection.html" class="btn btn-neutral float-right" title="Injecting Services Into Views" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tag-helpers/authoring.html" class="btn btn-neutral" title="Authoring Tag Helpers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

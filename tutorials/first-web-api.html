@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building Your First Web API with ASP.NET Core MVC and Visual Studio &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Deploy an ASP.NET Core web app to Azure using Visual Studio" href="publish-to-azure-webapp-using-vs.html"/>
+        <link rel="prev" title="Your First ASP.NET Core Application on a Mac Using Visual Studio Code" href="your-first-mac-aspnet.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="your-first-mac-aspnet.html">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building Your First Web API with ASP.NET Core MVC and Visual Studio</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-mvc-app/index.html">Building your first ASP.NET Core MVC app with Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nano-server.html">ASP.NET Core on Nano Server</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/en-us/documentation/articles/service-fabric-add-a-web-frontend/">ASP.NET Core and Azure Service Fabric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mobile/native-mobile-backend.html">🔧 Creating Backend Services for Native Mobile Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+      
+    <li>Building Your First Web API with ASP.NET Core MVC and Visual Studio</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tutorials/first-web-api.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="building-your-first-web-api-with-asp-net-core-mvc-and-visual-studio">
+<h1>Building Your First Web API with ASP.NET Core MVC and Visual Studio<a class="headerlink" href="#building-your-first-web-api-with-asp-net-core-mvc-and-visual-studio" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://github.com/mikewasson">Mike Wasson</a> and <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a></p>
+<p>HTTP is not just for serving up web pages. It’s also a powerful platform for building APIs that expose services and data. HTTP is simple, flexible, and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.</p>
+<p>In this tutorial, you’ll build a simple web API for managing a list of &#8220;to-do&#8221; items. You won’t build any UI in this tutorial.</p>
+<p>ASP.NET Core has built-in support for MVC building Web APIs. Unifying the two frameworks makes it simpler to build apps that include both UI (HTML) and APIs, because now they share the same code base and pipeline.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are porting an existing Web API app to ASP.NET Core, see <a class="reference internal" href="../migration/webapi.html"><span class="doc">Migrating from ASP.NET Web API</span></a></p>
+</div>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
+<li><a class="reference internal" href="#install-fiddler" id="id2">Install Fiddler</a></li>
+<li><a class="reference internal" href="#create-the-project" id="id3">Create the project</a></li>
+<li><a class="reference internal" href="#add-a-model-class" id="id4">Add a model class</a></li>
+<li><a class="reference internal" href="#add-a-repository-class" id="id5">Add a repository class</a></li>
+<li><a class="reference internal" href="#register-the-repository" id="id6">Register the repository</a></li>
+<li><a class="reference internal" href="#add-a-controller" id="id7">Add a controller</a></li>
+<li><a class="reference internal" href="#getting-to-do-items" id="id8">Getting to-do items</a></li>
+<li><a class="reference internal" href="#use-fiddler-to-call-the-api" id="id9">Use Fiddler to call the API</a></li>
+<li><a class="reference internal" href="#implement-the-other-crud-operations" id="id10">Implement the other CRUD operations</a></li>
+<li><a class="reference internal" href="#next-steps" id="id11">Next steps</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Here is the API that you’ll create:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="31%" />
+<col width="16%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">API</th>
+<th class="head">Description</th>
+<th class="head">Request body</th>
+<th class="head">Response body</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GET /api/todo</td>
+<td>Get all to-do items</td>
+<td>None</td>
+<td>Array of to-do items</td>
+</tr>
+<tr class="row-odd"><td>GET /api/todo/{id}</td>
+<td>Get an item by ID</td>
+<td>None</td>
+<td>To-do item</td>
+</tr>
+<tr class="row-even"><td>POST /api/todo</td>
+<td>Add a new item</td>
+<td>To-do item</td>
+<td>To-do item</td>
+</tr>
+<tr class="row-odd"><td>PUT /api/todo/{id}</td>
+<td>Update an existing item</td>
+<td>To-do item</td>
+<td>None</td>
+</tr>
+<tr class="row-even"><td>DELETE /api/todo/{id}</td>
+<td>Delete an item.</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>The following diagram show the basic design of the app.</p>
+<img alt="../_images/architecture.png" src="../_images/architecture.png" />
+<ul class="simple">
+<li>The client is whatever consumes the web API (browser, mobile app, and so forth). We aren’t writing a client in this tutorial.</li>
+<li>A <em>model</em> is an object that represents the data in your application. In this case, the only model is a to-do item. Models are represented as simple C# classes (POCOs).</li>
+<li>A <em>controller</em> is an object that handles HTTP requests and creates the HTTP response. This app will have a single controller.</li>
+<li>To keep the tutorial simple the app doesn’t use a database. Instead, it just keeps to-do items in memory. But we’ll still include a (trivial) data access layer, to illustrate the separation between the web API and the data layer. For a tutorial that uses a database, see <a class="reference internal" href="first-mvc-app/index.html"><span class="doc">Building your first ASP.NET Core MVC app with Visual Studio</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="install-fiddler">
+<h2><a class="toc-backref" href="#id2">Install Fiddler</a><a class="headerlink" href="#install-fiddler" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;re not building a client, we&#8217;ll use <a class="reference external" href="http://www.fiddler2.com/fiddler2/">Fiddler</a> to test the API. Fiddler is a web debugging tool that lets you compose HTTP requests and view the raw HTTP responses.</p>
+</div>
+<div class="section" id="create-the-project">
+<h2><a class="toc-backref" href="#id3">Create the project</a><a class="headerlink" href="#create-the-project" title="Permalink to this headline">¶</a></h2>
+<p>Start Visual Studio. From the <strong>File</strong> menu, select <strong>New</strong> &gt; <strong>Project</strong>.</p>
+<p>Select the <strong>ASP.NET Core Web Application</strong> project template. Name the project <code class="docutils literal"><span class="pre">TodoApi</span></code> and tap <strong>OK</strong>.</p>
+<img alt="../_images/new-project3.png" src="../_images/new-project3.png" />
+<p>In the <strong>New ASP.NET Core Web Application (.NET Core) - TodoApi</strong> dialog, select the <strong>Web API</strong> template. Tap <strong>OK</strong>.</p>
+<img alt="../_images/web-api-project.png" src="../_images/web-api-project.png" />
+</div>
+<div class="section" id="add-a-model-class">
+<h2><a class="toc-backref" href="#id4">Add a model class</a><a class="headerlink" href="#add-a-model-class" title="Permalink to this headline">¶</a></h2>
+<p>A model is an object that represents the data in your application. In this case, the only model is a to-do item.</p>
+<p>Add a folder named &#8220;Models&#8221;. In Solution Explorer, right-click the project. Select <strong>Add</strong> &gt; <strong>New Folder</strong>. Name the folder <em>Models</em>.</p>
+<img alt="../_images/add-folder.png" src="../_images/add-folder.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can put model classes anywhere in your project, but the <em>Models</em> folder is used by convention.</p>
+</div>
+<p>Next, add a <code class="docutils literal"><span class="pre">TodoItem</span></code> class. Right-click the <em>Models</em> folder and select <strong>Add</strong> &gt; <strong>New Item</strong>.</p>
+<p>In the <strong>Add New Item</strong> dialog, select the <strong>Class</strong> template. Name the class <code class="docutils literal"><span class="pre">TodoItem</span></code> and click <strong>OK</strong>.</p>
+<img alt="../_images/add-class.png" src="../_images/add-class.png" />
+<p>Replace the generated code with:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="nn">TodoApi.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoItem</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Key</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsComplete</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-repository-class">
+<h2><a class="toc-backref" href="#id5">Add a repository class</a><a class="headerlink" href="#add-a-repository-class" title="Permalink to this headline">¶</a></h2>
+<p>A <em>repository</em> is an object that encapsulates the data layer, and contains logic for retrieving data and mapping it to an entity model. Even though the example app doesn’t use a database, it’s useful to see how you can inject a repository into your controllers. Create the repository code in the <em>Models</em> folder.</p>
+<p>Start by defining a repository interface named <code class="docutils literal"><span class="pre">ITodoRepository</span></code>. Use the class template (<strong>Add New Item</strong>  &gt; <strong>Class</strong>).</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TodoApi.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ITodoRepository</span>
+    <span class="p">{</span>
+        <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">item</span><span class="p">);</span>
+        <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">();</span>
+        <span class="n">TodoItem</span> <span class="nf">Find</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">);</span>
+        <span class="n">TodoItem</span> <span class="nf">Remove</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">Update</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">item</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This interface defines basic CRUD operations.</p>
+<p>Next, add a <code class="docutils literal"><span class="pre">TodoRepository</span></code> class that implements <code class="docutils literal"><span class="pre">ITodoRepository</span></code>:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Concurrent</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TodoApi.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoRepository</span> <span class="p">:</span> <span class="n">ITodoRepository</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">TodoItem</span><span class="p">&gt;</span> <span class="n">_todos</span> <span class="p">=</span> 
+              <span class="k">new</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">TodoItem</span><span class="p">&gt;();</span>
+
+        <span class="k">public</span> <span class="nf">TodoRepository</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">TodoItem</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">&quot;Item1&quot;</span> <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_todos</span><span class="p">.</span><span class="n">Values</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">item</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">item</span><span class="p">.</span><span class="n">Key</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">();</span>
+            <span class="n">_todos</span><span class="p">[</span><span class="n">item</span><span class="p">.</span><span class="n">Key</span><span class="p">]</span> <span class="p">=</span> <span class="n">item</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">TodoItem</span> <span class="nf">Find</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">TodoItem</span> <span class="n">item</span><span class="p">;</span>
+            <span class="n">_todos</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">out</span> <span class="n">item</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">TodoItem</span> <span class="nf">Remove</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">TodoItem</span> <span class="n">item</span><span class="p">;</span>
+            <span class="n">_todos</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">out</span> <span class="n">item</span><span class="p">);</span>
+            <span class="n">_todos</span><span class="p">.</span><span class="n">TryRemove</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">out</span> <span class="n">item</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">item</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_todos</span><span class="p">[</span><span class="n">item</span><span class="p">.</span><span class="n">Key</span><span class="p">]</span> <span class="p">=</span> <span class="n">item</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Build the app to verify you don&#8217;t have any compiler errors.</p>
+</div>
+<div class="section" id="register-the-repository">
+<h2><a class="toc-backref" href="#id6">Register the repository</a><a class="headerlink" href="#register-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>By defining a repository interface, we can decouple the repository class from the MVC controller that uses it. Instead of instantiating a <code class="docutils literal"><span class="pre">TodoRepository</span></code> inside the controller we will inject an <code class="docutils literal"><span class="pre">ITodoRepository</span></code> the built-in support in ASP.NET Core for <a class="reference internal" href="../fundamentals/dependency-injection.html"><span class="doc">dependency injection</span></a>.</p>
+<p>This approach makes it easier to unit test your controllers. Unit tests should inject a mock or stub version of <code class="docutils literal"><span class="pre">ITodoRepository</span></code>. That way, the test narrowly targets the controller logic and not the data access layer.</p>
+<p>In order to inject the repository into the controller, we need to register it with the DI container. Open the <em>Startup.cs</em> file. Add the following using directive:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">TodoApi.Models</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">ConfigureServices</span></code> method, add the highlighted code:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Add framework services.</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
+    <span class="c1">// Add our repository type</span>
+<span class="hll">    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">ITodoRepository</span><span class="p">,</span> <span class="n">TodoRepository</span><span class="p">&gt;();</span>
+</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-controller">
+<h2><a class="toc-backref" href="#id7">Add a controller</a><a class="headerlink" href="#add-a-controller" title="Permalink to this headline">¶</a></h2>
+<p>In Solution Explorer, right-click the <em>Controllers</em> folder. Select <strong>Add</strong> &gt; <strong>New Item</strong>. In the <strong>Add New Item</strong> dialog, select the <strong>Web  API Controller Class</strong> template. Name the class <code class="docutils literal"><span class="pre">TodoController</span></code>.</p>
+<p>Replace the generated code with the following:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TodoApi.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TodoApi.Controllers</span>
+<span class="p">{</span>
+<span class="na">    [Route(&quot;api/[controller]</span><span class="s">&quot;)]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoController</span> <span class="p">:</span> <span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">TodoController</span><span class="p">(</span><span class="n">ITodoRepository</span> <span class="n">todoItems</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">TodoItems</span> <span class="p">=</span> <span class="n">todoItems</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="n">ITodoRepository</span> <span class="n">TodoItems</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines an empty controller class. In the next sections, we&#8217;ll add methods to implement the API.</p>
+</div>
+<div class="section" id="getting-to-do-items">
+<h2><a class="toc-backref" href="#id8">Getting to-do items</a><a class="headerlink" href="#getting-to-do-items" title="Permalink to this headline">¶</a></h2>
+<p>To get to-do items, add the following methods to the <code class="docutils literal"><span class="pre">TodoController</span></code> class.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">TodoItems</span><span class="p">.</span><span class="n">GetAll</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="na">[HttpGet(&quot;{id}&quot;, Name = &quot;GetTodo&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">GetById</span><span class="p">(</span><span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">item</span> <span class="p">=</span> <span class="n">TodoItems</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">ObjectResult</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These methods implement the two GET methods:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/api/todo</span></code></li>
+<li><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/api/todo/{id}</span></code></li>
+</ul>
+<p>Here is an example HTTP response for the <code class="docutils literal"><span class="pre">GetAll</span></code> method:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">Microsoft</span><span class="o">-</span><span class="n">IIS</span><span class="o">/</span><span class="mf">10.0</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Thu</span><span class="p">,</span> <span class="mi">18</span> <span class="n">Jun</span> <span class="mi">2015</span> <span class="mi">20</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">10</span> <span class="n">GMT</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">82</span>
+
+<span class="p">[{</span><span class="s2">&quot;Key&quot;</span><span class="p">:</span><span class="s2">&quot;4f67d7c5-a2a9-4aae-b030-16003dd829ae&quot;</span><span class="p">,</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Item1&quot;</span><span class="p">,</span><span class="s2">&quot;IsComplete&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>Later in the tutorial I&#8217;ll show how you can view the HTTP response using the Fiddler tool.</p>
+<div class="section" id="routing-and-url-paths">
+<h3>Routing and URL paths<a class="headerlink" href="#routing-and-url-paths" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpGetAttribute/index.html">[HttpGet]</a> attribute specifies that these are HTTP GET methods. The URL path for each method is constructed as follows:</p>
+<ul class="simple">
+<li>Take the template string in the controller’s route attribute,  <code class="docutils literal"><span class="pre">[Route(&quot;api/[controller]&quot;)]</span></code></li>
+<li>Replace &#8220;[Controller]&#8221; with the name of the controller, which is the controller class name minus the &#8220;Controller&#8221; suffix. For this sample the name of the controller is &#8220;todo&#8221; (case insensitive). For this sample, the controller class name is <strong>Todo</strong>Controller and the root name is &#8220;todo&#8221;. ASP.NET MVC Core is not case sensitive.</li>
+<li>If the <code class="docutils literal"><span class="pre">[HttpGet]</span></code> attribute also has a template string, append that to the path. This sample doesn&#8217;t use a template string.</li>
+</ul>
+<p>For the <code class="docutils literal"><span class="pre">GetById</span></code> method,  &#8220;{id}&#8221; is a placeholder variable. In the actual HTTP request, the client will use the ID of the <code class="docutils literal"><span class="pre">todo</span></code> item. At runtime, when MVC invokes <code class="docutils literal"><span class="pre">GetById</span></code>, it assigns the value of &#8220;{id}&#8221; in the URL the method&#8217;s <code class="docutils literal"><span class="pre">id</span></code> parameter.</p>
+</div>
+<div class="section" id="change-the-launch-url-to-api-todo">
+<h3>Change the launch URL to &#8220;api/todo&#8221;<a class="headerlink" href="#change-the-launch-url-to-api-todo" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Right click on the project <strong>&gt; Properties</strong></li>
+<li>Select the <strong>Debug</strong> tab and change the <strong>Launch URL</strong> to &#8220;api/todo&#8221;</li>
+</ul>
+<img alt="../_images/launch.png" src="../_images/launch.png" />
+<p>To learn more about request routing see <a class="reference internal" href="../mvc/controllers/routing.html"><span class="doc">🔧 Routing to Controller Actions</span></a>.</p>
+</div>
+<div class="section" id="return-values">
+<h3>Return values<a class="headerlink" href="#return-values" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">GetAll</span></code> method returns a CLR object. MVC automatically serializes the object to <a class="reference external" href="http://www.json.org/">JSON</a> and writes the JSON into the body of the response message. The response code for this method is 200, assuming there are no unhandled exceptions. (Unhandled exceptions are translated into 5xx errors.)</p>
+<p>In contrast, the <code class="docutils literal"><span class="pre">GetById</span></code> method returns the more general <code class="docutils literal"><span class="pre">IActionResult</span></code> type, which represents a generic result type. That’s because <code class="docutils literal"><span class="pre">GetById</span></code> has two different return types:</p>
+<ul class="simple">
+<li>If no item matches the requested ID, the method returns a 404 error.  This is done by returning <code class="docutils literal"><span class="pre">NotFound</span></code>.</li>
+<li>Otherwise, the method returns 200 with a JSON response body. This is done by returning an <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ObjectResult/index.html">ObjectResult</a>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="use-fiddler-to-call-the-api">
+<h2><a class="toc-backref" href="#id9">Use Fiddler to call the API</a><a class="headerlink" href="#use-fiddler-to-call-the-api" title="Permalink to this headline">¶</a></h2>
+<p>This step is optional, but it’s useful to see the raw HTTP responses from the web API.
+In Visual Studio, press ^F5 to launch the app. Visual Studio launches a browser and navigates to <code class="docutils literal"><span class="pre">http://localhost:port/api/todo</span></code>, where <em>port</em> is a randomly chosen port number. If you&#8217;re using Chrome, Edge or Firefox, the <em>todo</em> data will be displayed. If you&#8217;re using IE, IE will prompt to you open or save the <em>todo.json</em> file.</p>
+<p>Launch Fiddler. From the <strong>File</strong> menu, uncheck the <strong>Capture Traffic</strong> option. This turns off capturing HTTP traffic.</p>
+<img alt="../_images/fiddler1.png" src="../_images/fiddler1.png" />
+<p>Select the <strong>Composer</strong> page. In the <strong>Parsed</strong> tab, type <code class="docutils literal"><span class="pre">http://localhost:port/api/todo</span></code>, where <em>port</em> is the port number. Click <strong>Execute</strong> to send the request.</p>
+<img alt="../_images/fiddler2.png" src="../_images/fiddler2.png" />
+<p>The result appears in the sessions list. The response code should be 200. Use the <strong>Inspectors</strong> tab to view the content of the response, including the response body.</p>
+<img alt="../_images/fiddler3.png" src="../_images/fiddler3.png" />
+</div>
+<div class="section" id="implement-the-other-crud-operations">
+<h2><a class="toc-backref" href="#id10">Implement the other CRUD operations</a><a class="headerlink" href="#implement-the-other-crud-operations" title="Permalink to this headline">¶</a></h2>
+<p>The last step is to add <code class="docutils literal"><span class="pre">Create</span></code>, <code class="docutils literal"><span class="pre">Update</span></code>, and <code class="docutils literal"><span class="pre">Delete</span></code> methods to the controller. These methods are variations on a theme, so I&#8217;ll just show the code and highlight the main differences.</p>
+<div class="section" id="create">
+<h3>Create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[HttpPost]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Create</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">TodoItem</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">TodoItems</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">&quot;GetTodo&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="p">=</span> <span class="s">&quot;Todo&quot;</span><span class="p">,</span> <span class="n">id</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Key</span> <span class="p">},</span> <span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is an HTTP POST method, indicated by the <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html">[HttpPost]</a> attribute. The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html">[FromBody]</a> attribute tells MVC to get the value of the to-do item from the body of the HTTP request.</p>
+<p>The <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html">CreatedAtRoute</a> method returns a 201 response, which is the standard response for an HTTP POST method that creates a new resource on the server. <code class="docutils literal"><span class="pre">CreateAtRoute</span></code> also adds a Location header to the response. The Location header specifies the URI of the newly created to-do item. See <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">10.2.2 201 Created</a>.</p>
+<p>We can use Fiddler to send a Create request:</p>
+<ol class="arabic simple">
+<li>In the <strong>Composer</strong> page, select POST from the drop-down.</li>
+<li>In the request headers text box, add <code class="docutils literal"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></code>, which is a <code class="docutils literal"><span class="pre">Content-Type</span></code> header with the value <code class="docutils literal"><span class="pre">application/json</span></code>. Fiddler automatically adds the Content-Length header.</li>
+<li>In the request body text box, enter the following: <code class="docutils literal"><span class="pre">{&quot;Name&quot;:&quot;&lt;your</span> <span class="pre">to-do</span> <span class="pre">item&gt;&quot;}</span></code></li>
+<li>Click <strong>Execute</strong>.</li>
+</ol>
+<img alt="../_images/fiddler4.png" src="../_images/fiddler4.png" />
+<p>Here is an example HTTP session. Use the <strong>Raw</strong> tab to see the session data in this format.</p>
+<p>Request:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">29359</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">todo</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">Fiddler</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">29359</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">33</span>
+
+<span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Alphabetize paperclips&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Response:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">29359</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">Todo</span><span class="o">/</span><span class="mi">8</span><span class="n">fa2154d</span><span class="o">-</span><span class="n">f862</span><span class="o">-</span><span class="mi">41</span><span class="n">f8</span><span class="o">-</span><span class="n">a5e5</span><span class="o">-</span><span class="n">a9a3faba0233</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">Microsoft</span><span class="o">-</span><span class="n">IIS</span><span class="o">/</span><span class="mf">10.0</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Thu</span><span class="p">,</span> <span class="mi">18</span> <span class="n">Jun</span> <span class="mi">2015</span> <span class="mi">20</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">55</span> <span class="n">GMT</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">97</span>
+
+<span class="p">{</span><span class="s2">&quot;Key&quot;</span><span class="p">:</span><span class="s2">&quot;8fa2154d-f862-41f8-a5e5-a9a3faba0233&quot;</span><span class="p">,</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span><span class="s2">&quot;Alphabetize paperclips&quot;</span><span class="p">,</span><span class="s2">&quot;IsComplete&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update">
+<h3>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[HttpPut(&quot;{id}&quot;)]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Update</span><span class="p">(</span><span class="kt">string</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">TodoItem</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">item</span><span class="p">.</span><span class="n">Key</span> <span class="p">!=</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">var</span> <span class="n">todo</span> <span class="p">=</span> <span class="n">TodoItems</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">todo</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">TodoItems</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">NoContentResult</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">Update</span></code> is similar to <code class="docutils literal"><span class="pre">Create</span></code>, but uses HTTP PUT. The response is <a class="reference external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">204 (No Content)</a>.
+According to the HTTP spec, a PUT request requires the client to send the entire updated entity, not just the deltas. To support partial updates, use HTTP PATCH.</p>
+<img alt="../_images/put.png" src="../_images/put.png" />
+</div>
+<div class="section" id="delete">
+<h3>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[HttpDelete(&quot;{id}&quot;)]</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">string</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">TodoItems</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The void return type returns a 204 (No Content) response. That means the client receives a 204 even if the item has already been deleted, or never existed. There are two ways to think about a request to delete a non-existent resource:</p>
+<ul class="simple">
+<li>&#8220;Delete&#8221; means &#8220;delete an existing item&#8221;, and the item doesn’t exist, so return 404.</li>
+<li>&#8220;Delete&#8221; means &#8220;ensure the item is not in the collection.&#8221; The item is already not in the collection, so return a 204.</li>
+</ul>
+<p>Either approach is reasonable. If you return 404, the client will need to handle that case.</p>
+<img alt="../_images/delete.png" src="../_images/delete.png" />
+</div>
+</div>
+<div class="section" id="next-steps">
+<h2><a class="toc-backref" href="#id11">Next steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To learn about creating a backend for a native mobile app, see <a class="reference internal" href="../mobile/native-mobile-backend.html"><span class="doc">🔧 Creating Backend Services for Native Mobile Applications</span></a>.</li>
+<li>For information about deploying your API, see <a class="reference internal" href="../publishing/index.html"><span class="doc">Publishing and Deployment</span></a>.</li>
+<li><a class="reference external" href="https://github.com/aspnet/Docs/tree/master/aspnet/tutorials/first-web-api/sample">View or download sample code</a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="publish-to-azure-webapp-using-vs.html" class="btn btn-neutral float-right" title="Deploy an ASP.NET Core web app to Azure using Visual Studio" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="your-first-mac-aspnet.html" class="btn btn-neutral" title="Your First ASP.NET Core Application on a Mac Using Visual Studio Code" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

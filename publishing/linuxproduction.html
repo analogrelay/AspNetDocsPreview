@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Publish to a Linux Production Environment &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Publishing and Deployment" href="index.html"/>
+        <link rel="next" title="🔧 How to Customize Publishing" href="how-to-customize.html"/>
+        <link rel="prev" title="🔧 Publishing to a Windows Virtual Machine on Azure" href="azure-windows-vm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Publishing and Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="iis.html">Publishing to IIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iis-with-msdeploy.html">Publishing to IIS with Web Deploy using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web-publishing-vs.html">How Web Publishing In Visual Studio Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/publish-to-azure-webapp-using-vs.html">Deploy an ASP.NET Core web app to Azure using Visual Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-continuous-deployment.html">Publishing to an Azure Web App with Continuous Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure-windows-vm.html">🔧 Publishing to a Windows Virtual Machine on Azure</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://azure.microsoft.com/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker/">Publish to a Docker Image</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Publish to a Linux Production Environment</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="how-to-customize.html">🔧 How to Customize Publishing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Publishing and Deployment</a> &raquo;</li>
+      
+    <li>Publish to a Linux Production Environment</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/publishing/linuxproduction.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="publish-to-a-linux-production-environment">
+<h1>Publish to a Linux Production Environment<a class="headerlink" href="#publish-to-a-linux-production-environment" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://twitter.com/sshirhatti">Sourabh Shirhatti</a></p>
+<p>In this guide, we will cover setting up a production-ready ASP.NET environment on an Ubuntu 14.04 Server.</p>
+<p>We will take an existing ASP.NET Core application and place it behind a reverse-proxy server. We will then setup the reverse-proxy server to forward requests to our Kestrel web server.</p>
+<p>Additionally we will ensure our web application runs on startup as a daemon and configure a process management tool to help restart our web application in the event of a crash to guarantee high availability.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#prerequisites" id="id1">Prerequisites</a></li>
+<li><a class="reference internal" href="#copy-over-your-app" id="id2">Copy over your app</a></li>
+<li><a class="reference internal" href="#configure-a-reverse-proxy-server" id="id3">Configure a reverse proxy server</a></li>
+<li><a class="reference internal" href="#monitoring-our-web-application" id="id4">Monitoring our Web Application</a></li>
+<li><a class="reference internal" href="#start-our-web-application-on-startup" id="id5">Start our web application on startup</a></li>
+<li><a class="reference internal" href="#recovering-from-an-ungraceful-shutdown" id="id6">Recovering from an ungraceful shutdown</a></li>
+<li><a class="reference internal" href="#viewing-logs" id="id7">Viewing logs</a></li>
+</ul>
+</div>
+<div class="section" id="prerequisites">
+<h2><a class="toc-backref" href="#id1">Prerequisites</a><a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Access to an Ubuntu 14.04 Server with a standard user account with
+sudo privilege.</li>
+<li>An existing ASP.NET Core application.</li>
+</ol>
+</div>
+<div class="section" id="copy-over-your-app">
+<h2><a class="toc-backref" href="#id2">Copy over your app</a><a class="headerlink" href="#copy-over-your-app" title="Permalink to this headline">¶</a></h2>
+<p>Run <code class="docutils literal"><span class="pre">dotnet</span> <span class="pre">publish</span></code> from your dev environment to package your
+application into a self-contained directory that can run on your server.</p>
+<p>Before we proceed, copy your ASP.NET Core application to your server using whatever tool (SCP, FTP, etc) integrates into your workflow. Try and run the app and navigate to <code class="docutils literal"><span class="pre">http://&lt;serveraddress&gt;:&lt;port&gt;</span></code> in your browser to see if the application runs fine on Linux. I recommend you have a working app before proceeding.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can use <a class="reference internal" href="../client-side/yeoman.html"><span class="doc">Yeoman</span></a> to create a new ASP.NET Core application for a new project.</p>
+</div>
+</div>
+<div class="section" id="configure-a-reverse-proxy-server">
+<h2><a class="toc-backref" href="#id3">Configure a reverse proxy server</a><a class="headerlink" href="#configure-a-reverse-proxy-server" title="Permalink to this headline">¶</a></h2>
+<p>A reverse proxy is a common setup for serving dynamic web applications. The reverse proxy terminates the HTTP request and forwards it to the ASP.NET application.</p>
+<div class="section" id="why-use-a-reverse-proxy-server">
+<h3>Why use a reverse-proxy server?<a class="headerlink" href="#why-use-a-reverse-proxy-server" title="Permalink to this headline">¶</a></h3>
+<p>Kestrel is great for serving dynamic content from ASP.NET, however the web serving parts aren’t as feature rich as full-featured servers like IIS, Apache or Nginx. A reverse proxy-server can allow you to offload work like serving static content, caching requests, compressing requests, and SSL termination from the HTTP server. The reverse proxy server may reside on a dedicated machine or may be deployed alongside an HTTP server.</p>
+<p>For the purposes of this guide, we are going to use a single instance of Nginx that runs on the same server alongside your HTTP server. However, based on your requirements you may choose a different setup.</p>
+</div>
+<div class="section" id="install-nginx">
+<h3>Install Nginx<a class="headerlink" href="#install-nginx" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install nginx
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you plan to install optional Nginx modules you may be required to
+build Nginx from source.</p>
+</div>
+<p>We are going to <code class="docutils literal"><span class="pre">apt-get</span></code> to install Nginx. The installer also creates a System V init script that runs Nginx as daemon on system startup. Since we just installed Nginx for the first time, we can explicitly start it by running</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service nginx start
+</pre></div>
+</div>
+<p>At this point you should be able to navigate to your browser and see the default landing page for Nginx.</p>
+</div>
+<div class="section" id="configure-nginx">
+<h3>Configure Nginx<a class="headerlink" href="#configure-nginx" title="Permalink to this headline">¶</a></h3>
+<p>We will now configure Nginx as a reverse proxy to forward requests to our ASP.NET application</p>
+<p>We will be modifying the <code class="docutils literal"><span class="pre">/etc/nginx/sites-available/default</span></code>, so open it up in your favorite text editor and replace the contents with the following.</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span> <span class="k">server</span> <span class="p">{</span>
+     <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+     <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+         <span class="kn">proxy_pass</span> <span class="s">http://unix:/var/aspnet/HelloMVC/kestrel.sock</span><span class="p">;</span>
+         <span class="kn">proxy_http_version</span> <span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+         <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="nv">$http_upgrade</span><span class="p">;</span>
+<span class="hll">         <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">keep-alive</span><span class="p">;</span>
+</span>         <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
+         <span class="kn">proxy_cache_bypass</span> <span class="nv">$http_upgrade</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>This is one of the simplest configuration files for Nginx that forwards incoming public traffic on your port <code class="docutils literal"><span class="pre">80</span></code> to a unix socket that your web application will listen on. You can specify this Unix socket in your <em>project.json</em> file.</p>
+<div class="literal-block-wrapper container" id="project-json">
+<div class="code-block-caption"><span class="caption-text">project.json</span><a class="headerlink" href="#project-json" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>&quot;commands&quot;: {
+    &quot;web&quot;: &quot;Microsoft.AspNetCore.Server.Kestrel --server.urls http://unix:/var/aspnet/HelloMVC/kestrel.sock&quot;,
+},
+</pre></div>
+</div>
+</div>
+<p>You might want to look at <code class="docutils literal"><span class="pre">/etc/nginx/nginx.conf</span></code> to configure your nginx environment.</p>
+<p>Once you have completed making changes to your nginx configuration you can run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">nginx</span> <span class="pre">-t</span></code> to verify the syntax of your configuration files. If the configuration file test is successful you can ask nginx to pick up the changes by running <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">nginx</span> <span class="pre">-s</span> <span class="pre">reload</span></code>.</p>
+</div>
+</div>
+<div class="section" id="monitoring-our-web-application">
+<h2><a class="toc-backref" href="#id4">Monitoring our Web Application</a><a class="headerlink" href="#monitoring-our-web-application" title="Permalink to this headline">¶</a></h2>
+<p>Nginx will forward requests to your Kestrel server, however unlike IIS on Windows, it does not mangage your Kestrel process. In this tutorial, we will use <a class="reference external" href="http://supervisord.org/">supervisor</a> to start our application on system boot and restart our process in the event of a failure.</p>
+<div class="section" id="installing-supervisor">
+<h3>Installing supervisor<a class="headerlink" href="#installing-supervisor" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install supervisor
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">supervisor</span></code> is a python based tool and you can acquire it through <a class="reference external" href="http://supervisord.org/installing.html#installing-via-pip">pip</a> or <a class="reference external" href="http://supervisord.org/installing.html#internet-installing-with-setuptools">easy_install</a> instead.</p>
+</div>
+</div>
+<div class="section" id="configuring-supervisor">
+<h3>Configuring supervisor<a class="headerlink" href="#configuring-supervisor" title="Permalink to this headline">¶</a></h3>
+<p>Supervisor works by creating child processes based on data in its configuration file. When a child process dies, supervisor is notified via the <code class="docutils literal"><span class="pre">SIGCHILD</span></code> signal and supervisor can react accordingly and restart your web application.</p>
+<p>To have supervisor monitor our application, we will add a file to the <code class="docutils literal"><span class="pre">/etc/supervisor/conf.d/</span></code> directory.</p>
+<div class="literal-block-wrapper container" id="etc-supervisor-conf-d-hellomvc-conf">
+<div class="code-block-caption"><span class="caption-text">/etc/supervisor/conf.d/hellomvc.conf</span><a class="headerlink" href="#etc-supervisor-conf-d-hellomvc-conf" title="Permalink to this code">¶</a></div>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[program:hellomvc]</span>
+<span class="na">command</span><span class="o">=</span><span class="s">bash /var/aspnet/HelloMVC/approot/web</span>
+<span class="na">autostart</span><span class="o">=</span><span class="s">true</span>
+<span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+<span class="na">stderr_logfile</span><span class="o">=</span><span class="s">/var/log/hellomvc.err.log</span>
+<span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/var/log/hellomvc.out.log</span>
+<span class="na">environment</span><span class="o">=</span><span class="s">Hosting__Environment=Production</span>
+<span class="na">user</span><span class="o">=</span><span class="s">www-data</span>
+<span class="na">stopsignal</span><span class="o">=</span><span class="s">INT</span>
+</pre></div>
+</div>
+</div>
+<p>Once you are done editing the configuration file, restart the <code class="docutils literal"><span class="pre">supervisord</span></code> process to change the set of programs controlled by supervisord.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service supervisor stop
+sudo service supervisor start
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="start-our-web-application-on-startup">
+<h2><a class="toc-backref" href="#id5">Start our web application on startup</a><a class="headerlink" href="#start-our-web-application-on-startup" title="Permalink to this headline">¶</a></h2>
+<p>In our case, since we are using supervisor to manage our application, the application will be automatically started by supervisor. Supervisor uses a System V Init script to run as a daemon on system boot and will susbsequently launch your application. If you chose not to use supervisor or an equivalent tool, you will need to write a <code class="docutils literal"><span class="pre">systemd</span></code> or <code class="docutils literal"><span class="pre">upstart</span></code> or <code class="docutils literal"><span class="pre">SysVinit</span></code> script to start your application on startup.</p>
+</div>
+<div class="section" id="recovering-from-an-ungraceful-shutdown">
+<h2><a class="toc-backref" href="#id6">Recovering from an ungraceful shutdown</a><a class="headerlink" href="#recovering-from-an-ungraceful-shutdown" title="Permalink to this headline">¶</a></h2>
+<p>If your web application is terminated with a <code class="docutils literal"><span class="pre">SIGKILL</span></code> signal or the if host experiences a loss of power, <code class="docutils literal"><span class="pre">Kestrel</span></code> will not shut down gracefully and remove the socket file. To prevent subsequents attempts to restart your application from failing due to <code class="docutils literal"><span class="pre">EADDRINUSE</span> <span class="pre">address</span> <span class="pre">already</span> <span class="pre">in</span> <span class="pre">use</span></code>, you can modify the shell script used to bootstrap your application to remove the socket file if present.</p>
+<div class="literal-block-wrapper container" id="var-aspnet-hellomvc-approot-web">
+<div class="code-block-caption"><span class="caption-text">/var/aspnet/HelloMVC/approot/web</span><a class="headerlink" href="#var-aspnet-hellomvc-approot-web" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">[</span> -f <span class="s2">&quot;/var/aspnet/HelloMVC/kestrel.sock&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  rm <span class="s2">&quot;/var/aspnet/HelloMVC/kestrel.sock&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="viewing-logs">
+<h2><a class="toc-backref" href="#id7">Viewing logs</a><a class="headerlink" href="#viewing-logs" title="Permalink to this headline">¶</a></h2>
+<p><strong>Supervisord</strong> logs messages about its own health and its subprocess&#8217; state changes to the activity log. The path to the activity log is configured via the <code class="docutils literal"><span class="pre">logfile</span></code> parameter in the configuration file.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo tail -f /var/log/supervisor/supervisord.log
+</pre></div>
+</div>
+<p>You can redirect application logs (<code class="docutils literal"><span class="pre">STDOUT</span></code> and <code class="docutils literal"><span class="pre">STERR</span></code>) in the program section of your configuration file.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>tail -f /var/log/hellomvc.out.log
+</pre></div>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="how-to-customize.html" class="btn btn-neutral float-right" title="🔧 How to Customize Publishing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="azure-windows-vm.html" class="btn btn-neutral" title="🔧 Publishing to a Windows Virtual Machine on Azure" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

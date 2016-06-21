@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to ASP.NET Core &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Conceptual Overview" href="index.html"/>
+        <link rel="next" title="Choosing the Right .NET For You on the Server" href="choosing-the-right-dotnet.html"/>
+        <link rel="prev" title="Conceptual Overview" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Conceptual Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to ASP.NET Core</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="choosing-the-right-dotnet.html">Choosing the Right .NET For You on the Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hosting/index.html">Guidance for Hosting Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Conceptual Overview</a> &raquo;</li>
+      
+    <li>Introduction to ASP.NET Core</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/conceptual-overview/aspnet.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="introduction-to-asp-net-core">
+<h1>Introduction to ASP.NET Core<a class="headerlink" href="#introduction-to-asp-net-core" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://github.com/danroth27">Daniel Roth</a>, <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a> and <a class="reference external" href="https://twitter.com/dicshaunary">Shaun Luttin</a></p>
+<p>ASP.NET Core is a significant redesign of ASP.NET. This topic introduces the new concepts in ASP.NET Core and explains how they help you develop modern web apps.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-is-asp-net-core" id="id1">What is ASP.NET Core?</a></li>
+<li><a class="reference internal" href="#why-build-asp-net-core" id="id2">Why build ASP.NET Core?</a></li>
+<li><a class="reference internal" href="#application-anatomy" id="id3">Application anatomy</a></li>
+<li><a class="reference internal" href="#startup" id="id4">Startup</a></li>
+<li><a class="reference internal" href="#services" id="id5">Services</a></li>
+<li><a class="reference internal" href="#middleware" id="id6">Middleware</a></li>
+<li><a class="reference internal" href="#servers" id="id7">Servers</a></li>
+<li><a class="reference internal" href="#content-root" id="id8">Content root</a></li>
+<li><a class="reference internal" href="#web-root" id="id9">Web root</a></li>
+<li><a class="reference internal" href="#configuration" id="id10">Configuration</a></li>
+<li><a class="reference internal" href="#environments" id="id11">Environments</a></li>
+<li><a class="reference internal" href="#build-web-ui-and-web-apis-using-asp-net-core-mvc" id="id12">Build web UI and web APIs using ASP.NET Core MVC</a></li>
+<li><a class="reference internal" href="#client-side-development" id="id13">Client-side development</a></li>
+<li><a class="reference internal" href="#next-steps" id="id14">Next steps</a></li>
+</ul>
+</div>
+<div class="section" id="what-is-asp-net-core">
+<h2><a class="toc-backref" href="#id1">What is ASP.NET Core?</a><a class="headerlink" href="#what-is-asp-net-core" title="Permalink to this headline">¶</a></h2>
+<p>ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications, such as web apps, IoT apps and mobile backends. ASP.NET Core apps can run on <a class="reference external" href="https://www.microsoft.com/net/core/platform">.NET Core</a> or on the full .NET Framework. It was architected to provide an optimized development framework for apps that are deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, Mac and Linux. ASP.NET Core is open source at <a class="reference external" href="https://github.com/aspnet/home">GitHub</a>.</p>
+</div>
+<div class="section" id="why-build-asp-net-core">
+<h2><a class="toc-backref" href="#id2">Why build ASP.NET Core?</a><a class="headerlink" href="#why-build-asp-net-core" title="Permalink to this headline">¶</a></h2>
+<p>The first preview release of ASP.NET came out almost 15 years ago as part of the .NET Framework.  Since then millions of developers have used it to build and run great web apps, and over the years we have added and evolved many capabilities to it.</p>
+<p>ASP.NET Core has a number of architectural changes that result in a much leaner and modular framework.  ASP.NET Core is no longer based on <em>System.Web.dll</em>. It is based on a set of granular and well factored <a class="reference external" href="http://www.nuget.org/">NuGet</a> packages. This allows you to optimize your app to include just the NuGet packages you need. The benefits of a smaller app surface area include tighter security, reduced servicing, improved performance, and decreased costs in a pay-for-what-you-use model.</p>
+<p>With ASP.NET Core you gain the following foundational improvements:</p>
+<ul class="simple">
+<li>A unified story for building web UI and web APIs</li>
+<li>Integration of <a class="reference internal" href="../client-side/index.html"><span class="doc">modern client-side frameworks</span></a> and development workflows</li>
+<li>A cloud-ready environment-based <a class="reference internal" href="../fundamentals/configuration.html"><span class="doc">configuration system</span></a></li>
+<li>Built-in <a class="reference internal" href="../fundamentals/dependency-injection.html"><span class="doc">dependency injection</span></a></li>
+<li>New light-weight and modular HTTP request pipeline</li>
+<li>Ability to host on IIS or self-host in your own process</li>
+<li>Built on <a class="reference external" href="https://microsoft.com/net/core">.NET Core</a>, which supports true side-by-side app versioning</li>
+<li>Ships entirely as <a class="reference external" href="https://nuget.org">NuGet</a>  packages</li>
+<li>New tooling that simplifies modern web development</li>
+<li>Build and run cross-platform ASP.NET apps on Windows, Mac and Linux</li>
+<li>Open source and community focused</li>
+</ul>
+</div>
+<div class="section" id="application-anatomy">
+<h2><a class="toc-backref" href="#id3">Application anatomy</a><a class="headerlink" href="#application-anatomy" title="Permalink to this headline">¶</a></h2>
+<p>An ASP.NET Core app is simply a console app that creates a web server in its <code class="docutils literal"><span class="pre">Main</span></code> method:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">aspnetcoreapp</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebHostBuilder</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">UseKestrel</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
+                <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+
+            <span class="n">host</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">Main</span></code> uses <a class="reference external" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Hosting/WebHostBuilder/index.html">WebHostBuilder</a> , which follows the builder pattern, to create a web application host. The builder has methods that define the web server (for example <code class="docutils literal"><span class="pre">UseKestrel</span></code>) and the startup class (<code class="docutils literal"><span class="pre">UseStartup</span></code>). In the example above, the Kestrel web server is used, but other web servers can be specified. We&#8217;ll show more about <code class="docutils literal"><span class="pre">UseStartup</span></code> in the next section. <code class="docutils literal"><span class="pre">WebHostBuilder</span></code> provides many optional methods including <code class="docutils literal"><span class="pre">UseIISIntegration</span></code> for hosting in IIS and IIS Express and <code class="docutils literal"><span class="pre">UseContentRoot</span></code> for specifying the root content directory. The <code class="docutils literal"><span class="pre">Build</span></code> and <code class="docutils literal"><span class="pre">Run</span></code> methods build the <code class="docutils literal"><span class="pre">IWebHost</span></code> that will host the app and start it listening for incoming HTTP requests.</p>
+</div>
+<div class="section" id="startup">
+<h2><a class="toc-backref" href="#id4">Startup</a><a class="headerlink" href="#startup" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">UseStartup</span></code> method on <code class="docutils literal"><span class="pre">WebHostBuilder</span></code> specifies the <code class="docutils literal"><span class="pre">Startup</span></code> class for your app.</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebHostBuilder</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">UseKestrel</span><span class="p">()</span>
+<span class="hll">            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
+</span>            <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+
+        <span class="n">host</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">Startup</span></code> class is where the you define the request handling pipeline and where any services needed by the app are configured. The <code class="docutils literal"><span class="pre">Startup</span></code> class must be public and contain the following methods:</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ConfigureServices</span></code> defines the services (see <a class="reference internal" href="#services">Services</a> below) used by your app (such as the ASP.NET MVC Core framework, Entity Framework Core, Identity, etc.)</li>
+<li><code class="docutils literal"><span class="pre">Configure</span></code> defines the <a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">middleware</span></a> in the request pipeline</li>
+<li>See <a class="reference internal" href="../fundamentals/startup.html"><span class="doc">Application Startup</span></a> for more details</li>
+</ul>
+</div>
+<div class="section" id="services">
+<h2><a class="toc-backref" href="#id5">Services</a><a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h2>
+<p>A service is a component that is intended for common consumption in an application. Services are made available through dependency injection. ASP.NET Core includes a simple built-in inversion of control (IoC) container that supports constructor injection by default, but can be easily replaced with your IoC container of choice. In addition to its loose coupling benefit, DI makes services available throughout your app. For example, <a class="reference internal" href="../fundamentals/logging.html"><span class="doc">Logging</span></a> is available throughout your app. See <a class="reference internal" href="../fundamentals/dependency-injection.html"><span class="doc">Dependency Injection</span></a> for more details.</p>
+</div>
+<div class="section" id="middleware">
+<h2><a class="toc-backref" href="#id6">Middleware</a><a class="headerlink" href="#middleware" title="Permalink to this headline">¶</a></h2>
+<p>In ASP.NET Core you compose your request pipeline using <a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">Middleware</span></a>. ASP.NET Core middleware performs asynchronous logic on an <code class="docutils literal"><span class="pre">HttpContext</span></code> and then either invokes the next middleware in the sequence or terminates the request directly. You generally &#8220;Use&#8221; middleware by invoking a corresponding <code class="docutils literal"><span class="pre">UseXYZ</span></code> extension method on the <code class="docutils literal"><span class="pre">IApplicationBuilder</span></code> in the <code class="docutils literal"><span class="pre">Configure</span></code> method.</p>
+<p>ASP.NET Core comes with a rich set of prebuilt middleware:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../fundamentals/static-files.html"><span class="doc">Static files</span></a></li>
+<li><a class="reference internal" href="../fundamentals/routing.html"><span class="doc">Routing</span></a></li>
+<li><a class="reference internal" href="../fundamentals/diagnostics.html"><span class="doc">Diagnostics</span></a></li>
+<li><a class="reference internal" href="../security/authentication/index.html"><span class="doc">Authentication</span></a></li>
+</ul>
+<p>You can also author your own <a class="reference internal" href="../fundamentals/middleware.html"><span class="doc">custom middleware</span></a>.</p>
+<p>You can use any <a class="reference external" href="http://owin.org">OWIN</a>-based middleware with ASP.NET Core. See <a class="reference internal" href="../fundamentals/owin.html"><span class="doc">OWIN</span></a> for details.</p>
+</div>
+<div class="section" id="servers">
+<h2><a class="toc-backref" href="#id7">Servers</a><a class="headerlink" href="#servers" title="Permalink to this headline">¶</a></h2>
+<p>The ASP.NET Core hosting model does not directly listen for requests; rather it relies on an HTTP <a class="reference internal" href="../fundamentals/servers.html"><span class="doc">server</span></a> implementation to forward the request to the application. The forwarded request is wrapped as a set of feature interfaces that the application then composes into an <code class="docutils literal"><span class="pre">HttpContext</span></code>.  ASP.NET Core includes a managed cross-platform web server, called <a class="reference internal" href="../fundamentals/servers.html#kestrel"><span class="std std-ref">Kestrel</span></a>, that you would typically run behind a production web server like <a class="reference external" href="https://iis.net">IIS</a> or <a class="reference external" href="http://nginx.org">nginx</a>.</p>
+</div>
+<div class="section" id="content-root">
+<h2><a class="toc-backref" href="#id8">Content root</a><a class="headerlink" href="#content-root" title="Permalink to this headline">¶</a></h2>
+<p>The content root is the base path to any content used by the app, such as its views and web content. By default the content root is the same as application base path for the executable hosting the app; an alternative location can be specified with <cite>WebHostBuilder</cite>.</p>
+</div>
+<div class="section" id="web-root">
+<h2><a class="toc-backref" href="#id9">Web root</a><a class="headerlink" href="#web-root" title="Permalink to this headline">¶</a></h2>
+<p>The web root of your app is the root location in your project from which HTTP requests are handled (for example handling of static file requests). When using the static files middleware only files from the web root folder are accessible; the other files in the content root <strong>cannot</strong> be accessed remotely. The default web root path is <cite>&lt;content root&gt;/wwwroot</cite>, but you can specify a different location using the <cite>WebHostBuilder</cite>.</p>
+</div>
+<div class="section" id="configuration">
+<h2><a class="toc-backref" href="#id10">Configuration</a><a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>ASP.NET Core uses a new configuration model for handling simple name-value pairs. The new configuration model is not based on <code class="docutils literal"><span class="pre">System.Configuration</span></code> or <em>web.config</em>; rather, it pulls from an ordered set of configuration providers. The built-in configuration providers support a variety of file formats (XML, JSON, INI) and environment variables to enable environment-based configuration. You can also write your own custom configuration providers.</p>
+<p>See <a class="reference internal" href="../fundamentals/configuration.html"><span class="doc">Configuration</span></a> for more information.</p>
+</div>
+<div class="section" id="environments">
+<h2><a class="toc-backref" href="#id11">Environments</a><a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
+<p>Environments, like &#8220;Development&#8221; and &#8220;Production&#8221;, are a first-class notion in ASP.NET Core and can  be set using environment variables. See <a class="reference internal" href="../fundamentals/environments.html"><span class="doc">Working with Multiple Environments</span></a> for more information.</p>
+</div>
+<div class="section" id="build-web-ui-and-web-apis-using-asp-net-core-mvc">
+<h2><a class="toc-backref" href="#id12">Build web UI and web APIs using ASP.NET Core MVC</a><a class="headerlink" href="#build-web-ui-and-web-apis-using-asp-net-core-mvc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can create well-factored and testable web apps that follow the Model-View-Controller (MVC) pattern. See <a class="reference internal" href="../mvc/index.html"><span class="doc">MVC</span></a> and <a class="reference internal" href="../testing/index.html"><span class="doc">Testing</span></a>.</li>
+<li>You can build HTTP services that support multiple formats and have full support for content negotiation. See <a class="reference internal" href="../mvc/models/formatting.html"><span class="doc">🔧 Formatting</span></a></li>
+<li><a class="reference external" href="http://www.asp.net/web-pages/overview/getting-started/introducing-razor-syntax-c">Razor</a> provides a productive language to create <a class="reference internal" href="../mvc/views/index.html"><span class="doc">Views</span></a></li>
+<li><a class="reference internal" href="../mvc/views/tag-helpers/intro.html"><span class="doc">Tag Helpers</span></a> enable server-side code to participate in creating and rendering HTML elements in Razor files</li>
+<li>You can create HTTP services with full support for content negotiation using custom or built-in formatters (JSON, XML)</li>
+<li><a class="reference internal" href="../mvc/models/model-binding.html"><span class="doc">Model Binding</span></a> automatically maps data from HTTP requests to action method parameters</li>
+<li><a class="reference internal" href="../mvc/models/validation.html"><span class="doc">Model Validation</span></a> automatically performs client and server side validation</li>
+</ul>
+</div>
+<div class="section" id="client-side-development">
+<h2><a class="toc-backref" href="#id13">Client-side development</a><a class="headerlink" href="#client-side-development" title="Permalink to this headline">¶</a></h2>
+<p>ASP.NET Core is designed to integrate seamlessly with a variety of client-side frameworks, including <a class="reference internal" href="../client-side/angular.html"><span class="doc">AngularJS</span></a>, <a class="reference internal" href="../client-side/knockout.html"><span class="doc">KnockoutJS</span></a> and <a class="reference internal" href="../client-side/bootstrap.html"><span class="doc">Bootstrap</span></a>. See <a class="reference internal" href="../client-side/index.html"><span class="doc">Client-Side Development</span></a> for more details.</p>
+</div>
+<div class="section" id="next-steps">
+<h2><a class="toc-backref" href="#id14">Next steps</a><a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../tutorials/first-mvc-app/index.html"><span class="doc">Building your first ASP.NET Core MVC app with Visual Studio</span></a></li>
+<li><a class="reference internal" href="../tutorials/your-first-mac-aspnet.html"><span class="doc">Your First ASP.NET Core Application on a Mac Using Visual Studio Code</span></a></li>
+<li><a class="reference internal" href="../tutorials/first-web-api.html"><span class="doc">Building Your First Web API with ASP.NET Core MVC and Visual Studio</span></a></li>
+<li><a class="reference internal" href="../fundamentals/index.html"><span class="doc">Fundamentals</span></a></li>
+</ul>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="choosing-the-right-dotnet.html" class="btn btn-neutral float-right" title="Choosing the Right .NET For You on the Server" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Conceptual Overview" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ASP.NET Core Module Configuration Reference &mdash; ASP.NET  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css?v=6" type="text/css" />
+  
+
+  
+    <link rel="top" title="ASP.NET  documentation" href="../index.html"/>
+        <link rel="up" title="Guidance for Hosting Providers" href="index.html"/>
+        <link rel="next" title="Directory Structure" href="directory-structure.html"/>
+        <link rel="prev" title="Guidance for Hosting Providers" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ASP.NET
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.asp.net/projects/api">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-overview/index.html">Conceptual Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mvc/index.html">MVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/index.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client-side/index.html">Client-Side Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mobile/index.html">Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publishing/index.html">Publishing and Deployment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Guidance for Hosting Providers</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ASP.NET Core Module Configuration Reference</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="directory-structure.html">Directory Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apppool.html">Application Pools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servicing.html">Servicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataprotection.html">Data Protection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../security/index.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/index.html">Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration/index.html">Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ASP.NET</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Guidance for Hosting Providers</a> &raquo;</li>
+      
+    <li>ASP.NET Core Module Configuration Reference</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/hosting/aspnet-core-module.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+  <div class="section" id="asp-net-core-module-configuration-reference">
+<h1>ASP.NET Core Module Configuration Reference<a class="headerlink" href="#asp-net-core-module-configuration-reference" title="Permalink to this headline">¶</a></h1>
+<p>By <a class="reference external" href="https://github.com/GuardRex">Luke Latham</a>, <a class="reference external" href="https://twitter.com/RickAndMSFT">Rick Anderson</a> and <a class="reference external" href="https://twitter.com/sshirhatti">Sourabh Shirhatti</a></p>
+<p>In ASP.NET Core, the web application is hosted by an external process outside of IIS. The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process management of ASP.NET Core http listeners and to proxy requests to processes that it manages. This document provides an overview of how to configure the ASP.NET Core Module for shared hosting of ASP.NET Core.</p>
+<div class="contents local topic" id="sections">
+<p class="topic-title first">Sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#installing-the-asp-net-core-module" id="id1">Installing the ASP.NET Core Module</a></li>
+<li><a class="reference internal" href="#configuring-the-asp-net-core-module" id="id2">Configuring the ASP.NET Core Module</a><ul>
+<li><a class="reference internal" href="#configuration-attributes" id="id3">Configuration Attributes</a></li>
+<li><a class="reference internal" href="#child-elements" id="id4">Child Elements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asp-net-core-module-app-offline-htm" id="id5">ASP.NET Core Module <em>app_offline.htm</em></a></li>
+<li><a class="reference internal" href="#asp-net-core-module-configuration-examples" id="id6">ASP.NET Core Module configuration examples</a><ul>
+<li><a class="reference internal" href="#log-creation-and-redirection" id="id7">Log creation and redirection</a></li>
+<li><a class="reference internal" href="#setting-environment-variables" id="id8">Setting environment variables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="installing-the-asp-net-core-module">
+<h2><a class="toc-backref" href="#id1">Installing the ASP.NET Core Module</a><a class="headerlink" href="#installing-the-asp-net-core-module" title="Permalink to this headline">¶</a></h2>
+<p>Install the <a class="reference external" href="http://go.microsoft.com/fwlink/?LinkId=798480">.NET Core Windows Server Hosting</a> bundle on the server. The bundle will install the .NET Core Runtime, .NET Core Library, and the ASP.NET Core Module.</p>
+</div>
+<div class="section" id="configuring-the-asp-net-core-module">
+<h2><a class="toc-backref" href="#id2">Configuring the ASP.NET Core Module</a><a class="headerlink" href="#configuring-the-asp-net-core-module" title="Permalink to this headline">¶</a></h2>
+<p>The ASP.NET Core Module is configured via a site or application <em>web.config</em> file and has its own configuration section within <code class="docutils literal"><span class="pre">system.webServer</span> <span class="pre">-</span> <span class="pre">aspNetCore</span></code>.</p>
+<div class="section" id="configuration-attributes">
+<h3><a class="toc-backref" href="#id3">Configuration Attributes</a><a class="headerlink" href="#configuration-attributes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>processPath</td>
+<td><div class="first last line-block">
+<div class="line">Required string attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Path to the executable or script that will launch</div>
+<div class="line">a process listening for HTTP requests.</div>
+<div class="line">Relative paths are supported. If the path</div>
+<div class="line">begins with &#8216;.&#8217; the path is considered to be</div>
+<div class="line">relative to the site root.</div>
+<div class="line"><br /></div>
+<div class="line">There is no default value.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>arguments</td>
+<td><div class="first last line-block">
+<div class="line">Optional string attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Arguments to the executable or script</div>
+<div class="line">specified in <strong>processPath</strong>.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is an empty string.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>startupTimeLimit</td>
+<td><div class="first last line-block">
+<div class="line">Optional integer attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Duration in seconds for which the</div>
+<div class="line">the handler will wait for the executable or</div>
+<div class="line">script to start a process listening on</div>
+<div class="line">the port. If this time limit is exceeded,</div>
+<div class="line">the handler will kill the process and attempt to</div>
+<div class="line">launch it again <strong>startupRetryCount</strong> times.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is 120.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>shutdownTimeLimit</td>
+<td><div class="first last line-block">
+<div class="line">Optional integer attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Duration in seconds for which the</div>
+<div class="line">the handler will wait for the executable or</div>
+<div class="line">script to gracefully shutdown when the</div>
+<div class="line"><em>app_offline.htm</em> file is detected</div>
+<div class="line"><br /></div>
+<div class="line">The default value is 10.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>startupRetryCount</td>
+<td><div class="first last line-block">
+<div class="line">Optional integer attribute.</div>
+<div class="line"><br /></div>
+<div class="line">The number of times the handler will try to</div>
+<div class="line">launch the process specified in <strong>processPath</strong>.</div>
+<div class="line">See <strong>startupTimeLimit</strong> for details.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is 10.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>rapidFailsPerMinute</td>
+<td><div class="first last line-block">
+<div class="line">Optional integer attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Specifies the number of times the process</div>
+<div class="line">specified in <strong>processPath</strong> is allowed to crash</div>
+<div class="line">per minute. If this limit is exceeded,</div>
+<div class="line">the handler will stop launching the</div>
+<div class="line">process for the remainder of the minute.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is 10.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>requestTimeout</td>
+<td><div class="first last line-block">
+<div class="line">Optional timespan attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Specifies the duration for which the</div>
+<div class="line">ASP.NET Core Module will wait for a response</div>
+<div class="line">from the process listening on</div>
+<div class="line">%ASPNETCORE_PORT%.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is &#8220;00:02:00&#8221;.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>stdoutLogEnabled</td>
+<td><div class="first last line-block">
+<div class="line">Optional Boolean attribute.</div>
+<div class="line"><br /></div>
+<div class="line">If true, <strong>stdout</strong> and <strong>stderr</strong> for the</div>
+<div class="line">process specified in <strong>processPath</strong> will be</div>
+<div class="line">redirected to the file specified in</div>
+<div class="line"><strong>stdoutLogFile</strong>.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is false.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>stdoutLogFile</td>
+<td><div class="first last line-block">
+<div class="line">Optional string attribute.</div>
+<div class="line"><br /></div>
+<div class="line">Specifies the relative or absolute file path for</div>
+<div class="line">which <strong>stdout</strong> and <strong>stderr</strong> from the process</div>
+<div class="line">specified in <strong>processPath</strong> will be logged.</div>
+<div class="line">Relative paths are relative to the root of the</div>
+<div class="line">site. Any path starting with &#8216;.&#8217; will be</div>
+<div class="line">relative to the site root and all other paths</div>
+<div class="line">will be treated as absolute paths.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is <code class="docutils literal"><span class="pre">aspnetcore-stdout</span></code>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>forwardWindowsAuthToken</td>
+<td><div class="first last line-block">
+<div class="line">True or False.</div>
+<div class="line"><br /></div>
+<div class="line">If  true, the token will be forwarded to the</div>
+<div class="line">child process listening on %ASPNETCORE_PORT% as a</div>
+<div class="line">header &#8216;MS-ASPNETCORE-WINAUTHTOKEN&#8217; per request.</div>
+<div class="line">It is the responsibility of that process to call</div>
+<div class="line">CloseHandle on this token per request.</div>
+<div class="line"><br /></div>
+<div class="line">The default value is false.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="child-elements">
+<h3><a class="toc-backref" href="#id4">Child Elements</a><a class="headerlink" href="#child-elements" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>environmentVariables</td>
+<td><div class="first last line-block">
+<div class="line">Configures <strong>environmentVariables</strong> collection</div>
+<div class="line">for the process specified in <strong>processPath</strong>.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>recycleOnFileChange</td>
+<td><div class="first last line-block">
+<div class="line">Specify a list of files to monitor. If any of</div>
+<div class="line">these files get updated/deleted, the Core Module</div>
+<div class="line">will restart the backend process.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="asp-net-core-module-app-offline-htm">
+<h2><a class="toc-backref" href="#id5">ASP.NET Core Module <em>app_offline.htm</em></a><a class="headerlink" href="#asp-net-core-module-app-offline-htm" title="Permalink to this headline">¶</a></h2>
+<p>If you place a file with the name <em>app_offline.htm</em> at the root of a web application directory, the ASP.NET Core Module will attempt to gracefully shut-down the application and stop processing any new incoming requests. If the application is still running after <code class="docutils literal"><span class="pre">shutdownTimeLimit</span></code> number of seconds, the ASP.NET Core Module will kill the running process.</p>
+<p>While the <em>app_offline..htm</em> file is present, the ASP.NET Core Module will repond to all requests by sending back the contents of the <em>app_offline.htm</em> file. Once the <em>app_offline.htm</em> file is removed, the next request loads the application, which then responds to requests.</p>
+</div>
+<div class="section" id="asp-net-core-module-configuration-examples">
+<h2><a class="toc-backref" href="#id6">ASP.NET Core Module configuration examples</a><a class="headerlink" href="#asp-net-core-module-configuration-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="log-creation-and-redirection">
+<span id="log-redirection"></span><h3><a class="toc-backref" href="#id7">Log creation and redirection</a><a class="headerlink" href="#log-creation-and-redirection" title="Permalink to this headline">¶</a></h3>
+<p>For logs to be saved, you must create the log directory. The ASP.NET Core Module can redirect <code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> logs to disk by setting the <code class="docutils literal"><span class="pre">stdoutLogEnabled</span></code> and <code class="docutils literal"><span class="pre">stdoutLogFile</span></code> attributes of the <code class="docutils literal"><span class="pre">aspNetCore</span></code> element. Logs are not rotated. It is the responsibilty of the hoster to limit the disk space the logs consume.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>    <span class="nt">&lt;aspNetCore</span> <span class="na">processPath=</span><span class="s">&quot;dotnet&quot;</span>
+            <span class="na">arguments=</span><span class="s">&quot;.\MyApp.dll&quot;</span>
+            <span class="na">stdoutLogEnabled=</span><span class="s">&quot;true&quot;</span>
+            <span class="na">stdoutLogFile=</span><span class="s">&quot;.\logs\stdout&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/aspNetCore&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-environment-variables">
+<h3><a class="toc-backref" href="#id8">Setting environment variables</a><a class="headerlink" href="#setting-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>The ASP.NET Core Module allows you specify environment variables for the process specified in the <code class="docutils literal"><span class="pre">processPath</span></code> setting by specifying them in <code class="docutils literal"><span class="pre">environmentVariables</span></code> child attribute to the <code class="docutils literal"><span class="pre">aspNetCore</span></code> attribute.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>    <span class="nt">&lt;aspNetCore</span> <span class="na">processPath=</span><span class="s">&quot;dotnet&quot;</span>
+            <span class="na">arguments=</span><span class="s">&quot;.\MyApp.dll&quot;</span>
+            <span class="na">stdoutLogEnabled=</span><span class="s">&quot;true&quot;</span>
+            <span class="na">stdoutLogFile=</span><span class="s">&quot;.\logs\stdout&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;environmentVariables&gt;</span>
+        <span class="nt">&lt;environmentVariable</span> <span class="na">name=</span><span class="s">&quot;DEMO&quot;</span> <span class="na">value=</span><span class="s">&quot;demo_value&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/environmentVariables&gt;</span>
+    <span class="nt">&lt;/aspNetCore&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  
+  <!-- Helpfulness -->
+  <div id="helpful-position"></div>
+  <div id="helpful" class="helpfulness-container" style="display:none;">
+    <div class="helpfulness">
+      <div class="helpfulness-form">
+        <h2>Is this page helpful?</h2>
+        <a id="helpfulness-btn-yes" href="javascript:;" class="common-btn first">Yes</a>
+        <a id="helpfulness-btn-no" href="javascript:;" class="common-btn">No</a>
+      </div>
+      <div class="helpfulness-form-no" style="display:none;">
+        <h2>Is this page helpful?</h2>
+        Sorry this wasn't helpful.
+        <input type="text" id="txt-helpfulness" placeholder="Please let us know why this wasn't helpful">
+        <span id="helpfulness-characters-left">characters remaining</span>
+        <a id="helpfulness-btn-submit" href="javascript:;" class="common-btn">Submit</a>
+        <a id="helpfulness-btn-skip" href="javascript:;" class="common-btn secondary">Skip this</a>
+      </div>
+      <a href="javascript:;" class="helpfulness-close">✖</a>
+      <div class="messages processing" style="display:none;">
+        Sending feedback...
+      </div>
+      <div class="messages success" style="display:none;">
+        Thank you for your feedback!
+      </div>
+      <div class="messages helpfulness-error" style="display:none;">
+        Error during submission!
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- wedc -->
+  <noscript>
+    <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx"/>
+  </noscript>
+
+  
+    <!-- disqus -->
+    <button id="showComments" type="button" class="btn btn-neutral"><i class="fa fa-comment"></i> Show comments</button>
+    <div id="disqus_thread"></div>
+    <hr/>
+  
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="directory-structure.html" class="btn btn-neutral float-right" title="Directory Structure" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Guidance for Hosting Providers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Microsoft.
+      Last updated on Jun 21, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/helpfulness.js?v=6"></script>
+      <script type="text/javascript" src="../_static/disqus.js?v=6"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
