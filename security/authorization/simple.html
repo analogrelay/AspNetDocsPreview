@@ -174,7 +174,7 @@
   <div class="section" id="simple-authorization">
 <span id="security-authorization-simple"></span><h1>Simple Authorization<a class="headerlink" href="#simple-authorization" title="Permalink to this headline">¶</a></h1>
 <p>Authorization in MVC is controlled through the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute and its various parameters. At its simplest applying the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute to a controller or action limits access to the controller or action to any authorized user.</p>
-<p>For example, the following code limits access to the AccountController to any authenticated user.</p>
+<p>For example, the following code limits access to the <code class="docutils literal"><span class="pre">AccountController</span></code> to any authenticated user.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">AccountController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
@@ -218,7 +218,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This would allow only authenticated users to the Account controller, except for the Login action, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</p>
+<p>This would allow only authenticated users to the <code class="docutils literal"><span class="pre">AccountController</span></code>, except for the <code class="docutils literal"><span class="pre">Login</span></code> action, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last"><code class="docutils literal"><span class="pre">[AllowAnonymous]</span></code> bypasses all authorization statements. If you apply combine <code class="docutils literal"><span class="pre">[AllowAnonymous]</span></code> and any <code class="docutils literal"><span class="pre">[Authorize]</span></code> attribute then the Authorize attributes will always be ignored. For example if you apply <code class="docutils literal"><span class="pre">[AllowAnonymous]</span></code> at the controller level any <code class="docutils literal"><span class="pre">[Authorize]</span></code> attributes on the same controller, or on any action within it will be ignored.</p>

@@ -256,7 +256,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the :dn:method`~Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole` method;</p>
+<p>If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">RequireRole</span></code></a> method;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">options</span><span class="p">.</span><span class="n">AddPolicy</span><span class="p">(</span><span class="s">&quot;ElevatedRights&quot;</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span>
                   <span class="n">policy</span><span class="p">.</span><span class="n">RequireRole</span><span class="p">(</span><span class="s">&quot;Administrator&quot;</span><span class="p">,</span> <span class="s">&quot;PowerUser&quot;</span><span class="p">,</span> <span class="s">&quot;BackupAdministrator&quot;</span><span class="p">));</span>
 </pre></div>

@@ -105,7 +105,7 @@ Policies are applied using the :dn:prop:`~Microsoft.AspNetCore.Authorization.Aut
      return View();
  }
 
-If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the :dn:method`~Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole` method;
+If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the :dn:method:`~Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole` method;
 
 .. code-block:: c#
 
