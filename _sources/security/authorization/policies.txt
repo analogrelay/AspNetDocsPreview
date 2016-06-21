@@ -63,7 +63,7 @@ A requirement doesn't need to have data or properties.
 Authorization Handlers
 ----------------------
 
-An authorization handler is responsible for the evaluation of any properties of a requirement. The  authorization handler must evaluate them against a provided :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext` to decide if authorization is allowed. A requirement can have :ref:`multiple handlers <security-authorization-policies-based-multiple-handlers>`. Handlers must inherit :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>` where T is the requirement it handles. 
+An authorization handler is responsible for the evaluation of any properties of a requirement. The  authorization handler must evaluate them against a provided :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext` to decide if authorization is allowed. A requirement can have :ref:`multiple handlers <security-authorization-policies-based-multiple-handlers>`. Handlers must inherit :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizationHandler{TRequirement}` where T is the requirement it handles. 
 
 .. _security-authorization-handler-example:
 
