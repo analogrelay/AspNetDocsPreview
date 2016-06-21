@@ -201,20 +201,20 @@
 </div></blockquote>
 <div class="section" id="selecting-the-scheme-with-the-authorize-attribute">
 <h2>Selecting the scheme with the Authorize attribute<a class="headerlink" href="#selecting-the-scheme-with-the-authorize-attribute" title="Permalink to this headline">¶</a></h2>
-<p>As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used. The simplest way to select the middleware you wish to authorize wish is to use the <code class="docutils literal"><span class="pre">AuthenticationSchemes</span></code> parameter. This parameter accepts a comma delimited list of Authentication Schemes to use. For example;</p>
-<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(AuthenticationSchemes = &quot;Cookie,Bearer&quot;)]</span>
+<p>As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used. The simplest way to select the middleware you wish to authorize wish is to use the <code class="xref dn dn-prop docutils literal"><span class="pre">AuthenticationSchemes</span></code> property. This property accepts a comma delimited list of Authentication Schemes to use. For example;</p>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(ActiveAuthenticationSchemes = &quot;Cookie,Bearer&quot;)]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">MixedController</span> <span class="p">:</span> <span class="n">Controller</span>
 </pre></div>
 </div>
 <p>In the example above both the cookie and bearer middlewares will run and have a chance to create and append an identity for the current user. By specifying a single scheme only the specified middleware will run;</p>
-<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(AuthenticationSchemes = &quot;Bearer&quot;)]</span>
+<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(ActiveAuthenticationSchemes = &quot;Bearer&quot;)]</span>
 </pre></div>
 </div>
 <p>In this case only the middleware with the Bearer scheme would run, and any cookie based identities would be ignored.</p>
 </div>
 <div class="section" id="selecting-the-scheme-with-policies">
 <h2>Selecting the scheme with policies<a class="headerlink" href="#selecting-the-scheme-with-policies" title="Permalink to this headline">¶</a></h2>
-<p>If you prefer to specify the desired schemes in <a class="reference internal" href="policies.html#security-authorization-policies-based"><span class="std std-ref">policy</span></a> you can set the <code class="docutils literal"><span class="pre">AuthenticationSchemes</span></code> collection when adding your policy.</p>
+<p>If you prefer to specify the desired schemes in <a class="reference internal" href="policies.html#security-authorization-policies-based"><span class="std std-ref">policy</span></a> you can set the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.AuthenticationSchemes" title="(in ASP.NET API Reference v)"><code class="xref dn dn-prop docutils literal"><span class="pre">AuthenticationSchemes</span></code></a> collection when adding your policy.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">options</span><span class="p">.</span><span class="n">AddPolicy</span><span class="p">(</span><span class="s">&quot;Over18&quot;</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
     <span class="n">policy</span><span class="p">.</span><span class="n">AuthenticationSchemes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Bearer&quot;</span><span class="p">);</span>
@@ -223,7 +223,7 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>In this example the Over18 policy will only run against the identity created by the Bearer middleware.</p>
+<p>In this example the Over18 policy will only run against the identity created by the <code class="docutils literal"><span class="pre">Bearer</span></code> middleware.</p>
 </div>
 </div>
 

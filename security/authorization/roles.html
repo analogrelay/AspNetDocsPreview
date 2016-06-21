@@ -179,7 +179,7 @@
 <div class="section" id="adding-role-checks">
 <h2>Adding role checks<a class="headerlink" href="#adding-role-checks" title="Permalink to this headline">¶</a></h2>
 <p>Role based authorization checks are declarative - the developer embeds them within their code, against a controller or an action within a controller, specifying roles which the current user must be a member of to access the requested resource.</p>
-<p>For example the following code would limit access to any actions on the Administration controller to users who are a member of the Administrator group.</p>
+<p>For example the following code would limit access to any actions on the <code class="docutils literal"><span class="pre">AdministrationController</span></code> to users who are a member of the <code class="docutils literal"><span class="pre">Administrator</span></code> group.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Roles = &quot;Administrator&quot;)]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">AdministrationController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
@@ -193,8 +193,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This controller would be only accessible by users who are members of the HRManager role or the Finance Role.</p>
-<p>If you apply multiple attributes then an accessing user must be a member of all the roles specified; the following sample requires that a user must be a member of both the PowerUser and ControlPanelUser role.</p>
+<p>This controller would be only accessible by users who are members of the <code class="docutils literal"><span class="pre">HRManager</span></code> role or the <code class="docutils literal"><span class="pre">Finance</span></code> role.</p>
+<p>If you apply multiple attributes then an accessing user must be a member of all the roles specified; the following sample requires that a user must be a member of both the <code class="docutils literal"><span class="pre">PowerUser</span></code> and <code class="docutils literal"><span class="pre">ControlPanelUser</span></code> role.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Roles = &quot;PowerUser&quot;)]</span>
 <span class="na">[Authorize(Roles = &quot;ControlPanelUser&quot;)]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">ControlPanelController</span> <span class="p">:</span> <span class="n">Controller</span>
@@ -217,7 +217,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the previous code snippet both members of the Administrator role and the PowerUser role can access the controller and the SetTime action, but only members of the Administrator role can access the ShutDown action.</p>
+<p>In the previous code snippet both members of the <code class="docutils literal"><span class="pre">Administrator</span></code> role and the <code class="docutils literal"><span class="pre">PowerUser</span></code> role can access the controller and the <code class="docutils literal"><span class="pre">SetTime</span></code> action, but only members of the <code class="docutils literal"><span class="pre">Administrator</span></code> role can access the <code class="docutils literal"><span class="pre">ShutDown</span></code> action.</p>
 <p>You can also lock down a controller but allow anonymous, unauthenticated access to individual actions.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">ControlPanelController</span> <span class="p">:</span> <span class="n">Controller</span>
@@ -248,7 +248,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Policies are applied using the <code class="docutils literal"><span class="pre">Policy</span></code> parameter on the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute;</p>
+<p>Policies are applied using the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy" title="(in ASP.NET API Reference v)"><code class="xref dn dn-prop docutils literal"><span class="pre">Policy</span></code></a> property on the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;RequireAdministratorRole&quot;)]</span>
 <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Shutdown</span><span class="p">()</span>
 <span class="p">{</span>
@@ -256,12 +256,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the <code class="docutils literal"><span class="pre">RequireRole</span></code> method;</p>
+<p>If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the :dn:method`~Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole` method;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">options</span><span class="p">.</span><span class="n">AddPolicy</span><span class="p">(</span><span class="s">&quot;ElevatedRights&quot;</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span>
                   <span class="n">policy</span><span class="p">.</span><span class="n">RequireRole</span><span class="p">(</span><span class="s">&quot;Administrator&quot;</span><span class="p">,</span> <span class="s">&quot;PowerUser&quot;</span><span class="p">,</span> <span class="s">&quot;BackupAdministrator&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>This example would authorize any user who has a role of Administrator, PowerUser and/or BackupAdministrator.</p>
+<p>This example would authorize any user who has a role of <code class="docutils literal"><span class="pre">Administrator</span></code>, <code class="docutils literal"><span class="pre">PowerUser</span></code> and/or <code class="docutils literal"><span class="pre">BackupAdministrator</span></code>.</p>
 </div>
 </div>
 

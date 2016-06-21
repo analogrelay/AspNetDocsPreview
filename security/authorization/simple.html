@@ -173,7 +173,7 @@
   
   <div class="section" id="simple-authorization">
 <span id="security-authorization-simple"></span><h1>Simple Authorization<a class="headerlink" href="#simple-authorization" title="Permalink to this headline">¶</a></h1>
-<p>Authorization in MVC is controlled through the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute and its various parameters. At its simplest applying the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute to a controller or action limits access to the controller or action to any authorized user.</p>
+<p>Authorization in MVC is controlled through the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute and its various parameters. At its simplest applying the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute to a controller or action limits access to the controller or action to any authorized user.</p>
 <p>For example, the following code limits access to the AccountController to any authenticated user.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">AccountController</span> <span class="p">:</span> <span class="n">Controller</span>
@@ -188,7 +188,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you want to apply authorization to an action rather than the controller simply apply the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute to the action itself;</p>
+<p>If you want to apply authorization to an action rather than the controller simply apply the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute to the action itself;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">AccountController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Login</span><span class="p">()</span>
@@ -203,7 +203,7 @@
 </pre></div>
 </div>
 <p>Now only authenticated users can access the logout function.</p>
-<p>You can also use the MVC&#8217;s <code class="docutils literal"><span class="pre">AllowAnonymous</span></code> attribute to allow access by non-authenticated users to individual actions; for example</p>
+<p>You can also use the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AllowAnonymousAttribute</span></code></a> attribute to allow access by non-authenticated users to individual actions; for example</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">AccountController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
