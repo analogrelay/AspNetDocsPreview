@@ -24,7 +24,8 @@ An authorization policy is made up of one or more requirements and registered at
 
 Here you can see an "Over21" policy is created with a single requirement, that of a minimum age, which is passed as a parameter to the requirement.
 
-Policies are applied using the ``Authorize`` attribute simply by specifying the policy name, for example
+Policies are applied using the :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizeAttribute` attribute simply by specifying the policy name, for example
+
 
 .. code-block:: c#
 
@@ -178,7 +179,7 @@ The :dn:method:`~Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequir
 
 For example MVC passes an instance of :dn:class:`~Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` in the resource property which is used to access HttpContext, RouteData and everything else MVC provides.
 
-The use of the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property is framework specific. Using information in the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property will limit your authorization policies to particular frameworks. You should cast the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property using the ``as`` keyword, and then check the cast has succeed to ensure your code doesn't crash with :dn:class:`~System.InvalidCastException` when run on other frameworks;
+The use of the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property is framework specific. Using information in the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property will limit your authorization policies to particular frameworks. You should cast the :dn:property:`~Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext.Resource` property using the ``as`` keyword, and then check the cast has succeed to ensure your code doesn't crash with ``InvalidCastException`` when run on other frameworks;
 
 .. code-block:: c#
  
