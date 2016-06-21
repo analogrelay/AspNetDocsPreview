@@ -194,8 +194,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this case the EmployeeOnly policy checks for the presence of an EmployeeNumber claim on the current identity.</p>
-<p>You then apply the policy using the <code class="docutils literal"><span class="pre">Policy</span></code> parameter on the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute to specify the policy name;</p>
+<p>In this case the <code class="docutils literal"><span class="pre">EmployeeOnly</span></code> policy checks for the presence of an <code class="docutils literal"><span class="pre">EmployeeNumber</span></code> claim on the current identity.</p>
+<p>You then apply the policy using the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy" title="(in ASP.NET API Reference v)"><code class="xref dn dn-prop docutils literal"><span class="pre">Policy</span></code></a> property on the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute to specify the policy name;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
 <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">VacationBalance</span><span class="p">()</span>
 <span class="p">{</span>
@@ -203,7 +203,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">Authorize</span></code> attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.</p>
+<p>The <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">VacationController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
@@ -213,7 +213,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you have a controller that is protected by the <code class="docutils literal"><span class="pre">Authorize</span></code> attribute, but want to allow anonymous access to particular actions you apply the <code class="docutils literal"><span class="pre">AllowAnonymous</span></code> attribute;</p>
+<p>If you have a controller that is protected by the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AuthorizeAttribute</span></code></a> attribute, but want to allow anonymous access to particular actions you apply the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">AllowAnonymousAttribute</span></code></a> attribute;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="na">[Authorize(Policy = &quot;EmployeeOnly&quot;)]</span>
 <span class="k">public</span> <span class="k">class</span> <span class="nc">VacationController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
@@ -259,7 +259,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the above example any identity which fulfills the EmployeeOnly policy can access the Payslip action as that policy is enforced on the controller. However in order to call the UpdateSalary action the identity must fulfill <em>both</em> the EmployeeOnly policy and the HumanResources policy.</p>
+<p>In the above example any identity which fulfills the <code class="docutils literal"><span class="pre">EmployeeOnly</span></code> policy can access the <code class="docutils literal"><span class="pre">Payslip</span></code> action as that policy is enforced on the controller. However in order to call the <code class="docutils literal"><span class="pre">UpdateSalary</span></code> action the identity must fulfill <em>both</em> the <code class="docutils literal"><span class="pre">EmployeeOnly</span></code> policy and the <code class="docutils literal"><span class="pre">HumanResources</span></code> policy.</p>
 <p>If you want more complicated policies, such as taking a date of birth claim, calculating an age from it then checking the age is 21 or older then you need to write <a class="reference internal" href="policies.html#security-authorization-policies-based"><span class="std std-ref">custom policy handlers</span></a>.</p>
 </div>
 </div>
