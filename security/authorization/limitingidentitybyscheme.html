@@ -175,7 +175,7 @@
   
   <div class="section" id="limiting-identity-by-scheme">
 <span id="security-authorization-limiting-by-scheme"></span><h1>Limiting identity by scheme<a class="headerlink" href="#limiting-identity-by-scheme" title="Permalink to this headline">¶</a></h1>
-<p>In some scenarios, such as Single Page Applications it is possible to end up with multiple authentication methods, cookie authentication to log in and bearer authentication for javascript request. In some cases you may have multiple instances of an authentication middleware, for example, two cookie middlewares where one contains a basic identity and one is created when a multi-factor authentication has triggered because the user requested an operation that requires extra security.</p>
+<p>In some scenarios, such as Single Page Applications it is possible to end up with multiple authentication methods. For example, your application may use cookie-based authentication to log in and bearer authentication for JavaScript requests. In some cases you may have multiple instances of an authentication middleware. For example, two cookie middlewares where one contains a basic identity and one is created when a multi-factor authentication has triggered because the user requested an operation that requires extra security.</p>
 <p>Authentication schemes are named when authentication middleware is configured during authentication, for example</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">app</span><span class="p">.</span><span class="n">UseCookieAuthentication</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
 <span class="p">{</span>

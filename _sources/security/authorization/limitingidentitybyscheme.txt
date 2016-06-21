@@ -3,9 +3,9 @@
 Limiting identity by scheme
 ===========================
 
-In some scenarios, such as Single Page Applications it is possible to end up with multiple authentication methods, cookie authentication to log in and bearer authentication for javascript request. In some cases you may have multiple instances of an authentication middleware, for example, two cookie middlewares where one contains a basic identity and one is created when a multi-factor authentication has triggered because the user requested an operation that requires extra security.
+In some scenarios, such as Single Page Applications it is possible to end up with multiple authentication methods. For example, your application may use cookie-based authentication to log in and bearer authentication for JavaScript requests. In some cases you may have multiple instances of an authentication middleware. For example, two cookie middlewares where one contains a basic identity and one is created when a multi-factor authentication has triggered because the user requested an operation that requires extra security.
 
-Authentication schemes are named when authentication middleware is configured during authentication, for example 
+Authentication schemes are named when authentication middleware is configured during authentication, for example
 
 .. code-block:: c#
 
