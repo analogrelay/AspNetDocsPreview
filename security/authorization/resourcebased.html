@@ -178,7 +178,7 @@
 <p>Often authorization depends upon the resource being accessed. For example a document may have an author property. Only the document author would be allowed to update it, so the resource must be loaded from the document repository before an authorization evaluation can be made. This cannot be done with an Authorize attribute, as attribute evaluation takes place before data binding and before your own code to load a resource runs inside an action. Instead of declarative authorization, the attribute method, we must use imperative authorization, where a developer calls an authorize function within his own code.</p>
 <div class="section" id="authorizing-within-your-code">
 <h2>Authorizing within your code<a class="headerlink" href="#authorizing-within-your-code" title="Permalink to this headline">¶</a></h2>
-<p>Authorization is implemented as a service, <code class="docutils literal"><span class="pre">IAuthorizationService</span></code>, registered in the service collection and available for DI into Controllers.</p>
+<p>Authorization is implemented as a service, <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService" title="(in ASP.NET API Reference v)"><code class="xref dn dn-iface docutils literal"><span class="pre">IAuthorizationService</span></code></a>, registered in the service collection and available for DI into Controllers.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">DocumentController</span> <span class="p">:</span> <span class="n">Controller</span>
 <span class="p">{</span>
     <span class="n">IAuthorizationService</span> <span class="n">authorizationService</span><span class="p">;</span>
@@ -190,7 +190,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">IAuthorizationService</span></code> has two methods, one where you pass the resource and the policy name and the other where you pass the resource and a list of requirements to evaluate.</p>
+<p><a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService" title="(in ASP.NET API Reference v)"><code class="xref dn dn-iface docutils literal"><span class="pre">IAuthorizationService</span></code></a> has two methods, one where you pass the resource and the policy name and the other where you pass the resource and a list of requirements to evaluate.</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">AuthorizeAsync</span><span class="p">(</span><span class="n">ClaimsPrincipal</span> <span class="n">user</span><span class="p">,</span>
                           <span class="kt">object</span> <span class="n">resource</span><span class="p">,</span>
                           <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IAuthorizationRequirement</span><span class="p">&gt;</span> <span class="n">requirements</span><span class="p">);</span>
@@ -199,7 +199,7 @@
                           <span class="kt">string</span> <span class="n">policyName</span><span class="p">);</span>
 </pre></div>
 </div>
-<p id="security-authorization-resource-based-imperative">To call the service load your resource within your action then call the <code class="docutils literal"><span class="pre">AuthorizeAsync</span></code> method you require. For example</p>
+<p id="security-authorization-resource-based-imperative">To call the service load your resource within your action then call the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">AuthorizeAsync</span></code></a> method you require. For example</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="n">Edit</span><span class="p">(</span><span class="n">Guid</span> <span class="n">documentId</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Document</span> <span class="n">document</span> <span class="p">=</span> <span class="n">documentRepository</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">documentId</span><span class="p">);</span>
@@ -226,7 +226,7 @@
 <p>Writing a handler for resource based authorization is not that much different to <a class="reference internal" href="policies.html#security-authorization-policies-based-authorization-handler"><span class="std std-ref">writing a plain requirements handler</span></a>. You create a requirement, and then implement a handler for the requirement, specifying the requirement as before and also the resource type. For example, a handler which might accept a Document resource would look as follows;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">DocumentAuthorizationHandler</span> <span class="p">:</span> <span class="n">AuthorizationHandler</span><span class="p">&lt;</span><span class="n">MyRequirement</span><span class="p">,</span> <span class="n">Document</span><span class="p">&gt;</span>
 <span class="p">{</span>
-    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Handle</span><span class="p">(</span><span class="n">AuthorizationContext</span> <span class="n">context</span><span class="p">,</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Handle</span><span class="p">(</span><span class="n">AuthorizationHandlerContext</span> <span class="n">context</span><span class="p">,</span>
                                    <span class="n">OperationAuthorizationRequirement</span> <span class="n">requirement</span><span class="p">,</span>
                                    <span class="n">Document</span> <span class="n">resource</span><span class="p">)</span>
     <span class="p">{</span>
@@ -242,7 +242,7 @@
 </div>
 <div class="section" id="operational-requirements">
 <h3>Operational Requirements<a class="headerlink" href="#operational-requirements" title="Permalink to this headline">¶</a></h3>
-<p>If you are making decisions based on operations such as read, write, update and delete an already defined <code class="docutils literal"><span class="pre">OperationAuthorizationRequirement</span></code> class exists in the <code class="docutils literal"><span class="pre">Microsoft.AspNetCore.Authorization.Infrastructure</span></code> namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation To use it provide an operation name;</p>
+<p>If you are making decisions based on operations such as read, write, update and delete, you can use the <code class="xref dn dn-class docutils literal"><span class="pre">OperationAuthorizationRequirement`</span></code> class in the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/index.html#Microsoft.AspNetCore.Authorization.Infrastructure" title="(in ASP.NET API Reference v)"><code class="xref dn dn-ns docutils literal"><span class="pre">Infrastructure</span></code></a> namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation. To use it provide some operation names:</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Operations</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">static</span> <span class="n">OperationAuthorizationRequirement</span> <span class="n">Create</span> <span class="p">=</span>
@@ -256,11 +256,11 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Your handler could then be implemented as follows, using a hypothetical Document class as the resource;</p>
+<p>Your handler could then be implemented as follows, using a hypothetical <code class="docutils literal"><span class="pre">Document</span></code> class as the resource;</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">DocumentAuthorizationHandler</span> <span class="p">:</span>
     <span class="n">AuthorizationHandler</span><span class="p">&lt;</span><span class="n">OperationAuthorizationRequirement</span><span class="p">,</span> <span class="n">Document</span><span class="p">&gt;</span>
 <span class="p">{</span>
-    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Handle</span><span class="p">(</span><span class="n">AuthorizationContext</span> <span class="n">context</span><span class="p">,</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Handle</span><span class="p">(</span><span class="n">AuthorizationHandlerContext</span> <span class="n">context</span><span class="p">,</span>
                                    <span class="n">OperationAuthorizationRequirement</span> <span class="n">requirement</span><span class="p">,</span>
                                    <span class="n">Document</span> <span class="n">resource</span><span class="p">)</span>
     <span class="p">{</span>
@@ -270,8 +270,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can see the handler works on <code class="docutils literal"><span class="pre">OperationAuthorizationRequirement</span></code>. The code inside the handler must take the Name property of the supplied requirement into account when making its evaluations.</p>
-<p>To call an operational resource handler you need to specify the operation when calling <code class="docutils literal"><span class="pre">AuthorizeAsync()</span></code> in your action. For example</p>
+<p>You can see the handler works on <code class="xref dn dn-class docutils literal"><span class="pre">OperationAuthorizationRequirement`</span></code>. The code inside the handler must take the Name property of the supplied requirement into account when making its evaluations.</p>
+<p>To call an operational resource handler you need to specify the operation when calling <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync" title="(in ASP.NET API Reference v)"><code class="xref dn dn-method docutils literal"><span class="pre">AuthorizeAsync</span></code></a> in your action. For example</p>
 <div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="n">authorizationService</span><span class="p">.</span><span class="n">AuthorizeAsync</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">Operations</span><span class="p">.</span><span class="n">Read</span><span class="p">))</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">document</span><span class="p">);</span>
@@ -282,7 +282,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This example checks if the <code class="docutils literal"><span class="pre">User</span></code> is able to perform the Read operation for the current <code class="docutils literal"><span class="pre">document</span></code> instance. If authorization succeeds the view for the document will be returned. If authorization fails returning ChallengeResult() will inform any authentication middleware authorization has failed and the middleware can take the appropriate response, for example returning a 401 or 403 status code, or redirecting the user to a login page for interactive browser clients.</p>
+<p>This example checks if the <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/HttpContext/index.html#Microsoft.AspNetCore.Http.HttpContext.User" title="(in ASP.NET API Reference v)"><code class="xref dn dn-prop docutils literal"><span class="pre">User</span></code></a> is able to perform the Read operation for the current <code class="docutils literal"><span class="pre">document</span></code> instance. If authorization succeeds the view for the document will be returned. If authorization fails returning <a class="reference external" href="http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ChallengeResult/index.html#Microsoft.AspNetCore.Mvc.ChallengeResult" title="(in ASP.NET API Reference v)"><code class="xref dn dn-class docutils literal"><span class="pre">ChallengeResult</span></code></a> will inform any authentication middleware authorization has failed and the middleware can take the appropriate response, for example returning a 401 or 403 status code, or redirecting the user to a login page for interactive browser clients.</p>
 </div>
 </div>
 </div>
